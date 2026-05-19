@@ -1,8 +1,8 @@
-# App shell layout (`registry:layout`)
+# `registry:layout`
 
-Application-owned structural shell (ported from UI8Kit `layout` for the templ registry migration).
+Application-owned structural shell — **stays in `github.com/fastygo/ui`** after blocks/widgets are extracted.
 
-- **Shell** — document, mobile sheet nav, desktop sidebar, sticky header, main slot
+- **Shell** — document, mobile sheet nav, desktop sidebar, main slot
 - **Sidebar** — nav links with latty icons (`internal/ui/components/icon`)
 - **Header** — menu trigger, title, theme toggle, trailing slot (language)
 

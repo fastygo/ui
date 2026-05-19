@@ -36,6 +36,8 @@ The repetition is intentional: **portable artifact** (block) vs **product overri
 
 When promoting a block to a **shared registry**, keep **default data + English prototype strings** **inside** the block package; keep **`fixtures`** as the **app shell** that overlays real locales.
 
+During showcase development, blocks live under **`internal/ui/blocks/<group>/`** (not `github.com/fastygo/blocks`). On extraction, move the package to **`github.com/fastygo/blocks`** unchanged defaults + templ deps.
+
 ## Coordination
 
 - **`fastygo-ui-atomic-ui8px.mdc`** — ui8px, composition, no raw tags.  
