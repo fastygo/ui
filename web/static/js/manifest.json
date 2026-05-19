@@ -1,0 +1,20 @@
+{
+  "theme": {
+    "file": "theme.db827f1f.js",
+    "sri": "sha384-+lVs61TNhjc/G/GWVHv8ltiyWgeCmo2+HndUVEk00HvVpyAz4dobs6K42yD12rxT"
+  },
+  "ui8kit": {
+    "file": "ui8kit.9d94bfee.js",
+    "sri": "sha384-SPxqAEI+j5Fflwhgogugo4q60ZpSoQoW7xN7DZ9uZHRE8U32TPNP7PpuaxFCGiex"
+  },
+  "ariaMode": "subset",
+  "ariaVersion": "0.1.0",
+  "patterns": [
+    "accordion",
+    "combobox",
+    "dialog",
+    "disclosure",
+    "tabs",
+    "tooltip"
+  ]
+}

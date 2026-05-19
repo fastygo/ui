@@ -1,0 +1,23 @@
+{
+  "brand": "FastyGo UI",
+  "nav": {
+    "home": "Home",
+    "sample": "Sample"
+  },
+  "theme": {
+    "label": "Theme",
+    "switch_to_dark": "Switch to dark",
+    "switch_to_light": "Switch to light"
+  },
+  "language_toggle_label": "Language",
+  "dashboard": {
+    "title": "Home",
+    "description": "Default app shell — sidebar, mobile menu, theme, and locales.",
+    "body": "Welcome. Use this layout as the base for docs, examples, and component galleries."
+  },
+  "sample_stub": {
+    "title": "Sample",
+    "description": "Placeholder for a second top-level route",
+    "body": "Replace this page with real content (e.g. component examples or a docs section)."
+  }
+}

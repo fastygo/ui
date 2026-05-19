@@ -1,0 +1,67 @@
+---
+description: FastyGoUI — registry layout, prototype wireframes, ui8px SoT, brand via fastygo CLI later
+alwaysApply: true
+---
+
+# Design system & registry (FastyGoUI)
+
+## Positioning: prototype only
+
+- **`github.com/fastygo/ui8kit`** is consumed here as a **raw wireframe / atom** layer: **Tailwind** (filtered by **ui8px**) + **shadcn-style tokens** (e.g. via **`tweakcn`**). It is **not** positioned as production “finished UI” or a full visual system. **FastyGoUI** is the same story: **structure lab**, not shipped product chrome.
+
+## Single source of truth (policy)
+
+- **`FastyGoUI/.ui8px/policy/**`** is the **authoritative** ui8px policy. Other repos may **sync from here**; do not invert that flow.
+- The prototype intentionally uses a **limited** utility set defined there—a **skeleton**, not a finished skin.
+
+## Two time horizons (do not mix)
+
+1. **Now — prototypes (“сила структуры”):** **no** dedicated art direction, **no** bespoke visual system. Build **layouts (carcasses)** that wire **organisms** into a readable page: spacing rhythm via **policy + shadcn/tweakcn tokens** and **explicit Tailwind utilities** in markup (duplicated chains are OK for clarity and onboarding). **No** extra decorative CSS, **no** parallel semantic component-CSS layer as the source of truth in this repo.
+2. **Later — brand & polish:** after surfaces are **fully covered** by these wireframes, each **consuming app** layers product identity using a **shadcn-style** toolchain: e.g. **`fastygo init`**, **`fastygo add hero | button | card | …`** to obtain **sources**, then freedom to **replace** Tailwind lists, introduce **`@apply`**, or ship a **brand** stylesheet. That phase is **not** the current repository’s job; this repo remains a **neutral structural baseline**.
+
+## Composition model
+
+- **Layouts (`registry:layout`):** app-level **frames** that place regions and routes—structural shells (e.g. gallery sidebar + main, default app chrome). They **compose** lower pieces into one tree.
+- **Organisms (in-app):** **`blocks`**, **`components`**, **`widgets`**—composed pieces for sections and tools (still **wireframe-grade** until the brand phase). There is **no** separate `elements` registry—small pieces live under **`components`** (e.g. `internal/ui/components/toggles`).
+- **Molecules:** **`github.com/fastygo/ui8kit/ui`** via the **facade** — see **`fastygo-ui-atomic-ui8px.mdc`**: `import "github.com/fastygo/ui8kit/ui"` + **`@ui.*`** in `.templ`; kit composites as **`import cmp "github.com/fastygo/ui8kit/components"`** + **`@cmp.*`**.
+- **Atoms:** **`github.com/fastygo/base`** primitives and `utils`.
+
+Everything is built **without** raw tags and **without** styling **outside** the contract: **only** policy-approved Tailwind utilities, **shadcn/tweakcn semantic tokens**, and **correct HTML5** through **Base** / **UI8Kit**. (Long or repeated utility strings are fine if they stay on-token and on-policy.)
+
+## `components` vs `widgets`
+
+- **`registry:components`** (`internal/ui/components/`): **presentation-only** building blocks—**pure UI**. They take data via props/arguments and render templ; **no** HTTP clients, **no** domain orchestration, **no** fetching or caching. Logic stays in handlers, services, or parent widgets.
+
+- **`registry:widgets`** (`internal/ui/widgets/`): **interactive or data-connected** pieces—may hold **behavior and wiring**: loading state, user actions, **API calls** (e.g. dashboard stats), subscriptions, timers, bridging to app services. They **compose** `components` (and Base/UI8Kit) internally; the widget owns the **glue** between UI and the rest of the app.
+
+If a piece only formats props and renders markup, it belongs in **`components`**. If it **fetches**, **mutates remote state**, or coordinates non-trivial side effects, use **`widgets`**.
+
+## Registry — `internal/ui/` layout
+
+Authoritative labels (no `elements`):
+
+| Label | Path | Role (prototype phase) |
+|--------|------|---------------------------|
+| `registry:layout` | `internal/ui/layout/` | Structural shells combining regions (e.g. showcase chrome). |
+| `registry:blocks` | `internal/ui/blocks/` | Section-level organisms (hero placeholder, feature grid scaffold, …). |
+| `registry:components` | `internal/ui/components/` | **Pure UI**—templ + tokens + props; **no** business or network logic. |
+| `registry:ui` | `internal/ui/ui/` | Clusters not yet in UI8Kit. |
+| `registry:widgets` | `internal/ui/widgets/` | **UI + behavior**—fetching, stats, interaction, orchestration; composes `components` inside. |
+| `registry:variants` | `internal/ui/variants/` | Go maps of **allowed** utility strings (wireframe variants). |
+| `registry:utils` | `internal/ui/utils/` | App helpers on top of **`base/utils`**. |
+
+**Heuristic:** variants & utils → **`variants` / `utils`**; section scaffolds → **`blocks`**; **dumb** markup → **`components`**; **smart** / API-backed / interactive shells → **`widgets`**; page wiring → **`layout`**.
+
+**Promotion (when something is stable and generic):** move to **`@UI8Kit`**; if it is pure tag/content-model, prefer **`@Base`**.
+
+## Showcase (structure lab)
+
+- **Sidebar:** navigation over the **registry** (jump to groups).
+- **Main:** **live wireframes** for each group—variants and states, still **without** brand-heavy styling.
+
+## Coordination
+
+- **`fastygo-ui-atomic-ui8px.mdc`** governs **ui8px**, **no raw tags**, **Base/UI8Kit** layering, Block/Box rules, and **prototype = Tailwind + tokens (not production UI8Kit)**—no parallel semantic CSS as SoT in this repo.
+- **`fastygo-ui-aria.mdc`** governs **ARIA** (Go helpers + **`@ui8kit/aria`**, manifest)—extend in lockstep when new interactive **components** or **widgets** land.
+- **`fastygo-ui-validation-testing.mdc`** governs **Nu HTML snapshots**, **axe e2e**, **`validate:aria`**, and **Go wireframe tests**.
+- This file governs **registry placement**, **prototype vs brand phase**, and the **`fastygo init` / `fastygo add`** story for **downstream apps**—without relaxing ui8px or semantics here.

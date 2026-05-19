@@ -1,0 +1,11 @@
+package views
+
+import "github.com/fastygo/templ/ui"
+
+templ SamplePage(data SampleData) {
+	@ui.Stack(ui.StackProps{}) {
+		@ui.Title(ui.TitleProps{Order: 1}, data.Title)
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, data.Description)
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, data.Body)
+	}
+}

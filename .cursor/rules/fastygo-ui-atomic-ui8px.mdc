@@ -1,0 +1,65 @@
+---
+description: FastyGoUI — ui8px skeleton, Base/UI8Kit only, no raw HTML, prototype phase
+alwaysApply: true
+---
+
+# FastyGoUI — composition & ui8px (prototype layer)
+
+## What this phase is (and what it is **not**)
+
+- **Prototype / “strength of structure”:** wireframes and **carcass** UI only—**no visual design**, no decoration, no brand polish. Goal: correct **information architecture**, **HTML5 semantics**, **accessibility**, and **composition**.
+- **Not production:** **`github.com/fastygo/ui8kit`** is **not** a finished product design system or “enterprise UI”. Treat it as a **raw prototype kit**: primitives and composites built from **Tailwind only** (under **ui8px** policy) plus **design tokens in the shadcn style** (e.g. `tweakcn` / semantic color tokens such as `bg-background`, `text-foreground`, `border-border`). There is **no** separate mandatory kit CSS layer of semantic component classes in this story—**self-contained** markup + utilities + tokens should be enough to run (including **CDN Tailwind + tweakcn** for quick onboarding).
+- **Onboarding:** **repeated utility chains** in component code are **acceptable** here: they stay **transparent** (“what you see is what styles”) and easy for newcomers. **ui8px** limits **which** utilities appear and keeps **per-line** discipline (see policy); it does **not** mean “hide everything behind Go helpers.” **`class={ … }`**, **`Cn`**, and small Go fragments are **optional** optimizations, not the default requirement for every surface.
+
+## Tailwind / ui8px
+
+- Use **only** utilities that pass **`FastyGoUI/.ui8px/policy`** (`allowed.json`, `denied.json`, `groups.json`, `patterns.json`, `scopes.json`). Treat that directory as the **contract** for the prototype utility set.
+- After edits to `.templ`, `.css` (where linted), or Go class strings used as classes, run **`bun run lint:ui8px`** and fix violations.
+- Prefer **explicit Tailwind lists** on primitives for wireframe-grade surfaces; use **Go helpers / `Cn`** when they genuinely shorten noise **without** hiding required structure for reviewers.
+
+## No raw markup
+
+- **Forbidden:** raw layout/content tags (`div`, `span`, `section`, …) in app composition. UI comes from **Base** / **UI8Kit** primitives and composites.
+- **Mandatory:** **`github.com/fastygo/base`** for the right tag and content model (`block`, `box`, `text`, `stack`, `group`, `table`, `form`, `field`, …). Check **`github.com/fastygo/base/utils/tags.go`** before choosing semantics.
+- **Exception — document shell only:** `link`, `script`, `meta`, etc. live in **head** partials (e.g. `internal/views/partials/shell_head.templ`), per UI8Kit shell ownership—not in body composition.
+
+## Atomic stack
+
+- **Atoms:** `github.com/fastygo/base/*` (+ Base `utils` for tags/Cn/ARIA where applicable).
+- **Molecules (UI8Kit primitives — mandatory import shape):** **`import "github.com/fastygo/ui8kit/ui"`** (facade only). In **`.templ`**, call primitives as **`@ui.Stack`**, **`@ui.Button`**, **`@ui.Box`**, **`@ui.Text`**, **`@ui.Title`**, … using **`ui.StackProps`**, **`ui.ButtonProps`**, etc. Do **not** import granular paths such as `ui8kit/ui/stack` or `ui8kit/ui/button` in this repo unless a maintainer explicitly drops this rule for an edge case.
+- **Organisms (UI8Kit composites — mandatory import shape):** **`import cmp "github.com/fastygo/ui8kit/components"`**. In **`.templ`**, use **`@cmp.Card`**, **`@cmp.Dialog`**, **`@cmp.Accordion`**, … (`cmp.CardProps`, `cmp.ComboboxProps`, …).
+- **Prefer** organism → molecule → atom. Gaps are filled with **lower layers**, never with raw HTML.
+- **In-app registry:** composed pieces belong under **`internal/ui/components`**, **`blocks`**, **`widgets`**, **`layout`** (see **`fastygo-ui-design-system-registry.mdc`**)—there is **no** `internal/ui/elements` layer. **`components`** = pure UI; **`widgets`** = UI + logic/API (same rule file).
+
+### UI8Kit imports — example (`.templ`)
+
+Use exactly these import lines and call sites:
+
+```go
+import "github.com/fastygo/ui8kit/ui"
+import cmp "github.com/fastygo/ui8kit/components"
+
+// @ui.Stack(ui.StackProps{ ... }) { … }
+// @cmp.Card(cmp.CardProps{ ... }) { … }
+```
+
+**`.go`** helpers that return kit markup should use the same **`ui`** / **`cmp`** packages (`ui.Button`, …) instead of deep **`ui8kit/ui/…`** paths unless a maintainer documents an exception.
+
+## Semantics (UI8Kit + Base)
+
+- Follow **`@UI8Kit/.cursor/rules/ui8kit-layer.mdc`** and **`@UI8Kit/.cursor/rules/ui8kit-block-box-semantics.mdc`** (Block vs Box, landmarks, nesting, head vs body).
+- **`base/block`:** top-level sections/anchors only; **do not nest Block in Block**. Internally use **stack**, **group**, **grid**, **container**, owned table/list/form primitives, or **`base/box`** for neutral layout.
+
+## This repo vs future “designed” apps
+
+- **Here (prototype):** styling is **utilities + tokens** in source (templ/Go); avoid shipping a parallel **semantic CSS** story in this repo (no kit-owned `@apply` stacks as the source of truth for chrome). Optional **generated** or **app-level** semantics are a **separate** long-term concern—not assumed here.
+- **Later, per product:** a **consumer app** may add brand layers, **`@apply`**, CLI-driven blocks, or premium tooling that collapses chains into named classes—that is **out of scope** for this repository; this repo stays a **neutral structural baseline** built from **Tailwind + ui8px + tokens**.
+
+## Base helpers (use when they help; not mandatory for every class list)
+
+- **`utils/cn.go`** — optional class composition.
+- **`utils/aria.go`** — ARIA for interactive/stateful UI wherever helpers apply (still required where relevant).
+
+For the **JS behavior layer**, **`@ui8kit/aria`**, manifest alignment, **`bun run validate:aria`**, **`bun run test:e2e`** (axe), and **Nu HTML** snapshots, see **`fastygo-ui-validation-testing.mdc`** (and **`fastygo-ui-aria.mdc`** for policy).
+
+On conflict between kit docs and **this** repo’s prototype rules, prefer **this file** for FastyGoUI: **ui8px gate**, **no raw tags**, **UI8Kit = wireframe Tailwind + tokens (not production DS)**, **explicit utility chains are OK** for onboarding.

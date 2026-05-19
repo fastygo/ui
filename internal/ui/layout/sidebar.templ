@@ -1,0 +1,20 @@
+package layout
+
+import (
+	"github.com/fastygo/templ/ui"
+	"github.com/fastygo/ui/internal/ui/components/icon"
+)
+
+templ Sidebar(props SidebarProps) {
+	for i, item := range props.Items {
+		if props.Mobile && i > 0 && isExternalNavLink(item.Path) && !isExternalNavLink(props.Items[i-1].Path) {
+			@ui.Box(ui.BoxProps{Class: "my-2 border-t border-border"})
+		}
+		@ui.Button(sidebarLinkButtonProps(props.Active, item)) {
+			if item.Icon != "" {
+				@icon.Icon(icon.IconProps{Name: item.Icon, Size: "sm"})
+			}
+			@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
+		}
+	}
+}

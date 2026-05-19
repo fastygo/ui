@@ -1,0 +1,24 @@
+package views
+
+import (
+	templpkg "github.com/a-h/templ"
+	"github.com/fastygo/ui/internal/ui/layout"
+	"github.com/fastygo/ui/internal/views/partials"
+)
+
+templ SiteShell(d LayoutData, body templpkg.Component) {
+	@layout.Shell(layout.ShellProps{
+		Title:          d.Title,
+		Lang:           d.Lang,
+		BrandName:      d.Brand,
+		Active:         d.Active,
+		NavItems:       d.NavItems,
+		HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS),
+		HeaderExtra:    nil,
+		HeaderTrailing: partials.HeaderTrailing(d.LanguageToggle),
+		ThemeToggle:    d.Theme,
+		MarketingShell: false,
+	}) {
+		@body
+	}
+}

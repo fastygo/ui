@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@source "../../internal/views/**/*.templ";
+@source "../../internal/views/**/*.go";
+@source "../../internal/ui/**/*.templ";
+@source "../../internal/ui/**/*.go";
+@source "../../../@Templ/ui/**/*.templ";
+@source "../../../@Templ/ui/**/*_templ.go";
+@source "../../../@Templ/components/**/*.templ";
+@source "../../../@Templ/components/**/*_templ.go";
+
+@import "./tweakcn.css";
+@import "./fonts.css";
+@import "./latty-icons.css";

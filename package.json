@@ -1,0 +1,29 @@
+{
+  "name": "fastygo-ui",
+  "private": true,
+  "packageManager": "bun@1.3.3",
+  "dependencies": {
+    "@ui8kit/aria": "^0.1.0"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./web/static/css/input.css -o ./web/static/css/app.css --minify",
+    "lint:ui8px": "ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css --ignore .fastygo",
+    "validate:html": "node scripts/validate-html-snapshots.mjs",
+    "validate:aria": "ui8px validate aria internal/views internal/ui --manifest web/static/js/manifest.json --ignore .fastygo web/static/css/ui8kit",
+    "snapshot:html": "go run ./.validate/cmd/snapshot-render",
+    "test:e2e:install": "playwright install chromium",
+    "test:e2e": "playwright install chromium && playwright test",
+    "templ": "go tool templ generate ./...",
+    "verify": "go tool templ generate ./... && bun run build:css && bun run lint:ui8px && bun run validate:aria && bun run validate:html && go test ./... && bun run test:e2e",
+    "build": "go build -o blank ./cmd/server",
+    "go": "node scripts/run-server.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/cli": "^4.2.1",
+    "html-validator": "^6.0.1",
+    "tailwindcss": "^4.2.1",
+    "ui8px": "0.2.4"
+  }
+}

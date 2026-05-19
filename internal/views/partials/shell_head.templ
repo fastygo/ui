@@ -1,0 +1,15 @@
+package partials
+
+// ShellHead emits shell asset tags for <head> (CSS + deferred scripts).
+// Edit this partial to extend global head content (preload, dns-prefetch, etc.).
+templ ShellHead(css, themeJS, appJS string) {
+	if css != "" {
+		<link rel="stylesheet" href={ css }/>
+	}
+	if themeJS != "" {
+		<script defer src={ themeJS }></script>
+	}
+	if appJS != "" {
+		<script defer src={ appJS }></script>
+	}
+}
