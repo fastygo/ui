@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/a-h/templ v0.3.1001
 	github.com/fastygo/framework v0.0.0-20260428133456-8a8901eca249
-	github.com/fastygo/templ v0.0.0-00010101000000-000000000000
+	github.com/fastygo/templ v0.0.0-20260519182834-29250eaf6a34
 )
 
 require (
@@ -26,5 +26,3 @@ require (
 )
 
 tool github.com/a-h/templ/cmd/templ
-
-replace github.com/fastygo/templ => ../@Templ
