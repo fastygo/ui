@@ -52,12 +52,6 @@ func (f *Feature) fixtureLocale(ctx context.Context) fixtures.Locale {
 	return loc
 }
 
-func (f *Feature) siteNav(fix fixtures.Locale) []layout.NavItem {
-	return []layout.NavItem{
-		{Label: fix.Nav.Home, Path: "/", Icon: "home"},
-		{Label: fix.Nav.Sample, Path: "/sample", Icon: "layout-dashboard"},
-	}
-}
 
 func (f *Feature) assetPaths() views.AssetPaths {
 	return views.AssetPaths{
@@ -78,7 +72,7 @@ func (f *Feature) layoutData(ctx context.Context, r *http.Request, title, active
 		Lang:           locale.From(ctx),
 		Brand:          fix.Brand,
 		Active:         active,
-		NavItems:       f.siteNav(fix),
+		NavItems:       siteNav(fix),
 		Assets:         f.assetPaths(),
 		Theme: layout.ThemeToggleProps{
 			Label:              fix.Theme.Label,
@@ -93,6 +87,7 @@ func (f *Feature) layoutData(ctx context.Context, r *http.Request, title, active
 func (f *Feature) Routes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /{$}", f.getHome)
 	mux.HandleFunc("GET /sample", f.getSample)
+	f.registerDocsRoutes(mux)
 }
 
 func (f *Feature) getHome(w http.ResponseWriter, r *http.Request) {
@@ -103,7 +98,16 @@ func (f *Feature) getHome(w http.ResponseWriter, r *http.Request) {
 		Title:       fix.Dashboard.Title,
 		Description: fix.Dashboard.Description,
 		Body:        fix.Dashboard.Body,
+		DocLinks:    dashboardDocLinks(fix),
 	})))
+}
+
+func dashboardDocLinks(fix fixtures.Locale) []views.DashboardDocLink {
+	out := make([]views.DashboardDocLink, 0, len(fix.DocNav))
+	for _, link := range fix.DocNav {
+		out = append(out, views.DashboardDocLink{Label: link.Label, Href: link.Path})
+	}
+	return out
 }
 
 func (f *Feature) getSample(w http.ResponseWriter, r *http.Request) {

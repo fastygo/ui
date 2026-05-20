@@ -2,8 +2,16 @@
   "brand": "FastyGo UI",
   "nav": {
     "home": "Главная",
-    "sample": "Пример"
+    "sample": "Пример",
+    "docs_section": "Документация"
   },
+  "doc_nav": [
+    { "label": "Все компоненты", "path": "/docs/", "icon": "book-open" },
+    { "label": "Введение", "path": "/docs/introduction/", "icon": "book-open" },
+    { "label": "Установка", "path": "/docs/installation/", "icon": "book-open" },
+    { "label": "Button", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
+    { "label": "Blog card", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
+  ],
   "theme": {
     "label": "Тема",
     "switch_to_dark": "Тёмная тема",
@@ -13,7 +21,11 @@
   "dashboard": {
     "title": "Главная",
     "description": "Оболочка по умолчанию — сайдбар, мобильное меню, тема и локали.",
-    "body": "Добро пожаловать. Используйте этот каркас как основу для документации, примеров и галерей компонентов."
+    "body": "Галерея компонентов wireframe: превью и фрагменты templ для копирования."
+  },
+  "docs": {
+    "index_title": "Компоненты",
+    "index_description": "Витрина в режиме wireframe для примитивов github.com/fastygo/templ и реестра приложения."
   },
   "sample_stub": {
     "title": "Пример",

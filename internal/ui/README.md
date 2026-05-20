@@ -1,24 +1,26 @@
 # In-app UI registry (`internal/ui`)
 
-Staging area for the FastyGoUI showcase (shadcn-style structure lab). **Single source of truth during development** — do not depend on `github.com/fastygo/blocks` or `github.com/fastygo/widgets` until the set is frozen and extracted.
+Staging area for the FastyGoUI showcase. **`internal/showcase/`** holds docs catalog only; this tree holds **reusable UI**.
 
 ## Layout
 
 ```
 internal/ui/
-  layout/       # App shell — stays in github.com/fastygo/ui after extraction
-  components/   # Small showcase-only UI (icon, toggles, …)
-  blocks/       # Section organisms → later github.com/fastygo/blocks
-  widgets/      # UI + behavior/API → later github.com/fastygo/widgets
+  layout/       # App shell — stays in github.com/fastygo/ui
+  components/   # registry:components — templ composites (CLI-ready)
+  blocks/       # registry:blocks — staging → github.com/fastygo/blocks
+  widgets/      # registry:widgets — staging → github.com/fastygo/widgets
   variants/     # Optional wireframe utility maps
   utils/        # Thin helpers on github.com/fastygo/templ/utils
+internal/showcase/
+  catalog/      # Docs-only: doc.go + showcase.go per /docs slug
+  showcaseutil/ # Go preview helpers (not shipped to consumers)
 ```
 
-## Atoms & molecules (external)
+## External atoms
 
-- Primitives: `import "github.com/fastygo/templ/ui"` → `@ui.*`
-- Composites: `import cmp "github.com/fastygo/templ/components"` → `@cmp.*`
-- Helpers: `github.com/fastygo/templ/utils` (tags, Cn, ARIA, CVA)
+- `import "github.com/fastygo/templ/ui"` → `@ui.*`
+- `import cmp "github.com/fastygo/templ/components"` → `@cmp.*`
 
 ## Extraction (later)
 
@@ -26,6 +28,7 @@ internal/ui/
 |------|----------------|
 | `blocks/*` | `github.com/fastygo/blocks` |
 | `widgets/*` | `github.com/fastygo/widgets` |
+| `components/*` | CLI copy / optional shared module |
 | `layout/` | Stays in this app |
 
 See `.cursor/rules/fastygo-ui-design-system-registry.mdc`.

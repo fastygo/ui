@@ -9,13 +9,22 @@ import (
 //go:embed locale/*.json
 var localeFS embed.FS
 
+// DocNavLink is a sidebar or home-page link to static documentation.
+type DocNavLink struct {
+	Label string `json:"label"`
+	Path  string `json:"path"`
+	Icon  string `json:"icon,omitempty"`
+}
+
 // Locale holds embedded copy for one language.
 type Locale struct {
 	Brand string `json:"brand"`
 	Nav   struct {
-		Home   string `json:"home"`
-		Sample string `json:"sample"`
+		Home        string `json:"home"`
+		Sample      string `json:"sample"`
+		DocsSection string `json:"docs_section"`
 	} `json:"nav"`
+	DocNav []DocNavLink `json:"doc_nav"`
 	Theme struct {
 		Label             string `json:"label"`
 		SwitchToDarkLabel string `json:"switch_to_dark"`
@@ -32,6 +41,10 @@ type Locale struct {
 		Description string `json:"description"`
 		Body        string `json:"body"`
 	} `json:"sample_stub"`
+	Docs struct {
+		IndexTitle       string `json:"index_title"`
+		IndexDescription string `json:"index_description"`
+	} `json:"docs"`
 }
 
 // LoadLocale reads locale/{code}.json (e.g. en, ru).

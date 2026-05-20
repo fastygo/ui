@@ -23,7 +23,7 @@ UI8Kit static CSS/JS, theme scripts, and **Google Sans** (`gfonts.css` + `fonts/
 
 Closing a **browser tab does not** stop an HTTP server. Stop the job in the terminal (**Ctrl+C**) or close the terminal panel; if the port stays busy, an old `go` process is still running (see troubleshooting below).
 
-Open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) for the home page, or [http://127.0.0.1:8080/sample](http://127.0.0.1:8080/sample) for the second stub route.
+Open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) for the home page, [http://127.0.0.1:8080/docs](http://127.0.0.1:8080/docs) for the component gallery, or [http://127.0.0.1:8080/sample](http://127.0.0.1:8080/sample) for the second stub route.
 
 ## Environment
 
@@ -59,7 +59,7 @@ Run from the repo root (or use `bun run go`), run `bun run build:css`, and ensur
 | Path | Role |
 |------|------|
 | [`cmd/server/main.go`](cmd/server/main.go) | Composition root: config, locales, health, site feature |
-| [`internal/site/`](internal/site/) | HTTP routes: `GET /`, `GET /sample` (placeholder) |
+| [`internal/site/`](internal/site/) | HTTP routes: `GET /`, `GET /sample`, `GET /docs/...` (component gallery) |
 | [`internal/fixtures/locale/`](internal/fixtures/locale/) | Embedded JSON copy per locale |
 | [`internal/views/`](internal/views/) | `templ` pages, [`layout.templ`](internal/views/layout.templ) (`SiteShell` + UI8Kit `Shell`), [`partials/header_trailing.templ`](internal/views/partials/header_trailing.templ) (language switch) |
 | [`internal/ui/components/`](internal/ui/components/) | App-level UI pieces (e.g. `components/toggles` language control) |

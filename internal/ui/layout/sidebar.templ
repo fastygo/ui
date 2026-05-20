@@ -10,11 +10,15 @@ templ Sidebar(props SidebarProps) {
 		if props.Mobile && i > 0 && isExternalNavLink(item.Path) && !isExternalNavLink(props.Items[i-1].Path) {
 			@ui.Box(ui.BoxProps{Class: "my-2 border-t border-border"})
 		}
-		@ui.Button(sidebarLinkButtonProps(props.Active, item)) {
-			if item.Icon != "" {
-				@icon.Icon(icon.IconProps{Name: item.Icon, Size: "sm"})
+		if item.Section {
+			@ui.Text(ui.TextProps{Tag: "p", Class: "px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground"}, item.Label)
+		} else {
+			@ui.Button(sidebarLinkButtonProps(props.Active, item)) {
+				if item.Icon != "" {
+					@icon.Icon(icon.IconProps{Name: item.Icon, Size: "sm"})
+				}
+				@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
 			}
-			@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
 		}
 	}
 }

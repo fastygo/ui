@@ -6,6 +6,8 @@ require (
 	github.com/a-h/templ v0.3.1001
 	github.com/fastygo/framework v0.0.0-20260428133456-8a8901eca249
 	github.com/fastygo/templ v0.0.0-20260519182834-29250eaf6a34
+	github.com/yuin/goldmark v1.8.2
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (

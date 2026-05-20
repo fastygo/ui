@@ -3,10 +3,12 @@ package layout
 import "github.com/a-h/templ"
 
 // NavItem describes a single sidebar navigation link.
+// When Section is true, Label is a non-interactive group heading (Path is ignored).
 type NavItem struct {
-	Path  string
-	Label string
-	Icon  string
+	Path    string
+	Label   string
+	Icon    string
+	Section bool
 }
 
 // SidebarProps configures the sidebar navigation.

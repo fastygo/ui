@@ -24,11 +24,18 @@ type LayoutData struct {
 	LanguageToggle view.LanguageToggleData
 }
 
+// DashboardDocLink is a CTA on the home page pointing at static docs.
+type DashboardDocLink struct {
+	Label string
+	Href  string
+}
+
 // DashboardData is the home page body inside the shell.
 type DashboardData struct {
 	Title       string
 	Description string
 	Body        string
+	DocLinks    []DashboardDocLink
 }
 
 // SampleData is a second stub route for onboarding new pages.

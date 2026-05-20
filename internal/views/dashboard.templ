@@ -3,9 +3,22 @@ package views
 import "github.com/fastygo/templ/ui"
 
 templ DashboardPage(data DashboardData) {
-	@ui.Stack(ui.StackProps{}) {
+	@ui.Stack(ui.StackProps{Class: "gap-4"}) {
 		@ui.Title(ui.TitleProps{Order: 1}, data.Title)
 		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, data.Description)
-		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, data.Body)
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed max-w-3xl"}, data.Body)
+		if len(data.DocLinks) > 0 {
+			@ui.Group(ui.GroupProps{Class: "flex flex-wrap gap-2 pt-2"}) {
+				for _, link := range data.DocLinks {
+					@ui.Button(ui.ButtonProps{
+						Href:    link.Href,
+						Variant: "outline",
+						Class:   "h-9",
+					}) {
+						{ link.Label }
+					}
+				}
+			}
+		}
 	}
 }

@@ -1,0 +1,1426 @@
+[
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "accordion",
+    "title": "Accordion",
+    "description": "Vertically stacked expandable sections (wireframe; data-ui8kit accordion).",
+    "href": "/docs/components/accordion/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "alert",
+    "title": "Alert",
+    "description": "Callout for important messages.",
+    "href": "/docs/components/alert/",
+    "headings": [
+      "Default",
+      "Destructive"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "alert-dialog",
+    "title": "Alert Dialog",
+    "description": "Modal that interrupts flow.",
+    "href": "/docs/components/alert-dialog/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Fixed aspect container.",
+    "href": "/docs/components/aspect-ratio/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "avatar",
+    "title": "Avatar",
+    "description": "User avatar placeholder.",
+    "href": "/docs/components/avatar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "badge",
+    "title": "Badge",
+    "description": "Small status label chip.",
+    "href": "/docs/components/badge/",
+    "headings": [
+      "Default",
+      "Secondary",
+      "Outline",
+      "Destructive"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "block",
+    "title": "Block",
+    "description": "Top-level landmark sections (do not nest Block in Block).",
+    "href": "/docs/components/block/",
+    "headings": [
+      "Main",
+      "Aside"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "blog-card",
+    "title": "Blog Card",
+    "description": "Reusable blog list cards with media placeholder — vertical and horizontal layouts.",
+    "href": "/docs/components/blog-card/",
+    "headings": [
+      "Vertical",
+      "Horizontal"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "box",
+    "title": "Box",
+    "description": "Generic block wrapper without landmark semantics.",
+    "href": "/docs/components/box/",
+    "headings": [
+      "Default",
+      "Pre tag"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Hierarchy navigation trail.",
+    "href": "/docs/components/breadcrumb/",
+    "headings": [
+      "Default",
+      "Current page"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "button",
+    "title": "Button",
+    "description": "Triggers an action or navigates when rendered as a link. Built on github.com/fastygo/templ/ui.",
+    "href": "/docs/components/button/",
+    "headings": [
+      "Default",
+      "Secondary",
+      "Outline",
+      "Destructive",
+      "Ghost",
+      "Link",
+      "Sizes"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "calendar",
+    "title": "Calendar",
+    "description": "Date grid placeholder.",
+    "href": "/docs/components/calendar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "card",
+    "title": "Card",
+    "description": "Grouped content with header, body, and footer.",
+    "href": "/docs/components/card/",
+    "headings": [
+      "Default",
+      "With footer"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "carousel",
+    "title": "Carousel",
+    "description": "Horizontal scrolling list.",
+    "href": "/docs/components/carousel/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "checkbox",
+    "title": "Checkbox",
+    "description": "Boolean checkbox input.",
+    "href": "/docs/components/checkbox/",
+    "headings": [
+      "Default",
+      "Checked"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "collapsible",
+    "title": "Collapsible",
+    "description": "Single expand/collapse region.",
+    "href": "/docs/components/collapsible/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "combobox",
+    "title": "Combobox",
+    "description": "Searchable select wireframe (data-ui8kit combobox).",
+    "href": "/docs/components/combobox/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "command",
+    "title": "Command",
+    "description": "Command palette: search + list.",
+    "href": "/docs/components/command/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "container",
+    "title": "Container",
+    "description": "Centers content with a max-width constraint.",
+    "href": "/docs/components/container/",
+    "headings": [
+      "Default",
+      "Section"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "context-menu",
+    "title": "Context Menu",
+    "description": "Stub menu list on right-click target.",
+    "href": "/docs/components/context-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "blocks",
+    "slug": "dashboard-overview",
+    "title": "Dashboard Overview",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/docs/blocks/dashboard-overview/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "data-table",
+    "title": "Data Table",
+    "description": "Table with toolbar (wireframe).",
+    "href": "/docs/components/data-table/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "Modal dialog wireframe (data-ui8kit dialog).",
+    "href": "/docs/components/dialog/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "blocks",
+    "slug": "docs-article",
+    "title": "Docs Article",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/docs/blocks/docs-article/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "drawer",
+    "title": "Drawer",
+    "description": "Bottom sheet drawer wireframe.",
+    "href": "/docs/components/drawer/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "dropdown-menu",
+    "title": "Dropdown Menu",
+    "description": "Menu triggered by a button.",
+    "href": "/docs/components/dropdown-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "form",
+    "title": "Form",
+    "description": "Form landmark with item helpers.",
+    "href": "/docs/components/form/",
+    "headings": [
+      "Login",
+      "Inline"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "grid",
+    "title": "Grid",
+    "description": "CSS grid layout with columns.",
+    "href": "/docs/components/grid/",
+    "headings": [
+      "Two columns",
+      "Three columns"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "group",
+    "title": "Group",
+    "description": "Horizontal flex row for grouping controls.",
+    "href": "/docs/components/group/",
+    "headings": [
+      "Default",
+      "Wrap"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "hover-card",
+    "title": "Hover Card",
+    "description": "Rich preview on hover.",
+    "href": "/docs/components/hover-card/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "icon",
+    "title": "Icon",
+    "description": "Latty icon mask (app registry).",
+    "href": "/docs/components/icon/",
+    "headings": [
+      "Default",
+      "Sizes"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "input",
+    "title": "Input",
+    "description": "Single-line text input control.",
+    "href": "/docs/components/input/",
+    "headings": [
+      "Default",
+      "Disabled",
+      "File"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "getting-started",
+    "slug": "installation",
+    "title": "Installation",
+    "description": "Use this repository as the reference app, or copy individual components from the gallery into your project (future fastygo add workflow).",
+    "href": "/docs/installation/",
+    "headings": [
+      "From git"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "getting-started",
+    "slug": "introduction",
+    "title": "Introduction",
+    "description": "FastyGo UI is a wireframe-first component gallery on Go and templ. Pages show live previews, copy-pasteable templ snippets, and prop tables—similar to shadcn/ui, without shipping a monolithic UI package.",
+    "href": "/docs/introduction/",
+    "headings": [
+      "Wireframe scope"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "label",
+    "title": "Label",
+    "description": "Accessible label for form controls.",
+    "href": "/docs/components/label/",
+    "headings": [
+      "Default",
+      "Required hint"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "language-toggle",
+    "title": "Language Toggle",
+    "description": "Locale switcher (app toggles package).",
+    "href": "/docs/components/language-toggle/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "list",
+    "title": "List",
+    "description": "Semantic ul/ol/dl list containers.",
+    "href": "/docs/components/list/",
+    "headings": [
+      "Unordered",
+      "Ordered"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "blocks",
+    "slug": "marketing-hero",
+    "title": "Marketing Hero",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/docs/blocks/marketing-hero/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "menubar",
+    "title": "Menubar",
+    "description": "Horizontal menu bar.",
+    "href": "/docs/components/menubar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "Site navigation with sections.",
+    "href": "/docs/components/navigation-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "pagination",
+    "title": "Pagination",
+    "description": "Page navigation controls.",
+    "href": "/docs/components/pagination/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "popover",
+    "title": "Popover",
+    "description": "Floating content panel.",
+    "href": "/docs/components/popover/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "progress",
+    "title": "Progress",
+    "description": "Progress indicator wireframe.",
+    "href": "/docs/components/progress/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "radio",
+    "title": "Radio",
+    "description": "Single choice within a group.",
+    "href": "/docs/components/radio/",
+    "headings": [
+      "Default",
+      "Selected"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "select",
+    "title": "Select",
+    "description": "Native select dropdown (ui.Select / selectfield).",
+    "href": "/docs/components/select/",
+    "headings": [
+      "Default",
+      "Disabled"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Visual divider between sections.",
+    "href": "/docs/components/separator/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "sheet",
+    "title": "Sheet",
+    "description": "Slide-over panel wireframe.",
+    "href": "/docs/components/sheet/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "skeleton",
+    "title": "Skeleton",
+    "description": "Loading placeholder blocks.",
+    "href": "/docs/components/skeleton/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "slider",
+    "title": "Slider",
+    "description": "Native range input styled via ui.Input.",
+    "href": "/docs/components/slider/",
+    "headings": [
+      "Default",
+      "With value"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "stack",
+    "title": "Stack",
+    "description": "Vertical flex column for stacking children with gap utilities.",
+    "href": "/docs/components/stack/",
+    "headings": [
+      "Default",
+      "Row",
+      "Nav tag"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "switch",
+    "title": "Switch",
+    "description": "Toggle switch (formswitch / ui.Switch).",
+    "href": "/docs/components/switch/",
+    "headings": [
+      "Default",
+      "On"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "table",
+    "title": "Table",
+    "description": "Semantic data table structure.",
+    "href": "/docs/components/table/",
+    "headings": [
+      "Default",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "tabs",
+    "title": "Tabs",
+    "description": "Tabbed interface (wireframe; data-ui8kit tabs).",
+    "href": "/docs/components/tabs/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "text",
+    "title": "Text",
+    "description": "Inline or block text with configurable tag.",
+    "href": "/docs/components/text/",
+    "headings": [
+      "Paragraph",
+      "Muted",
+      "Code"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "textarea",
+    "title": "Textarea",
+    "description": "Multi-line text input.",
+    "href": "/docs/components/textarea/",
+    "headings": [
+      "Default",
+      "Disabled"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "getting-started",
+    "slug": "theming",
+    "title": "Theming",
+    "description": "Semantic tokens (background, foreground, primary, …) come from tweakcn-style CSS variables. The header theme toggle switches light/dark via theme.js.",
+    "href": "/docs/theming/",
+    "headings": [
+      "Semantic tokens"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "title",
+    "title": "Title",
+    "description": "Semantic heading with order 1–6.",
+    "href": "/docs/components/title/",
+    "headings": [
+      "Heading 1",
+      "Heading 2",
+      "Heading 3"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "toast",
+    "title": "Toast",
+    "description": "Transient notification wireframe.",
+    "href": "/docs/components/toast/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "toggle",
+    "title": "Toggle",
+    "description": "Pressable toggle button (wireframe).",
+    "href": "/docs/components/toggle/",
+    "headings": [
+      "Default",
+      "Pressed"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "toggle-group",
+    "title": "Toggle Group",
+    "description": "Grouped toggle buttons.",
+    "href": "/docs/components/toggle-group/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "tooltip",
+    "title": "Tooltip",
+    "description": "Hint on hover/focus (wireframe).",
+    "href": "/docs/components/tooltip/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "accordion",
+    "title": "Accordion",
+    "description": "Vertically stacked expandable sections (wireframe; data-ui8kit accordion).",
+    "href": "/ru/docs/components/accordion/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "alert",
+    "title": "Alert",
+    "description": "Callout for important messages.",
+    "href": "/ru/docs/components/alert/",
+    "headings": [
+      "Default",
+      "Destructive"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "alert-dialog",
+    "title": "Alert Dialog",
+    "description": "Modal that interrupts flow.",
+    "href": "/ru/docs/components/alert-dialog/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Fixed aspect container.",
+    "href": "/ru/docs/components/aspect-ratio/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "avatar",
+    "title": "Avatar",
+    "description": "User avatar placeholder.",
+    "href": "/ru/docs/components/avatar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "badge",
+    "title": "Badge",
+    "description": "Small status label chip.",
+    "href": "/ru/docs/components/badge/",
+    "headings": [
+      "Default",
+      "Secondary",
+      "Outline",
+      "Destructive"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "block",
+    "title": "Block",
+    "description": "Top-level landmark sections (do not nest Block in Block).",
+    "href": "/ru/docs/components/block/",
+    "headings": [
+      "Main",
+      "Aside"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "blog-card",
+    "title": "Blog Card",
+    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
+    "href": "/ru/docs/components/blog-card/",
+    "headings": [
+      "Вертикальная",
+      "Горизонтальная"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "box",
+    "title": "Box",
+    "description": "Generic block wrapper without landmark semantics.",
+    "href": "/ru/docs/components/box/",
+    "headings": [
+      "Default",
+      "Pre tag"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Hierarchy navigation trail.",
+    "href": "/ru/docs/components/breadcrumb/",
+    "headings": [
+      "Default",
+      "Current page"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "button",
+    "title": "Button",
+    "description": "Triggers an action or navigates when rendered as a link. Built on github.com/fastygo/templ/ui.",
+    "href": "/ru/docs/components/button/",
+    "headings": [
+      "Default",
+      "Secondary",
+      "Outline",
+      "Destructive",
+      "Ghost",
+      "Link",
+      "Sizes"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "calendar",
+    "title": "Calendar",
+    "description": "Date grid placeholder.",
+    "href": "/ru/docs/components/calendar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "card",
+    "title": "Card",
+    "description": "Grouped content with header, body, and footer.",
+    "href": "/ru/docs/components/card/",
+    "headings": [
+      "Default",
+      "With footer"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "carousel",
+    "title": "Carousel",
+    "description": "Horizontal scrolling list.",
+    "href": "/ru/docs/components/carousel/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "checkbox",
+    "title": "Checkbox",
+    "description": "Boolean checkbox input.",
+    "href": "/ru/docs/components/checkbox/",
+    "headings": [
+      "Default",
+      "Checked"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "collapsible",
+    "title": "Collapsible",
+    "description": "Single expand/collapse region.",
+    "href": "/ru/docs/components/collapsible/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "combobox",
+    "title": "Combobox",
+    "description": "Searchable select wireframe (data-ui8kit combobox).",
+    "href": "/ru/docs/components/combobox/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "command",
+    "title": "Command",
+    "description": "Command palette: search + list.",
+    "href": "/ru/docs/components/command/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "container",
+    "title": "Container",
+    "description": "Centers content with a max-width constraint.",
+    "href": "/ru/docs/components/container/",
+    "headings": [
+      "Default",
+      "Section"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "context-menu",
+    "title": "Context Menu",
+    "description": "Stub menu list on right-click target.",
+    "href": "/ru/docs/components/context-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "dashboard-overview",
+    "title": "Dashboard Overview",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/ru/docs/blocks/dashboard-overview/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "data-table",
+    "title": "Data Table",
+    "description": "Table with toolbar (wireframe).",
+    "href": "/ru/docs/components/data-table/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "Modal dialog wireframe (data-ui8kit dialog).",
+    "href": "/ru/docs/components/dialog/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "docs-article",
+    "title": "Docs Article",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/ru/docs/blocks/docs-article/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "drawer",
+    "title": "Drawer",
+    "description": "Bottom sheet drawer wireframe.",
+    "href": "/ru/docs/components/drawer/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "dropdown-menu",
+    "title": "Dropdown Menu",
+    "description": "Menu triggered by a button.",
+    "href": "/ru/docs/components/dropdown-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "form",
+    "title": "Form",
+    "description": "Form landmark with item helpers.",
+    "href": "/ru/docs/components/form/",
+    "headings": [
+      "Login",
+      "Inline"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "grid",
+    "title": "Grid",
+    "description": "CSS grid layout with columns.",
+    "href": "/ru/docs/components/grid/",
+    "headings": [
+      "Two columns",
+      "Three columns"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "group",
+    "title": "Group",
+    "description": "Horizontal flex row for grouping controls.",
+    "href": "/ru/docs/components/group/",
+    "headings": [
+      "Default",
+      "Wrap"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "hover-card",
+    "title": "Hover Card",
+    "description": "Rich preview on hover.",
+    "href": "/ru/docs/components/hover-card/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "icon",
+    "title": "Icon",
+    "description": "Latty icon mask (app registry).",
+    "href": "/ru/docs/components/icon/",
+    "headings": [
+      "Default",
+      "Sizes"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "input",
+    "title": "Input",
+    "description": "Single-line text input control.",
+    "href": "/ru/docs/components/input/",
+    "headings": [
+      "Default",
+      "Disabled",
+      "File"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "installation",
+    "title": "Installation",
+    "description": "Use this repository as the reference app, or copy individual components from the gallery into your project (future fastygo add workflow).",
+    "href": "/ru/docs/installation/",
+    "headings": [
+      "From git"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "introduction",
+    "title": "Introduction",
+    "description": "FastyGo UI is a wireframe-first component gallery on Go and templ. Pages show live previews, copy-pasteable templ snippets, and prop tables—similar to shadcn/ui, without shipping a monolithic UI package.",
+    "href": "/ru/docs/introduction/",
+    "headings": [
+      "Wireframe scope"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "label",
+    "title": "Label",
+    "description": "Accessible label for form controls.",
+    "href": "/ru/docs/components/label/",
+    "headings": [
+      "Default",
+      "Required hint"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "language-toggle",
+    "title": "Language Toggle",
+    "description": "Locale switcher (app toggles package).",
+    "href": "/ru/docs/components/language-toggle/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "list",
+    "title": "List",
+    "description": "Semantic ul/ol/dl list containers.",
+    "href": "/ru/docs/components/list/",
+    "headings": [
+      "Unordered",
+      "Ordered"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "marketing-hero",
+    "title": "Marketing Hero",
+    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
+    "href": "/ru/docs/blocks/marketing-hero/",
+    "headings": [
+      "Wireframe",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "menubar",
+    "title": "Menubar",
+    "description": "Horizontal menu bar.",
+    "href": "/ru/docs/components/menubar/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "Site navigation with sections.",
+    "href": "/ru/docs/components/navigation-menu/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "pagination",
+    "title": "Pagination",
+    "description": "Page navigation controls.",
+    "href": "/ru/docs/components/pagination/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "popover",
+    "title": "Popover",
+    "description": "Floating content panel.",
+    "href": "/ru/docs/components/popover/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "progress",
+    "title": "Progress",
+    "description": "Progress indicator wireframe.",
+    "href": "/ru/docs/components/progress/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "radio",
+    "title": "Radio",
+    "description": "Single choice within a group.",
+    "href": "/ru/docs/components/radio/",
+    "headings": [
+      "Default",
+      "Selected"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "select",
+    "title": "Select",
+    "description": "Native select dropdown (ui.Select / selectfield).",
+    "href": "/ru/docs/components/select/",
+    "headings": [
+      "Default",
+      "Disabled"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Visual divider between sections.",
+    "href": "/ru/docs/components/separator/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "sheet",
+    "title": "Sheet",
+    "description": "Slide-over panel wireframe.",
+    "href": "/ru/docs/components/sheet/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "skeleton",
+    "title": "Skeleton",
+    "description": "Loading placeholder blocks.",
+    "href": "/ru/docs/components/skeleton/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "slider",
+    "title": "Slider",
+    "description": "Native range input styled via ui.Input.",
+    "href": "/ru/docs/components/slider/",
+    "headings": [
+      "Default",
+      "With value"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "stack",
+    "title": "Stack",
+    "description": "Vertical flex column for stacking children with gap utilities.",
+    "href": "/ru/docs/components/stack/",
+    "headings": [
+      "Default",
+      "Row",
+      "Nav tag"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "switch",
+    "title": "Switch",
+    "description": "Toggle switch (formswitch / ui.Switch).",
+    "href": "/ru/docs/components/switch/",
+    "headings": [
+      "Default",
+      "On"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "table",
+    "title": "Table",
+    "description": "Semantic data table structure.",
+    "href": "/ru/docs/components/table/",
+    "headings": [
+      "Default",
+      "Compact"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "tabs",
+    "title": "Tabs",
+    "description": "Tabbed interface (wireframe; data-ui8kit tabs).",
+    "href": "/ru/docs/components/tabs/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "text",
+    "title": "Text",
+    "description": "Inline or block text with configurable tag.",
+    "href": "/ru/docs/components/text/",
+    "headings": [
+      "Paragraph",
+      "Muted",
+      "Code"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "textarea",
+    "title": "Textarea",
+    "description": "Multi-line text input.",
+    "href": "/ru/docs/components/textarea/",
+    "headings": [
+      "Default",
+      "Disabled"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "theming",
+    "title": "Theming",
+    "description": "Semantic tokens (background, foreground, primary, …) come from tweakcn-style CSS variables. The header theme toggle switches light/dark via theme.js.",
+    "href": "/ru/docs/theming/",
+    "headings": [
+      "Semantic tokens"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "title",
+    "title": "Title",
+    "description": "Semantic heading with order 1–6.",
+    "href": "/ru/docs/components/title/",
+    "headings": [
+      "Heading 1",
+      "Heading 2",
+      "Heading 3"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "toast",
+    "title": "Toast",
+    "description": "Transient notification wireframe.",
+    "href": "/ru/docs/components/toast/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "toggle",
+    "title": "Toggle",
+    "description": "Pressable toggle button (wireframe).",
+    "href": "/ru/docs/components/toggle/",
+    "headings": [
+      "Default",
+      "Pressed"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "toggle-group",
+    "title": "Toggle Group",
+    "description": "Grouped toggle buttons.",
+    "href": "/ru/docs/components/toggle-group/",
+    "headings": [
+      "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "tooltip",
+    "title": "Tooltip",
+    "description": "Hint on hover/focus (wireframe).",
+    "href": "/ru/docs/components/tooltip/",
+    "headings": [
+      "Default"
+    ]
+  }
+]

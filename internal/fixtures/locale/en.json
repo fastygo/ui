@@ -2,8 +2,16 @@
   "brand": "FastyGo UI",
   "nav": {
     "home": "Home",
-    "sample": "Sample"
+    "sample": "Sample",
+    "docs_section": "Documentation"
   },
+  "doc_nav": [
+    { "label": "All components", "path": "/docs/", "icon": "book-open" },
+    { "label": "Introduction", "path": "/docs/introduction/", "icon": "book-open" },
+    { "label": "Installation", "path": "/docs/installation/", "icon": "book-open" },
+    { "label": "Button", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
+    { "label": "Blog card", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
+  ],
   "theme": {
     "label": "Theme",
     "switch_to_dark": "Switch to dark",
@@ -13,7 +21,11 @@
   "dashboard": {
     "title": "Home",
     "description": "Default app shell — sidebar, mobile menu, theme, and locales.",
-    "body": "Welcome. Use this layout as the base for docs, examples, and component galleries."
+    "body": "Wireframe component gallery with live previews and copy-paste templ snippets."
+  },
+  "docs": {
+    "index_title": "Components",
+    "index_description": "Wireframe showcase for github.com/fastygo/templ primitives and app registry pieces. Each page stacks variants with copy-paste templ and a prop reference."
   },
   "sample_stub": {
     "title": "Sample",

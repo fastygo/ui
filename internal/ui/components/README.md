@@ -1,14 +1,30 @@
 # `registry:components`
 
-**Presentation-only** building blocks for the showcase app. Props in, templ out — **no** HTTP, domain logic, or caching.
+**Self-contained, reusable** templ composites — props in, markup out. No HTTP, domain fetch, or app fixtures inside the package.
 
-## Current
+## Contract
+
+| Rule | Detail |
+|------|--------|
+| **Dependencies** | `github.com/fastygo/templ/ui`, `templ/components`, `templ/utils` only — plus other `internal/ui/components/*` when composed by convention |
+| **Defaults** | English wireframe copy in `defaults.go` (or `placeholders.go`) so `fastygo add` / docs work without an app |
+| **Overrides** | Callers and showcase pass `BlogCardData`-style structs; app `internal/fixtures` may overlay i18n at the view layer |
+| **Files** | Single self-contained `*.templ` (types, defaults, helpers, markup) — no `doc.go` / `showcase.go` here (those live in `internal/showcase/catalog/`) |
+
+## Current packages
 
 | Package | Role |
 |---------|------|
-| `icon/` | Latty mask icons (`latty latty-*`) |
-| `toggles/` | Language toggle (framework `view.LanguageToggleData`) |
+| `blogcard/` | Vertical and horizontal blog cards with media placeholder |
+| `icon/` | Latty mask icons (app shell; may move to templ later) |
+| `toggles/` | Language toggle (`framework/view` — app chrome) |
+
+## Docs
+
+Showcase pages: `internal/showcase/catalog/<slug>/` → `/docs/components/<slug>`.
+
+Example: `blogcard` → `/docs/components/blog-card`.
 
 ## Heuristic
 
-If it only formats props and renders markup → **`components`**. If it fetches or orchestrates side effects → **`widgets`**.
+Pure presentation → **`components`**. Section scaffolds → **`blocks/`** (later). Fetch/state → **`widgets/`**.
