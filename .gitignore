@@ -15,3 +15,6 @@ test-results/
 blob-report/
 
 .validate/html-snapshots/generated/*.html
+
+# Vercel static export (generated at build time)
+public/

@@ -37,6 +37,35 @@ Open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) for the home page, [http:/
 
 Probes: `GET /healthz` and `GET /readyz` are registered in [`cmd/server/main.go`](cmd/server/main.go).
 
+## Deploy on Vercel (static docs)
+
+Connect the Git repository in Vercel — **no project settings required**. [`vercel.json`](vercel.json) runs:
+
+```bash
+bun install && bun run vercel:build
+```
+
+Pipeline: `templ generate` → `build:css` → `docs:build` → [`scripts/vercel-static-export.mjs`](scripts/vercel-static-export.mjs) writes [`public/`](public/) for CDN:
+
+| URL | Files |
+|-----|--------|
+| `/docs/…` | `public/docs/…` (from `web/static/docs/en/`) |
+| `/ru/docs/…` | `public/ru/docs/…` |
+| `/static/…` | CSS, JS, fonts, icons |
+
+Redirects: `/` → `/docs/`; `/en/docs/…` → `/docs/…`.
+
+Local preview of the export:
+
+```bash
+bun run vercel:build
+npx serve public
+```
+
+**Note:** `/` and `/sample` (Go templ dashboard) are **not** in the static export — production entry is the docs gallery. Use `bun run go` locally for the full app shell.
+
+For a **Go binary** on your own server, use `make deploy` instead.
+
 ## Troubleshooting
 
 ### `listen tcp ... bind: Only one usage of each socket address`
@@ -59,6 +88,8 @@ Run from the repo root (or use `bun run go`), run `bun run build:css`, and ensur
 | Path | Role |
 |------|------|
 | [`cmd/server/main.go`](cmd/server/main.go) | Composition root: config, locales, health, site feature |
+| [`internal/serverapp/`](internal/serverapp/) | Shared app assembly for local/server deploy |
+| [`scripts/vercel-static-export.mjs`](scripts/vercel-static-export.mjs) | Maps docgen output → `public/` for Vercel |
 | [`internal/site/`](internal/site/) | HTTP routes: `GET /`, `GET /sample`, `GET /docs/...` (component gallery) |
 | [`internal/fixtures/locale/`](internal/fixtures/locale/) | Embedded JSON copy per locale |
 | [`internal/views/`](internal/views/) | `templ` pages, [`layout.templ`](internal/views/layout.templ) (`SiteShell` + UI8Kit `Shell`), [`partials/header_trailing.templ`](internal/views/partials/header_trailing.templ) (language switch) |

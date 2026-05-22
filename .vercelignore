@@ -1,0 +1,8 @@
+.validate
+playwright-report
+test-results
+blob-report
+bin
+.internal
+node_modules/.cache
+*.exe

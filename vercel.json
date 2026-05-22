@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "bun install",
+  "buildCommand": "bun run vercel:build",
+  "outputDirectory": "public",
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/docs/",
+      "permanent": false
+    },
+    {
+      "source": "/en/docs",
+      "destination": "/docs/",
+      "permanent": true
+    },
+    {
+      "source": "/en/docs/",
+      "destination": "/docs/",
+      "permanent": true
+    },
+    {
+      "source": "/en/docs/:path*",
+      "destination": "/docs/:path*",
+      "permanent": true
+    }
+  ]
+}
