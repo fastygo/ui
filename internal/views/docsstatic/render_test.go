@@ -35,7 +35,7 @@ func TestPage_rendersPreviewWidget(t *testing.T) {
 		`border-t border-border`,
 		`View code`,
 		`z-20`,
-		`overflow-x-auto p-4 text-xs`,
+		`overflow-x-auto px-4 pt-4 pb-5 text-xs`,
 		`data-docs-preview-hide`,
 		`docs-preview-toggle`,
 	} {

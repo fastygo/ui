@@ -16,8 +16,8 @@
 @import "./prose.css";
 
 ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
+  @apply h-1.5 w-1.5;
+}
   
   ::-webkit-scrollbar-track {
     @apply bg-transparent;

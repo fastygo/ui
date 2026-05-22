@@ -44,14 +44,17 @@
   display: inline-block;
   border: 0;
   border-radius: 0.375rem;
-  background-color: color-mix(in oklab, var(--background) 75%, transparent);
+  background: transparent;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--foreground);
+  color: var(--muted-foreground);
   box-shadow: none;
-  backdrop-filter: blur(4px);
+}
+
+.docs-preview-toggle:hover {
+  color: var(--foreground);
 }
 
 .docs-preview-view {
