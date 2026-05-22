@@ -12,6 +12,7 @@
   "patterns": [
     "accordion",
     "combobox",
+    "copy-button",
     "dialog",
     "disclosure",
     "tabs",

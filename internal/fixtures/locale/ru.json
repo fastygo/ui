@@ -25,7 +25,8 @@
   },
   "docs": {
     "index_title": "Компоненты",
-    "index_description": "Витрина в режиме wireframe для примитивов github.com/fastygo/templ и реестра приложения."
+    "index_description": "Витрина в режиме wireframe для примитивов github.com/fastygo/templ и реестра приложения.",
+    "on_this_page": "На этой странице"
   },
   "sample_stub": {
     "title": "Пример",

@@ -31,6 +31,12 @@ func globalBuildInput(root string) (string, error) {
 		"internal/views/docsstatic/types.go",
 		"internal/showcase/docgen/nav.go",
 		"internal/showcase/docgen/convert.go",
+		"internal/showcase/docgen/highlight.go",
+		"web/static/css/tweakcn.css",
+		"web/static/css/code.css",
+		"web/static/css/docs-preview.css",
+		"web/static/css/prose.css",
+		"web/static/js/ui8kit.js",
 	}
 	h := sha256.New()
 	for _, rel := range files {

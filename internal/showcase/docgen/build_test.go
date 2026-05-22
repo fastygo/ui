@@ -15,6 +15,9 @@ func TestBuild_blogCard(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if err := docgen.HighlightCodeBlocks(pages); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{}); err != nil {
 		t.Fatal(err)
 	}
@@ -31,7 +34,7 @@ func TestBuild_blogCard(t *testing.T) {
 		t.Fatal(err)
 	}
 	html := string(raw)
-	for _, want := range []string{"<!doctype html>", "Blog Card", "Read more"} {
+	for _, want := range []string{"<!doctype html>", "Blog Card", "Read more", `aria-label="On this page"`, `w-64`, `href="#`} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("html missing %q (%d bytes)", want, len(html))
 		}
@@ -41,6 +44,9 @@ func TestBuild_blogCard(t *testing.T) {
 func TestBuild_incrementalSkipsUnchanged(t *testing.T) {
 	pages, err := docgen.LoadAll(docgen.LoadOptions{Locales: []string{"en"}})
 	if err != nil {
+		t.Fatal(err)
+	}
+	if err := docgen.HighlightCodeBlocks(pages); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{}); err != nil {

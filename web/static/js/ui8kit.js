@@ -100,3 +100,56 @@
 
   namespace.languageSwitch = { init: function () {} };
 })();
+
+(function () {
+  var namespace = window.ui8kit;
+  if (!namespace || typeof namespace.register !== "function") {
+    return;
+  }
+
+  namespace.register({
+    name: "copy-button",
+    init: function (root) {
+      var blocks = root.querySelectorAll('[data-ui8kit="copy-button"]');
+      for (var i = 0; i < blocks.length; i += 1) {
+        var block = blocks[i];
+        if (block.dataset.ui8kitBound) {
+          continue;
+        }
+        var trigger = block.querySelector("[data-copy-trigger]");
+        var sourceEl = block.querySelector("[data-copy-source]");
+        if (!trigger || !sourceEl) {
+          continue;
+        }
+        block.dataset.ui8kitBound = "1";
+        var copyLabel = trigger.getAttribute("data-copy-label") || trigger.textContent || "Copy code";
+        var copiedLabel = trigger.getAttribute("data-copied-label") || "Copied";
+        trigger.addEventListener("click", function (event) {
+          event.stopPropagation();
+          event.preventDefault();
+          var text =
+            sourceEl.value != null && sourceEl.value !== ""
+              ? sourceEl.value
+              : sourceEl.textContent || "";
+          var write =
+            navigator.clipboard && navigator.clipboard.writeText
+              ? navigator.clipboard.writeText(text)
+              : Promise.reject(new Error("clipboard unavailable"));
+          write
+            .then(function () {
+              trigger.setAttribute("aria-label", copiedLabel);
+              window.setTimeout(function () {
+                trigger.setAttribute("aria-label", copyLabel);
+              }, 2000);
+            })
+            .catch(function () {});
+        });
+      }
+      return function () {};
+    },
+  });
+
+  if (typeof namespace.initPattern === "function") {
+    namespace.initPattern("copy-button");
+  }
+})();

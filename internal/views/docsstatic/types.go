@@ -8,6 +8,15 @@ type PageData struct {
 	Blocks      []Block
 	API         []APIField
 	Related     []RelatedLink
+	TOC         []TOCHeading
+	TOCLabel    string
+}
+
+// TOCHeading is one in-page table-of-contents entry.
+type TOCHeading struct {
+	Level int
+	Text  string
+	ID    string
 }
 
 // Block is one documentation segment.
@@ -30,6 +39,7 @@ type ParagraphBlock struct {
 type HeadingBlock struct {
 	Level int
 	Text  string
+	ID    string
 }
 
 // ListBlock is a bullet list.
@@ -39,16 +49,19 @@ type ListBlock struct {
 
 // CodeBlock is a standalone fenced code block.
 type CodeBlock struct {
-	Source string
+	Language        string
+	Source          string
+	HighlightedHTML string
 }
 
 // PreviewCodeBlock is a templ fence with live preview HTML and collapsible source.
 type PreviewCodeBlock struct {
-	ID         string
-	Source     string
-	HTML       string
-	SourceFile string
-	FenceIndex int
+	ID              string
+	Source          string
+	HTML            string
+	HighlightedHTML string
+	SourceFile      string
+	FenceIndex      int
 }
 
 // APIField documents a prop.

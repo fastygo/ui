@@ -1,0 +1,57 @@
+/* Docs preview widget: collapsed code footer (stable — not from Tailwind scan). */
+.docs-preview-code-panel {
+  position: relative;
+}
+
+.docs-preview details:not([open]) .docs-preview-code-panel {
+  max-height: 5rem;
+  overflow: hidden;
+}
+
+.docs-preview details[open] .docs-preview-code-panel {
+  max-height: none;
+  overflow: visible;
+}
+
+.docs-preview-fade {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in oklab, var(--muted) 30%, var(--background))
+  );
+}
+
+.docs-preview-view,
+.docs-preview-hide {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.docs-preview details:not([open]) .docs-preview-fade {
+  display: block;
+}
+
+.docs-preview details:not([open]) .docs-preview-view {
+  display: flex;
+}
+
+.docs-preview details[open] .docs-preview-fade,
+.docs-preview details[open] .docs-preview-view {
+  display: none;
+}
+
+.docs-preview details[open] .docs-preview-hide {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}

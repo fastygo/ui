@@ -77,18 +77,20 @@ type ListBlock struct {
 
 // CodeBlock is a fenced code snippet.
 type CodeBlock struct {
-	Language string
-	Source   string
+	Language        string
+	Source          string
+	HighlightedHTML string
 }
 
 // PreviewCodeBlock is a templ fence compiled to live preview HTML plus source for the code panel.
 type PreviewCodeBlock struct {
-	ID         string
-	Language   string
-	Source     string
-	HTML       string
-	SourceFile string
-	FenceIndex int
+	ID              string
+	Language        string
+	Source          string
+	HTML            string
+	HighlightedHTML string
+	SourceFile      string
+	FenceIndex      int
 }
 
 // SearchEntry is one row in search-index.json.

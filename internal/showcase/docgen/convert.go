@@ -23,6 +23,16 @@ func ToPageData(page DocPage) docsstatic.PageData {
 			Href:  NormalizeHref(r.Href),
 		})
 	}
+	toc := make([]docsstatic.TOCHeading, 0, len(page.Headings)+2)
+	for _, h := range page.Headings {
+		toc = append(toc, docsstatic.TOCHeading{Level: h.Level, Text: h.Text, ID: h.ID})
+	}
+	if len(api) > 0 {
+		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: "API", ID: "api"})
+	}
+	if len(related) > 0 {
+		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: "Related", ID: "related"})
+	}
 	return docsstatic.PageData{
 		Title:       page.Meta.Title,
 		Description: page.Meta.Description,
@@ -30,6 +40,7 @@ func ToPageData(page DocPage) docsstatic.PageData {
 		Blocks:      blocks,
 		API:         api,
 		Related:     related,
+		TOC:         toc,
 	}
 }
 
@@ -38,19 +49,24 @@ func convertBlock(b Block) docsstatic.Block {
 	case ParagraphBlock:
 		return docsstatic.ParagraphBlock{Text: x.Text}
 	case HeadingBlock:
-		return docsstatic.HeadingBlock{Level: x.Level, Text: x.Text}
+		return docsstatic.HeadingBlock{Level: x.Level, Text: x.Text, ID: x.ID}
 	case ListBlock:
 		return docsstatic.ListBlock{Items: x.Items}
 	case PreviewCodeBlock:
 		return docsstatic.PreviewCodeBlock{
-			ID:         x.ID,
-			Source:     x.Source,
-			HTML:       x.HTML,
-			SourceFile: x.SourceFile,
-			FenceIndex: x.FenceIndex,
+			ID:              x.ID,
+			Source:          x.Source,
+			HTML:            x.HTML,
+			HighlightedHTML: x.HighlightedHTML,
+			SourceFile:      x.SourceFile,
+			FenceIndex:      x.FenceIndex,
 		}
 	case CodeBlock:
-		return docsstatic.CodeBlock{Source: x.Source}
+		return docsstatic.CodeBlock{
+			Language:        x.Language,
+			Source:          x.Source,
+			HighlightedHTML: x.HighlightedHTML,
+		}
 	default:
 		return nil
 	}

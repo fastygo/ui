@@ -44,6 +44,7 @@ type Locale struct {
 	Docs struct {
 		IndexTitle       string `json:"index_title"`
 		IndexDescription string `json:"index_description"`
+		OnThisPage       string `json:"on_this_page"`
 	} `json:"docs"`
 }
 

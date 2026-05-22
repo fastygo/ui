@@ -191,7 +191,9 @@ func filterLocale(pages []DocPage, locale string) []DocPage {
 }
 
 func writePage(ctx context.Context, outRoot, locale string, page DocPage, all []DocPage, fix fixtures.Locale) error {
-	body := docsstatic.Page(ToPageData(page))
+	pageData := ToPageData(page)
+	pageData.TOCLabel = fix.Docs.OnThisPage
+	body := docsstatic.Page(pageData)
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
 	layout := views.LayoutData{
 		Title:    docsstatic.FormatPageTitle(page.Meta.Title, fix.Brand),

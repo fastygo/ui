@@ -1,0 +1,199 @@
+/* Shared prose primitives (reusable outside docs). */
+.prose {
+  @apply leading-relaxed text-foreground;
+}
+
+.prose h1 {
+  @apply mb-4 text-3xl font-bold;
+}
+
+.prose h2 {
+  @apply mt-6 mb-3 text-2xl font-semibold;
+}
+
+.prose h3 {
+  @apply mt-5 mb-2 text-xl font-semibold;
+}
+
+.prose p {
+  @apply my-4 text-base;
+}
+
+.prose a {
+  @apply text-primary underline;
+}
+
+.prose ul {
+  @apply my-4 list-disc pl-6;
+}
+
+.prose ol {
+  @apply my-4 list-decimal pl-6;
+}
+
+.prose li {
+  @apply my-1;
+}
+
+.prose blockquote {
+  @apply my-4 border-l-4 border-muted pl-4 text-secondary-foreground italic;
+}
+
+.prose img {
+  @apply my-4 rounded;
+}
+
+.prose code {
+  @apply rounded bg-muted px-1 py-0.5 font-mono text-sm text-foreground;
+}
+
+.prose pre {
+  @apply my-4 overflow-x-auto rounded bg-muted p-3;
+}
+
+.prose pre code {
+  @apply bg-transparent px-0 py-0;
+}
+
+.prose hr {
+  @apply my-6 border-border;
+}
+
+.prose figure {
+  @apply my-4;
+}
+
+.prose figcaption {
+  @apply mt-2 text-sm text-secondary-foreground;
+}
+
+.prose table {
+  @apply my-4 w-full border-collapse;
+}
+
+.prose thead {
+  @apply border-b border-border;
+}
+
+.prose th,
+.prose td {
+  @apply border-b border-border px-2 py-2 align-top;
+}
+
+.prose th {
+  @apply text-left font-semibold;
+}
+
+.prose strong {
+  @apply font-semibold;
+}
+
+.prose em {
+  @apply italic;
+}
+
+/* Docs page column: centered between nav sidebar and TOC (896px / max-w-4xl). */
+.docs-layout {
+  @apply relative w-full min-w-0 xl:pr-64;
+}
+
+.docs-article {
+  @apply mx-auto w-full min-w-0;
+}
+
+.docs-toc {
+  @apply absolute top-0 right-0 hidden w-64 xl:block;
+}
+
+/* Docs article: tuned for long-form reading. Width set after prose-docs (do not use max-w-none here). */
+.prose-docs {
+  @apply text-[0.9375rem] leading-7;
+}
+
+article.docs-article.prose-docs {
+  max-width: var(--container-4xl);
+}
+
+.prose-docs > h1:first-child {
+  @apply mb-3 text-3xl font-bold tracking-tight text-foreground;
+}
+
+.prose-docs .docs-lead {
+  @apply mb-8 text-base leading-relaxed text-muted-foreground;
+}
+
+.prose-docs .docs-source {
+  @apply mb-6 font-mono text-xs text-muted-foreground;
+}
+
+.prose-docs h2 {
+  @apply mt-10 mb-4 text-xl font-semibold tracking-tight text-foreground;
+}
+
+.prose-docs h3 {
+  @apply mt-8 mb-3 text-lg font-semibold text-foreground;
+}
+
+.prose-docs h4,
+.prose-docs h5,
+.prose-docs h6 {
+  @apply mt-6 mb-2 text-base font-semibold text-foreground;
+}
+
+.prose-docs p {
+  @apply my-4 text-muted-foreground;
+}
+
+.prose-docs ul,
+.prose-docs ol {
+  @apply my-4 space-y-1.5 text-muted-foreground;
+}
+
+.prose-docs ul {
+  @apply list-disc pl-6;
+}
+
+.prose-docs ol {
+  @apply list-decimal pl-6;
+}
+
+.prose-docs li {
+  @apply my-0.5 leading-7;
+}
+
+.prose-docs li::marker {
+  @apply text-muted-foreground/70;
+}
+
+.prose-docs a:not([data-copy-trigger]) {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+.prose-docs blockquote {
+  @apply my-6 rounded-md border border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground;
+}
+
+.prose-docs .docs-api-item {
+  @apply my-0 border-0 py-1.5 text-sm leading-relaxed text-muted-foreground;
+}
+
+.prose-docs .docs-related-links {
+  @apply my-2 flex flex-col gap-1;
+}
+
+/* Preview/code widgets carry their own typography. */
+.prose-docs .docs-preview,
+.prose-docs .docs-code {
+  @apply text-foreground;
+}
+
+.prose-docs .docs-code .chroma,
+.prose-docs .docs-code .chroma code,
+.prose-docs .docs-preview .chroma,
+.prose-docs .docs-preview .chroma code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.prose-docs .docs-index-card {
+  @apply my-3;
+}

@@ -28,6 +28,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("load: %v", err)
 	}
+	if err := docgen.HighlightCodeBlocks(pages); err != nil {
+		log.Fatalf("highlight: %v", err)
+	}
 
 	previewStats, err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{
 		Force:      *force,

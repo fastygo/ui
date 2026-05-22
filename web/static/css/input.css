@@ -11,3 +11,24 @@
 @import "./tweakcn.css";
 @import "./fonts.css";
 @import "./latty-icons.css";
+@import "./code.css";
+@import "./docs-preview.css";
+@import "./prose.css";
+
+::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded cursor-pointer;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }

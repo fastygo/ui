@@ -25,7 +25,8 @@
   },
   "docs": {
     "index_title": "Components",
-    "index_description": "Wireframe showcase for github.com/fastygo/templ primitives and app registry pieces. Each page stacks variants with copy-paste templ and a prop reference."
+    "index_description": "Wireframe showcase for github.com/fastygo/templ primitives and app registry pieces. Each page stacks variants with copy-paste templ and a prop reference.",
+    "on_this_page": "On this page"
   },
   "sample_stub": {
     "title": "Sample",

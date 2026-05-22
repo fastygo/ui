@@ -13,27 +13,88 @@ import (
 // Page renders a static documentation page.
 func Page(data PageData) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-		if err := ui.Title(ui.TitleProps{Order: 1}, data.Title).Render(ctx, w); err != nil {
-			return err
-		}
-		if err := ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed max-w-3xl"}, data.Description).Render(ctx, w); err != nil {
-			return err
-		}
-		if data.Source != "" {
-			if err := ui.Text(ui.TextProps{Class: "text-xs font-mono text-muted-foreground"}, data.Source).Render(ctx, w); err != nil {
-				return err
-			}
-		}
-		for _, block := range data.Blocks {
-			if err := renderBlock(ctx, w, block); err != nil {
-				return err
-			}
-		}
-		if err := renderAPI(ctx, w, data.API); err != nil {
-			return err
-		}
-		return renderRelated(ctx, w, data.Related)
+		return renderDocsLayout(ctx, w, data.TOC, data.TOCLabel, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			return renderPageBody(ctx, w, data)
+		}))
 	})
+}
+
+func renderPageBody(ctx context.Context, w io.Writer, data PageData) error {
+	if err := ui.Title(ui.TitleProps{Order: 1}, data.Title).Render(ctx, w); err != nil {
+		return err
+	}
+	if err := ui.Text(ui.TextProps{Class: "docs-lead"}, data.Description).Render(ctx, w); err != nil {
+		return err
+	}
+	if data.Source != "" {
+		if err := ui.Text(ui.TextProps{Class: "docs-source"}, data.Source).Render(ctx, w); err != nil {
+			return err
+		}
+	}
+	for _, block := range data.Blocks {
+		if err := renderBlock(ctx, w, block); err != nil {
+			return err
+		}
+	}
+	if err := renderAPI(ctx, w, data.API); err != nil {
+		return err
+	}
+	return renderRelated(ctx, w, data.Related)
+}
+
+func renderDocsLayout(ctx context.Context, w io.Writer, toc []TOCHeading, tocLabel string, article templ.Component) error {
+	return ui.Box(ui.BoxProps{Class: "docs-layout"}).Render(
+		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			if err := ui.Stack(ui.StackProps{
+				Tag:   "article",
+				Class: "prose prose-docs docs-article",
+			}).Render(templ.WithChildren(ctx, article), w); err != nil {
+				return err
+			}
+			if len(toc) == 0 {
+				return nil
+			}
+			return renderTOCAside(ctx, w, toc, tocLabel)
+		})), w)
+}
+
+func renderTOCAside(ctx context.Context, w io.Writer, toc []TOCHeading, label string) error {
+	if label == "" {
+		label = "On this page"
+	}
+	return ui.Block(ui.BlockProps{
+		Tag:   "aside",
+		Class: "docs-toc",
+		Attrs: templ.Attributes{"aria-label": label},
+	}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		return ui.Box(ui.BoxProps{Class: "sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto pb-4 pl-2"}).Render(
+			templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+				if err := ui.Text(ui.TextProps{Class: "mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground"}, label).Render(ctx, w); err != nil {
+					return err
+				}
+				return ui.Stack(ui.StackProps{Tag: "nav", Class: "gap-1 border-l border-border"}).Render(
+					templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+						for _, h := range toc {
+							if err := renderTOCLink(ctx, w, h); err != nil {
+								return err
+							}
+						}
+						return nil
+					})), w)
+			})), w)
+	})), w)
+}
+
+func renderTOCLink(ctx context.Context, w io.Writer, h TOCHeading) error {
+	class := "block h-auto justify-start rounded-none border-0 py-1 pl-3 pr-2 text-left text-sm font-normal text-muted-foreground hover:text-foreground"
+	if h.Level >= 3 {
+		class += " pl-6 text-xs"
+	}
+	return renderButtonLabel(ctx, w, ui.ButtonProps{
+		Href:    "#" + h.ID,
+		Variant: "link",
+		Class:   class,
+	}, h.Text)
 }
 
 func renderBlock(ctx context.Context, w io.Writer, block Block) error {
@@ -46,26 +107,32 @@ func renderBlock(ctx context.Context, w io.Writer, block Block) error {
 		if order > 6 {
 			order = 6
 		}
-		class := "text-base font-semibold pt-8"
-		if order <= 2 {
-			class = "text-lg font-semibold pt-6"
+		title := ui.Title(ui.TitleProps{Order: order}, b.Text)
+		if b.ID == "" {
+			return title.Render(ctx, w)
 		}
-		return ui.Title(ui.TitleProps{Order: order, Class: class}, b.Text).Render(ctx, w)
+		return ui.Box(ui.BoxProps{
+			Tag:   "div",
+			Class: "scroll-mt-24",
+			Attrs: templ.Attributes{"id": b.ID},
+		}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			return title.Render(ctx, w)
+		})), w)
 	case ParagraphBlock:
-		return ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed max-w-3xl"}, b.Text).Render(ctx, w)
+		return ui.Text(ui.TextProps{}, b.Text).Render(ctx, w)
 	case ListBlock:
 		return renderList(ctx, w, b.Items)
 	case PreviewCodeBlock:
 		return renderPreviewCode(ctx, w, b)
 	case CodeBlock:
-		return renderCodeBox(ctx, w, b.Source)
+		return renderCodeBlock(ctx, w, b)
 	default:
 		return nil
 	}
 }
 
 func renderList(ctx context.Context, w io.Writer, items []string) error {
-	return ui.List(ui.ListProps{Class: "list-disc pl-6 text-sm text-muted-foreground max-w-3xl"}).Render(
+	return ui.List(ui.ListProps{}).Render(
 		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 			for _, item := range items {
 				if err := ui.Text(ui.TextProps{Tag: "li"}, item).Render(ctx, w); err != nil {
@@ -77,102 +144,128 @@ func renderList(ctx context.Context, w io.Writer, items []string) error {
 }
 
 func renderPreviewCode(ctx context.Context, w io.Writer, b PreviewCodeBlock) error {
-	if err := cmp.Card(cmp.CardProps{Class: "p-6 my-3"}).Render(
-		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-			if b.HTML == "" {
-				return nil
-			}
-			_, err := io.WriteString(w, b.HTML)
-			return err
-		})), w); err != nil {
-		return err
-	}
-	return renderPreviewCodePanel(ctx, w, b.Source)
+	preview := b.HTML
+	code := buildCodeBlockInner(b.Source, b.HighlightedHTML, codeBlockEmbedded)
+	markup := `<div class="docs-preview my-3 w-full overflow-hidden rounded-md border border-border bg-card text-card-foreground shadow-sm">` +
+		`<div class="flex w-full items-center justify-center p-6 min-h-32">` + preview + `</div>` +
+		`<details class="border-t border-border bg-muted/30">` +
+		`<summary class="docs-preview-summary list-none cursor-pointer [&::-webkit-details-marker]:hidden">` +
+		`<div class="docs-preview-code-panel">` + code +
+		`<div class="docs-preview-fade" aria-hidden="true"></div>` +
+		`<div class="docs-preview-view" aria-hidden="true">` +
+		`<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium shadow-sm">View code</span>` +
+		`</div>` +
+		`<div class="docs-preview-hide" aria-hidden="true">` +
+		`<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium shadow-sm">Hide code</span>` +
+		`</div>` +
+		`</div></summary></details></div>`
+	return writeRawHTML(ctx, w, markup)
 }
 
-func renderPreviewCodePanel(ctx context.Context, w io.Writer, source string) error {
-	escaped := html.EscapeString(source)
-	markup := `<details class="group relative my-3 rounded-md border border-border bg-muted/30">
-<summary class="list-none cursor-pointer [&::-webkit-details-marker]:hidden">
-<div class="relative max-h-16 overflow-hidden p-4 group-open:max-h-none group-open:overflow-visible">
-<pre class="text-xs leading-relaxed"><code class="font-mono whitespace-pre text-foreground">` + escaped + `</code></pre>
-<div class="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-card group-open:hidden"></div>
-<div class="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center">
-<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium group-open:hidden">Show code</span>
-<span class="hidden rounded-md border border-border bg-background px-3 py-1 text-xs font-medium group-open:inline">Hide code</span>
-</div>
-</div>
-</summary>
-</details>`
+func renderCodeBlock(ctx context.Context, w io.Writer, b CodeBlock) error {
+	return writeRawHTML(ctx, w, buildCodeBlockInner(b.Source, b.HighlightedHTML, codeBlockStandalone))
+}
+
+type codeBlockLayout int
+
+const (
+	codeBlockStandalone codeBlockLayout = iota
+	codeBlockEmbedded
+)
+
+func buildCodeBlockInner(source, highlighted string, layout codeBlockLayout) string {
+	body := highlighted
+	if body == "" {
+		body = `<pre class="overflow-x-auto text-xs leading-relaxed"><code class="font-mono whitespace-pre text-foreground">` +
+			html.EscapeString(source) + `</code></pre>`
+	}
+	wrapperClass := "docs-code relative font-mono"
+	if layout == codeBlockStandalone {
+		wrapperClass += " my-3 rounded-md border border-border bg-muted/30"
+	}
+	return `<div class="` + wrapperClass + `" data-ui8kit="copy-button">` +
+		`<button type="button" class="docs-copy-trigger absolute right-2 top-2 z-20 inline-flex items-center justify-center rounded-md p-1 text-muted-foreground hover:text-foreground" data-copy-trigger aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Copied"><span class="inline-block shrink-0 latty latty-copy h-4 w-4" aria-hidden="true"></span></button>` +
+		`<textarea hidden readonly aria-hidden="true" tabindex="-1" data-copy-source>` + html.EscapeString(source) + `</textarea>` +
+		`<div class="overflow-x-auto p-4 text-xs leading-relaxed">` + body + `</div>` +
+		`</div>`
+}
+
+func writeRawHTML(ctx context.Context, w io.Writer, markup string) error {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		_, err := io.WriteString(w, markup)
 		return err
 	}).Render(ctx, w)
 }
 
-func renderCodeBox(ctx context.Context, w io.Writer, source string) error {
-	return ui.Box(ui.BoxProps{
-		Tag:   "pre",
-		Class: "overflow-x-auto rounded-md border border-border bg-muted/30 p-4 text-xs leading-relaxed",
-	}).Render(
-		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-			return ui.Text(ui.TextProps{Tag: "code", Class: "font-mono whitespace-pre text-foreground"}, source).Render(ctx, w)
-		})), w)
-}
-
 func renderAPI(ctx context.Context, w io.Writer, fields []APIField) error {
 	if len(fields) == 0 {
 		return nil
 	}
-	if err := ui.Title(ui.TitleProps{Order: 2, Class: "text-lg font-semibold pt-10"}, "API").Render(ctx, w); err != nil {
-		return err
-	}
-	for _, f := range fields {
-		line := f.Name + " · " + f.Type
-		if f.Description != "" {
-			line += " — " + f.Description
-		}
-		if err := ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground py-1"}, line).Render(ctx, w); err != nil {
+	return ui.Box(ui.BoxProps{
+		Tag:   "div",
+		Class: "scroll-mt-24",
+		Attrs: templ.Attributes{"id": "api"},
+	}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		if err := ui.Title(ui.TitleProps{Order: 2}, "API").Render(ctx, w); err != nil {
 			return err
 		}
-	}
-	return nil
+		for _, f := range fields {
+			line := f.Name + " · " + f.Type
+			if f.Description != "" {
+				line += " — " + f.Description
+			}
+			if err := ui.Text(ui.TextProps{Class: "docs-api-item"}, line).Render(ctx, w); err != nil {
+				return err
+			}
+		}
+		return nil
+	})), w)
 }
 
 func renderRelated(ctx context.Context, w io.Writer, links []RelatedLink) error {
 	if len(links) == 0 {
 		return nil
 	}
-	if err := ui.Title(ui.TitleProps{Order: 2, Class: "text-lg font-semibold pt-8"}, "Related").Render(ctx, w); err != nil {
-		return err
-	}
-	for _, link := range links {
-		if err := renderButtonLabel(ctx, w, ui.ButtonProps{
-			Href:    link.Href,
-			Variant: "link",
-			Class:   "block h-auto justify-start p-0 text-sm",
-		}, link.Label); err != nil {
+	return ui.Box(ui.BoxProps{
+		Tag:   "div",
+		Class: "scroll-mt-24",
+		Attrs: templ.Attributes{"id": "related"},
+	}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		if err := ui.Title(ui.TitleProps{Order: 2}, "Related").Render(ctx, w); err != nil {
 			return err
 		}
-	}
-	return nil
+		return ui.Box(ui.BoxProps{Class: "docs-related-links"}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			for _, link := range links {
+				if err := renderButtonLabel(ctx, w, ui.ButtonProps{
+					Href:    link.Href,
+					Variant: "link",
+					Class:   "h-auto justify-start p-0 text-sm font-normal",
+				}, link.Label); err != nil {
+					return err
+				}
+			}
+			return nil
+		})), w)
+	})), w)
 }
 
 // Index renders the docs landing page.
 func Index(title, description string, sections []IndexSection) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-		if err := ui.Title(ui.TitleProps{Order: 1}, title).Render(ctx, w); err != nil {
-			return err
-		}
-		if err := ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, description).Render(ctx, w); err != nil {
-			return err
-		}
-		for _, sec := range sections {
-			if err := renderIndexSection(ctx, w, sec); err != nil {
+		return renderDocsLayout(ctx, w, nil, "", templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			if err := ui.Title(ui.TitleProps{Order: 1}, title).Render(ctx, w); err != nil {
 				return err
 			}
-		}
-		return nil
+			if err := ui.Text(ui.TextProps{Class: "docs-lead"}, description).Render(ctx, w); err != nil {
+				return err
+			}
+			for _, sec := range sections {
+				if err := renderIndexSection(ctx, w, sec); err != nil {
+					return err
+				}
+			}
+			return nil
+		}))
 	})
 }
 
@@ -190,11 +283,11 @@ type IndexLink struct {
 }
 
 func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) error {
-	if err := ui.Title(ui.TitleProps{Order: 2, Class: "text-lg font-semibold pt-6"}, sec.Label).Render(ctx, w); err != nil {
+	if err := ui.Title(ui.TitleProps{Order: 2}, sec.Label).Render(ctx, w); err != nil {
 		return err
 	}
 	for _, link := range sec.Links {
-		if err := cmp.Card(cmp.CardProps{Class: "p-4 mb-3"}).Render(
+		if err := cmp.Card(cmp.CardProps{Class: "docs-index-card p-4"}).Render(
 			templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 				if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 					Href:    link.Href,
