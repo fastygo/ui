@@ -37,18 +37,23 @@ api:
 
 Медиа и текст друг под другом для сеток и лент.
 
-{{demo id="blog-card.vertical"}}
-
 ```templ
-@blogcard.VerticalBlogCard(blogcard.DefaultVertical())
+import "github.com/fastygo/ui/internal/ui/components/blogcard"
+
+templ Example() {
+	@blogcard.VerticalBlogCard(blogcard.DefaultVertical())
+}
 ```
 
-## Горизонтальная
+## Horizontal
 
-Медиа и текст рядом для плотных списков.
-
-{{demo id="blog-card.horizontal"}}
+Side-by-side media and copy for dense lists.
 
 ```templ
-@blogcard.HorizontalBlogCard(blogcard.DefaultHorizontal())
+import "github.com/fastygo/ui/internal/ui/components/blogcard"
+
+templ Example() {
+	@blogcard.HorizontalBlogCard(blogcard.DefaultHorizontal())
+}
 ```
+

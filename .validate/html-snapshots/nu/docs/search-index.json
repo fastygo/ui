@@ -368,7 +368,7 @@
     "section": "components",
     "slug": "input",
     "title": "Input",
-    "description": "Single-line text input control.",
+    "description": "Text input control.",
     "href": "/docs/components/input/",
     "headings": [
       "Default",
@@ -505,11 +505,11 @@
     "section": "components",
     "slug": "radio",
     "title": "Radio",
-    "description": "Single choice within a group.",
+    "description": "Single-choice radio input.",
     "href": "/docs/components/radio/",
     "headings": [
       "Default",
-      "Selected"
+      "Checked"
     ]
   },
   {
@@ -587,11 +587,11 @@
     "section": "components",
     "slug": "switch",
     "title": "Switch",
-    "description": "Toggle switch (formswitch / ui.Switch).",
+    "description": "Toggle switch input.",
     "href": "/docs/components/switch/",
     "headings": [
       "Default",
-      "On"
+      "Checked"
     ]
   },
   {
@@ -802,7 +802,7 @@
     "href": "/ru/docs/components/blog-card/",
     "headings": [
       "Вертикальная",
-      "Горизонтальная"
+      "Horizontal"
     ]
   },
   {
@@ -1080,7 +1080,7 @@
     "section": "components",
     "slug": "input",
     "title": "Input",
-    "description": "Single-line text input control.",
+    "description": "Text input control.",
     "href": "/ru/docs/components/input/",
     "headings": [
       "Default",
@@ -1217,11 +1217,11 @@
     "section": "components",
     "slug": "radio",
     "title": "Radio",
-    "description": "Single choice within a group.",
+    "description": "Single-choice radio input.",
     "href": "/ru/docs/components/radio/",
     "headings": [
       "Default",
-      "Selected"
+      "Checked"
     ]
   },
   {
@@ -1299,11 +1299,11 @@
     "section": "components",
     "slug": "switch",
     "title": "Switch",
-    "description": "Toggle switch (formswitch / ui.Switch).",
+    "description": "Toggle switch input.",
     "href": "/ru/docs/components/switch/",
     "headings": [
       "Default",
-      "On"
+      "Checked"
     ]
   },
   {

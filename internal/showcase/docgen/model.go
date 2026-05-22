@@ -35,9 +35,9 @@ type DocPage struct {
 	PublicPath string // URL path, e.g. /docs/components/blog-card/
 	Blocks     []Block
 	Headings   []Heading
-	DemoIDs    []string
-	SourceFile string // path within embed FS for debugging
-	FallbackEN bool   // true when locale content fell back to English
+	SourceFile  string // path within embed FS for debugging
+	ContentHash string // sha256 hex of raw markdown source
+	FallbackEN  bool   // true when locale content fell back to English
 }
 
 // Heading is a table-of-contents entry extracted from the page.
@@ -55,7 +55,6 @@ type Block interface {
 func (ParagraphBlock) blockKind() string   { return "paragraph" }
 func (HeadingBlock) blockKind() string     { return "heading" }
 func (ListBlock) blockKind() string        { return "list" }
-func (DemoBlock) blockKind() string        { return "demo" }
 func (CodeBlock) blockKind() string        { return "code" }
 func (PreviewCodeBlock) blockKind() string { return "preview" }
 
@@ -76,13 +75,7 @@ type ListBlock struct {
 	Items []string
 }
 
-// DemoBlock binds a preview registry ID to a code snippet.
-type DemoBlock struct {
-	ID   string
-	Code CodeBlock
-}
-
-// CodeBlock is a fenced code snippet (standalone or attached to a demo).
+// CodeBlock is a fenced code snippet.
 type CodeBlock struct {
 	Language string
 	Source   string
@@ -111,10 +104,9 @@ type SearchEntry struct {
 
 // RegistryItem is one row in registry-manifest.json.
 type RegistryItem struct {
-	Slug    string   `json:"slug"`
-	Section string   `json:"section"`
-	Title   string   `json:"title"`
-	Source  string   `json:"source,omitempty"`
-	Package string   `json:"package,omitempty"`
-	Demos   []string `json:"demos"`
+	Slug    string `json:"slug"`
+	Section string `json:"section"`
+	Title   string `json:"title"`
+	Source  string `json:"source,omitempty"`
+	Package string `json:"package,omitempty"`
 }

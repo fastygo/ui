@@ -2,6 +2,8 @@ package docgen
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -17,43 +19,165 @@ import (
 
 // BuildConfig controls static HTML generation.
 type BuildConfig struct {
-	OutputDir string
-	Locales   []string
+	OutputDir   string
+	Locales     []string
+	ModuleRoot  string
+	Incremental bool // skip unchanged pages and artifacts
+	Force       bool // rebuild everything regardless of stamps
+}
+
+// BuildStats reports incremental build activity.
+type BuildStats struct {
+	PagesWritten, PagesSkipped int
+	ArtifactsWritten           int
 }
 
 // Build writes static HTML and machine-readable artifacts.
-func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) error {
+func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) (BuildStats, error) {
+	var stats BuildStats
 	if err := os.MkdirAll(cfg.OutputDir, 0o755); err != nil {
-		return err
+		return stats, err
 	}
 	if err := ValidateLinks(pages); err != nil {
-		return err
+		return stats, err
 	}
+
+	root, err := resolveModuleRoot(cfg.ModuleRoot)
+	if err != nil {
+		return stats, err
+	}
+	globalHash, err := globalBuildInput(root)
+	if err != nil {
+		return stats, fmt.Errorf("build input hash: %w", err)
+	}
+
+	incremental := cfg.Incremental && !cfg.Force
+
 	for _, locale := range cfg.Locales {
 		locPages := filterLocale(pages, locale)
 		fix, err := fixtures.LoadLocale(locale)
 		if err != nil {
 			fix, _ = fixtures.LoadLocale("en")
 		}
-		if err := writeIndex(ctx, cfg.OutputDir, locale, locPages, fix); err != nil {
-			return err
-		}
-		for _, page := range locPages {
-			if err := writePage(ctx, cfg.OutputDir, locale, page, locPages, fix); err != nil {
-				return err
+
+		idxPath := indexOutputPath(cfg.OutputDir, locale)
+		idxInput := indexBuildInput(locale, locPages, globalHash)
+		if incremental && pageUpToDate(root, idxPath, idxInput) {
+			stats.PagesSkipped++
+		} else {
+			if err := writeIndex(ctx, cfg.OutputDir, locale, locPages, fix); err != nil {
+				return stats, err
 			}
+			if err := writePageStamp(root, idxPath, idxInput); err != nil {
+				return stats, err
+			}
+			stats.PagesWritten++
+		}
+
+		for _, page := range locPages {
+			outFull := filepath.Join(cfg.OutputDir, filepath.FromSlash(page.OutputPath))
+			input := pageBuildInput(page, globalHash)
+			if incremental && pageUpToDate(root, outFull, input) {
+				stats.PagesSkipped++
+				continue
+			}
+			if err := writePage(ctx, cfg.OutputDir, locale, page, locPages, fix); err != nil {
+				return stats, err
+			}
+			if err := writePageStamp(root, outFull, input); err != nil {
+				return stats, err
+			}
+			stats.PagesWritten++
 		}
 	}
-	if err := writeSearchIndex(cfg.OutputDir, pages); err != nil {
-		return err
+
+	searchPath := filepath.Join(cfg.OutputDir, "search-index.json")
+	searchInput := searchIndexBuildInput(pages, globalHash)
+	if !incremental || !pageUpToDate(root, searchPath, searchInput) {
+		if err := writeSearchIndex(cfg.OutputDir, pages); err != nil {
+			return stats, err
+		}
+		if err := writePageStamp(root, searchPath, searchInput); err != nil {
+			return stats, err
+		}
+		stats.ArtifactsWritten++
 	}
-	if err := writeRegistryManifest(cfg.OutputDir, pages); err != nil {
-		return err
+
+	manifestPath := filepath.Join(cfg.OutputDir, "registry-manifest.json")
+	manifestInput := registryManifestBuildInput(pages, globalHash)
+	if !incremental || !pageUpToDate(root, manifestPath, manifestInput) {
+		if err := writeRegistryManifest(cfg.OutputDir, pages); err != nil {
+			return stats, err
+		}
+		if err := writePageStamp(root, manifestPath, manifestInput); err != nil {
+			return stats, err
+		}
+		stats.ArtifactsWritten++
 	}
-	if err := writeSitemap(cfg.OutputDir, pages); err != nil {
-		return err
+
+	sitemapPath := filepath.Join(cfg.OutputDir, "sitemap.xml")
+	sitemapInput := sitemapBuildInput(pages, globalHash)
+	if !incremental || !pageUpToDate(root, sitemapPath, sitemapInput) {
+		if err := writeSitemap(cfg.OutputDir, pages); err != nil {
+			return stats, err
+		}
+		if err := writePageStamp(root, sitemapPath, sitemapInput); err != nil {
+			return stats, err
+		}
+		stats.ArtifactsWritten++
 	}
-	return nil
+
+	return stats, nil
+}
+
+func searchIndexBuildInput(pages []DocPage, globalHash string) string {
+	h := sha256.New()
+	h.Write([]byte("search-index"))
+	h.Write([]byte(globalHash))
+	sorted := append([]DocPage(nil), pages...)
+	sort.Slice(sorted, func(i, j int) bool {
+		if sorted[i].Locale != sorted[j].Locale {
+			return sorted[i].Locale < sorted[j].Locale
+		}
+		return sorted[i].OutputPath < sorted[j].OutputPath
+	})
+	for _, p := range sorted {
+		h.Write([]byte(pageBuildInput(p, globalHash)))
+	}
+	return hex.EncodeToString(h.Sum(nil))
+}
+
+func registryManifestBuildInput(pages []DocPage, globalHash string) string {
+	h := sha256.New()
+	h.Write([]byte("registry-manifest"))
+	h.Write([]byte(globalHash))
+	for _, p := range pages {
+		if p.Locale != "en" {
+			continue
+		}
+		h.Write([]byte(pageBuildInput(p, globalHash)))
+	}
+	return hex.EncodeToString(h.Sum(nil))
+}
+
+func sitemapBuildInput(pages []DocPage, globalHash string) string {
+	h := sha256.New()
+	h.Write([]byte("sitemap"))
+	h.Write([]byte(globalHash))
+	var paths []string
+	seen := map[string]struct{}{}
+	for _, p := range pages {
+		if _, ok := seen[p.PublicPath]; ok {
+			continue
+		}
+		seen[p.PublicPath] = struct{}{}
+		paths = append(paths, p.PublicPath)
+	}
+	sort.Strings(paths)
+	for _, path := range paths {
+		h.Write([]byte(path))
+	}
+	return hex.EncodeToString(h.Sum(nil))
 }
 
 func filterLocale(pages []DocPage, locale string) []DocPage {
@@ -67,7 +191,7 @@ func filterLocale(pages []DocPage, locale string) []DocPage {
 }
 
 func writePage(ctx context.Context, outRoot, locale string, page DocPage, all []DocPage, fix fixtures.Locale) error {
-		body := docsstatic.Page(ToPageData(page))
+	body := docsstatic.Page(ToPageData(page))
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
 	layout := views.LayoutData{
 		Title:    docsstatic.FormatPageTitle(page.Meta.Title, fix.Brand),
@@ -125,13 +249,7 @@ func writeIndex(ctx context.Context, outRoot, locale string, pages []DocPage, fi
 		},
 	}
 	shell := views.SiteShell(layout, body)
-	var rel string
-	if locale == "" || locale == "en" {
-		rel = "index.html"
-	} else {
-		rel = filepath.Join(locale, "index.html")
-	}
-	full := filepath.Join(outRoot, rel)
+	full := indexOutputPath(outRoot, locale)
 	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
 		return err
 	}
@@ -194,7 +312,6 @@ func writeRegistryManifest(outRoot string, pages []DocPage) error {
 			Title:   p.Meta.Title,
 			Source:  p.Meta.Source,
 			Package: p.Meta.Package,
-			Demos:   append([]string(nil), p.DemoIDs...),
 		})
 	}
 	sort.Slice(items, func(i, j int) bool {

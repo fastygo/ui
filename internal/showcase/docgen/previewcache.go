@@ -12,28 +12,37 @@ import (
 	"strings"
 )
 
-const previewCacheRoot = ".internal/docgen/docpreviews/cache"
-
 var templExampleRe = regexp.MustCompile(`(?m)^\s*templ\s+Example\s*\(\s*\)\s*\{`)
 
-// PreviewCacheConfig controls disposable preview compilation.
+// PreviewCacheConfig controls persistent preview compilation.
 type PreviewCacheConfig struct {
 	ModuleRoot string
-	KeepCache  bool
+	Force      bool // recompile every preview even when cached
+	CleanStore bool // wipe persistent preview store before build
 }
 
-// CompilePreviews renders every PreviewCodeBlock on pages through a temporary cache.
-func CompilePreviews(pages []DocPage, cfg PreviewCacheConfig) error {
+// CompilePreviewsStats reports preview cache hits and misses.
+type CompilePreviewsStats struct {
+	Total    int
+	Cached   int
+	Compiled int
+}
+
+// CompilePreviews renders every PreviewCodeBlock on pages through a persistent store.
+func CompilePreviews(pages []DocPage, cfg PreviewCacheConfig) (CompilePreviewsStats, error) {
+	var stats CompilePreviewsStats
 	root, err := resolveModuleRoot(cfg.ModuleRoot)
 	if err != nil {
-		return err
+		return stats, err
 	}
-	cacheAbs := filepath.Join(root, filepath.FromSlash(previewCacheRoot))
-	if err := os.RemoveAll(cacheAbs); err != nil {
-		return fmt.Errorf("preview cache: clear: %w", err)
+	storeAbs := filepath.Join(root, filepath.FromSlash(previewStoreRoot))
+	if cfg.CleanStore {
+		if err := os.RemoveAll(storeAbs); err != nil {
+			return stats, fmt.Errorf("preview store: clear: %w", err)
+		}
 	}
-	if err := os.MkdirAll(cacheAbs, 0o755); err != nil {
-		return fmt.Errorf("preview cache: mkdir: %w", err)
+	if err := os.MkdirAll(storeAbs, 0o755); err != nil {
+		return stats, fmt.Errorf("preview store: mkdir: %w", err)
 	}
 
 	type job struct {
@@ -41,6 +50,7 @@ func CompilePreviews(pages []DocPage, cfg PreviewCacheConfig) error {
 		blockIndex int
 		block      PreviewCodeBlock
 		dir        string
+		srcHash    string
 	}
 	var jobs []job
 
@@ -52,49 +62,63 @@ func CompilePreviews(pages []DocPage, cfg PreviewCacheConfig) error {
 				continue
 			}
 			fenceIndex++
+			stats.Total++
 			pb.FenceIndex = fenceIndex
 			pb.ID = previewCacheID(pages[pi].SourceFile, fenceIndex, pb.Source)
-			dir := filepath.Join(cacheAbs, pb.ID)
+			srcHash := previewSourceHash(pb.Source)
+			dir := filepath.Join(storeAbs, pb.ID)
+
+			if !cfg.Force {
+				if html, ok := loadCachedPreviewHTML(dir, srcHash); ok {
+					pb.HTML = html
+					pages[pi].Blocks[bi] = pb
+					stats.Cached++
+					continue
+				}
+			}
+
 			if err := os.MkdirAll(dir, 0o755); err != nil {
-				return err
+				return stats, err
 			}
 			if err := writePreviewPackage(dir, pages[pi].SourceFile, fenceIndex, pb.Source); err != nil {
-				return err
+				return stats, err
 			}
-			jobs = append(jobs, job{pageIndex: pi, blockIndex: bi, block: pb, dir: dir})
+			jobs = append(jobs, job{
+				pageIndex:  pi,
+				blockIndex: bi,
+				block:      pb,
+				dir:        dir,
+				srcHash:    srcHash,
+			})
 		}
 	}
 
 	if len(jobs) == 0 {
-		if !cfg.KeepCache {
-			_ = os.RemoveAll(cacheAbs)
-		}
-		return nil
+		return stats, nil
 	}
 
-	if err := runCmd(root, "go", "tool", "templ", "generate", "-path", filepath.ToSlash(previewCacheRoot)); err != nil {
-		return fmt.Errorf("preview cache: templ generate: %w", err)
+	if err := runCmd(root, "go", "tool", "templ", "generate", "-path", filepath.ToSlash(previewStoreRoot)); err != nil {
+		return stats, fmt.Errorf("preview store: templ generate: %w", err)
 	}
 
 	for _, j := range jobs {
 		if err := runCmd(j.dir, "go", "run", "."); err != nil {
-			return fmt.Errorf("preview cache: render %s: %w", j.block.ID, err)
+			return stats, fmt.Errorf("preview store: render %s: %w", j.block.ID, err)
 		}
 		htmlPath := filepath.Join(j.dir, "preview.html")
 		html, err := os.ReadFile(htmlPath)
 		if err != nil {
-			return fmt.Errorf("preview cache: read %s: %w", htmlPath, err)
+			return stats, fmt.Errorf("preview store: read %s: %w", htmlPath, err)
+		}
+		if err := writePreviewSourceStamp(j.dir, j.srcHash); err != nil {
+			return stats, fmt.Errorf("preview store: stamp %s: %w", j.block.ID, err)
 		}
 		j.block.HTML = string(html)
 		pages[j.pageIndex].Blocks[j.blockIndex] = j.block
+		stats.Compiled++
 	}
 
-	if !cfg.KeepCache {
-		if err := os.RemoveAll(cacheAbs); err != nil {
-			return fmt.Errorf("preview cache: cleanup: %w", err)
-		}
-	}
-	return nil
+	return stats, nil
 }
 
 func runCmd(dir string, name string, args ...string) error {

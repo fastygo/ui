@@ -1,2 +1,2 @@
-// Package variants holds named wireframe utility presets for the showcase registry.
+// Package variants holds named wireframe utility presets for internal/ui.
 package variants

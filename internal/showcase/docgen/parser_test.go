@@ -18,9 +18,6 @@ func TestParseFile_blogCard(t *testing.T) {
 	if page.Meta.Slug != "blog-card" {
 		t.Fatalf("slug: got %q", page.Meta.Slug)
 	}
-	if len(page.DemoIDs) != 0 {
-		t.Fatalf("demos: got %d", len(page.DemoIDs))
-	}
 	var previews int
 	for _, b := range page.Blocks {
 		if _, ok := b.(PreviewCodeBlock); ok {

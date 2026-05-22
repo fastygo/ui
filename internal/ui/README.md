@@ -1,6 +1,6 @@
 # In-app UI registry (`internal/ui`)
 
-Staging area for the FastyGoUI showcase. **`internal/showcase/`** holds docs catalog only; this tree holds **reusable UI**.
+Staging area for the FastyGoUI showcase. **`internal/showcase/`** holds localized Markdown and the docgen compiler; this tree holds **reusable UI**.
 
 ## Layout
 
@@ -13,8 +13,8 @@ internal/ui/
   variants/     # Optional wireframe utility maps
   utils/        # Thin helpers on github.com/fastygo/templ/utils
 internal/showcase/
-  catalog/      # Docs-only: doc.go + showcase.go per /docs slug
-  showcaseutil/ # Go preview helpers (not shipped to consumers)
+  content/      # Localized Markdown docs sources
+  docgen/       # Static docs compiler
 ```
 
 ## External atoms

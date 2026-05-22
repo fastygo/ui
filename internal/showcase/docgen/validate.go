@@ -7,7 +7,6 @@ import (
 )
 
 var (
-	demoLineRe     = regexp.MustCompile(`^\{\{demo\s+id="([^"]+)"\s*\}\}\s*$`)
 	rawHTMLRe      = regexp.MustCompile(`(?i)<\s*/?\s*[a-z]`)
 	tailwindHintRe = regexp.MustCompile(`(?:bg-[a-z]|text-[a-z]|gap-\d|p-\d|m-\d|rounded-[a-z]|border-border|md:[a-z]|lg:[a-z]|w-full|h-\d|grid-cols-|grid-rows-|flex-row|flex-col|items-center|justify-)`)
 	classAttrRe    = regexp.MustCompile(`(?i)\bclass\s*=`)
@@ -27,13 +26,6 @@ func ValidatePage(page DocPage) error {
 	if h1 > 1 {
 		return fmt.Errorf("%s: expected at most one h1, found %d", page.SourceFile, h1)
 	}
-	seenDemos := map[string]struct{}{}
-	for _, id := range page.DemoIDs {
-		if _, dup := seenDemos[id]; dup {
-			return fmt.Errorf("%s: duplicate demo id %q", page.SourceFile, id)
-		}
-		seenDemos[id] = struct{}{}
-	}
 	for _, link := range page.Meta.Related {
 		if !link.External && strings.HasPrefix(link.Href, "/docs") {
 			page.Meta.Related[len(page.Meta.Related)-1].Href = NormalizeHref(link.Href)
@@ -51,7 +43,7 @@ func ValidateBodyRules(sourceFile, body string) error {
 			inFence = !inFence
 			continue
 		}
-		if inFence || trim == "" || strings.HasPrefix(trim, "---") || demoLineRe.MatchString(trim) {
+		if inFence || trim == "" || strings.HasPrefix(trim, "---") {
 			continue
 		}
 		if rawHTMLRe.MatchString(trim) {

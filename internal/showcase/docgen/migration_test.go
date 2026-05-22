@@ -14,8 +14,8 @@ func TestLoadAll_enHasNoLegacyDemoDirectives(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, page := range pages {
-		if len(page.DemoIDs) != 0 {
-			t.Fatalf("%s: expected no legacy demo ids, got %v", page.SourceFile, page.DemoIDs)
+		if strings.Contains(page.SourceFile, "{{demo") {
+			t.Fatalf("%s: unexpected demo marker in source file path", page.SourceFile)
 		}
 	}
 	err = fs.WalkDir(showcasecontent.FS, "en", func(path string, d fs.DirEntry, err error) error {

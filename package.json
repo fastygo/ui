@@ -13,7 +13,6 @@
     "snapshot:html": "go run ./.validate/cmd/snapshot-render",
     "docs:build": "go run ./cmd/docgen -out web/static/docs -locales en,ru",
     "docs:snapshot": "go run ./cmd/docgen -out .validate/html-snapshots/nu/docs -locales en,ru",
-    "migrate:docs": "go run ./cmd/migrate-docs -out internal/showcase/content/en",
     "test:e2e:install": "playwright install chromium",
     "test:e2e": "playwright install chromium && playwright test",
     "templ": "go tool templ generate ./...",

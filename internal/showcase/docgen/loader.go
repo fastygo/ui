@@ -69,6 +69,7 @@ func LoadAll(opts LoadOptions) ([]DocPage, error) {
 			fallback.PublicPath = PublicPath(locale, fallback.Meta)
 			fallback.FallbackEN = true
 			fallback.SourceFile = fallback.SourceFile + " (fallback:en)"
+			fallback.ContentHash = base.ContentHash
 			out = append(out, fallback)
 		}
 	}

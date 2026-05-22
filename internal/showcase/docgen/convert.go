@@ -41,8 +41,6 @@ func convertBlock(b Block) docsstatic.Block {
 		return docsstatic.HeadingBlock{Level: x.Level, Text: x.Text}
 	case ListBlock:
 		return docsstatic.ListBlock{Items: x.Items}
-	case DemoBlock:
-		return docsstatic.DemoBlock{ID: x.ID, CodeSource: x.Code.Source}
 	case PreviewCodeBlock:
 		return docsstatic.PreviewCodeBlock{
 			ID:         x.ID,

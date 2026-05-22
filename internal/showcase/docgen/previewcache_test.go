@@ -92,9 +92,6 @@ func TestParseFile_buttonMdHasNoDemoDirectives(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(page.DemoIDs) != 0 {
-		t.Fatalf("demo ids: got %v", page.DemoIDs)
-	}
 	var previews int
 	for _, b := range page.Blocks {
 		if _, ok := b.(PreviewCodeBlock); ok {
@@ -127,8 +124,12 @@ templ Example() {
 			},
 		},
 	}}
-	if err := CompilePreviews(pages, PreviewCacheConfig{ModuleRoot: root}); err != nil {
+	stats, err := CompilePreviews(pages, PreviewCacheConfig{ModuleRoot: root})
+	if err != nil {
 		t.Fatal(err)
+	}
+	if stats.Compiled != 1 {
+		t.Fatalf("compiled: got %d want 1", stats.Compiled)
 	}
 	pb, ok := pages[0].Blocks[0].(PreviewCodeBlock)
 	if !ok {
@@ -139,6 +140,46 @@ templ Example() {
 	}
 	if !strings.Contains(pb.HTML, "button") {
 		t.Fatalf("preview HTML missing button element: %q", pb.HTML)
+	}
+}
+
+func TestCompilePreviews_cacheHit(t *testing.T) {
+	root, err := findRepoRoot(t)
+	if err != nil {
+		t.Fatal(err)
+	}
+	pages := []DocPage{{
+		Locale:     "en",
+		SourceFile: "test/cache-hit.md",
+		Blocks: []Block{
+			PreviewCodeBlock{
+				Language: "templ",
+				Source: `import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{}) {
+		Cache hit probe
+	}
+}`,
+			},
+		},
+	}}
+	first, err := CompilePreviews(pages, PreviewCacheConfig{ModuleRoot: root, CleanStore: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if first.Compiled != 1 {
+		t.Fatalf("first compiled: got %d want 1", first.Compiled)
+	}
+	second, err := CompilePreviews(pages, PreviewCacheConfig{ModuleRoot: root})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if second.Cached != 1 {
+		t.Fatalf("second cached: got %d want 1", second.Cached)
+	}
+	if second.Compiled != 0 {
+		t.Fatalf("second compiled: got %d want 0", second.Compiled)
 	}
 }
 

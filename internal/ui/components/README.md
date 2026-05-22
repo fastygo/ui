@@ -9,7 +9,7 @@
 | **Dependencies** | `github.com/fastygo/templ/ui`, `templ/components`, `templ/utils` only — plus other `internal/ui/components/*` when composed by convention |
 | **Defaults** | English wireframe copy in `defaults.go` (or `placeholders.go`) so `fastygo add` / docs work without an app |
 | **Overrides** | Callers and showcase pass `BlogCardData`-style structs; app `internal/fixtures` may overlay i18n at the view layer |
-| **Files** | Single self-contained `*.templ` (types, defaults, helpers, markup) — no `doc.go` / `showcase.go` here (those live in `internal/showcase/catalog/`) |
+| **Files** | Single self-contained `*.templ` (types, defaults, helpers, markup) |
 
 ## Current packages
 
@@ -20,8 +20,6 @@
 | `toggles/` | Language toggle (`framework/view` — app chrome) |
 
 ## Docs
-
-Showcase pages: `internal/showcase/catalog/<slug>/` → `/docs/components/<slug>`.
 
 Example: `blogcard` → `/docs/components/blog-card`.
 

@@ -3,7 +3,6 @@ package docgen
 import (
 	"bytes"
 	"fmt"
-	"regexp"
 	"strings"
 
 	"github.com/yuin/goldmark"
@@ -12,8 +11,6 @@ import (
 	"github.com/yuin/goldmark/text"
 	"gopkg.in/yaml.v3"
 )
-
-var demoDirectiveRe = regexp.MustCompile(`^\{\{demo\s+id="([^"]+)"\s*\}\}\s*$`)
 
 // ParseFile parses a markdown file with YAML front matter into a DocPage.
 func ParseFile(locale, sourceFile string, raw []byte) (DocPage, error) {
@@ -24,25 +21,28 @@ func ParseFile(locale, sourceFile string, raw []byte) (DocPage, error) {
 	if err := ValidateMeta(meta); err != nil {
 		return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
 	}
+	if strings.Contains(body, "{{demo") {
+		return DocPage{}, fmt.Errorf("%s: legacy {{demo}} directives are not supported; use templ Example() fences", sourceFile)
+	}
 	if !isGettingStarted(meta.Section) {
 		if err := ValidateBodyRules(sourceFile, body); err != nil {
 			return DocPage{}, err
 		}
 	}
-	blocks, demoIDs, err := parseBody(sourceFile, body)
+	blocks, err := parseBody(sourceFile, body)
 	if err != nil {
 		return DocPage{}, err
 	}
 	headings := extractHeadings(blocks)
 	page := DocPage{
-		Locale:     locale,
-		Meta:       meta,
-		OutputPath: OutputRelPath(locale, meta),
-		PublicPath: PublicPath(locale, meta),
-		Blocks:     blocks,
-		Headings:   headings,
-		DemoIDs:    demoIDs,
-		SourceFile: sourceFile,
+		Locale:      locale,
+		Meta:        meta,
+		OutputPath:  OutputRelPath(locale, meta),
+		PublicPath:  PublicPath(locale, meta),
+		Blocks:      blocks,
+		Headings:    headings,
+		SourceFile:  sourceFile,
+		ContentHash: contentHash(raw),
 	}
 	if err := ValidatePage(page); err != nil {
 		return DocPage{}, err
@@ -77,99 +77,13 @@ func splitFrontMatter(raw []byte) (PageMeta, string, error) {
 	return meta, body, nil
 }
 
-func parseBody(sourceFile, body string) ([]Block, []string, error) {
-	segments := splitDemoSegments(body)
-	var blocks []Block
-	var demoIDs []string
+func parseBody(sourceFile, body string) ([]Block, error) {
+	body = strings.TrimSpace(body)
+	if body == "" {
+		return nil, nil
+	}
 	var templFenceIndex int
-	for i, seg := range segments {
-		if seg.demoID != "" {
-			if seg.code == nil {
-				return nil, nil, fmt.Errorf("%s: demo %q requires a fenced code block immediately after", sourceFile, seg.demoID)
-			}
-			if err := validateFenceLang(sourceFile, seg.code.Language); err != nil {
-				return nil, nil, err
-			}
-			blocks = append(blocks, DemoBlock{ID: seg.demoID, Code: *seg.code})
-			demoIDs = append(demoIDs, seg.demoID)
-			continue
-		}
-		if strings.TrimSpace(seg.text) == "" {
-			continue
-		}
-		chunkBlocks, err := parseMarkdownChunk(sourceFile, seg.text, &templFenceIndex)
-		if err != nil {
-			return nil, nil, err
-		}
-		blocks = append(blocks, chunkBlocks...)
-		if i == 0 && len(chunkBlocks) > 0 {
-			// First segment may duplicate description; allowed.
-		}
-	}
-	return blocks, demoIDs, nil
-}
-
-type bodySegment struct {
-	text   string
-	demoID string
-	code   *CodeBlock
-}
-
-func splitDemoSegments(body string) []bodySegment {
-	lines := strings.Split(body, "\n")
-	var segments []bodySegment
-	var textBuf strings.Builder
-	var pendingDemo string
-
-	flushText := func() {
-		if textBuf.Len() > 0 {
-			segments = append(segments, bodySegment{text: textBuf.String()})
-			textBuf.Reset()
-		}
-	}
-
-	i := 0
-	for i < len(lines) {
-		line := lines[i]
-		trim := strings.TrimSpace(line)
-		if m := demoDirectiveRe.FindStringSubmatch(trim); m != nil {
-			flushText()
-			pendingDemo = m[1]
-			i++
-			for i < len(lines) && strings.TrimSpace(lines[i]) == "" {
-				i++
-			}
-			if i >= len(lines) || !strings.HasPrefix(strings.TrimSpace(lines[i]), "```") {
-				segments = append(segments, bodySegment{demoID: pendingDemo})
-				pendingDemo = ""
-				continue
-			}
-			fence := strings.TrimSpace(lines[i])
-			lang := strings.TrimPrefix(fence, "```")
-			lang = strings.TrimSpace(lang)
-			i++
-			var codeLines []string
-			for i < len(lines) {
-				if strings.TrimSpace(lines[i]) == "```" {
-					i++
-					break
-				}
-				codeLines = append(codeLines, lines[i])
-				i++
-			}
-			segments = append(segments, bodySegment{
-				demoID: pendingDemo,
-				code:   &CodeBlock{Language: lang, Source: strings.TrimRight(strings.Join(codeLines, "\n"), "\n")},
-			})
-			pendingDemo = ""
-			continue
-		}
-		textBuf.WriteString(line)
-		textBuf.WriteByte('\n')
-		i++
-	}
-	flushText()
-	return segments
+	return parseMarkdownChunk(sourceFile, body, &templFenceIndex)
 }
 
 func parseMarkdownChunk(sourceFile, chunk string, templFenceIndex *int) ([]Block, error) {

@@ -18,7 +18,6 @@ type Block interface {
 func (ParagraphBlock) blockKind() string   { return "paragraph" }
 func (HeadingBlock) blockKind() string     { return "heading" }
 func (ListBlock) blockKind() string        { return "list" }
-func (DemoBlock) blockKind() string        { return "demo" }
 func (CodeBlock) blockKind() string        { return "code" }
 func (PreviewCodeBlock) blockKind() string { return "preview" }
 
@@ -36,12 +35,6 @@ type HeadingBlock struct {
 // ListBlock is a bullet list.
 type ListBlock struct {
 	Items []string
-}
-
-// DemoBlock binds a preview registry ID to a code snippet.
-type DemoBlock struct {
-	ID         string
-	CodeSource string
 }
 
 // CodeBlock is a standalone fenced code block.

@@ -8,8 +8,6 @@ import (
 	"github.com/a-h/templ"
 	cmp "github.com/fastygo/templ/components"
 	"github.com/fastygo/templ/ui"
-	"github.com/fastygo/ui/internal/showcase/previews"
-	"github.com/fastygo/ui/internal/showcase/showcaseutil"
 )
 
 // Page renders a static documentation page.
@@ -57,8 +55,6 @@ func renderBlock(ctx context.Context, w io.Writer, block Block) error {
 		return ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed max-w-3xl"}, b.Text).Render(ctx, w)
 	case ListBlock:
 		return renderList(ctx, w, b.Items)
-	case DemoBlock:
-		return renderDemo(ctx, w, b)
 	case PreviewCodeBlock:
 		return renderPreviewCode(ctx, w, b)
 	case CodeBlock:
@@ -78,20 +74,6 @@ func renderList(ctx context.Context, w io.Writer, items []string) error {
 			}
 			return nil
 		})), w)
-}
-
-func renderDemo(ctx context.Context, w io.Writer, d DemoBlock) error {
-	demo, ok := previews.Get(d.ID)
-	if !ok {
-		return nil
-	}
-	if err := cmp.Card(cmp.CardProps{Class: "p-6 my-3"}).Render(
-		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-			return demo.Preview.Render(ctx, w)
-		})), w); err != nil {
-		return err
-	}
-	return renderCodeBox(ctx, w, d.CodeSource)
 }
 
 func renderPreviewCode(ctx context.Context, w io.Writer, b PreviewCodeBlock) error {
@@ -165,11 +147,11 @@ func renderRelated(ctx context.Context, w io.Writer, links []RelatedLink) error 
 		return err
 	}
 	for _, link := range links {
-		if err := showcaseutil.Button(ui.ButtonProps{
+		if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 			Href:    link.Href,
 			Variant: "link",
 			Class:   "block h-auto justify-start p-0 text-sm",
-		}, link.Label).Render(ctx, w); err != nil {
+		}, link.Label); err != nil {
 			return err
 		}
 	}
@@ -214,11 +196,11 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 	for _, link := range sec.Links {
 		if err := cmp.Card(cmp.CardProps{Class: "p-4 mb-3"}).Render(
 			templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-				if err := showcaseutil.Button(ui.ButtonProps{
+				if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 					Href:    link.Href,
 					Variant: "link",
 					Class:   "h-auto justify-start p-0 text-base font-semibold",
-				}, link.Title).Render(ctx, w); err != nil {
+				}, link.Title); err != nil {
 					return err
 				}
 				return ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, link.Description).Render(ctx, w)
@@ -262,4 +244,11 @@ func FormatPageTitle(pageTitle, brand string) string {
 // StaticAssetPaths are fixed app static URLs.
 func StaticAssetPaths() (css, themeJS, appJS string) {
 	return "/static/css/app.css", "/static/js/theme.js", "/static/js/ui8kit.js"
+}
+
+func renderButtonLabel(ctx context.Context, w io.Writer, props ui.ButtonProps, label string) error {
+	return ui.Button(props).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		_, err := io.WriteString(w, label)
+		return err
+	})), w)
 }

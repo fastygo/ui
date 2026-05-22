@@ -1,4 +1,4 @@
-// Command docgen builds static documentation HTML from localized Markdown and preview registry.
+// Command docgen builds static documentation HTML from localized Markdown.
 package main
 
 import (
@@ -9,21 +9,15 @@ import (
 	"strings"
 
 	"github.com/fastygo/ui/internal/showcase/docgen"
-	"github.com/fastygo/ui/internal/showcase/previews"
-
-	_ "github.com/fastygo/ui/internal/showcase"
 )
 
 func main() {
 	out := flag.String("out", "web/static/docs", "output directory for static docs")
 	locales := flag.String("locales", "en,ru", "comma-separated locale codes")
 	strict := flag.Bool("strict-locale", false, "fail when a non-default locale page is missing")
-	keepPreviewCache := flag.Bool("keep-preview-cache", false, "retain .internal/docgen/docpreviews/cache after build")
+	force := flag.Bool("force", false, "rebuild all pages and previews, ignoring incremental stamps")
+	cleanPreviews := flag.Bool("clean-previews", false, "clear persistent preview store before build")
 	flag.Parse()
-
-	if err := previews.RegisterFromRegistry(); err != nil {
-		log.Fatalf("previews: %v", err)
-	}
 
 	localeList := splitLocales(*locales)
 	pages, err := docgen.LoadAll(docgen.LoadOptions{
@@ -34,19 +28,36 @@ func main() {
 	if err != nil {
 		log.Fatalf("load: %v", err)
 	}
-	if err := docgen.ResolveDemos(pages); err != nil {
-		log.Fatalf("resolve: %v", err)
-	}
-	if err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{KeepCache: *keepPreviewCache}); err != nil {
+
+	previewStats, err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{
+		Force:      *force,
+		CleanStore: *cleanPreviews,
+	})
+	if err != nil {
 		log.Fatalf("preview compile: %v", err)
 	}
-	if err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
-		OutputDir: *out,
-		Locales:   localeList,
-	}); err != nil {
+
+	buildStats, err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
+		OutputDir:   *out,
+		Locales:     localeList,
+		Incremental: !*force,
+		Force:       *force,
+	})
+	if err != nil {
 		log.Fatalf("build: %v", err)
 	}
-	fmt.Printf("docgen: wrote %d page(s) across %v -> %s\n", len(pages), localeList, *out)
+
+	fmt.Printf(
+		"docgen: %d page(s) across %v -> %s (previews: %d cached, %d compiled; pages: %d written, %d skipped; artifacts: %d written)\n",
+		len(pages),
+		localeList,
+		*out,
+		previewStats.Cached,
+		previewStats.Compiled,
+		buildStats.PagesWritten,
+		buildStats.PagesSkipped,
+		buildStats.ArtifactsWritten,
+	)
 }
 
 func splitLocales(s string) []string {
