@@ -188,7 +188,7 @@ func buildCodeBlockInner(source, highlighted string, layout codeBlockLayout) str
 	return `<div class="` + wrapperClass + `" data-ui8kit="copy-button">` +
 		`<button type="button" class="docs-copy-trigger absolute right-2 top-2 z-20 inline-flex items-center justify-center rounded-md p-1 text-muted-foreground hover:text-foreground" data-copy-trigger aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Copied"><span class="inline-block shrink-0 latty latty-copy h-4 w-4" aria-hidden="true"></span></button>` +
 		`<textarea hidden readonly aria-hidden="true" tabindex="-1" data-copy-source>` + html.EscapeString(source) + `</textarea>` +
-		`<div class="overflow-x-auto px-4 pt-4 pb-5 text-xs leading-relaxed">` + body + `</div>` +
+		`<div class="overflow-x-auto p-4 text-xs leading-relaxed">` + body + `</div>` +
 		`</div>`
 }
 

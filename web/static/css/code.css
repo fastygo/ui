@@ -29,6 +29,11 @@
   display: flex;
 }
 
+.docs-code > .overflow-x-auto {
+  overflow-x: auto;
+  padding-bottom: 0.375rem;
+}
+
 .docs-code .chroma .hl {
   background-color: var(--code-highlight);
 }

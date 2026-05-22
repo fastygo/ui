@@ -189,7 +189,7 @@ article.docs-article.prose-docs {
 
 .prose-docs .docs-preview pre,
 .prose-docs .docs-code pre {
-  @apply my-0 rounded-none border-0 bg-transparent p-0;
+  @apply my-0 overflow-visible rounded-none border-0 bg-transparent p-0 pb-2;
 }
 
 .prose-docs .docs-code .chroma,

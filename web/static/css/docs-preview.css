@@ -49,12 +49,12 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--muted-foreground);
+  color: var(--foreground);
   box-shadow: none;
 }
 
 .docs-preview-toggle:hover {
-  color: var(--foreground);
+  opacity: 0.85;
 }
 
 .docs-preview-view {
