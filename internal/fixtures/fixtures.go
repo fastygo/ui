@@ -42,9 +42,16 @@ type Locale struct {
 		Body        string `json:"body"`
 	} `json:"sample_stub"`
 	Docs struct {
-		IndexTitle       string `json:"index_title"`
-		IndexDescription string `json:"index_description"`
-		OnThisPage       string `json:"on_this_page"`
+		IndexTitle            string `json:"index_title"`
+		IndexDescription      string `json:"index_description"`
+		OnThisPage            string `json:"on_this_page"`
+		APIHeading            string `json:"api_heading"`
+		RelatedHeading        string `json:"related_heading"`
+		NavOverview           string `json:"nav_overview"`
+		NavDocsHome           string `json:"nav_docs_home"`
+		SectionGettingStarted string `json:"section_getting_started"`
+		SectionComponents     string `json:"section_components"`
+		SectionBlocks         string `json:"section_blocks"`
 	} `json:"docs"`
 }
 

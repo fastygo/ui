@@ -1,14 +1,14 @@
 ---
 slug: "blog-card"
 section: "components"
-title: "Blog Card"
+title: "Карточка блога"
 description: "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки."
 source: "github.com/fastygo/ui/internal/ui/components/blogcard"
 package: "github.com/fastygo/ui/internal/ui/components/blogcard"
 related:
-  - label: "Card"
+  - label: "Карточка"
     href: "/docs/components/card/"
-  - label: "Stack"
+  - label: "Стек"
     href: "/docs/components/stack/"
 api:
   - name: "Title"
@@ -45,9 +45,9 @@ templ Example() {
 }
 ```
 
-## Horizontal
+## Горизонтальная
 
-Side-by-side media and copy for dense lists.
+Медиа и текст рядом — для плотных списков.
 
 ```templ
 import "github.com/fastygo/ui/internal/ui/components/blogcard"

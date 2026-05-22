@@ -796,18 +796,6 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "blog-card",
-    "title": "Blog Card",
-    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
-    "href": "/ru/docs/components/blog-card/",
-    "headings": [
-      "Вертикальная",
-      "Horizontal"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "box",
     "title": "Box",
     "description": "Generic block wrapper without landmark semantics.",
@@ -1090,28 +1078,6 @@
   },
   {
     "locale": "ru",
-    "section": "getting-started",
-    "slug": "installation",
-    "title": "Installation",
-    "description": "Use this repository as the reference app, or copy individual components from the gallery into your project (future fastygo add workflow).",
-    "href": "/ru/docs/installation/",
-    "headings": [
-      "From git"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "getting-started",
-    "slug": "introduction",
-    "title": "Introduction",
-    "description": "FastyGo UI is a wireframe-first component gallery on Go and templ. Pages show live previews, copy-pasteable templ snippets, and prop tables—similar to shadcn/ui, without shipping a monolithic UI package.",
-    "href": "/ru/docs/introduction/",
-    "headings": [
-      "Wireframe scope"
-    ]
-  },
-  {
-    "locale": "ru",
     "section": "components",
     "slug": "label",
     "title": "Label",
@@ -1356,17 +1322,6 @@
   },
   {
     "locale": "ru",
-    "section": "getting-started",
-    "slug": "theming",
-    "title": "Theming",
-    "description": "Semantic tokens (background, foreground, primary, …) come from tweakcn-style CSS variables. The header theme toggle switches light/dark via theme.js.",
-    "href": "/ru/docs/theming/",
-    "headings": [
-      "Semantic tokens"
-    ]
-  },
-  {
-    "locale": "ru",
     "section": "components",
     "slug": "title",
     "title": "Title",
@@ -1421,6 +1376,51 @@
     "href": "/ru/docs/components/tooltip/",
     "headings": [
       "Default"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "introduction",
+    "title": "Введение",
+    "description": "FastyGo UI — wireframe-галерея компонентов на Go и templ. Страницы показывают живые превью, фрагменты templ для копирования и таблицы свойств — по аналогии с shadcn/ui, без монолитного UI-пакета.",
+    "href": "/ru/docs/introduction/",
+    "headings": [
+      "Wireframe-этап"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "blog-card",
+    "title": "Карточка блога",
+    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
+    "href": "/ru/docs/components/blog-card/",
+    "headings": [
+      "Вертикальная",
+      "Горизонтальная"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "theming",
+    "title": "Темизация",
+    "description": "Семантические токены (background, foreground, primary, …) задаются CSS-переменными в стиле tweakcn. Переключатель темы в шапке меняет светлую/тёмную тему через theme.js.",
+    "href": "/ru/docs/theming/",
+    "headings": [
+      "Семантические токены"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "installation",
+    "title": "Установка",
+    "description": "Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add).",
+    "href": "/ru/docs/installation/",
+    "headings": [
+      "Из git"
     ]
   }
 ]

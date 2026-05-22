@@ -36,10 +36,10 @@ func renderPageBody(ctx context.Context, w io.Writer, data PageData) error {
 			return err
 		}
 	}
-	if err := renderAPI(ctx, w, data.API); err != nil {
+	if err := renderAPI(ctx, w, data.API, data.APISectionTitle); err != nil {
 		return err
 	}
-	return renderRelated(ctx, w, data.Related)
+	return renderRelated(ctx, w, data.Related, data.RelatedSectionTitle)
 }
 
 func renderDocsLayout(ctx context.Context, w io.Writer, toc []TOCHeading, tocLabel string, article templ.Component) error {
@@ -199,16 +199,19 @@ func writeRawHTML(ctx context.Context, w io.Writer, markup string) error {
 	}).Render(ctx, w)
 }
 
-func renderAPI(ctx context.Context, w io.Writer, fields []APIField) error {
+func renderAPI(ctx context.Context, w io.Writer, fields []APIField, title string) error {
 	if len(fields) == 0 {
 		return nil
+	}
+	if title == "" {
+		title = "API"
 	}
 	return ui.Box(ui.BoxProps{
 		Tag:   "div",
 		Class: "scroll-mt-24",
 		Attrs: templ.Attributes{"id": "api"},
 	}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-		if err := ui.Title(ui.TitleProps{Order: 2}, "API").Render(ctx, w); err != nil {
+		if err := ui.Title(ui.TitleProps{Order: 2}, title).Render(ctx, w); err != nil {
 			return err
 		}
 		for _, f := range fields {
@@ -224,16 +227,19 @@ func renderAPI(ctx context.Context, w io.Writer, fields []APIField) error {
 	})), w)
 }
 
-func renderRelated(ctx context.Context, w io.Writer, links []RelatedLink) error {
+func renderRelated(ctx context.Context, w io.Writer, links []RelatedLink, title string) error {
 	if len(links) == 0 {
 		return nil
+	}
+	if title == "" {
+		title = "Related"
 	}
 	return ui.Box(ui.BoxProps{
 		Tag:   "div",
 		Class: "scroll-mt-24",
 		Attrs: templ.Attributes{"id": "related"},
 	}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-		if err := ui.Title(ui.TitleProps{Order: 2}, "Related").Render(ctx, w); err != nil {
+		if err := ui.Title(ui.TitleProps{Order: 2}, title).Render(ctx, w); err != nil {
 			return err
 		}
 		return ui.Box(ui.BoxProps{Class: "docs-related-links"}).Render(templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {

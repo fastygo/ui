@@ -4,16 +4,25 @@ import (
 	"sort"
 
 	"github.com/fastygo/ui/internal/doclocale"
+	"github.com/fastygo/ui/internal/fixtures"
 	"github.com/fastygo/ui/internal/ui/layout"
 )
 
 // BuildNavItems constructs sidebar navigation for static docs pages.
-func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePath string) []layout.NavItem {
+func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePath string, fix fixtures.Locale) []layout.NavItem {
 	routing = routing.Normalize()
+	overview := fix.Docs.NavOverview
+	if overview == "" {
+		overview = "Overview"
+	}
+	docsHome := fix.Docs.NavDocsHome
+	if docsHome == "" {
+		docsHome = "Docs home"
+	}
 	var items []layout.NavItem
 	items = append(items,
-		layout.NavItem{Label: "Overview", Path: "/", Icon: "home"},
-		layout.NavItem{Label: "Docs home", Path: routing.DocsHomePath(locale), Icon: "book-open"},
+		layout.NavItem{Label: overview, Path: "/", Icon: "home"},
+		layout.NavItem{Label: docsHome, Path: routing.DocsHomePath(locale), Icon: "book-open"},
 	)
 	bySection := map[string][]DocPage{}
 	for _, p := range pages {
@@ -31,7 +40,7 @@ func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePat
 		sort.Slice(secPages, func(i, j int) bool {
 			return secPages[i].Meta.Title < secPages[j].Meta.Title
 		})
-		items = append(items, layout.NavItem{Section: true, Label: sectionLabel(sec)})
+		items = append(items, layout.NavItem{Section: true, Label: sectionLabel(fix, sec)})
 		for _, p := range secPages {
 			items = append(items, layout.NavItem{
 				Label: p.Meta.Title,
@@ -43,13 +52,22 @@ func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePat
 	return items
 }
 
-func sectionLabel(id string) string {
+func sectionLabel(fix fixtures.Locale, id string) string {
 	switch id {
 	case "getting-started":
+		if fix.Docs.SectionGettingStarted != "" {
+			return fix.Docs.SectionGettingStarted
+		}
 		return "Getting Started"
 	case "components":
+		if fix.Docs.SectionComponents != "" {
+			return fix.Docs.SectionComponents
+		}
 		return "Components"
 	case "blocks":
+		if fix.Docs.SectionBlocks != "" {
+			return fix.Docs.SectionBlocks
+		}
 		return "Blocks"
 	default:
 		return id

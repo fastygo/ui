@@ -8,8 +8,10 @@ type PageData struct {
 	Blocks      []Block
 	API         []APIField
 	Related     []RelatedLink
-	TOC         []TOCHeading
-	TOCLabel    string
+	TOC                 []TOCHeading
+	TOCLabel            string
+	APISectionTitle     string
+	RelatedSectionTitle string
 }
 
 // TOCHeading is one in-page table-of-contents entry.

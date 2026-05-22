@@ -9,8 +9,8 @@
     { "label": "Все компоненты", "path": "/docs/", "icon": "book-open" },
     { "label": "Введение", "path": "/docs/introduction/", "icon": "book-open" },
     { "label": "Установка", "path": "/docs/installation/", "icon": "book-open" },
-    { "label": "Button", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
-    { "label": "Blog card", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
+    { "label": "Кнопка", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
+    { "label": "Карточка блога", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
   ],
   "theme": {
     "label": "Тема",
@@ -26,7 +26,14 @@
   "docs": {
     "index_title": "Компоненты",
     "index_description": "Витрина в режиме wireframe для примитивов github.com/fastygo/templ и реестра приложения.",
-    "on_this_page": "На этой странице"
+    "on_this_page": "На этой странице",
+    "api_heading": "API",
+    "related_heading": "См. также",
+    "nav_overview": "Обзор",
+    "nav_docs_home": "Документация",
+    "section_getting_started": "Начало работы",
+    "section_components": "Компоненты",
+    "section_blocks": "Блоки"
   },
   "sample_stub": {
     "title": "Пример",

@@ -1,9 +1,20 @@
 package docgen
 
-import "github.com/fastygo/ui/internal/views/docsstatic"
+import (
+	"github.com/fastygo/ui/internal/fixtures"
+	"github.com/fastygo/ui/internal/views/docsstatic"
+)
 
 // ToPageData converts a parsed doc page into a templ view model.
-func ToPageData(page DocPage) docsstatic.PageData {
+func ToPageData(page DocPage, fix fixtures.Locale) docsstatic.PageData {
+	apiHeading := fix.Docs.APIHeading
+	if apiHeading == "" {
+		apiHeading = "API"
+	}
+	relatedHeading := fix.Docs.RelatedHeading
+	if relatedHeading == "" {
+		relatedHeading = "Related"
+	}
 	var blocks []docsstatic.Block
 	for _, b := range page.Blocks {
 		blocks = append(blocks, convertBlock(b))
@@ -28,19 +39,21 @@ func ToPageData(page DocPage) docsstatic.PageData {
 		toc = append(toc, docsstatic.TOCHeading{Level: h.Level, Text: h.Text, ID: h.ID})
 	}
 	if len(api) > 0 {
-		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: "API", ID: "api"})
+		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: apiHeading, ID: "api"})
 	}
 	if len(related) > 0 {
-		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: "Related", ID: "related"})
+		toc = append(toc, docsstatic.TOCHeading{Level: 2, Text: relatedHeading, ID: "related"})
 	}
 	return docsstatic.PageData{
-		Title:       page.Meta.Title,
-		Description: page.Meta.Description,
-		Source:      page.Meta.Source,
-		Blocks:      blocks,
-		API:         api,
-		Related:     related,
-		TOC:         toc,
+		Title:               page.Meta.Title,
+		Description:         page.Meta.Description,
+		Source:              page.Meta.Source,
+		Blocks:              blocks,
+		API:                 api,
+		Related:             related,
+		TOC:                 toc,
+		APISectionTitle:     apiHeading,
+		RelatedSectionTitle: relatedHeading,
 	}
 }
 
@@ -73,7 +86,7 @@ func convertBlock(b Block) docsstatic.Block {
 }
 
 // BuildIndexSections groups pages into index sections for one locale.
-func BuildIndexSections(pages []DocPage, locale string) []docsstatic.IndexSection {
+func BuildIndexSections(pages []DocPage, locale string, fix fixtures.Locale) []docsstatic.IndexSection {
 	bySection := map[string][]DocPage{}
 	for _, p := range pages {
 		if p.Locale != locale {
@@ -96,7 +109,7 @@ func BuildIndexSections(pages []DocPage, locale string) []docsstatic.IndexSectio
 				Href:        p.PublicPath,
 			})
 		}
-		out = append(out, docsstatic.IndexSection{Label: docsstatic.SectionLabel(sec), Links: links})
+		out = append(out, docsstatic.IndexSection{Label: sectionLabel(fix, sec), Links: links})
 	}
 	return out
 }

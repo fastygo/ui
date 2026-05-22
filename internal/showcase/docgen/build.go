@@ -204,7 +204,7 @@ func filterLocale(pages []DocPage, locale string) []DocPage {
 }
 
 func writePage(ctx context.Context, outRoot string, routing doclocale.Routing, locale string, page DocPage, all []DocPage, fix fixtures.Locale) error {
-	pageData := ToPageData(page)
+	pageData := ToPageData(page, fix)
 	pageData.TOCLabel = fix.Docs.OnThisPage
 	body := docsstatic.Page(pageData)
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
@@ -213,7 +213,7 @@ func writePage(ctx context.Context, outRoot string, routing doclocale.Routing, l
 		Lang:           localeLang(locale),
 		Brand:          fix.Brand,
 		Active:         page.PublicPath,
-		NavItems:       BuildNavItems(all, routing, locale, page.PublicPath),
+		NavItems:       BuildNavItems(all, routing, locale, page.PublicPath, fix),
 		LanguageSwitch: routing.BuildLanguageSwitch(locale, page.PublicPath, fix.LanguageToggleLabel),
 		Assets: views.AssetPaths{
 			CSS:     css,
@@ -243,7 +243,7 @@ func writePage(ctx context.Context, outRoot string, routing doclocale.Routing, l
 }
 
 func writeIndex(ctx context.Context, outRoot string, routing doclocale.Routing, locale string, pages []DocPage, fix fixtures.Locale) error {
-	sections := BuildIndexSections(pages, locale)
+	sections := BuildIndexSections(pages, locale, fix)
 	body := docsstatic.Index(fix.Docs.IndexTitle, fix.Docs.IndexDescription, sections)
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
 	active := routing.DocsHomePath(locale)
@@ -252,7 +252,7 @@ func writeIndex(ctx context.Context, outRoot string, routing doclocale.Routing, 
 		Lang:           localeLang(locale),
 		Brand:          fix.Brand,
 		Active:         active,
-		NavItems:       BuildNavItems(pages, routing, locale, active),
+		NavItems:       BuildNavItems(pages, routing, locale, active, fix),
 		LanguageSwitch: routing.BuildLanguageSwitch(locale, active, fix.LanguageToggleLabel),
 		Assets: views.AssetPaths{
 			CSS:     css,
