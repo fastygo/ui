@@ -38,56 +38,92 @@ Triggers an action or navigates when rendered as a link. Built on github.com/fas
 
 ## Default
 
-{{demo id="button.default"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{}, "Button").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{}) {
+		Button
+	}
+}
 ```
 
 ## Secondary
 
-{{demo id="button.secondary"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{Variant: "secondary"}, "Secondary").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "secondary"}) {
+		Secondary
+	}
+}
 ```
 
 ## Outline
 
-{{demo id="button.outline"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{Variant: "outline"}, "Outline").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "outline"}) {
+		Outline
+	}
+}
 ```
 
 ## Destructive
 
-{{demo id="button.destructive"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{Variant: "destructive"}, "Destructive").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "destructive"}) {
+		Destructive
+	}
+}
 ```
 
 ## Ghost
 
-{{demo id="button.ghost"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{Variant: "ghost"}, "Ghost").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "ghost"}) {
+		Ghost
+	}
+}
 ```
 
 ## Link
 
-{{demo id="button.link"}}
-
 ```templ
-@showcaseutil.Button(ui.ButtonProps{Variant: "link"}, "Link").Render(ctx, w)
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "link"}) {
+		Link
+	}
+}
 ```
 
 ## Sizes
 
-{{demo id="button.sizes"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-sm / default / lg via ButtonProps.Size
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "gap-2"}) {
+		@ui.Button(ui.ButtonProps{Size: "sm"}) {
+			Small
+		}
+		@ui.Button(ui.ButtonProps{}) {
+			Default
+		}
+		@ui.Button(ui.ButtonProps{Size: "lg"}) {
+			Large
+		}
+	}
+}
 ```

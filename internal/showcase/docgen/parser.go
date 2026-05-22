@@ -81,6 +81,7 @@ func parseBody(sourceFile, body string) ([]Block, []string, error) {
 	segments := splitDemoSegments(body)
 	var blocks []Block
 	var demoIDs []string
+	var templFenceIndex int
 	for i, seg := range segments {
 		if seg.demoID != "" {
 			if seg.code == nil {
@@ -96,7 +97,7 @@ func parseBody(sourceFile, body string) ([]Block, []string, error) {
 		if strings.TrimSpace(seg.text) == "" {
 			continue
 		}
-		chunkBlocks, err := parseMarkdownChunk(sourceFile, seg.text)
+		chunkBlocks, err := parseMarkdownChunk(sourceFile, seg.text, &templFenceIndex)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -171,7 +172,7 @@ func splitDemoSegments(body string) []bodySegment {
 	return segments
 }
 
-func parseMarkdownChunk(sourceFile, chunk string) ([]Block, error) {
+func parseMarkdownChunk(sourceFile, chunk string, templFenceIndex *int) ([]Block, error) {
 	md := goldmark.New(
 		goldmark.WithParserOptions(parser.WithAutoHeadingID()),
 	)
@@ -226,7 +227,23 @@ func parseMarkdownChunk(sourceFile, chunk string) ([]Block, error) {
 			if err := validateFenceLang(sourceFile, lang); err != nil {
 				return ast.WalkStop, err
 			}
-			blocks = append(blocks, CodeBlock{Language: lang, Source: source})
+			lang = strings.ToLower(strings.TrimSpace(lang))
+			if lang == "templ" {
+				if err := ValidateTemplExample(sourceFile, source); err != nil {
+					return ast.WalkStop, err
+				}
+				*templFenceIndex++
+				idx := *templFenceIndex
+				blocks = append(blocks, PreviewCodeBlock{
+					ID:         previewCacheID(sourceFile, idx, source),
+					Language:   lang,
+					Source:     source,
+					SourceFile: sourceFile,
+					FenceIndex: idx,
+				})
+			} else {
+				blocks = append(blocks, CodeBlock{Language: lang, Source: source})
+			}
 			return ast.WalkSkipChildren, nil
 		case *ast.HTMLBlock, *ast.RawHTML:
 			return ast.WalkStop, fmt.Errorf("%s: raw HTML is not allowed", sourceFile)

@@ -2,6 +2,7 @@ package docsstatic
 
 import (
 	"context"
+	"html"
 	"io"
 
 	"github.com/a-h/templ"
@@ -58,6 +59,8 @@ func renderBlock(ctx context.Context, w io.Writer, block Block) error {
 		return renderList(ctx, w, b.Items)
 	case DemoBlock:
 		return renderDemo(ctx, w, b)
+	case PreviewCodeBlock:
+		return renderPreviewCode(ctx, w, b)
 	case CodeBlock:
 		return renderCodeBox(ctx, w, b.Source)
 	default:
@@ -89,6 +92,40 @@ func renderDemo(ctx context.Context, w io.Writer, d DemoBlock) error {
 		return err
 	}
 	return renderCodeBox(ctx, w, d.CodeSource)
+}
+
+func renderPreviewCode(ctx context.Context, w io.Writer, b PreviewCodeBlock) error {
+	if err := cmp.Card(cmp.CardProps{Class: "p-6 my-3"}).Render(
+		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			if b.HTML == "" {
+				return nil
+			}
+			_, err := io.WriteString(w, b.HTML)
+			return err
+		})), w); err != nil {
+		return err
+	}
+	return renderPreviewCodePanel(ctx, w, b.Source)
+}
+
+func renderPreviewCodePanel(ctx context.Context, w io.Writer, source string) error {
+	escaped := html.EscapeString(source)
+	markup := `<details class="group relative my-3 rounded-md border border-border bg-muted/30">
+<summary class="list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+<div class="relative max-h-16 overflow-hidden p-4 group-open:max-h-none group-open:overflow-visible">
+<pre class="text-xs leading-relaxed"><code class="font-mono whitespace-pre text-foreground">` + escaped + `</code></pre>
+<div class="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-card group-open:hidden"></div>
+<div class="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center">
+<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium group-open:hidden">Show code</span>
+<span class="hidden rounded-md border border-border bg-background px-3 py-1 text-xs font-medium group-open:inline">Hide code</span>
+</div>
+</div>
+</summary>
+</details>`
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		_, err := io.WriteString(w, markup)
+		return err
+	}).Render(ctx, w)
 }
 
 func renderCodeBox(ctx context.Context, w io.Writer, source string) error {

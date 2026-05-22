@@ -43,6 +43,14 @@ func convertBlock(b Block) docsstatic.Block {
 		return docsstatic.ListBlock{Items: x.Items}
 	case DemoBlock:
 		return docsstatic.DemoBlock{ID: x.ID, CodeSource: x.Code.Source}
+	case PreviewCodeBlock:
+		return docsstatic.PreviewCodeBlock{
+			ID:         x.ID,
+			Source:     x.Source,
+			HTML:       x.HTML,
+			SourceFile: x.SourceFile,
+			FenceIndex: x.FenceIndex,
+		}
 	case CodeBlock:
 		return docsstatic.CodeBlock{Source: x.Source}
 	default:

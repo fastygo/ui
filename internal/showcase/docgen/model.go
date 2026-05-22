@@ -29,15 +29,15 @@ type APIField struct {
 
 // DocPage is a parsed, locale-resolved documentation page.
 type DocPage struct {
-	Locale      string
-	Meta        PageMeta
-	OutputPath  string // relative path under output root, e.g. components/blog-card/index.html
-	PublicPath  string // URL path, e.g. /docs/components/blog-card/
-	Blocks      []Block
-	Headings    []Heading
-	DemoIDs     []string
-	SourceFile  string // path within embed FS for debugging
-	FallbackEN  bool   // true when locale content fell back to English
+	Locale     string
+	Meta       PageMeta
+	OutputPath string // relative path under output root, e.g. components/blog-card/index.html
+	PublicPath string // URL path, e.g. /docs/components/blog-card/
+	Blocks     []Block
+	Headings   []Heading
+	DemoIDs    []string
+	SourceFile string // path within embed FS for debugging
+	FallbackEN bool   // true when locale content fell back to English
 }
 
 // Heading is a table-of-contents entry extracted from the page.
@@ -52,11 +52,12 @@ type Block interface {
 	blockKind() string
 }
 
-func (ParagraphBlock) blockKind() string  { return "paragraph" }
-func (HeadingBlock) blockKind() string    { return "heading" }
-func (ListBlock) blockKind() string       { return "list" }
-func (DemoBlock) blockKind() string       { return "demo" }
-func (CodeBlock) blockKind() string       { return "code" }
+func (ParagraphBlock) blockKind() string   { return "paragraph" }
+func (HeadingBlock) blockKind() string     { return "heading" }
+func (ListBlock) blockKind() string        { return "list" }
+func (DemoBlock) blockKind() string        { return "demo" }
+func (CodeBlock) blockKind() string        { return "code" }
+func (PreviewCodeBlock) blockKind() string { return "preview" }
 
 // ParagraphBlock is plain prose (may contain inline markdown formatting as plain text initially).
 type ParagraphBlock struct {
@@ -85,6 +86,16 @@ type DemoBlock struct {
 type CodeBlock struct {
 	Language string
 	Source   string
+}
+
+// PreviewCodeBlock is a templ fence compiled to live preview HTML plus source for the code panel.
+type PreviewCodeBlock struct {
+	ID         string
+	Language   string
+	Source     string
+	HTML       string
+	SourceFile string
+	FenceIndex int
 }
 
 // SearchEntry is one row in search-index.json.

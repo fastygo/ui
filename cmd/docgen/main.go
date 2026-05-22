@@ -18,6 +18,7 @@ func main() {
 	out := flag.String("out", "web/static/docs", "output directory for static docs")
 	locales := flag.String("locales", "en,ru", "comma-separated locale codes")
 	strict := flag.Bool("strict-locale", false, "fail when a non-default locale page is missing")
+	keepPreviewCache := flag.Bool("keep-preview-cache", false, "retain .internal/docgen/docpreviews/cache after build")
 	flag.Parse()
 
 	if err := previews.RegisterFromRegistry(); err != nil {
@@ -35,6 +36,9 @@ func main() {
 	}
 	if err := docgen.ResolveDemos(pages); err != nil {
 		log.Fatalf("resolve: %v", err)
+	}
+	if err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{KeepCache: *keepPreviewCache}); err != nil {
+		log.Fatalf("preview compile: %v", err)
 	}
 	if err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
 		OutputDir: *out,

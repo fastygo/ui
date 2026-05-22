@@ -1,4 +1,5 @@
 .manual
+.project/ui
 vendor/*
 !vendor/github.com/
 vendor/github.com/*

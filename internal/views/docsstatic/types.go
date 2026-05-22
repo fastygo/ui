@@ -15,11 +15,12 @@ type Block interface {
 	blockKind() string
 }
 
-func (ParagraphBlock) blockKind() string { return "paragraph" }
-func (HeadingBlock) blockKind() string   { return "heading" }
-func (ListBlock) blockKind() string      { return "list" }
-func (DemoBlock) blockKind() string      { return "demo" }
-func (CodeBlock) blockKind() string      { return "code" }
+func (ParagraphBlock) blockKind() string   { return "paragraph" }
+func (HeadingBlock) blockKind() string     { return "heading" }
+func (ListBlock) blockKind() string        { return "list" }
+func (DemoBlock) blockKind() string        { return "demo" }
+func (CodeBlock) blockKind() string        { return "code" }
+func (PreviewCodeBlock) blockKind() string { return "preview" }
 
 // ParagraphBlock is plain prose.
 type ParagraphBlock struct {
@@ -46,6 +47,15 @@ type DemoBlock struct {
 // CodeBlock is a standalone fenced code block.
 type CodeBlock struct {
 	Source string
+}
+
+// PreviewCodeBlock is a templ fence with live preview HTML and collapsible source.
+type PreviewCodeBlock struct {
+	ID         string
+	Source     string
+	HTML       string
+	SourceFile string
+	FenceIndex int
 }
 
 // APIField documents a prop.

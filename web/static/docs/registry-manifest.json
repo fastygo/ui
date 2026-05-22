@@ -146,15 +146,7 @@
     "title": "Button",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "button.default",
-      "button.secondary",
-      "button.outline",
-      "button.destructive",
-      "button.ghost",
-      "button.link",
-      "button.sizes"
-    ]
+    "demos": null
   },
   {
     "slug": "calendar",
