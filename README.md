@@ -39,30 +39,33 @@ Probes: `GET /healthz` and `GET /readyz` are registered in [`cmd/server/main.go`
 
 ## Deploy on Vercel (static docs)
 
-Connect the Git repository in Vercel — **no project settings required**. [`vercel.json`](vercel.json) runs:
+Connect the Git repository in Vercel — **no project settings, no Go on the server**.
+
+[`vercel.json`](vercel.json) runs only:
 
 ```bash
-bun install && bun run vercel:build
+bun install && bun run build:css && node scripts/vercel-static-export.mjs
 ```
 
-Pipeline: `templ generate` → `build:css` → `docs:build` → [`scripts/vercel-static-export.mjs`](scripts/vercel-static-export.mjs) writes [`public/`](public/) for CDN:
+**Docs HTML is not generated on Vercel** — it must already live in the repo under `web/static/docs/` (from local `bun run docs:build`, which needs Go). Commit those files when you change markdown or templates.
 
-| URL | Files |
-|-----|--------|
-| `/docs/…` | `public/docs/…` (from `web/static/docs/en/`) |
-| `/ru/docs/…` | `public/ru/docs/…` |
-| `/static/…` | CSS, JS, fonts, icons |
+| Step | Where |
+|------|--------|
+| `docs:build` (Go + templ) | **Local** / CI before push |
+| `build:css` (Tailwind) | Vercel build |
+| `vercel-static-export` | Vercel build → `public/` |
+
+Export layout:
+
+| URL | Source in repo |
+|-----|----------------|
+| `/docs/…` | `web/static/docs/en/…` |
+| `/ru/docs/…` | `web/static/docs/ru/…` |
+| `/static/…` | `web/static/{css,js,img,fonts}` |
 
 Redirects: `/` → `/docs/`; `/en/docs/…` → `/docs/…`.
 
-Local preview of the export:
-
-```bash
-bun run vercel:build
-npx serve public
-```
-
-**Note:** `/` and `/sample` (Go templ dashboard) are **not** in the static export — production entry is the docs gallery. Use `bun run go` locally for the full app shell.
+Local preview: `bun run vercel:build && npx serve public`
 
 For a **Go binary** on your own server, use `make deploy` instead.
 

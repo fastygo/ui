@@ -45,7 +45,9 @@ for (const dir of assetDirs) {
 
 const enDocs = path.join(docsRoot, "en");
 if (!fs.existsSync(enDocs)) {
-  console.error("vercel-static-export: missing", enDocs);
+  console.error(
+    "vercel-static-export: missing web/static/docs/en — run `bun run docs:build` locally and commit web/static/docs/",
+  );
   process.exit(1);
 }
 copyDir(enDocs, path.join(publicRoot, "docs"));

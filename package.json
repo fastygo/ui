@@ -13,7 +13,7 @@
     "snapshot:html": "go run ./.validate/cmd/snapshot-render",
     "docs:build": "go run ./cmd/docgen -out web/static/docs -locales en,ru",
     "docs:snapshot": "go run ./cmd/docgen -out .validate/html-snapshots/nu/docs -locales en,ru",
-    "vercel:build": "go tool templ generate ./... && bun run build:css && bun run docs:build && node scripts/vercel-static-export.mjs",
+    "vercel:build": "bun run build:css && node scripts/vercel-static-export.mjs",
     "test:e2e:install": "playwright install chromium",
     "test:e2e": "playwright install chromium && playwright test",
     "templ": "go tool templ generate ./...",
