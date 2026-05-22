@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/fastygo/ui/internal/doclocale"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/parser"
@@ -13,7 +14,7 @@ import (
 )
 
 // ParseFile parses a markdown file with YAML front matter into a DocPage.
-func ParseFile(locale, sourceFile string, raw []byte) (DocPage, error) {
+func ParseFile(routing doclocale.Routing, locale, sourceFile string, raw []byte) (DocPage, error) {
 	meta, body, err := splitFrontMatter(raw)
 	if err != nil {
 		return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
@@ -35,15 +36,14 @@ func ParseFile(locale, sourceFile string, raw []byte) (DocPage, error) {
 	}
 	headings := extractHeadings(blocks)
 	page := DocPage{
-		Locale:      locale,
-		Meta:        meta,
-		OutputPath:  OutputRelPath(locale, meta),
-		PublicPath:  PublicPath(locale, meta),
+		Locale: locale,
+		Meta:   meta,
 		Blocks:      blocks,
 		Headings:    headings,
 		SourceFile:  sourceFile,
 		ContentHash: contentHash(raw),
 	}
+	applyPagePaths(routing, &page)
 	if err := ValidatePage(page); err != nil {
 		return DocPage{}, err
 	}

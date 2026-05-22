@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/fastygo/ui/internal/showcase/docgen"
@@ -13,7 +14,8 @@ import (
 
 func main() {
 	out := flag.String("out", "web/static/docs", "output directory for static docs")
-	locales := flag.String("locales", "en,ru", "comma-separated locale codes")
+	locales := flag.String("locales", envOr("APP_AVAILABLE_LOCALES", "en,ru"), "comma-separated locale codes")
+	defaultLocale := flag.String("default-locale", envOr("APP_DEFAULT_LOCALE", "en"), "default locale (unprefixed /docs/ URLs)")
 	strict := flag.Bool("strict-locale", false, "fail when a non-default locale page is missing")
 	force := flag.Bool("force", false, "rebuild all pages and previews, ignoring incremental stamps")
 	cleanPreviews := flag.Bool("clean-previews", false, "clear persistent preview store before build")
@@ -22,7 +24,7 @@ func main() {
 	localeList := splitLocales(*locales)
 	pages, err := docgen.LoadAll(docgen.LoadOptions{
 		Locales:       localeList,
-		DefaultLocale: "en",
+		DefaultLocale: *defaultLocale,
 		StrictLocale:  *strict,
 	})
 	if err != nil {
@@ -41,19 +43,21 @@ func main() {
 	}
 
 	buildStats, err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
-		OutputDir:   *out,
-		Locales:     localeList,
-		Incremental: !*force,
-		Force:       *force,
+		OutputDir:     *out,
+		Locales:       localeList,
+		DefaultLocale: *defaultLocale,
+		Incremental:   !*force,
+		Force:         *force,
 	})
 	if err != nil {
 		log.Fatalf("build: %v", err)
 	}
 
 	fmt.Printf(
-		"docgen: %d page(s) across %v -> %s (previews: %d cached, %d compiled; pages: %d written, %d skipped; artifacts: %d written)\n",
+		"docgen: %d page(s) across %v (default=%s) -> %s (previews: %d cached, %d compiled; pages: %d written, %d skipped; artifacts: %d written)\n",
 		len(pages),
 		localeList,
+		*defaultLocale,
 		*out,
 		previewStats.Cached,
 		previewStats.Compiled,
@@ -61,6 +65,13 @@ func main() {
 		buildStats.PagesSkipped,
 		buildStats.ArtifactsWritten,
 	)
+}
+
+func envOr(key, fallback string) string {
+	if v := strings.TrimSpace(os.Getenv(key)); v != "" {
+		return v
+	}
+	return fallback
 }
 
 func splitLocales(s string) []string {

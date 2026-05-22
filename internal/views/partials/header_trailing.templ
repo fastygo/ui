@@ -1,11 +1,10 @@
 package partials
 
 import (
-	"github.com/fastygo/framework/pkg/web/view"
 	"github.com/fastygo/ui/internal/ui/components/toggles"
 )
 
-// HeaderTrailing renders theme-adjacent controls (language switch) in the shell header.
-templ HeaderTrailing(language view.LanguageToggleData) {
-	@toggles.LanguageToggle(language)
+// HeaderTrailing renders the compact En / Ru switch beside the theme toggle.
+templ HeaderTrailing(language toggles.LanguageSwitchProps) {
+	@toggles.LanguageSwitch(language)
 }

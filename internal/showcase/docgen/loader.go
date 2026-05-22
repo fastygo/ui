@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/fastygo/ui/internal/doclocale"
 	showcasecontent "github.com/fastygo/ui/internal/showcase/content"
 )
 
@@ -27,8 +28,9 @@ func LoadAll(opts LoadOptions) ([]DocPage, error) {
 	}
 
 	byKey := map[string]map[string]DocPage{} // locale -> content key -> page
+	routing := opts.routing()
 	for _, locale := range opts.Locales {
-		pages, err := loadLocale(locale)
+		pages, err := loadLocale(routing, locale)
 		if err != nil {
 			return nil, err
 		}
@@ -65,8 +67,7 @@ func LoadAll(opts LoadOptions) ([]DocPage, error) {
 			}
 			fallback := base
 			fallback.Locale = locale
-			fallback.OutputPath = OutputRelPath(locale, fallback.Meta)
-			fallback.PublicPath = PublicPath(locale, fallback.Meta)
+			applyPagePaths(routing, &fallback)
 			fallback.FallbackEN = true
 			fallback.SourceFile = fallback.SourceFile + " (fallback:en)"
 			fallback.ContentHash = base.ContentHash
@@ -76,7 +77,7 @@ func LoadAll(opts LoadOptions) ([]DocPage, error) {
 	return out, nil
 }
 
-func loadLocale(locale string) ([]DocPage, error) {
+func loadLocale(routing doclocale.Routing, locale string) ([]DocPage, error) {
 	root := locale
 	var pages []DocPage
 	err := fs.WalkDir(showcasecontent.FS, root, func(filePath string, d fs.DirEntry, err error) error {
@@ -90,7 +91,7 @@ func loadLocale(locale string) ([]DocPage, error) {
 		if err != nil {
 			return err
 		}
-		page, err := ParseFile(locale, filePath, raw)
+		page, err := ParseFile(routing, locale, filePath, raw)
 		if err != nil {
 			return err
 		}

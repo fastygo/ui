@@ -3,15 +3,17 @@ package docgen
 import (
 	"sort"
 
+	"github.com/fastygo/ui/internal/doclocale"
 	"github.com/fastygo/ui/internal/ui/layout"
 )
 
 // BuildNavItems constructs sidebar navigation for static docs pages.
-func BuildNavItems(pages []DocPage, locale, activePath string) []layout.NavItem {
+func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePath string) []layout.NavItem {
+	routing = routing.Normalize()
 	var items []layout.NavItem
 	items = append(items,
 		layout.NavItem{Label: "Overview", Path: "/", Icon: "home"},
-		layout.NavItem{Label: "Docs home", Path: docsHomePath(locale), Icon: "book-open"},
+		layout.NavItem{Label: "Docs home", Path: routing.DocsHomePath(locale), Icon: "book-open"},
 	)
 	bySection := map[string][]DocPage{}
 	for _, p := range pages {
@@ -39,13 +41,6 @@ func BuildNavItems(pages []DocPage, locale, activePath string) []layout.NavItem 
 		}
 	}
 	return items
-}
-
-func docsHomePath(locale string) string {
-	if locale == "" || locale == "en" {
-		return "/docs/"
-	}
-	return "/" + locale + "/docs/"
 }
 
 func sectionLabel(id string) string {

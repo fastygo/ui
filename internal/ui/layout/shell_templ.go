@@ -347,7 +347,7 @@ func Shell(props ShellProps) templ.Component {
 				ctx = templ.InitializeContext(ctx)
 				templ_7745c5c3_Err = Header(HeaderProps{
 					ShowMenuTrigger:      shellHasNavigation(props),
-					Title:                props.Title,
+					Title:                shellHeaderTitle(props),
 					Extra:                props.HeaderExtra,
 					Trailing:             props.HeaderTrailing,
 					ThemeToggle:          props.ThemeToggle,

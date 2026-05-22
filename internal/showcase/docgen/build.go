@@ -11,6 +11,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/fastygo/ui/internal/doclocale"
 	"github.com/fastygo/ui/internal/fixtures"
 	"github.com/fastygo/ui/internal/ui/layout"
 	"github.com/fastygo/ui/internal/views"
@@ -19,11 +20,19 @@ import (
 
 // BuildConfig controls static HTML generation.
 type BuildConfig struct {
-	OutputDir   string
-	Locales     []string
-	ModuleRoot  string
-	Incremental bool // skip unchanged pages and artifacts
-	Force       bool // rebuild everything regardless of stamps
+	OutputDir     string
+	Locales       []string
+	DefaultLocale string
+	ModuleRoot    string
+	Incremental   bool // skip unchanged pages and artifacts
+	Force         bool // rebuild everything regardless of stamps
+}
+
+func (cfg BuildConfig) routing() doclocale.Routing {
+	return doclocale.Routing{
+		Default: cfg.DefaultLocale,
+		Locales: cfg.Locales,
+	}.Normalize()
 }
 
 // BuildStats reports incremental build activity.
@@ -36,6 +45,9 @@ type BuildStats struct {
 func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) (BuildStats, error) {
 	var stats BuildStats
 	if err := os.MkdirAll(cfg.OutputDir, 0o755); err != nil {
+		return stats, err
+	}
+	if err := pruneLegacyDocsLayout(cfg.OutputDir); err != nil {
 		return stats, err
 	}
 	if err := ValidateLinks(pages); err != nil {
@@ -52,6 +64,7 @@ func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) (BuildStats, e
 	}
 
 	incremental := cfg.Incremental && !cfg.Force
+	routing := cfg.routing()
 
 	for _, locale := range cfg.Locales {
 		locPages := filterLocale(pages, locale)
@@ -60,12 +73,12 @@ func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) (BuildStats, e
 			fix, _ = fixtures.LoadLocale("en")
 		}
 
-		idxPath := indexOutputPath(cfg.OutputDir, locale)
+		idxPath := indexOutputPath(cfg.OutputDir, routing, locale)
 		idxInput := indexBuildInput(locale, locPages, globalHash)
 		if incremental && pageUpToDate(root, idxPath, idxInput) {
 			stats.PagesSkipped++
 		} else {
-			if err := writeIndex(ctx, cfg.OutputDir, locale, locPages, fix); err != nil {
+			if err := writeIndex(ctx, cfg.OutputDir, routing, locale, locPages, fix); err != nil {
 				return stats, err
 			}
 			if err := writePageStamp(root, idxPath, idxInput); err != nil {
@@ -81,7 +94,7 @@ func Build(ctx context.Context, pages []DocPage, cfg BuildConfig) (BuildStats, e
 				stats.PagesSkipped++
 				continue
 			}
-			if err := writePage(ctx, cfg.OutputDir, locale, page, locPages, fix); err != nil {
+			if err := writePage(ctx, cfg.OutputDir, routing, locale, page, locPages, fix); err != nil {
 				return stats, err
 			}
 			if err := writePageStamp(root, outFull, input); err != nil {
@@ -190,17 +203,18 @@ func filterLocale(pages []DocPage, locale string) []DocPage {
 	return out
 }
 
-func writePage(ctx context.Context, outRoot, locale string, page DocPage, all []DocPage, fix fixtures.Locale) error {
+func writePage(ctx context.Context, outRoot string, routing doclocale.Routing, locale string, page DocPage, all []DocPage, fix fixtures.Locale) error {
 	pageData := ToPageData(page)
 	pageData.TOCLabel = fix.Docs.OnThisPage
 	body := docsstatic.Page(pageData)
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
 	layout := views.LayoutData{
-		Title:    docsstatic.FormatPageTitle(page.Meta.Title, fix.Brand),
-		Lang:     localeLang(locale),
-		Brand:    fix.Brand,
-		Active:   page.PublicPath,
-		NavItems: BuildNavItems(all, locale, page.PublicPath),
+		PageTitle:      page.Meta.Title,
+		Lang:           localeLang(locale),
+		Brand:          fix.Brand,
+		Active:         page.PublicPath,
+		NavItems:       BuildNavItems(all, routing, locale, page.PublicPath),
+		LanguageSwitch: routing.BuildLanguageSwitch(locale, page.PublicPath, fix.LanguageToggleLabel),
 		Assets: views.AssetPaths{
 			CSS:     css,
 			ThemeJS: themeJS,
@@ -228,17 +242,18 @@ func writePage(ctx context.Context, outRoot, locale string, page DocPage, all []
 	return nil
 }
 
-func writeIndex(ctx context.Context, outRoot, locale string, pages []DocPage, fix fixtures.Locale) error {
+func writeIndex(ctx context.Context, outRoot string, routing doclocale.Routing, locale string, pages []DocPage, fix fixtures.Locale) error {
 	sections := BuildIndexSections(pages, locale)
 	body := docsstatic.Index(fix.Docs.IndexTitle, fix.Docs.IndexDescription, sections)
 	css, themeJS, appJS := docsstatic.StaticAssetPaths()
-	active := docsHomePath(locale)
+	active := routing.DocsHomePath(locale)
 	layout := views.LayoutData{
-		Title:    docsstatic.FormatPageTitle(fix.Docs.IndexTitle, fix.Brand),
-		Lang:     localeLang(locale),
-		Brand:    fix.Brand,
-		Active:   active,
-		NavItems: BuildNavItems(pages, locale, active),
+		PageTitle:      fix.Docs.IndexTitle,
+		Lang:           localeLang(locale),
+		Brand:          fix.Brand,
+		Active:         active,
+		NavItems:       BuildNavItems(pages, routing, locale, active),
+		LanguageSwitch: routing.BuildLanguageSwitch(locale, active, fix.LanguageToggleLabel),
 		Assets: views.AssetPaths{
 			CSS:     css,
 			ThemeJS: themeJS,
@@ -251,7 +266,7 @@ func writeIndex(ctx context.Context, outRoot, locale string, pages []DocPage, fi
 		},
 	}
 	shell := views.SiteShell(layout, body)
-	full := indexOutputPath(outRoot, locale)
+	full := indexOutputPath(outRoot, routing, locale)
 	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
 		return err
 	}
@@ -361,4 +376,18 @@ func writeJSON(path string, v any) error {
 		return err
 	}
 	return os.WriteFile(path, raw, 0o644)
+}
+
+// pruneLegacyDocsLayout removes pre-symmetric output (docs/components, root index.html, …).
+func pruneLegacyDocsLayout(outRoot string) error {
+	for _, name := range []string{"components", "blocks", "introduction", "installation", "theming"} {
+		if err := os.RemoveAll(filepath.Join(outRoot, name)); err != nil {
+			return err
+		}
+	}
+	rootIndex := filepath.Join(outRoot, "index.html")
+	if err := os.Remove(rootIndex); err != nil && !os.IsNotExist(err) {
+		return err
+	}
+	return nil
 }

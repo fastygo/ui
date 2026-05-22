@@ -23,12 +23,13 @@ func TestBuild_blogCard(t *testing.T) {
 	}
 	dir := t.TempDir()
 	if _, err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
-		OutputDir: dir,
-		Locales:   []string{"en"},
+		OutputDir:     dir,
+		Locales:       []string{"en"},
+		DefaultLocale: "en",
 	}); err != nil {
 		t.Fatal(err)
 	}
-	htmlPath := filepath.Join(dir, "components", "blog-card", "index.html")
+	htmlPath := filepath.Join(dir, "en", "components", "blog-card", "index.html")
 	raw, err := os.ReadFile(htmlPath)
 	if err != nil {
 		t.Fatal(err)
@@ -54,9 +55,10 @@ func TestBuild_incrementalSkipsUnchanged(t *testing.T) {
 	}
 	dir := t.TempDir()
 	first, err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
-		OutputDir:   dir,
-		Locales:     []string{"en"},
-		Incremental: true,
+		OutputDir:     dir,
+		Locales:       []string{"en"},
+		DefaultLocale: "en",
+		Incremental:   true,
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -66,9 +68,10 @@ func TestBuild_incrementalSkipsUnchanged(t *testing.T) {
 	}
 
 	second, err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
-		OutputDir:   dir,
-		Locales:     []string{"en"},
-		Incremental: true,
+		OutputDir:     dir,
+		Locales:       []string{"en"},
+		DefaultLocale: "en",
+		Incremental:   true,
 	})
 	if err != nil {
 		t.Fatal(err)

@@ -181,17 +181,23 @@ article.docs-article.prose-docs {
   @apply my-2 flex flex-col gap-1;
 }
 
-/* Preview/code widgets carry their own typography. */
+/* Preview/code widgets carry their own typography (override .prose code/pre). */
 .prose-docs .docs-preview,
 .prose-docs .docs-code {
-  @apply text-foreground;
+  @apply text-xs font-mono text-foreground;
+}
+
+.prose-docs .docs-preview pre,
+.prose-docs .docs-code pre {
+  @apply my-0 rounded-none border-0 bg-transparent p-0;
 }
 
 .prose-docs .docs-code .chroma,
 .prose-docs .docs-code .chroma code,
 .prose-docs .docs-preview .chroma,
-.prose-docs .docs-preview .chroma code {
-  @apply bg-transparent p-0 text-inherit;
+.prose-docs .docs-preview .chroma code,
+.prose-docs .docs-code code {
+  @apply rounded-none bg-transparent px-0 py-0 text-xs text-inherit;
 }
 
 .prose-docs .docs-index-card {

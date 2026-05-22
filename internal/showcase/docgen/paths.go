@@ -3,6 +3,8 @@ package docgen
 import (
 	"fmt"
 	"strings"
+
+	"github.com/fastygo/ui/internal/doclocale"
 )
 
 var knownSections = map[string]struct{}{
@@ -11,46 +13,30 @@ var knownSections = map[string]struct{}{
 	"blocks":          {},
 }
 
-// PublicPath returns the canonical URL path for a page (trailing slash).
-func PublicPath(locale string, meta PageMeta) string {
-	base := registryPagePath(meta.Section, meta.Slug)
-	if locale == "" || locale == "en" {
-		return ensureTrailingSlash(base)
-	}
-	return ensureTrailingSlash("/" + locale + base)
+func (o LoadOptions) routing() doclocale.Routing {
+	return doclocale.Routing{
+		Default: o.DefaultLocale,
+		Locales: o.Locales,
+	}.Normalize()
 }
 
-func registryPagePath(section, slug string) string {
-	section = strings.Trim(strings.ToLower(section), "/")
-	slug = strings.Trim(strings.ToLower(slug), "/")
-	switch section {
-	case "getting-started", "getting_started", "start":
-		return "/docs/" + slug
-	case "blocks":
-		return "/docs/blocks/" + slug
-	default:
-		return "/docs/components/" + slug
-	}
+func applyPagePaths(r doclocale.Routing, page *DocPage) {
+	page.PublicPath = r.PublicPath(page.Locale, page.Meta.Section, page.Meta.Slug)
+	page.OutputPath = r.OutputRelPath(page.Locale, page.Meta.Section, page.Meta.Slug)
+}
+
+// PublicPath returns the canonical URL path for a page (trailing slash).
+func PublicPath(locale string, meta PageMeta) string {
+	return defaultRouting().PublicPath(locale, meta.Section, meta.Slug)
 }
 
 // OutputRelPath returns the relative file path under the docs output root.
 func OutputRelPath(locale string, meta PageMeta) string {
-	slug := strings.Trim(strings.ToLower(meta.Slug), "/")
-	section := strings.Trim(strings.ToLower(meta.Section), "/")
-	var parts []string
-	if locale != "" && locale != "en" {
-		parts = append(parts, locale)
-	}
-	switch section {
-	case "getting-started", "getting_started", "start":
-		parts = append(parts, slug)
-	case "blocks":
-		parts = append(parts, "blocks", slug)
-	default:
-		parts = append(parts, "components", slug)
-	}
-	parts = append(parts, "index.html")
-	return strings.Join(parts, "/")
+	return defaultRouting().OutputRelPath(locale, meta.Section, meta.Slug)
+}
+
+func defaultRouting() doclocale.Routing {
+	return doclocale.Routing{Default: "en", Locales: []string{"en", "ru"}}.Normalize()
 }
 
 func ensureTrailingSlash(p string) string {

@@ -86,7 +86,7 @@ func renderTOCAside(ctx context.Context, w io.Writer, toc []TOCHeading, label st
 }
 
 func renderTOCLink(ctx context.Context, w io.Writer, h TOCHeading) error {
-	class := "block h-auto justify-start rounded-none border-0 py-1 pl-3 pr-2 text-left text-sm font-normal text-muted-foreground hover:text-foreground"
+	class := "block h-auto justify-start rounded-none border-0 py-1 pl-3 pr-2 text-left text-xs font-normal text-muted-foreground hover:text-foreground"
 	if h.Level >= 3 {
 		class += " pl-6 text-xs"
 	}
@@ -153,12 +153,14 @@ func renderPreviewCode(ctx context.Context, w io.Writer, b PreviewCodeBlock) err
 		`<div class="docs-preview-code-panel">` + code +
 		`<div class="docs-preview-fade" aria-hidden="true"></div>` +
 		`<div class="docs-preview-view" aria-hidden="true">` +
-		`<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium shadow-sm">View code</span>` +
+		`<span class="docs-preview-toggle">View code</span>` +
 		`</div>` +
-		`<div class="docs-preview-hide" aria-hidden="true">` +
-		`<span class="rounded-md border border-border bg-background px-3 py-1 text-xs font-medium shadow-sm">Hide code</span>` +
 		`</div>` +
-		`</div></summary></details></div>`
+		`</summary>` +
+		`<button type="button" class="docs-preview-hide" data-docs-preview-hide aria-label="Hide code">` +
+		`<span class="docs-preview-toggle">Hide code</span>` +
+		`</button>` +
+		`</details></div>`
 	return writeRawHTML(ctx, w, markup)
 }
 
@@ -239,7 +241,7 @@ func renderRelated(ctx context.Context, w io.Writer, links []RelatedLink) error 
 				if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 					Href:    link.Href,
 					Variant: "link",
-					Class:   "h-auto justify-start p-0 text-sm font-normal",
+					Class:   "h-auto justify-start p-0 text-xs font-normal",
 				}, link.Label); err != nil {
 					return err
 				}
@@ -296,7 +298,7 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 				}, link.Title); err != nil {
 					return err
 				}
-				return ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, link.Description).Render(ctx, w)
+				return ui.Text(ui.TextProps{Class: "text-xs text-muted-foreground"}, link.Description).Render(ctx, w)
 			})), w); err != nil {
 			return err
 		}
@@ -326,7 +328,7 @@ func Truncate(s string, max int) string {
 	return s[:max] + "…"
 }
 
-// FormatPageTitle builds the shell title for a docs page.
+// FormatPageTitle builds the document title for a docs page.
 func FormatPageTitle(pageTitle, brand string) string {
 	if brand == "" {
 		brand = "FastyGo UI"

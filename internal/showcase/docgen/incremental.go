@@ -6,6 +6,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/fastygo/ui/internal/doclocale"
 )
 
 const (
@@ -29,6 +31,9 @@ func globalBuildInput(root string) (string, error) {
 		"internal/fixtures/locale/ru.json",
 		"internal/views/docsstatic/render.go",
 		"internal/views/docsstatic/types.go",
+		"internal/views/partials/shell_head.templ",
+		"internal/views/layout.templ",
+		"internal/ui/layout/shell.templ",
 		"internal/showcase/docgen/nav.go",
 		"internal/showcase/docgen/convert.go",
 		"internal/showcase/docgen/highlight.go",
@@ -121,9 +126,6 @@ func indexBuildInput(locale string, pages []DocPage, globalHash string) string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
-func indexOutputPath(outRoot, locale string) string {
-	if locale == "" || locale == "en" {
-		return filepath.Join(outRoot, "index.html")
-	}
-	return filepath.Join(outRoot, locale, "index.html")
+func indexOutputPath(outRoot string, routing doclocale.Routing, locale string) string {
+	return filepath.Join(outRoot, filepath.FromSlash(routing.IndexOutputRelPath(locale)))
 }

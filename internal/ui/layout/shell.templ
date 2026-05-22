@@ -48,7 +48,7 @@ templ Shell(props ShellProps) {
 				@ui.Box(ui.BoxProps{Class: "flex min-w-0 flex-1 flex-col"}) {
 					@Header(HeaderProps{
 						ShowMenuTrigger:      shellHasNavigation(props),
-						Title:                props.Title,
+						Title:                shellHeaderTitle(props),
 						Extra:                props.HeaderExtra,
 						Trailing:             props.HeaderTrailing,
 						ThemeToggle:          props.ThemeToggle,

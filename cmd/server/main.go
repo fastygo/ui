@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"strings"
 	"syscall"
 
@@ -27,7 +28,7 @@ func main() {
 	logger := newLogger(cfg.LogLevel, cfg.LogFormat)
 	slog.SetDefault(logger)
 
-	feat := site.NewFeature(cfg.AvailableLocales, cfg.DefaultLocale)
+	feat := site.NewFeature(cfg.AvailableLocales, cfg.DefaultLocale, filepath.Join(cfg.StaticDir, "docs"))
 
 	builder := app.New(cfg.Config).
 		WithLogger(logger).

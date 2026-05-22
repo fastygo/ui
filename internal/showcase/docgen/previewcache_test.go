@@ -26,7 +26,7 @@ templ Example() {
 }
 ` + "```\n")
 
-	page, err := ParseFile("en", "en/components/sample.md", raw)
+	page, err := ParseFile(defaultRouting(), "en", "en/components/sample.md", raw)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -56,7 +56,7 @@ description: Sample page.
 ` + "```go\n" + `package main
 ` + "```\n")
 
-	page, err := ParseFile("en", "en/components/sample.md", raw)
+	page, err := ParseFile(defaultRouting(), "en", "en/components/sample.md", raw)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -88,7 +88,7 @@ func TestParseFile_buttonMdHasNoDemoDirectives(t *testing.T) {
 	if strings.Contains(string(raw), "{{demo") {
 		t.Fatal("button.md still contains legacy demo directives")
 	}
-	page, err := ParseFile("en", "en/components/button.md", raw)
+	page, err := ParseFile(defaultRouting(), "en", "en/components/button.md", raw)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -153,3 +153,38 @@
     namespace.initPattern("copy-button");
   }
 })();
+
+(function () {
+  var namespace = window.ui8kit;
+  if (!namespace || typeof namespace.register !== "function") {
+    return;
+  }
+
+  namespace.register({
+    name: "docs-preview",
+    init: function (root) {
+      var hides = root.querySelectorAll("[data-docs-preview-hide]");
+      for (var i = 0; i < hides.length; i += 1) {
+        var hide = hides[i];
+        if (hide.dataset.ui8kitBound) {
+          continue;
+        }
+        hide.dataset.ui8kitBound = "1";
+        (function (btn) {
+          btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            var details = btn.closest("details");
+            if (details) {
+              details.open = false;
+            }
+          });
+        })(hide);
+      }
+      return function () {};
+    },
+  });
+
+  if (typeof namespace.initPattern === "function") {
+    namespace.initPattern("docs-preview");
+  }
+})();

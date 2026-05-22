@@ -37,7 +37,8 @@ type ThemeToggleProps struct {
 
 // ShellProps configures the full page shell (sidebar + header + main).
 type ShellProps struct {
-	Title                string
+	Title                string // document title for <title> (SEO)
+	HeaderTitle          string // visible page title in the header bar
 	Lang                 string
 	BrandName            string
 	Active               string

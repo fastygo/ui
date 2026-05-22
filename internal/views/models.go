@@ -1,7 +1,7 @@
 package views
 
 import (
-	"github.com/fastygo/framework/pkg/web/view"
+	"github.com/fastygo/ui/internal/ui/components/toggles"
 	"github.com/fastygo/ui/internal/ui/layout"
 )
 
@@ -14,14 +14,27 @@ type AssetPaths struct {
 
 // LayoutData drives the default app shell (sidebar + header).
 type LayoutData struct {
-	Title          string
+	PageTitle      string // visible page name in the header bar
 	Lang           string
-	Brand          string
+	Brand          string // appended to PageTitle in the document <title> only
 	Active         string
 	NavItems       []layout.NavItem
 	Assets         AssetPaths
 	Theme          layout.ThemeToggleProps
-	LanguageToggle view.LanguageToggleData
+	LanguageSwitch toggles.LanguageSwitchProps
+}
+
+// DocumentTitle returns the SEO document title for <title>.
+func (d LayoutData) DocumentTitle() string {
+	return FormatDocumentTitle(d.PageTitle, d.Brand)
+}
+
+// FormatDocumentTitle builds "Page · Brand" for the document head.
+func FormatDocumentTitle(pageTitle, brand string) string {
+	if brand == "" {
+		brand = "FastyGo UI"
+	}
+	return pageTitle + " · " + brand
 }
 
 // DashboardDocLink is a CTA on the home page pointing at static docs.

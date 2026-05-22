@@ -5,65 +5,89 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-)
 
-const staticDocsRoot = "web/static/docs"
+	"github.com/fastygo/ui/internal/doclocale"
+)
 
 // registerStaticDocsRoutes serves prebuilt documentation HTML when present.
 func (f *Feature) registerStaticDocsRoutes(mux *http.ServeMux) {
-	if _, err := os.Stat(staticDocsRoot); err != nil {
+	root := resolveDocsRoot(f.staticDocsRoot)
+	logDocsRoot(root)
+	if !docsRootValid(root) {
 		return
 	}
+	f.staticDocsRoot = root
+
+	routing := f.docsRouting()
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		serveStaticDoc(w, r)
+		f.serveStaticDoc(w, r)
 	})
-	mux.HandleFunc("GET /docs/", handler)
-	mux.HandleFunc("GET /docs", func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, "/docs/", http.StatusFound)
+	for _, loc := range routing.Locales {
+		if loc == routing.Default {
+			mux.HandleFunc("GET /docs/", handler)
+			mux.HandleFunc("GET /docs", func(w http.ResponseWriter, r *http.Request) {
+				http.Redirect(w, r, "/docs/", http.StatusFound)
+			})
+			registerDefaultLocalePrefixRedirects(mux, routing, loc)
+			continue
+		}
+		prefix := "/" + loc + "/docs"
+		mux.HandleFunc("GET "+prefix+"/", handler)
+		mux.HandleFunc("GET "+prefix, func(w http.ResponseWriter, r *http.Request) {
+			http.Redirect(w, r, prefix+"/", http.StatusFound)
+		})
+	}
+}
+
+// registerDefaultLocalePrefixRedirects sends /en/docs/… to /docs/… when en is default.
+func registerDefaultLocalePrefixRedirects(mux *http.ServeMux, routing doclocale.Routing, defaultLocale string) {
+	prefix := "/" + defaultLocale + "/docs"
+	mux.HandleFunc("GET "+prefix, func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/docs/", http.StatusMovedPermanently)
 	})
-	mux.HandleFunc("GET /ru/docs/", handler)
-	mux.HandleFunc("GET /ru/docs", func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, "/ru/docs/", http.StatusFound)
+	mux.HandleFunc("GET "+prefix+"/", func(w http.ResponseWriter, r *http.Request) {
+		target := strings.TrimPrefix(r.URL.Path, prefix)
+		if target == "" || target == "/" {
+			target = "/"
+		}
+		http.Redirect(w, r, "/docs"+target, http.StatusMovedPermanently)
 	})
 }
 
-func serveStaticDoc(w http.ResponseWriter, r *http.Request) {
-	rel := staticDocsRelPath(r.URL.Path)
-	if rel == "" && !strings.HasSuffix(r.URL.Path, "/") {
+func (f *Feature) serveStaticDoc(w http.ResponseWriter, r *http.Request) {
+	if f.staticDocsRoot == "" {
 		http.NotFound(w, r)
 		return
 	}
-	candidates := []string{
-		filepath.Join(staticDocsRoot, rel, "index.html"),
+	path := r.URL.Path
+	if !strings.HasSuffix(path, "/") {
+		http.Redirect(w, r, path+"/", http.StatusMovedPermanently)
+		return
 	}
-	if rel == "" {
-		candidates = []string{filepath.Join(staticDocsRoot, "index.html")}
-	}
-	for _, c := range candidates {
-		if fi, err := os.Stat(c); err == nil && !fi.IsDir() {
-			http.ServeFile(w, r, c)
+
+	routing := f.docsRouting()
+	for _, candidate := range f.docFileCandidates(routing, path) {
+		if fi, err := os.Stat(candidate); err == nil && !fi.IsDir() {
+			http.ServeFile(w, r, candidate)
 			return
 		}
 	}
 	http.NotFound(w, r)
 }
 
-// staticDocsRelPath maps a request path to a file path under web/static/docs.
-func staticDocsRelPath(urlPath string) string {
-	rel := strings.TrimPrefix(urlPath, "/")
-	rel = strings.TrimSuffix(rel, "/")
-	if strings.HasPrefix(rel, "ru/docs") {
-		suffix := strings.TrimPrefix(rel, "ru/docs")
-		suffix = strings.TrimPrefix(suffix, "/")
-		if suffix == "" {
-			return "ru"
-		}
-		return filepath.Join("ru", filepath.FromSlash(suffix))
+func (f *Feature) docFileCandidates(routing doclocale.Routing, urlPath string) []string {
+	rel := routing.StaticFileRelPath(urlPath)
+	if rel == "" {
+		return nil
 	}
-	if strings.HasPrefix(rel, "docs") {
-		suffix := strings.TrimPrefix(rel, "docs")
-		suffix = strings.TrimPrefix(suffix, "/")
-		return filepath.FromSlash(suffix)
+	out := []string{filepath.Join(f.staticDocsRoot, rel, "index.html")}
+
+	_, suffix, ok := routing.ParseDocsURL(urlPath)
+	if !ok {
+		return out
 	}
-	return ""
+	if suffix == "" {
+		return append(out, filepath.Join(f.staticDocsRoot, "index.html"))
+	}
+	return append(out, filepath.Join(f.staticDocsRoot, filepath.FromSlash(suffix), "index.html"))
 }

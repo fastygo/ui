@@ -11,7 +11,7 @@ func TestParseFile_blogCard(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	page, err := ParseFile("en", "en/components/blog-card.md", raw)
+	page, err := ParseFile(defaultRouting(), "en", "en/components/blog-card.md", raw)
 	if err != nil {
 		t.Fatal(err)
 	}

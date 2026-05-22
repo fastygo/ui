@@ -6,22 +6,25 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fastygo/framework/pkg/web/view"
+	"github.com/fastygo/ui/internal/ui/components/toggles"
 	"github.com/fastygo/ui/internal/ui/layout"
 )
 
 func TestSiteShell_dashboardRenders(t *testing.T) {
 	d := LayoutData{
-		Title:    "Home · FastyGo UI",
-		Lang:     "en",
-		Brand:    "FastyGo UI",
+		PageTitle: "Home",
+		Lang:      "en",
+		Brand:     "FastyGo UI",
 		Active:   "/",
 		NavItems: []layout.NavItem{{Label: "Home", Path: "/", Icon: "home"}},
 		Assets:   AssetPaths{CSS: "/static/css/app.css", ThemeJS: "/static/js/theme.js", AppJS: "/static/js/ui8kit.js"},
 		Theme:    layout.ThemeToggleProps{},
-		LanguageToggle: view.LanguageToggleData{
-			CurrentLocale: "en",
-			CurrentLabel:  "EN",
+		LanguageSwitch: toggles.LanguageSwitchProps{
+			AriaLabel: "Language",
+			Items: []toggles.LanguageSwitchItem{
+				{Locale: "en", Label: "En", Href: "/?lang=en", Active: true},
+				{Locale: "ru", Label: "Ru", Href: "/?lang=ru"},
+			},
 		},
 	}
 	body := DashboardPage(DashboardData{Title: "Home", Description: "d", Body: "b"})
@@ -39,7 +42,13 @@ func TestSiteShell_dashboardRenders(t *testing.T) {
 	if !strings.Contains(html, `id="ui8kit-theme-toggle"`) {
 		t.Fatal("expected theme toggle control")
 	}
-	if !strings.Contains(html, `id="language-toggle"`) {
-		t.Fatal("expected language toggle control")
+	if !strings.Contains(html, "<title>Home · FastyGo UI</title>") {
+		t.Fatal("expected brand in document title")
+	}
+	if strings.Contains(html, "Home · FastyGo UI</h1>") {
+		t.Fatal("expected header title without brand suffix")
+	}
+	if !strings.Contains(html, `role="group"`) || !strings.Contains(html, "En") {
+		t.Fatal("expected language switch control")
 	}
 }

@@ -13,6 +13,13 @@ const (
 	MobileSheetPanelID   = "ui8kit-mobile-sheet-panel"
 )
 
+func shellHeaderTitle(props ShellProps) string {
+	if strings.TrimSpace(props.HeaderTitle) != "" {
+		return props.HeaderTitle
+	}
+	return props.Title
+}
+
 func shellBrand(name string) string {
 	if name == "" {
 		return "App"

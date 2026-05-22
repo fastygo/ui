@@ -36,6 +36,8 @@ func TestPage_rendersPreviewWidget(t *testing.T) {
 		`View code`,
 		`z-20`,
 		`overflow-x-auto p-4 text-xs`,
+		`data-docs-preview-hide`,
+		`docs-preview-toggle`,
 	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("html missing %q", want)

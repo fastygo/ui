@@ -140,9 +140,9 @@ func siteNav(fix fixtures.Locale) []layout.NavItem {
 
 func layoutData(fix fixtures.Locale, lang, title, active, langTogglePath string) views.LayoutData {
 	return views.LayoutData{
-		Title:      title + " · " + fix.Brand,
-		Lang:       lang,
-		Brand:      fix.Brand,
+		PageTitle:      title,
+		Lang:           lang,
+		Brand:          fix.Brand,
 		Active:     active,
 		NavItems:   siteNav(fix),
 		Assets:     assetPaths(),

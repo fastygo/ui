@@ -1,4 +1,12 @@
-/* Docs preview widget: collapsed code footer (stable — not from Tailwind scan). */
+/* Collapsible preview + code panel (docs-preview widget). */
+.docs-preview details {
+  --docs-preview-panel-bg: color-mix(in oklab, var(--muted) 30%, var(--card));
+}
+
+.docs-preview-summary {
+  display: block;
+}
+
 .docs-preview-code-panel {
   position: relative;
 }
@@ -18,26 +26,42 @@
   position: absolute;
   inset-inline: 0;
   bottom: 0;
+  z-index: 1;
   height: 3rem;
+  display: none;
   background: linear-gradient(
     to bottom,
     transparent,
-    color-mix(in oklab, var(--muted) 30%, var(--background))
+    var(--docs-preview-panel-bg)
   );
-}
-
-.docs-preview-view,
-.docs-preview-hide {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
 }
 
 .docs-preview details:not([open]) .docs-preview-fade {
   display: block;
+}
+
+.docs-preview-toggle {
+  display: inline-block;
+  border: 0;
+  border-radius: 0.375rem;
+  background-color: color-mix(in oklab, var(--background) 75%, transparent);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+}
+
+.docs-preview-view {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
 }
 
 .docs-preview details:not([open]) .docs-preview-view {
@@ -49,9 +73,17 @@
   display: none;
 }
 
-.docs-preview details[open] .docs-preview-hide {
-  display: flex;
-  align-items: flex-end;
+.docs-preview-hide {
+  display: none;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
   justify-content: center;
-  padding-bottom: 0.5rem;
+}
+
+.docs-preview details[open] > .docs-preview-hide {
+  display: flex;
 }

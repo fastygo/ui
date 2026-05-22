@@ -104,6 +104,16 @@ func Header(props HeaderProps) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
+				if props.Trailing != nil {
+					templ_7745c5c3_Err = props.Trailing.Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 				if props.ThemeToggleComponent != nil {
 					templ_7745c5c3_Err = props.ThemeToggleComponent.Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
@@ -122,23 +132,13 @@ func Header(props HeaderProps) templ.Component {
 							}()
 						}
 						ctx = templ.InitializeContext(ctx)
-						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<span id=\"theme-toggle-icon\" class=\"inline-block h-4 w-4 shrink-0 latty latty-moon\" aria-hidden=\"true\"></span>")
+						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<span id=\"theme-toggle-icon\" class=\"inline-block h-4 w-4 shrink-0 latty latty-moon\" aria-hidden=\"true\"></span>")
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
 						return nil
 					})
 					templ_7745c5c3_Err = ui.Button(themeToggleButtonProps(props.ThemeToggle)).Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
-				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " ")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				if props.Trailing != nil {
-					templ_7745c5c3_Err = props.Trailing.Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}

@@ -54,14 +54,15 @@ func SiteShell(d LayoutData, body templpkg.Component) templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = layout.Shell(layout.ShellProps{
-			Title:          d.Title,
+			Title:          d.DocumentTitle(),
+			HeaderTitle:    d.PageTitle,
 			Lang:           d.Lang,
 			BrandName:      d.Brand,
 			Active:         d.Active,
 			NavItems:       d.NavItems,
 			HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS),
 			HeaderExtra:    nil,
-			HeaderTrailing: partials.HeaderTrailing(d.LanguageToggle),
+			HeaderTrailing: partials.HeaderTrailing(d.LanguageSwitch),
 			ThemeToggle:    d.Theme,
 			MarketingShell: false,
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)

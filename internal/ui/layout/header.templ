@@ -20,15 +20,15 @@ templ Header(props HeaderProps) {
 			if props.Extra != nil {
 				@props.Extra
 			}
+			if props.Trailing != nil {
+				@props.Trailing
+			}
 			if props.ThemeToggleComponent != nil {
 				@props.ThemeToggleComponent
 			} else {
 				@ui.Button(themeToggleButtonProps(props.ThemeToggle)) {
 					<span id="theme-toggle-icon" class="inline-block h-4 w-4 shrink-0 latty latty-moon" aria-hidden="true"></span>
 				}
-			}
-			if props.Trailing != nil {
-				@props.Trailing
 			}
 		}
 	}
