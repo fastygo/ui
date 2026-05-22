@@ -26,16 +26,20 @@ Native range input styled via ui.Input.
 
 ## Default
 
-{{demo id="slider.default"}}
-
 ```templ
-@ui.Input(ui.InputProps{Type: "range", Min: "0", Max: "100"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Input(ui.InputProps{Type: "range", Min: "0", Max: "100", AriaLabel: "Volume"})
+}
 ```
 
 ## With value
 
-{{demo id="slider.value"}}
-
 ```templ
-@ui.Input(ui.InputProps{Type: "range", Value: "50"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Input(ui.InputProps{Type: "range", Min: "0", Max: "100", Value: "50", AriaLabel: "Brightness"})
+}
 ```

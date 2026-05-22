@@ -23,24 +23,30 @@ Semantic heading with order 1–6.
 
 ## Heading 1
 
-{{demo id="title.h1"}}
-
 ```templ
-@ui.Title(ui.TitleProps{Order: 1}, "Page title")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Title(ui.TitleProps{Order: 1}, "Page title")
+}
 ```
 
 ## Heading 2
 
-{{demo id="title.h2"}}
-
 ```templ
-@ui.Title(ui.TitleProps{Order: 2}, "Section")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Title(ui.TitleProps{Order: 2}, "Section")
+}
 ```
 
 ## Heading 3
 
-{{demo id="title.h3"}}
-
 ```templ
-@ui.Title(ui.TitleProps{Order: 3}, "Subsection")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Title(ui.TitleProps{Order: 3}, "Subsection")
+}
 ```

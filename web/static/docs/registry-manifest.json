@@ -5,10 +5,7 @@
     "title": "Dashboard Overview",
     "source": "internal/ui/blocks",
     "package": "internal/ui/blocks",
-    "demos": [
-      "dashboard-overview.default",
-      "dashboard-overview.compact"
-    ]
+    "demos": null
   },
   {
     "slug": "docs-article",
@@ -16,10 +13,7 @@
     "title": "Docs Article",
     "source": "internal/ui/blocks",
     "package": "internal/ui/blocks",
-    "demos": [
-      "docs-article.default",
-      "docs-article.compact"
-    ]
+    "demos": null
   },
   {
     "slug": "marketing-hero",
@@ -27,10 +21,7 @@
     "title": "Marketing Hero",
     "source": "internal/ui/blocks",
     "package": "internal/ui/blocks",
-    "demos": [
-      "marketing-hero.default",
-      "marketing-hero.compact"
-    ]
+    "demos": null
   },
   {
     "slug": "accordion",
@@ -38,9 +29,7 @@
     "title": "Accordion",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "accordion.default"
-    ]
+    "demos": null
   },
   {
     "slug": "alert",
@@ -48,10 +37,7 @@
     "title": "Alert",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "alert.default",
-      "alert.destructive"
-    ]
+    "demos": null
   },
   {
     "slug": "alert-dialog",
@@ -59,9 +45,7 @@
     "title": "Alert Dialog",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "alert-dialog.default"
-    ]
+    "demos": null
   },
   {
     "slug": "aspect-ratio",
@@ -69,9 +53,7 @@
     "title": "Aspect Ratio",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "aspect-ratio.default"
-    ]
+    "demos": null
   },
   {
     "slug": "avatar",
@@ -79,9 +61,7 @@
     "title": "Avatar",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "avatar.default"
-    ]
+    "demos": null
   },
   {
     "slug": "badge",
@@ -89,12 +69,7 @@
     "title": "Badge",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "badge.default",
-      "badge.secondary",
-      "badge.outline",
-      "badge.destructive"
-    ]
+    "demos": null
   },
   {
     "slug": "block",
@@ -102,10 +77,7 @@
     "title": "Block",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "block.main",
-      "block.aside"
-    ]
+    "demos": null
   },
   {
     "slug": "blog-card",
@@ -113,10 +85,7 @@
     "title": "Blog Card",
     "source": "github.com/fastygo/ui/internal/ui/components/blogcard",
     "package": "github.com/fastygo/ui/internal/ui/components/blogcard",
-    "demos": [
-      "blog-card.vertical",
-      "blog-card.horizontal"
-    ]
+    "demos": null
   },
   {
     "slug": "box",
@@ -124,10 +93,7 @@
     "title": "Box",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "box.default",
-      "box.pre"
-    ]
+    "demos": null
   },
   {
     "slug": "breadcrumb",
@@ -135,10 +101,7 @@
     "title": "Breadcrumb",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "breadcrumb.default",
-      "breadcrumb.current"
-    ]
+    "demos": null
   },
   {
     "slug": "button",
@@ -154,9 +117,7 @@
     "title": "Calendar",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "calendar.default"
-    ]
+    "demos": null
   },
   {
     "slug": "card",
@@ -164,10 +125,7 @@
     "title": "Card",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "card.default",
-      "card.footer"
-    ]
+    "demos": null
   },
   {
     "slug": "carousel",
@@ -175,9 +133,7 @@
     "title": "Carousel",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "carousel.default"
-    ]
+    "demos": null
   },
   {
     "slug": "checkbox",
@@ -185,10 +141,7 @@
     "title": "Checkbox",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "checkbox.default",
-      "checkbox.checked"
-    ]
+    "demos": null
   },
   {
     "slug": "collapsible",
@@ -196,9 +149,7 @@
     "title": "Collapsible",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "collapsible.default"
-    ]
+    "demos": null
   },
   {
     "slug": "combobox",
@@ -206,9 +157,7 @@
     "title": "Combobox",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "combobox.default"
-    ]
+    "demos": null
   },
   {
     "slug": "command",
@@ -216,9 +165,7 @@
     "title": "Command",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "command.default"
-    ]
+    "demos": null
   },
   {
     "slug": "container",
@@ -226,10 +173,7 @@
     "title": "Container",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "container.default",
-      "container.section"
-    ]
+    "demos": null
   },
   {
     "slug": "context-menu",
@@ -237,9 +181,7 @@
     "title": "Context Menu",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "context-menu.default"
-    ]
+    "demos": null
   },
   {
     "slug": "data-table",
@@ -247,9 +189,7 @@
     "title": "Data Table",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "data-table.default"
-    ]
+    "demos": null
   },
   {
     "slug": "dialog",
@@ -257,9 +197,7 @@
     "title": "Dialog",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "dialog.default"
-    ]
+    "demos": null
   },
   {
     "slug": "drawer",
@@ -267,9 +205,7 @@
     "title": "Drawer",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "drawer.default"
-    ]
+    "demos": null
   },
   {
     "slug": "dropdown-menu",
@@ -277,9 +213,7 @@
     "title": "Dropdown Menu",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "dropdown-menu.default"
-    ]
+    "demos": null
   },
   {
     "slug": "form",
@@ -287,10 +221,7 @@
     "title": "Form",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "form.default",
-      "form.inline"
-    ]
+    "demos": null
   },
   {
     "slug": "grid",
@@ -298,10 +229,7 @@
     "title": "Grid",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "grid.default",
-      "grid.three"
-    ]
+    "demos": null
   },
   {
     "slug": "group",
@@ -309,10 +237,7 @@
     "title": "Group",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "group.default",
-      "group.wrap"
-    ]
+    "demos": null
   },
   {
     "slug": "hover-card",
@@ -320,9 +245,7 @@
     "title": "Hover Card",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "hover-card.default"
-    ]
+    "demos": null
   },
   {
     "slug": "icon",
@@ -330,10 +253,7 @@
     "title": "Icon",
     "source": "github.com/fastygo/ui/internal/ui/components/icon",
     "package": "github.com/fastygo/ui/internal/ui/components/icon",
-    "demos": [
-      "icon.default",
-      "icon.sizes"
-    ]
+    "demos": null
   },
   {
     "slug": "input",
@@ -341,11 +261,7 @@
     "title": "Input",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "input.default",
-      "input.disabled",
-      "input.file"
-    ]
+    "demos": null
   },
   {
     "slug": "label",
@@ -353,10 +269,7 @@
     "title": "Label",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "label.default",
-      "label.required"
-    ]
+    "demos": null
   },
   {
     "slug": "language-toggle",
@@ -364,9 +277,7 @@
     "title": "Language Toggle",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "language-toggle.default"
-    ]
+    "demos": null
   },
   {
     "slug": "list",
@@ -374,10 +285,7 @@
     "title": "List",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "list.unordered",
-      "list.ordered"
-    ]
+    "demos": null
   },
   {
     "slug": "menubar",
@@ -385,9 +293,7 @@
     "title": "Menubar",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "menubar.default"
-    ]
+    "demos": null
   },
   {
     "slug": "navigation-menu",
@@ -395,9 +301,7 @@
     "title": "Navigation Menu",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "navigation-menu.default"
-    ]
+    "demos": null
   },
   {
     "slug": "pagination",
@@ -405,9 +309,7 @@
     "title": "Pagination",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "pagination.default"
-    ]
+    "demos": null
   },
   {
     "slug": "popover",
@@ -415,9 +317,7 @@
     "title": "Popover",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "popover.default"
-    ]
+    "demos": null
   },
   {
     "slug": "progress",
@@ -425,9 +325,7 @@
     "title": "Progress",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "progress.default"
-    ]
+    "demos": null
   },
   {
     "slug": "radio",
@@ -435,10 +333,7 @@
     "title": "Radio",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "radio.default",
-      "radio.checked"
-    ]
+    "demos": null
   },
   {
     "slug": "select",
@@ -446,10 +341,7 @@
     "title": "Select",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "select.default",
-      "select.disabled"
-    ]
+    "demos": null
   },
   {
     "slug": "separator",
@@ -457,9 +349,7 @@
     "title": "Separator",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "separator.default"
-    ]
+    "demos": null
   },
   {
     "slug": "sheet",
@@ -467,9 +357,7 @@
     "title": "Sheet",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "sheet.default"
-    ]
+    "demos": null
   },
   {
     "slug": "skeleton",
@@ -477,9 +365,7 @@
     "title": "Skeleton",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "skeleton.default"
-    ]
+    "demos": null
   },
   {
     "slug": "slider",
@@ -487,10 +373,7 @@
     "title": "Slider",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "slider.default",
-      "slider.value"
-    ]
+    "demos": null
   },
   {
     "slug": "stack",
@@ -498,11 +381,7 @@
     "title": "Stack",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "stack.default",
-      "stack.horizontal",
-      "stack.nav"
-    ]
+    "demos": null
   },
   {
     "slug": "switch",
@@ -510,10 +389,7 @@
     "title": "Switch",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "switch.default",
-      "switch.checked"
-    ]
+    "demos": null
   },
   {
     "slug": "table",
@@ -521,10 +397,7 @@
     "title": "Table",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "table.default",
-      "table.striped"
-    ]
+    "demos": null
   },
   {
     "slug": "tabs",
@@ -532,9 +405,7 @@
     "title": "Tabs",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "tabs.default"
-    ]
+    "demos": null
   },
   {
     "slug": "text",
@@ -542,11 +413,7 @@
     "title": "Text",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "text.default",
-      "text.muted",
-      "text.code"
-    ]
+    "demos": null
   },
   {
     "slug": "textarea",
@@ -554,10 +421,7 @@
     "title": "Textarea",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "textarea.default",
-      "textarea.disabled"
-    ]
+    "demos": null
   },
   {
     "slug": "title",
@@ -565,11 +429,7 @@
     "title": "Title",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "title.h1",
-      "title.h2",
-      "title.h3"
-    ]
+    "demos": null
   },
   {
     "slug": "toast",
@@ -577,9 +437,7 @@
     "title": "Toast",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "toast.default"
-    ]
+    "demos": null
   },
   {
     "slug": "toggle",
@@ -587,10 +445,7 @@
     "title": "Toggle",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "toggle.default",
-      "toggle.pressed"
-    ]
+    "demos": null
   },
   {
     "slug": "toggle-group",
@@ -598,9 +453,7 @@
     "title": "Toggle Group",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "toggle-group.default"
-    ]
+    "demos": null
   },
   {
     "slug": "tooltip",
@@ -608,9 +461,7 @@
     "title": "Tooltip",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui",
-    "demos": [
-      "tooltip.default"
-    ]
+    "demos": null
   },
   {
     "slug": "installation",
@@ -618,9 +469,7 @@
     "title": "Installation",
     "source": "github.com/fastygo/ui",
     "package": "cmd/server",
-    "demos": [
-      "installation.clone"
-    ]
+    "demos": null
   },
   {
     "slug": "introduction",
@@ -628,9 +477,7 @@
     "title": "Introduction",
     "source": "github.com/fastygo/ui",
     "package": "internal/site",
-    "demos": [
-      "introduction.overview"
-    ]
+    "demos": null
   },
   {
     "slug": "theming",
@@ -638,8 +485,6 @@
     "title": "Theming",
     "source": "web/static/css/tweakcn.css",
     "package": "web/static/js/theme.js",
-    "demos": [
-      "theming.tokens"
-    ]
+    "demos": null
   }
 ]

@@ -26,10 +26,22 @@ Tabbed interface (wireframe; data-ui8kit tabs).
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="tabs.default"}}
-
 ```templ
-@ui.Stack { tablist + panels }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-md", Attrs: templ.Attributes{"data-ui8kit": "tabs"}}) {
+		@ui.Group(ui.GroupProps{Class: "flex gap-1", Attrs: templ.Attributes{"role": "tablist"}}) {
+			@ui.Button(ui.ButtonProps{Variant: "secondary", Size: "sm", Attrs: templ.Attributes{"data-ui8kit-tab": "a", "aria-selected": "true"}}) {
+				Tab A
+			}
+			@ui.Button(ui.ButtonProps{Variant: "ghost", Size: "sm", Attrs: templ.Attributes{"data-ui8kit-tab": "b"}}) {
+				Tab B
+			}
+		}
+		@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-sm", Attrs: templ.Attributes{"data-ui8kit-panel": "a"}}) {
+			@ui.Text(ui.TextProps{}, "Tab A panel.")
+		}
+	}
+}
 ```

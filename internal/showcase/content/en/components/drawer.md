@@ -20,10 +20,13 @@ Bottom sheet drawer wireframe.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="drawer.default"}}
-
 ```templ
-@ui.Box anchored to bottom
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{Class: "w-full max-w-md rounded-t-xl border border-border bg-card p-4"}) {
+		@ui.Box(ui.BoxProps{Class: "mx-auto mb-3 h-1 w-10 rounded-full bg-muted"})
+		@ui.Text(ui.TextProps{}, "Drawer content.")
+	}
+}
 ```

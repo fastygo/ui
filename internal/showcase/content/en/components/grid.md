@@ -23,16 +23,47 @@ CSS grid layout with columns.
 
 ## Two columns
 
-{{demo id="grid.default"}}
-
 ```templ
-@ui.Grid(ui.GridProps{Class: "grid-cols-2 gap-4"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Grid(ui.GridProps{Class: "grid-cols-2 gap-4 max-w-md"}) {
+		@ui.GridCol(ui.GridColProps{}) {
+			@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-center text-sm"}) {
+				@ui.Text(ui.TextProps{}, "1")
+			}
+		}
+		@ui.GridCol(ui.GridColProps{}) {
+			@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-center text-sm"}) {
+				@ui.Text(ui.TextProps{}, "2")
+			}
+		}
+	}
+}
 ```
 
 ## Three columns
 
-{{demo id="grid.three"}}
-
 ```templ
-@ui.Grid(ui.GridProps{Class: "grid-cols-3 gap-2"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Grid(ui.GridProps{Class: "grid-cols-3 gap-2 max-w-md"}) {
+		@ui.GridCol(ui.GridColProps{}) {
+			@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-center text-sm"}) {
+				@ui.Text(ui.TextProps{}, "1")
+			}
+		}
+		@ui.GridCol(ui.GridColProps{}) {
+			@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-center text-sm"}) {
+				@ui.Text(ui.TextProps{}, "2")
+			}
+		}
+		@ui.GridCol(ui.GridColProps{}) {
+			@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-center text-sm"}) {
+				@ui.Text(ui.TextProps{}, "3")
+			}
+		}
+	}
+}
 ```

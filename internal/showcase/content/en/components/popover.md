@@ -20,10 +20,17 @@ Floating content panel.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="popover.default"}}
-
 ```templ
-@ui.Button + floating @ui.Box
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Button(ui.ButtonProps{Variant: "outline"}) {
+			Open popover
+		}
+		@ui.Box(ui.BoxProps{Class: "w-56 rounded-lg border border-border bg-card p-3 text-sm shadow"}) {
+			@ui.Text(ui.TextProps{}, "Popover body copy.")
+		}
+	}
+}
 ```

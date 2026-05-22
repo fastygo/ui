@@ -1,5 +1,6 @@
 .manual
 .project
+.internal
 bin
 node_modules
 /tmp/

@@ -20,10 +20,26 @@ Site navigation with sections.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="navigation-menu.default"}}
-
 ```templ
-@ui.List[Tag=menu] { links }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.List(ui.ListProps{Tag: "menu", Class: "flex gap-4 text-sm"}) {
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Button(ui.ButtonProps{Variant: "link"}) {
+				Home
+			}
+		}
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Button(ui.ButtonProps{Variant: "link"}) {
+				Docs
+			}
+		}
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Button(ui.ButtonProps{Variant: "link"}) {
+				Blog
+			}
+		}
+	}
+}
 ```

@@ -23,16 +23,28 @@ Callout for important messages.
 
 ## Default
 
-{{demo id="alert.default"}}
-
 ```templ
-@cmp.Alert(cmp.AlertProps{}) { … }
+import cmp "github.com/fastygo/templ/components"
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@cmp.Alert(cmp.AlertProps{}) {
+		@ui.Title(ui.TitleProps{Order: 4, Class: "text-sm font-semibold"}, "Heads up")
+		@ui.Text(ui.TextProps{Class: "text-sm"}, "You can add components from the gallery.")
+	}
+}
 ```
 
 ## Destructive
 
-{{demo id="alert.destructive"}}
-
 ```templ
-@cmp.Alert(cmp.AlertProps{Variant: "destructive"}) { … }
+import cmp "github.com/fastygo/templ/components"
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@cmp.Alert(cmp.AlertProps{Variant: "destructive"}) {
+		@ui.Title(ui.TitleProps{Order: 4, Class: "text-sm font-semibold"}, "Error")
+		@ui.Text(ui.TextProps{Class: "text-sm"}, "Something went wrong.")
+	}
+}
 ```

@@ -20,10 +20,17 @@ Hint on hover/focus (wireframe).
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="tooltip.default"}}
-
 ```templ
-@ui.Button + @ui.Box[role=tooltip]
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 items-start"}) {
+		@ui.Button(ui.ButtonProps{Attrs: templ.Attributes{"aria-describedby": "tip-demo"}}) {
+			Hover me
+		}
+		@ui.Box(ui.BoxProps{Class: "rounded border border-border bg-popover px-2 py-1 text-xs", Attrs: templ.Attributes{"id": "tip-demo", "role": "tooltip"}}) {
+			@ui.Text(ui.TextProps{}, "Tooltip text")
+		}
+	}
+}
 ```

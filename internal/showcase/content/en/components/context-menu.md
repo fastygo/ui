@@ -20,10 +20,22 @@ Stub menu list on right-click target.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="context-menu.default"}}
-
 ```templ
-@ui.Box + @ui.List[menu]
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Box(ui.BoxProps{Class: "rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground"}) {
+			@ui.Text(ui.TextProps{}, "Right-click area (stub)")
+		}
+		@ui.List(ui.ListProps{Tag: "menu", Class: "w-40 rounded-md border border-border bg-card p-1 text-sm"}) {
+			@ui.ListItem(ui.ListItemProps{}) {
+				@ui.Text(ui.TextProps{}, "Copy")
+			}
+			@ui.ListItem(ui.ListItemProps{}) {
+				@ui.Text(ui.TextProps{}, "Paste")
+			}
+		}
+	}
+}
 ```

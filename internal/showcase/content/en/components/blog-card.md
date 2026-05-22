@@ -37,18 +37,22 @@ Reusable blog list cards with media placeholder — vertical and horizontal layo
 
 Stacked media and copy for grids and feeds.
 
-{{demo id="blog-card.vertical"}}
-
 ```templ
-@blogcard.VerticalBlogCard(blogcard.DefaultVertical())
+import "github.com/fastygo/ui/internal/ui/components/blogcard"
+
+templ Example() {
+	@blogcard.VerticalBlogCard(blogcard.DefaultVertical())
+}
 ```
 
 ## Horizontal
 
 Side-by-side media and copy for dense lists.
 
-{{demo id="blog-card.horizontal"}}
-
 ```templ
-@blogcard.HorizontalBlogCard(blogcard.DefaultHorizontal())
+import "github.com/fastygo/ui/internal/ui/components/blogcard"
+
+templ Example() {
+	@blogcard.HorizontalBlogCard(blogcard.DefaultHorizontal())
+}
 ```

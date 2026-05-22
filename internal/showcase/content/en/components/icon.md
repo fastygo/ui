@@ -26,16 +26,26 @@ Latty icon mask (app registry).
 
 ## Default
 
-{{demo id="icon.default"}}
-
 ```templ
-@icon.Icon(icon.IconProps{Name: "home"})
+import appicon "github.com/fastygo/ui/internal/ui/components/icon"
+
+templ Example() {
+	@appicon.Icon(appicon.IconProps{Name: "home"})
+}
 ```
 
 ## Sizes
 
-{{demo id="icon.sizes"}}
+```templ
+import appicon "github.com/fastygo/ui/internal/ui/components/icon"
+import "github.com/fastygo/templ/ui"
 
-```go
-Size: xs | sm | md | lg
+templ Example() {
+	@ui.Group(ui.GroupProps{}) {
+		@appicon.Icon(appicon.IconProps{Name: "settings", Size: "xs", Class: "mr-2"})
+		@appicon.Icon(appicon.IconProps{Name: "settings", Size: "sm", Class: "mr-2"})
+		@appicon.Icon(appicon.IconProps{Name: "settings", Size: "md", Class: "mr-2"})
+		@appicon.Icon(appicon.IconProps{Name: "settings", Size: "lg", Class: "mr-2"})
+	}
+}
 ```

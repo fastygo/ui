@@ -23,16 +23,30 @@ Accessible label for form controls.
 
 ## Default
 
-{{demo id="label.default"}}
-
 ```templ
-@showcaseutil.RenderLabel(ctx, w, ui.LabelProps{HTMLFor: "email"}, "Email")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{}) {
+		@ui.Label(ui.LabelProps{HTMLFor: "showcase-email"}) {
+			Email
+		}
+		@ui.Input(ui.InputProps{ID: "showcase-email", Placeholder: "you@example.com"})
+	}
+}
 ```
 
 ## Required hint
 
-{{demo id="label.required"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-Pair with aria-required on control
+templ Example() {
+	@ui.Stack(ui.StackProps{}) {
+		@ui.Label(ui.LabelProps{HTMLFor: "showcase-name"}) {
+			Name
+		}
+		@ui.Input(ui.InputProps{ID: "showcase-name", Required: true, Placeholder: "Required"})
+	}
+}
 ```

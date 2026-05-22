@@ -2,7 +2,7 @@
 slug: switch
 section: components
 title: "Switch"
-description: "Toggle switch (formswitch / ui.Switch)."
+description: "Toggle switch input."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
@@ -16,26 +16,30 @@ api:
     description: "Form field name"
   - name: "Checked"
     type: "bool"
-    description: "On state"
-  - name: "AriaLabel"
-    type: "string"
-    description: "Accessible name"
+    description: "Initial on state"
+  - name: "Disabled"
+    type: "bool"
+    description: "Disables control"
 ---
 
-Toggle switch (formswitch / ui.Switch).
+Toggle switch input.
 
 ## Default
 
-{{demo id="switch.default"}}
-
 ```templ
-@ui.Switch(ui.SwitchProps{Name: "airplane"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Switch(ui.SwitchProps{Name: "airplane", AriaLabel: "Airplane mode"})
+}
 ```
 
-## On
-
-{{demo id="switch.checked"}}
+## Checked
 
 ```templ
-@ui.Switch(ui.SwitchProps{Checked: true})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Switch(ui.SwitchProps{Name: "airplane", Checked: true, AriaLabel: "Airplane mode on"})
+}
 ```

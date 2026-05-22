@@ -23,10 +23,29 @@ Table with toolbar (wireframe).
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="data-table.default"}}
-
 ```templ
-@ui.Table inside @ui.Stack
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-3 max-w-lg"}) {
+		@ui.Group(ui.GroupProps{Class: "flex items-center justify-between"}) {
+			@ui.Input(ui.InputProps{Placeholder: "Filter rows…", Class: "max-w-xs"})
+			@ui.Button(ui.ButtonProps{Size: "sm", Variant: "outline"}) {
+				Columns
+			}
+		}
+		@ui.Table(ui.TableProps{Class: "w-full text-sm border border-border"}) {
+			@ui.TableBody(ui.TableSectionProps{}) {
+				@ui.TableRow(ui.TableRowProps{}) {
+					@ui.TableCell(ui.TableCellProps{}) {
+						Row A
+					}
+					@ui.TableCell(ui.TableCellProps{}) {
+						Active
+					}
+				}
+			}
+		}
+	}
+}
 ```

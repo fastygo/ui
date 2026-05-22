@@ -23,24 +23,30 @@ Inline or block text with configurable tag.
 
 ## Paragraph
 
-{{demo id="text.default"}}
-
 ```templ
-@ui.Text(ui.TextProps{}, "Body copy.")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Text(ui.TextProps{}, "Body copy.")
+}
 ```
 
 ## Muted
 
-{{demo id="text.muted"}}
-
 ```templ
-@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "…")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "Muted supporting text.")
+}
 ```
 
 ## Code
 
-{{demo id="text.code"}}
-
 ```templ
-@ui.Text(ui.TextProps{Tag: "code"}, "npm install")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Text(ui.TextProps{Tag: "code", Class: "font-mono text-xs"}, "npm install")
+}
 ```

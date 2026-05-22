@@ -20,10 +20,17 @@ Rich preview on hover.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="hover-card.default"}}
-
 ```templ
-@ui.Group { trigger + card }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "flex items-start gap-3"}) {
+		@ui.Button(ui.ButtonProps{Variant: "link"}) {
+			{ "@user" }
+		}
+		@ui.Box(ui.BoxProps{Class: "w-56 rounded-lg border border-border bg-card p-3 text-sm"}) {
+			@ui.Text(ui.TextProps{}, "Profile preview card.")
+		}
+	}
+}
 ```

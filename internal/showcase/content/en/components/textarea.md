@@ -26,16 +26,20 @@ Multi-line text input.
 
 ## Default
 
-{{demo id="textarea.default"}}
-
 ```templ
-@ui.Textarea(ui.TextareaProps{Placeholder: "Message"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Textarea(ui.TextareaProps{Placeholder: "Your message"})
+}
 ```
 
 ## Disabled
 
-{{demo id="textarea.disabled"}}
-
 ```templ
-@ui.Textarea(ui.TextareaProps{Disabled: true})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Textarea(ui.TextareaProps{Placeholder: "Disabled", Disabled: true})
+}
 ```

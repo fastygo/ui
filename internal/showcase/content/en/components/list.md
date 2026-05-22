@@ -26,16 +26,34 @@ Semantic ul/ol/dl list containers.
 
 ## Unordered
 
-{{demo id="list.unordered"}}
-
 ```templ
-@ui.List(ui.ListProps{Class: "list-disc pl-5"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.List(ui.ListProps{Class: "list-disc pl-5 text-sm"}) {
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Text(ui.TextProps{}, "First item")
+		}
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Text(ui.TextProps{}, "Second item")
+		}
+	}
+}
 ```
 
 ## Ordered
 
-{{demo id="list.ordered"}}
-
 ```templ
-@ui.List(ui.ListProps{Tag: "ol", Class: "list-decimal pl-5"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.List(ui.ListProps{Tag: "ol", Class: "list-decimal pl-5 text-sm"}) {
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Text(ui.TextProps{}, "First item")
+		}
+		@ui.ListItem(ui.ListItemProps{}) {
+			@ui.Text(ui.TextProps{}, "Second item")
+		}
+	}
+}
 ```

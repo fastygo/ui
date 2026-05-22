@@ -26,16 +26,40 @@ Horizontal flex row for grouping controls.
 
 ## Default
 
-{{demo id="group.default"}}
-
 ```templ
-@ui.Group(ui.GroupProps{Class: "flex items-center gap-2"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "flex items-center gap-2"}) {
+		@ui.Button(ui.ButtonProps{Size: "sm"}) {
+			One
+		}
+		@ui.Button(ui.ButtonProps{Size: "sm", Variant: "outline"}) {
+			Two
+		}
+	}
+}
 ```
 
 ## Wrap
 
-{{demo id="group.wrap"}}
-
 ```templ
-@ui.Group(ui.GroupProps{Class: "flex flex-wrap gap-2"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "flex flex-wrap gap-2 max-w-xs"}) {
+		@ui.Badge(ui.BadgeProps{}) {
+			1
+		}
+		@ui.Badge(ui.BadgeProps{}) {
+			2
+		}
+		@ui.Badge(ui.BadgeProps{}) {
+			3
+		}
+		@ui.Badge(ui.BadgeProps{}) {
+			4
+		}
+	}
+}
 ```

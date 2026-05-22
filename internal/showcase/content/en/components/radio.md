@@ -2,40 +2,44 @@
 slug: radio
 section: components
 title: "Radio"
-description: "Single choice within a group."
+description: "Single-choice radio input."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Checkbox"
     href: /docs/components/checkbox/
-  - label: "Select"
-    href: /docs/components/select/
+  - label: "Switch"
+    href: /docs/components/switch/
 api:
   - name: "Name"
     type: "string"
-    description: "Group name"
+    description: "Form field name"
   - name: "Value"
     type: "string"
     description: "Option value"
   - name: "Checked"
     type: "bool"
-    description: "Selected state"
+    description: "Initial checked state"
 ---
 
-Single choice within a group.
+Single-choice radio input.
 
 ## Default
 
-{{demo id="radio.default"}}
-
 ```templ
-@ui.Radio(ui.RadioProps{Name: "plan", Value: "free"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Radio(ui.RadioProps{Name: "plan", Value: "free", AriaLabel: "Free plan"})
+}
 ```
 
-## Selected
-
-{{demo id="radio.checked"}}
+## Checked
 
 ```templ
-@ui.Radio(ui.RadioProps{Checked: true})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Radio(ui.RadioProps{Name: "plan", Value: "pro", Checked: true, AriaLabel: "Pro plan"})
+}
 ```

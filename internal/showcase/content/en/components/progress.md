@@ -23,10 +23,20 @@ Progress indicator wireframe.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="progress.default"}}
-
 ```templ
-@ui.Box { track + fill }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{
+		Class: "h-2 w-full max-w-xs overflow-hidden rounded-full bg-muted",
+		Attrs: templ.Attributes{
+			"role":          "progressbar",
+			"aria-valuenow": "60",
+			"aria-valuemin": "0",
+			"aria-valuemax": "100",
+		},
+	}) {
+		@ui.Box(ui.BoxProps{Class: "h-full w-3/5 bg-primary"})
+	}
+}
 ```

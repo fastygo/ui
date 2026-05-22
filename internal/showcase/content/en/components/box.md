@@ -26,16 +26,24 @@ Generic block wrapper without landmark semantics.
 
 ## Default
 
-{{demo id="box.default"}}
-
 ```templ
-@ui.Box(ui.BoxProps{Class: "rounded-lg border border-border p-4"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{Class: "rounded-lg border border-border p-4"}) {
+		@ui.Text(ui.TextProps{}, "Box content.")
+	}
+}
 ```
 
 ## Pre tag
 
-{{demo id="box.pre"}}
-
 ```templ
-@ui.Box(ui.BoxProps{Tag: "pre"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{Tag: "pre", Class: "rounded-md border border-border bg-muted/30 p-3 text-xs font-mono"}) {
+		@ui.Text(ui.TextProps{Tag: "code"}, "code snippet")
+	}
+}
 ```

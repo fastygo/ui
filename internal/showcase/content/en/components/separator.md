@@ -23,10 +23,14 @@ Visual divider between sections.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="separator.default"}}
-
 ```templ
-@ui.Box(ui.BoxProps{Class: "h-px bg-border"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-md"}) {
+		@ui.Text(ui.TextProps{}, "Above")
+		@ui.Box(ui.BoxProps{Class: "h-px w-full bg-border", Attrs: templ.Attributes{"role": "separator"}})
+		@ui.Text(ui.TextProps{}, "Below")
+	}
+}
 ```

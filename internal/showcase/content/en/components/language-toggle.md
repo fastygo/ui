@@ -26,8 +26,19 @@ Locale switcher (app toggles package).
 
 ## Default
 
-{{demo id="language-toggle.default"}}
-
 ```templ
-@toggles.LanguageToggle(data)
+import "github.com/fastygo/framework/pkg/web/view"
+import toggles "github.com/fastygo/ui/internal/ui/components/toggles"
+
+templ Example() {
+	@toggles.LanguageToggle(view.LanguageToggleData{
+		CurrentLabel:     "EN",
+		CurrentLocale:    "en",
+		NextLocale:       "ru",
+		NextHref:         "/?lang=ru",
+		DefaultLocale:    "en",
+		AvailableLocales: []string{"en", "ru"},
+		Label:            "Switch language",
+	})
+}
 ```

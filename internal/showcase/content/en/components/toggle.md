@@ -23,16 +23,24 @@ Pressable toggle button (wireframe).
 
 ## Default
 
-{{demo id="toggle.default"}}
-
 ```templ
-@ui.Button(ui.ButtonProps{Variant: "outline", Attrs: templ.Attributes{"aria-pressed": "false"}})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "outline", Attrs: templ.Attributes{"aria-pressed": "false"}}) {
+		Bold
+	}
+}
 ```
 
 ## Pressed
 
-{{demo id="toggle.pressed"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-aria-pressed="true"
+templ Example() {
+	@ui.Button(ui.ButtonProps{Variant: "secondary", Attrs: templ.Attributes{"aria-pressed": "true"}}) {
+		Bold
+	}
+}
 ```

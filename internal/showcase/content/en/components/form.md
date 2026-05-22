@@ -26,16 +26,37 @@ Form landmark with item helpers.
 
 ## Login
 
-{{demo id="form.default"}}
-
 ```templ
-@ui.Form(ui.FormProps{}) { @ui.FormItem … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Form(ui.FormProps{Class: "max-w-sm"}) {
+		@ui.FormItem(ui.FormItemProps{}) {
+			@ui.Label(ui.LabelProps{HTMLFor: "login-email"}) {
+				Email
+			}
+			@ui.Input(ui.InputProps{ID: "login-email", Type: "email", Placeholder: "you@example.com"})
+		}
+		@ui.Button(ui.ButtonProps{Type: "submit"}) {
+			Sign in
+		}
+	}
+}
 ```
 
 ## Inline
 
-{{demo id="form.inline"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-Compact horizontal FormItem layout
+templ Example() {
+	@ui.Form(ui.FormProps{Class: "max-w-md"}) {
+		@ui.Group(ui.GroupProps{Class: "flex items-end gap-2"}) {
+			@ui.Input(ui.InputProps{Placeholder: "Search"})
+			@ui.Button(ui.ButtonProps{}) {
+				Go
+			}
+		}
+	}
+}
 ```

@@ -26,16 +26,20 @@ Boolean checkbox input.
 
 ## Default
 
-{{demo id="checkbox.default"}}
-
 ```templ
-@ui.Checkbox(ui.CheckboxProps{Name: "terms"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Checkbox(ui.CheckboxProps{Name: "terms", AriaLabel: "Accept terms"})
+}
 ```
 
 ## Checked
 
-{{demo id="checkbox.checked"}}
-
 ```templ
-@ui.Checkbox(ui.CheckboxProps{Checked: true})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Checkbox(ui.CheckboxProps{Name: "terms", Checked: true, AriaLabel: "Accepted"})
+}
 ```

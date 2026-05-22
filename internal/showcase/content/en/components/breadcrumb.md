@@ -23,16 +23,27 @@ Hierarchy navigation trail.
 
 ## Default
 
-{{demo id="breadcrumb.default"}}
-
 ```templ
-@cmp.Breadcrumb(cmp.BreadcrumbProps{Items: items})
+import cmp "github.com/fastygo/templ/components"
+
+templ Example() {
+	@cmp.Breadcrumb(cmp.BreadcrumbProps{Items: []cmp.BreadcrumbItem{
+		{Label: "Home", Href: "/"},
+		{Label: "Docs", Href: "/docs"},
+		{Label: "Button", Current: true},
+	}})
+}
 ```
 
 ## Current page
 
-{{demo id="breadcrumb.current"}}
+```templ
+import cmp "github.com/fastygo/templ/components"
 
-```go
-Last item with Current: true
+templ Example() {
+	@cmp.Breadcrumb(cmp.BreadcrumbProps{Items: []cmp.BreadcrumbItem{
+		{Label: "Home", Href: "/"},
+		{Label: "Settings", Current: true},
+	}})
+}
 ```

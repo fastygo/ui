@@ -20,10 +20,15 @@ Transient notification wireframe.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="toast.default"}}
-
 ```templ
-@ui.Box { message + action }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{Class: "flex max-w-sm items-center justify-between gap-4 rounded-lg border border-border bg-card p-4 shadow"}) {
+		@ui.Text(ui.TextProps{Class: "text-sm"}, "Saved successfully.")
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Undo
+		}
+	}
+}
 ```

@@ -26,16 +26,40 @@ Native select dropdown (ui.Select / selectfield).
 
 ## Default
 
-{{demo id="select.default"}}
-
 ```templ
-@ui.Select(ui.SelectProps{Name: "role", Options: opts})
+import (
+	"github.com/fastygo/templ/ui"
+	"github.com/fastygo/templ/ui/selectfield"
+)
+
+templ Example() {
+	@ui.Select(ui.SelectProps{
+		Name: "role",
+		Options: []selectfield.Option{
+			{Value: "viewer", Label: "Viewer"},
+			{Value: "editor", Label: "Editor"},
+		},
+		Value: "viewer",
+	})
+}
 ```
 
 ## Disabled
 
-{{demo id="select.disabled"}}
-
 ```templ
-@ui.Select(ui.SelectProps{Disabled: true})
+import (
+	"github.com/fastygo/templ/ui"
+	"github.com/fastygo/templ/ui/selectfield"
+)
+
+templ Example() {
+	@ui.Select(ui.SelectProps{
+		Name: "role",
+		Options: []selectfield.Option{
+			{Value: "viewer", Label: "Viewer"},
+			{Value: "editor", Label: "Editor"},
+		},
+		Disabled: true,
+	})
+}
 ```

@@ -23,8 +23,29 @@ Command palette: search + list.
 
 ## Default
 
-{{demo id="command.default"}}
-
 ```templ
-@ui.Input + @ui.List
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-sm rounded-lg border border-border bg-card p-2"}) {
+		@ui.Input(ui.InputProps{Placeholder: "Type a command…"})
+		@ui.List(ui.ListProps{Class: "text-sm"}) {
+			@ui.ListItem(ui.ListItemProps{}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start"}) {
+					Open docs
+				}
+			}
+			@ui.ListItem(ui.ListItemProps{}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start"}) {
+					Toggle theme
+				}
+			}
+			@ui.ListItem(ui.ListItemProps{}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start"}) {
+					Go home
+				}
+			}
+		}
+	}
+}
 ```

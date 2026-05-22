@@ -18,11 +18,13 @@ FastyGo UI is a wireframe-first component gallery on Go and templ. Pages show li
 
 Structure, semantics, and accessibility come first; visual brand polish is a later phase.
 
-{{demo id="introduction.overview"}}
-
 ```templ
-@ui.Stack(ui.StackProps{}) {
-  @ui.Title(ui.TitleProps{Order: 1}, "Component gallery")
-  @ui.Text(ui.TextProps{}, "Wireframe previews + API tables.")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Title(ui.TitleProps{Order: 2}, "Component gallery")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "Wireframe previews and API tables.")
+	}
 }
 ```

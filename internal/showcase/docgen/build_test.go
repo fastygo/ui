@@ -25,6 +25,9 @@ func TestBuild_blogCard(t *testing.T) {
 	if err := docgen.ResolveDemos(pages); err != nil {
 		t.Fatal(err)
 	}
+	if err := docgen.CompilePreviews(pages, docgen.PreviewCacheConfig{}); err != nil {
+		t.Fatal(err)
+	}
 	dir := t.TempDir()
 	if err := docgen.Build(context.Background(), pages, docgen.BuildConfig{
 		OutputDir: dir,

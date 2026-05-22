@@ -20,10 +20,20 @@ Page navigation controls.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="pagination.default"}}
-
 ```templ
-@ui.Group { prev / numbers / next }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "flex items-center gap-1"}) {
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Prev
+		}
+		@ui.Button(ui.ButtonProps{Variant: "secondary", Size: "sm"}) {
+			1
+		}
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Next
+		}
+	}
+}
 ```

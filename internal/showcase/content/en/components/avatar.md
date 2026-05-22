@@ -20,10 +20,15 @@ User avatar placeholder.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="avatar.default"}}
-
 ```templ
-@ui.Box(ui.BoxProps{Class: "rounded-full …"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "flex items-center gap-3"}) {
+		@ui.Box(ui.BoxProps{Class: "flex h-10 w-10 items-center justify-center rounded-full bg-muted text-sm font-medium"}) {
+			@ui.Text(ui.TextProps{}, "AB")
+		}
+		@ui.Text(ui.TextProps{Class: "text-sm font-medium"}, "Ada Lovelace")
+	}
+}
 ```

@@ -26,16 +26,24 @@ Top-level landmark sections (do not nest Block in Block).
 
 ## Main
 
-{{demo id="block.main"}}
-
 ```templ
-@ui.Block(ui.BlockProps{Tag: "main"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Block(ui.BlockProps{Tag: "main", Class: "rounded-lg border border-border p-4"}) {
+		@ui.Text(ui.TextProps{}, "Main landmark block.")
+	}
+}
 ```
 
 ## Aside
 
-{{demo id="block.aside"}}
-
 ```templ
-@ui.Block(ui.BlockProps{Tag: "aside"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Block(ui.BlockProps{Tag: "aside", Class: "rounded-lg border border-border p-4 w-48"}) {
+		@ui.Text(ui.TextProps{}, "Aside block.")
+	}
+}
 ```

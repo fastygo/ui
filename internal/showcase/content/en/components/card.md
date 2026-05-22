@@ -26,16 +26,43 @@ Grouped content with header, body, and footer.
 
 ## Default
 
-{{demo id="card.default"}}
-
 ```templ
-@cmp.Card(cmp.CardProps{}) { @cmp.CardHeader … }
+import cmp "github.com/fastygo/templ/components"
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@cmp.Card(cmp.CardProps{Class: "max-w-sm"}) {
+		@cmp.CardHeader(cmp.CardHeaderProps{}) {
+			@cmp.CardTitle(cmp.CardTitleProps{}, "Card title")
+			@cmp.CardDescription(cmp.CardDescriptionProps{}, "Wireframe card description.")
+		}
+		@cmp.CardContent(cmp.CardContentProps{}) {
+			@ui.Text(ui.TextProps{}, "Card body copy.")
+		}
+	}
+}
 ```
 
 ## With footer
 
-{{demo id="card.footer"}}
-
 ```templ
-@cmp.CardFooter …
+import cmp "github.com/fastygo/templ/components"
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@cmp.Card(cmp.CardProps{Class: "max-w-sm"}) {
+		@cmp.CardHeader(cmp.CardHeaderProps{}) {
+			@cmp.CardTitle(cmp.CardTitleProps{}, "Card title")
+			@cmp.CardDescription(cmp.CardDescriptionProps{}, "Wireframe card description.")
+		}
+		@cmp.CardContent(cmp.CardContentProps{}) {
+			@ui.Text(ui.TextProps{}, "Card body copy.")
+		}
+		@cmp.CardFooter(cmp.CardFooterProps{}) {
+			@ui.Button(ui.ButtonProps{Size: "sm"}) {
+				Action
+			}
+		}
+	}
+}
 ```

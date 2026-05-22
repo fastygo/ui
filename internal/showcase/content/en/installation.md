@@ -18,8 +18,6 @@ Use this repository as the reference app, or copy individual components from the
 
 Clone the app, install Bun for CSS, run templ generate, then start the server.
 
-{{demo id="installation.clone"}}
-
 ```go
 bun install
 go mod download

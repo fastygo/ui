@@ -20,8 +20,17 @@ Grouped toggle buttons.
 
 ## Default
 
-{{demo id="toggle-group.default"}}
-
 ```templ
-@ui.Group { @ui.Button[aria-pressed] … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Group(ui.GroupProps{Class: "inline-flex rounded-md border border-border"}) {
+		@ui.Button(ui.ButtonProps{Variant: "secondary", Size: "sm", Attrs: templ.Attributes{"aria-pressed": "true"}}) {
+			Left
+		}
+		@ui.Button(ui.ButtonProps{Variant: "ghost", Size: "sm", Attrs: templ.Attributes{"aria-pressed": "false"}}) {
+			Right
+		}
+	}
+}
 ```

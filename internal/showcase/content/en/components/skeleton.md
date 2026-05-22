@@ -20,10 +20,13 @@ Loading placeholder blocks.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="skeleton.default"}}
-
 ```templ
-@ui.Box(ui.BoxProps{Class: "animate-pulse bg-muted"})
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-md"}) {
+		@ui.Box(ui.BoxProps{Class: "h-4 w-3/4 max-w-xs animate-pulse rounded bg-muted"})
+		@ui.Box(ui.BoxProps{Class: "h-4 w-1/2 max-w-xs animate-pulse rounded bg-muted"})
+	}
+}
 ```

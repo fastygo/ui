@@ -20,10 +20,21 @@ Modal that interrupts flow.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="alert-dialog.default"}}
-
 ```templ
-@ui.Box { alert copy + confirm }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Box(ui.BoxProps{Class: "max-w-sm rounded-lg border border-border bg-card p-4"}) {
+		@ui.Title(ui.TitleProps{Order: 3, Class: "text-base font-semibold"}, "Are you sure?")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "This action cannot be undone.")
+		@ui.Group(ui.GroupProps{Class: "mt-4 flex justify-end gap-2"}) {
+			@ui.Button(ui.ButtonProps{Variant: "outline"}) {
+				Cancel
+			}
+			@ui.Button(ui.ButtonProps{Variant: "destructive"}) {
+				Delete
+			}
+		}
+	}
+}
 ```

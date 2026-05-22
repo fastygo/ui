@@ -26,24 +26,39 @@ Vertical flex column for stacking children with gap utilities.
 
 ## Default
 
-{{demo id="stack.default"}}
-
 ```templ
-@ui.Stack(ui.StackProps{Class: "gap-2"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Title(ui.TitleProps{Order: 3}, "Stack")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "Children stack vertically.")
+	}
+}
 ```
 
 ## Row
 
-{{demo id="stack.horizontal"}}
-
 ```templ
-@ui.Stack(ui.StackProps{Class: "flex-row gap-2"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "flex-row items-center gap-2"}) {
+		@ui.Title(ui.TitleProps{Order: 3}, "Stack")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "Children stack vertically.")
+	}
+}
 ```
 
 ## Nav tag
 
-{{demo id="stack.nav"}}
-
 ```templ
-@ui.Stack(ui.StackProps{Tag: "nav"}) { … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Tag: "nav", Class: "gap-1"}) {
+		@ui.Title(ui.TitleProps{Order: 3}, "Stack")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground"}, "Children stack vertically.")
+	}
+}
 ```

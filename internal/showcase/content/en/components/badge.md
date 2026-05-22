@@ -26,32 +26,48 @@ Small status label chip.
 
 ## Default
 
-{{demo id="badge.default"}}
-
 ```templ
-@showcaseutil.RenderBadge(ctx, w, ui.BadgeProps{}, "Badge")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Badge(ui.BadgeProps{}) {
+		Badge
+	}
+}
 ```
 
 ## Secondary
 
-{{demo id="badge.secondary"}}
-
 ```templ
-@showcaseutil.RenderBadge(ctx, w, ui.BadgeProps{Variant: "secondary"}, "Secondary")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Badge(ui.BadgeProps{Variant: "secondary"}) {
+		Secondary
+	}
+}
 ```
 
 ## Outline
 
-{{demo id="badge.outline"}}
-
 ```templ
-@showcaseutil.RenderBadge(ctx, w, ui.BadgeProps{Variant: "outline"}, "Outline")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Badge(ui.BadgeProps{Variant: "outline"}) {
+		Outline
+	}
+}
 ```
 
 ## Destructive
 
-{{demo id="badge.destructive"}}
-
 ```templ
-@showcaseutil.RenderBadge(ctx, w, ui.BadgeProps{Variant: "destructive"}, "Alert")
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Badge(ui.BadgeProps{Variant: "destructive"}) {
+		Alert
+	}
+}
 ```

@@ -23,8 +23,17 @@ Single expand/collapse region.
 
 ## Default
 
-{{demo id="collapsible.default"}}
-
 ```templ
-@ui.Button + @ui.Box { data-ui8kit=disclosure }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-md", Attrs: templ.Attributes{"data-ui8kit": "disclosure"}}) {
+		@ui.Button(ui.ButtonProps{Variant: "ghost", Attrs: templ.Attributes{"data-ui8kit-trigger": "", "aria-expanded": "false"}}) {
+			Show more
+		}
+		@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-sm", Attrs: templ.Attributes{"data-ui8kit-panel": "", "hidden": true}}) {
+			@ui.Text(ui.TextProps{}, "Hidden details.")
+		}
+	}
+}
 ```

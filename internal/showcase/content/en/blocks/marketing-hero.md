@@ -23,16 +23,32 @@ Block scaffold — section wireframe with placeholder copy for future github.com
 
 ## Wireframe
 
-{{demo id="marketing-hero.default"}}
-
 ```templ
-@ui.Stack { @ui.Title … "Marketing Hero" }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-4 max-w-2xl"}) {
+		@ui.Title(ui.TitleProps{Order: 2}, "Marketing Hero")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, "Wireframe hero headline and call-to-action for marketing blocks.")
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Action
+		}
+	}
+}
 ```
 
 ## Compact
 
-{{demo id="marketing-hero.compact"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-Denser spacing variant
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-2xl"}) {
+		@ui.Title(ui.TitleProps{Order: 2}, "Marketing Hero")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, "Wireframe hero headline and call-to-action for marketing blocks.")
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Action
+		}
+	}
+}
 ```

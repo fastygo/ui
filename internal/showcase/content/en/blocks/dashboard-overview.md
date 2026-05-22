@@ -23,16 +23,32 @@ Block scaffold — section wireframe with placeholder copy for future github.com
 
 ## Wireframe
 
-{{demo id="dashboard-overview.default"}}
-
 ```templ
-@ui.Stack { @ui.Title … "Dashboard Overview" }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-4 max-w-2xl"}) {
+		@ui.Title(ui.TitleProps{Order: 2}, "Dashboard Overview")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, "Wireframe metrics and summary row for dashboard blocks.")
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Action
+		}
+	}
+}
 ```
 
 ## Compact
 
-{{demo id="dashboard-overview.compact"}}
+```templ
+import "github.com/fastygo/templ/ui"
 
-```go
-Denser spacing variant
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-2xl"}) {
+		@ui.Title(ui.TitleProps{Order: 2}, "Dashboard Overview")
+		@ui.Text(ui.TextProps{Class: "text-sm text-muted-foreground leading-relaxed"}, "Wireframe metrics and summary row for dashboard blocks.")
+		@ui.Button(ui.ButtonProps{Variant: "outline", Size: "sm"}) {
+			Action
+		}
+	}
+}
 ```

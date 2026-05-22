@@ -26,10 +26,17 @@ Vertically stacked expandable sections (wireframe; data-ui8kit accordion).
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="accordion.default"}}
-
 ```templ
-@ui.Stack(templ.Attributes{"data-ui8kit": "accordion"}) { @ui.Button[data-ui8kit-trigger] … }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2 max-w-md", Attrs: templ.Attributes{"data-ui8kit": "accordion"}}) {
+		@ui.Button(ui.ButtonProps{Attrs: templ.Attributes{"data-ui8kit-trigger": "item-1", "aria-expanded": "false"}}) {
+			Section 1
+		}
+		@ui.Box(ui.BoxProps{Class: "rounded border border-border p-3 text-sm", Attrs: templ.Attributes{"data-ui8kit-panel": "item-1", "hidden": true}}) {
+			@ui.Text(ui.TextProps{}, "Panel content.")
+		}
+	}
+}
 ```

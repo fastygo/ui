@@ -20,10 +20,31 @@ Menu triggered by a button.
 
 ## Default
 
-Wireframe composition from ui primitives.
-
-{{demo id="dropdown-menu.default"}}
-
 ```templ
-@ui.Group { trigger + menu list }
+import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Button(ui.ButtonProps{Variant: "outline"}) {
+			Open menu
+		}
+		@ui.List(ui.ListProps{Tag: "menu", Class: "w-40 rounded-md border border-border bg-card p-1 text-sm"}) {
+			@ui.ListItem(ui.ListItemProps{Class: "rounded px-2 py-1 hover:bg-accent"}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start px-2"}) {
+					Profile
+				}
+			}
+			@ui.ListItem(ui.ListItemProps{Class: "rounded px-2 py-1 hover:bg-accent"}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start px-2"}) {
+					Settings
+				}
+			}
+			@ui.ListItem(ui.ListItemProps{Class: "rounded px-2 py-1 hover:bg-accent"}) {
+				@ui.Button(ui.ButtonProps{Variant: "ghost", Class: "h-8 w-full justify-start px-2"}) {
+					Sign out
+				}
+			}
+		}
+	}
+}
 ```
