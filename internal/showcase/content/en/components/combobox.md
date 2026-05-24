@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Select"
-    href: /docs/components/select/
+    href: /docs/primitives/select/
   - label: "Command"
     href: /docs/components/command/
 api:

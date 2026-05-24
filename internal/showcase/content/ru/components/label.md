@@ -7,9 +7,9 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Поле ввода"
-    href: /docs/components/input/
+    href: /docs/primitives/input/
   - label: "Чекбокс"
-    href: /docs/components/checkbox/
+    href: /docs/primitives/checkbox/
 api:
   - name: "HTMLFor"
     type: "string"

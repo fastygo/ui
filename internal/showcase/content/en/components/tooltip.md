@@ -9,7 +9,7 @@ related:
   - label: "Popover"
     href: /docs/components/popover/
   - label: "Button"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
 api:
   - name: "Role"
     type: "string"

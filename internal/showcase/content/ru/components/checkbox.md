@@ -7,9 +7,9 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Radio"
-    href: /docs/components/radio/
+    href: /docs/primitives/radio/
   - label: "Switch"
-    href: /docs/components/switch/
+    href: /docs/primitives/switch/
 api:
   - name: "Name"
     type: "string"

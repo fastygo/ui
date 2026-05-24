@@ -30,15 +30,15 @@ func TestRouting_publicAndStaticPaths(t *testing.T) {
 		},
 		{
 			name:   "en button",
-			public: func() string { return r.PublicPath("en", "components", "button") },
-			url:    "/docs/components/button/",
-			staticWant: "en/components/button",
+			public: func() string { return r.PublicPath("en", "primitives", "button") },
+			url:    "/docs/primitives/button/",
+			staticWant: "en/primitives/button",
 		},
 		{
 			name:   "ru button",
-			public: func() string { return r.PublicPath("ru", "components", "button") },
-			url:    "/ru/docs/components/button/",
-			staticWant: "ru/components/button",
+			public: func() string { return r.PublicPath("ru", "primitives", "button") },
+			url:    "/ru/docs/primitives/button/",
+			staticWant: "ru/primitives/button",
 		},
 	}
 
@@ -58,20 +58,20 @@ func TestRouting_publicAndStaticPaths(t *testing.T) {
 func TestRouting_defaultRu(t *testing.T) {
 	r := doclocale.Routing{Default: "ru", Locales: []string{"en", "ru"}}.Normalize()
 
-	if got, want := r.PublicPath("ru", "components", "button"), "/docs/components/button/"; got != want {
+	if got, want := r.PublicPath("ru", "primitives", "button"), "/docs/primitives/button/"; got != want {
 		t.Fatalf("ru public = %q, want %q", got, want)
 	}
-	if got, want := r.PublicPath("en", "components", "button"), "/en/docs/components/button/"; got != want {
+	if got, want := r.PublicPath("en", "primitives", "button"), "/en/docs/primitives/button/"; got != want {
 		t.Fatalf("en public = %q, want %q", got, want)
 	}
-	if got, want := filepath.ToSlash(r.StaticFileRelPath("/docs/components/button/")), "ru/components/button"; got != want {
+	if got, want := filepath.ToSlash(r.StaticFileRelPath("/docs/primitives/button/")), "ru/primitives/button"; got != want {
 		t.Fatalf("static ru default = %q, want %q", got, want)
 	}
 }
 
 func TestRouting_alternatePublicPath(t *testing.T) {
 	r := doclocale.Routing{Default: "en", Locales: []string{"en", "ru"}}.Normalize()
-	if got, want := r.AlternatePublicPath("/docs/components/button/", "ru"), "/ru/docs/components/button/"; got != want {
+	if got, want := r.AlternatePublicPath("/docs/primitives/button/", "ru"), "/ru/docs/primitives/button/"; got != want {
 		t.Fatalf("alternate = %q, want %q", got, want)
 	}
 }

@@ -15,11 +15,16 @@
     "section": "components",
     "slug": "alert",
     "title": "Alert",
-    "description": "Callout for important messages.",
+    "description": "Alert shows a short status message block.",
     "href": "/docs/components/alert/",
     "headings": [
-      "Default",
-      "Destructive"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.destructive",
+      "Example variant.success",
+      "Example variant.warning"
     ]
   },
   {
@@ -57,28 +62,39 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "badge",
     "title": "Badge",
-    "description": "Small status label chip.",
-    "href": "/docs/components/badge/",
+    "description": "Badge shows a short status label.",
+    "href": "/docs/primitives/badge/",
     "headings": [
-      "Default",
-      "Secondary",
-      "Outline",
-      "Destructive"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.secondary",
+      "Example variant.destructive",
+      "Example variant.outline",
+      "Example size.sm",
+      "Example size.lg"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "block",
     "title": "Block",
-    "description": "Top-level landmark sections (do not nest Block in Block).",
-    "href": "/docs/components/block/",
+    "description": "Block renders a top-level page landmark element.",
+    "href": "/docs/primitives/block/",
     "headings": [
-      "Main",
-      "Aside"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.main",
+      "Example tag.section",
+      "Example tag.header",
+      "Example tag.footer",
+      "Example tag.nav"
     ]
   },
   {
@@ -95,14 +111,17 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "box",
     "title": "Box",
-    "description": "Generic block wrapper without landmark semantics.",
-    "href": "/docs/components/box/",
+    "description": "Box wraps internal layout sections inside a Block.",
+    "href": "/docs/primitives/box/",
     "headings": [
-      "Default",
-      "Pre tag"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.section"
     ]
   },
   {
@@ -110,28 +129,41 @@
     "section": "components",
     "slug": "breadcrumb",
     "title": "Breadcrumb",
-    "description": "Hierarchy navigation trail.",
+    "description": "Breadcrumb shows the current page trail.",
     "href": "/docs/components/breadcrumb/",
     "headings": [
-      "Default",
-      "Current page"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.standard",
+      "Example state.disabled"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "button",
     "title": "Button",
-    "description": "Triggers an action or navigates when rendered as a link. Built on github.com/fastygo/templ/ui.",
-    "href": "/docs/components/button/",
+    "description": "Button triggers an action on click.",
+    "href": "/docs/primitives/button/",
     "headings": [
-      "Default",
-      "Secondary",
-      "Outline",
-      "Destructive",
-      "Ghost",
-      "Link",
-      "Sizes"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.secondary",
+      "Example variant.destructive",
+      "Example variant.outline",
+      "Example variant.ghost",
+      "Example variant.link",
+      "Example variant.unstyled",
+      "Example size.sm",
+      "Example size.lg",
+      "Example size.icon",
+      "Example state.disabled",
+      "Example state.submit",
+      "Example state.disabled-link",
+      "Example state.reset"
     ]
   },
   {
@@ -150,11 +182,22 @@
     "section": "components",
     "slug": "card",
     "title": "Card",
-    "description": "Grouped content with header, body, and footer.",
+    "description": "Card groups related content in one bordered surface.",
     "href": "/docs/components/card/",
     "headings": [
-      "Default",
-      "With footer"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.raised",
+      "Example variant.kpi",
+      "Example variant.muted",
+      "Example variant.ghost",
+      "Example variant.compact",
+      "Example variant.flat",
+      "Example variant.accent",
+      "Example layout.header-only",
+      "Example title.order-h3"
     ]
   },
   {
@@ -170,14 +213,18 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "checkbox",
     "title": "Checkbox",
-    "description": "Boolean checkbox input.",
-    "href": "/docs/components/checkbox/",
+    "description": "Checkbox renders a native boolean form control.",
+    "href": "/docs/primitives/checkbox/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example state.unchecked",
+      "Example state.checked",
+      "Example state.disabled"
     ]
   },
   {
@@ -215,14 +262,17 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "container",
     "title": "Container",
-    "description": "Centers content with a max-width constraint.",
-    "href": "/docs/components/container/",
+    "description": "Container wraps page content in a width shell.",
+    "href": "/docs/primitives/container/",
     "headings": [
-      "Default",
-      "Section"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.main"
     ]
   },
   {
@@ -309,35 +359,44 @@
     "section": "components",
     "slug": "form",
     "title": "Form",
-    "description": "Form landmark with item helpers.",
+    "description": "Form wraps fields in a vertical grid container.",
     "href": "/docs/components/form/",
     "headings": [
-      "Login",
-      "Inline"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.field-with-label",
+      "Example layout.with-message"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "grid",
     "title": "Grid",
-    "description": "CSS grid layout with columns.",
-    "href": "/docs/components/grid/",
+    "description": "Grid lays out children in a CSS grid container.",
+    "href": "/docs/primitives/grid/",
     "headings": [
-      "Two columns",
-      "Three columns"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.two-col",
+      "Example layout.three-col"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "group",
     "title": "Group",
-    "description": "Horizontal flex row for grouping controls.",
-    "href": "/docs/components/group/",
+    "description": "Group arranges children in a horizontal flex row.",
+    "href": "/docs/primitives/group/",
     "headings": [
-      "Default",
-      "Wrap"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.fieldset"
     ]
   },
   {
@@ -365,15 +424,20 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "input",
     "title": "Input",
-    "description": "Text input control.",
-    "href": "/docs/components/input/",
+    "description": "Input renders a single-line native text field.",
+    "href": "/docs/primitives/input/",
     "headings": [
-      "Default",
-      "Disabled",
-      "File"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example type.email",
+      "Example size.sm",
+      "Example state.disabled",
+      "Example state.required"
     ]
   },
   {
@@ -400,14 +464,16 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "label",
     "title": "Label",
-    "description": "Accessible label for form controls.",
-    "href": "/docs/components/label/",
+    "description": "Label links visible text to one form control.",
+    "href": "/docs/primitives/label/",
     "headings": [
-      "Default",
-      "Required hint"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.with-control"
     ]
   },
   {
@@ -423,14 +489,17 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "list",
     "title": "List",
-    "description": "Semantic ul/ol/dl list containers.",
-    "href": "/docs/components/list/",
+    "description": "List renders ul, ol, dl, or menu containers.",
+    "href": "/docs/primitives/list/",
     "headings": [
-      "Unordered",
-      "Ordered"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.ul",
+      "Example tag.ol"
     ]
   },
   {
@@ -502,26 +571,32 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "radio",
     "title": "Radio",
-    "description": "Single-choice radio input.",
-    "href": "/docs/components/radio/",
+    "description": "Radio renders one option in a named radio group.",
+    "href": "/docs/primitives/radio/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.group",
+      "Example state.disabled"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "select",
     "title": "Select",
-    "description": "Native select dropdown (ui.Select / selectfield).",
-    "href": "/docs/components/select/",
+    "description": "Select renders a native dropdown from Options slice.",
+    "href": "/docs/primitives/select/",
     "headings": [
-      "Default",
-      "Disabled"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.disabled"
     ]
   },
   {
@@ -571,27 +646,33 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "stack",
     "title": "Stack",
-    "description": "Vertical flex column for stacking children with gap utilities.",
-    "href": "/docs/components/stack/",
+    "description": "Stack arranges children in a vertical flex column.",
+    "href": "/docs/primitives/stack/",
     "headings": [
-      "Default",
-      "Row",
-      "Nav tag"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.ul"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "switch",
     "title": "Switch",
-    "description": "Toggle switch input.",
-    "href": "/docs/components/switch/",
+    "description": "Switch renders a toggle with switch ARIA semantics.",
+    "href": "/docs/primitives/switch/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example state.off",
+      "Example state.on",
+      "Example state.disabled"
     ]
   },
   {
@@ -599,11 +680,14 @@
     "section": "components",
     "slug": "table",
     "title": "Table",
-    "description": "Semantic data table structure.",
+    "description": "Table composes caption, sections, rows, and cells.",
     "href": "/docs/components/table/",
     "headings": [
-      "Default",
-      "Compact"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.basic",
+      "Example cell.colspan"
     ]
   },
   {
@@ -619,27 +703,48 @@
   },
   {
     "locale": "en",
-    "section": "components",
-    "slug": "text",
-    "title": "Text",
-    "description": "Inline or block text with configurable tag.",
-    "href": "/docs/components/text/",
+    "section": "utils",
+    "slug": "tags",
+    "title": "Tags",
+    "description": "Tags module restricts HTML tag names per primitive group.",
+    "href": "/docs/utils/tags/",
     "headings": [
-      "Paragraph",
-      "Muted",
-      "Code"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example resolve.layout"
     ]
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
+    "slug": "text",
+    "title": "Text",
+    "description": "Text renders plain copy in a semantic tag.",
+    "href": "/docs/primitives/text/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.p",
+      "Example tag.small",
+      "Example tag.code"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
     "slug": "textarea",
     "title": "Textarea",
-    "description": "Multi-line text input.",
-    "href": "/docs/components/textarea/",
+    "description": "Textarea renders a multi-line native text field.",
+    "href": "/docs/primitives/textarea/",
     "headings": [
-      "Default",
-      "Disabled"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.disabled",
+      "Example rows.custom"
     ]
   },
   {
@@ -655,15 +760,18 @@
   },
   {
     "locale": "en",
-    "section": "components",
+    "section": "primitives",
     "slug": "title",
     "title": "Title",
-    "description": "Semantic heading with order 1–6.",
-    "href": "/docs/components/title/",
+    "description": "Title renders one heading from Order prop.",
+    "href": "/docs/primitives/title/",
     "headings": [
-      "Heading 1",
-      "Heading 2",
-      "Heading 3"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example order.h1",
+      "Example order.h2",
+      "Example order.h3"
     ]
   },
   {
@@ -712,6 +820,22 @@
     ]
   },
   {
+    "locale": "en",
+    "section": "utils",
+    "slug": "utils",
+    "title": "Utils",
+    "description": "Utils holds shared Go helpers for registry bricks.",
+    "href": "/docs/utils/utils/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "allow-list-source registry",
+      "Example compose.variant",
+      "Example merge.attrs"
+    ]
+  },
+  {
     "locale": "ru",
     "section": "components",
     "slug": "accordion",
@@ -727,11 +851,11 @@
     "section": "components",
     "slug": "alert",
     "title": "Alert",
-    "description": "Callout for important messages.",
+    "description": "Callout для важных сообщений.",
     "href": "/ru/docs/components/alert/",
     "headings": [
-      "Default",
-      "Destructive"
+      "По умолчанию",
+      "Деструктивный"
     ]
   },
   {
@@ -739,10 +863,10 @@
     "section": "components",
     "slug": "alert-dialog",
     "title": "Alert Dialog",
-    "description": "Modal that interrupts flow.",
+    "description": "Модальное окно, прерывающее поток действий.",
     "href": "/ru/docs/components/alert-dialog/",
     "headings": [
-      "Default"
+      "По умолчанию"
     ]
   },
   {
@@ -769,52 +893,54 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "badge",
     "title": "Badge",
-    "description": "Small status label chip.",
-    "href": "/ru/docs/components/badge/",
+    "description": "Badge shows a short status label.",
+    "href": "/ru/docs/primitives/badge/",
     "headings": [
-      "Default",
-      "Secondary",
-      "Outline",
-      "Destructive"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.secondary",
+      "Example variant.destructive",
+      "Example variant.outline",
+      "Example size.sm",
+      "Example size.lg"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "block",
     "title": "Block",
-    "description": "Top-level landmark sections (do not nest Block in Block).",
-    "href": "/ru/docs/components/block/",
+    "description": "Block renders a top-level page landmark element.",
+    "href": "/ru/docs/primitives/block/",
     "headings": [
-      "Main",
-      "Aside"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.main",
+      "Example tag.section",
+      "Example tag.header",
+      "Example tag.footer",
+      "Example tag.nav"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
-    "slug": "blog-card",
-    "title": "Blog Card",
-    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
-    "href": "/ru/docs/components/blog-card/",
-    "headings": [
-      "Вертикальная",
-      "Horizontal"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "box",
     "title": "Box",
-    "description": "Generic block wrapper without landmark semantics.",
-    "href": "/ru/docs/components/box/",
+    "description": "Box wraps internal layout sections inside a Block.",
+    "href": "/ru/docs/primitives/box/",
     "headings": [
-      "Default",
-      "Pre tag"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.section"
     ]
   },
   {
@@ -822,28 +948,41 @@
     "section": "components",
     "slug": "breadcrumb",
     "title": "Breadcrumb",
-    "description": "Hierarchy navigation trail.",
+    "description": "Breadcrumb shows the current page trail.",
     "href": "/ru/docs/components/breadcrumb/",
     "headings": [
-      "Default",
-      "Current page"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.standard",
+      "Example state.disabled"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "button",
     "title": "Button",
-    "description": "Triggers an action or navigates when rendered as a link. Built on github.com/fastygo/templ/ui.",
-    "href": "/ru/docs/components/button/",
+    "description": "Button triggers an action on click.",
+    "href": "/ru/docs/primitives/button/",
     "headings": [
-      "Default",
-      "Secondary",
-      "Outline",
-      "Destructive",
-      "Ghost",
-      "Link",
-      "Sizes"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.secondary",
+      "Example variant.destructive",
+      "Example variant.outline",
+      "Example variant.ghost",
+      "Example variant.link",
+      "Example variant.unstyled",
+      "Example size.sm",
+      "Example size.lg",
+      "Example size.icon",
+      "Example state.disabled",
+      "Example state.submit",
+      "Example state.disabled-link",
+      "Example state.reset"
     ]
   },
   {
@@ -860,18 +999,6 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "card",
-    "title": "Card",
-    "description": "Grouped content with header, body, and footer.",
-    "href": "/ru/docs/components/card/",
-    "headings": [
-      "Default",
-      "With footer"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "carousel",
     "title": "Carousel",
     "description": "Horizontal scrolling list.",
@@ -882,14 +1009,18 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "checkbox",
     "title": "Checkbox",
-    "description": "Boolean checkbox input.",
-    "href": "/ru/docs/components/checkbox/",
+    "description": "Checkbox renders a native boolean form control.",
+    "href": "/ru/docs/primitives/checkbox/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example state.unchecked",
+      "Example state.checked",
+      "Example state.disabled"
     ]
   },
   {
@@ -908,10 +1039,10 @@
     "section": "components",
     "slug": "combobox",
     "title": "Combobox",
-    "description": "Searchable select wireframe (data-ui8kit combobox).",
+    "description": "Wireframe select с поиском (data-ui8kit combobox).",
     "href": "/ru/docs/components/combobox/",
     "headings": [
-      "Default"
+      "По умолчанию"
     ]
   },
   {
@@ -927,14 +1058,17 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "container",
     "title": "Container",
-    "description": "Centers content with a max-width constraint.",
-    "href": "/ru/docs/components/container/",
+    "description": "Container wraps page content in a width shell.",
+    "href": "/ru/docs/primitives/container/",
     "headings": [
-      "Default",
-      "Section"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.main"
     ]
   },
   {
@@ -946,18 +1080,6 @@
     "href": "/ru/docs/components/context-menu/",
     "headings": [
       "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "blocks",
-    "slug": "dashboard-overview",
-    "title": "Dashboard Overview",
-    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
-    "href": "/ru/docs/blocks/dashboard-overview/",
-    "headings": [
-      "Wireframe",
-      "Compact"
     ]
   },
   {
@@ -974,35 +1096,12 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "dialog",
-    "title": "Dialog",
-    "description": "Modal dialog wireframe (data-ui8kit dialog).",
-    "href": "/ru/docs/components/dialog/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "blocks",
-    "slug": "docs-article",
-    "title": "Docs Article",
-    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
-    "href": "/ru/docs/blocks/docs-article/",
-    "headings": [
-      "Wireframe",
-      "Compact"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "drawer",
     "title": "Drawer",
-    "description": "Bottom sheet drawer wireframe.",
+    "description": "Wireframe нижней выезжающей панели (bottom sheet).",
     "href": "/ru/docs/components/drawer/",
     "headings": [
-      "Default"
+      "По умолчанию"
     ]
   },
   {
@@ -1018,38 +1117,32 @@
   },
   {
     "locale": "ru",
-    "section": "components",
-    "slug": "form",
-    "title": "Form",
-    "description": "Form landmark with item helpers.",
-    "href": "/ru/docs/components/form/",
-    "headings": [
-      "Login",
-      "Inline"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "grid",
     "title": "Grid",
-    "description": "CSS grid layout with columns.",
-    "href": "/ru/docs/components/grid/",
+    "description": "Grid lays out children in a CSS grid container.",
+    "href": "/ru/docs/primitives/grid/",
     "headings": [
-      "Two columns",
-      "Three columns"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.two-col",
+      "Example layout.three-col"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "group",
     "title": "Group",
-    "description": "Horizontal flex row for grouping controls.",
-    "href": "/ru/docs/components/group/",
+    "description": "Group arranges children in a horizontal flex row.",
+    "href": "/ru/docs/primitives/group/",
     "headings": [
-      "Default",
-      "Wrap"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.fieldset"
     ]
   },
   {
@@ -1077,49 +1170,34 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "input",
     "title": "Input",
-    "description": "Text input control.",
-    "href": "/ru/docs/components/input/",
+    "description": "Input renders a single-line native text field.",
+    "href": "/ru/docs/primitives/input/",
     "headings": [
-      "Default",
-      "Disabled",
-      "File"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example type.email",
+      "Example size.sm",
+      "Example state.disabled",
+      "Example state.required"
     ]
   },
   {
     "locale": "ru",
-    "section": "getting-started",
-    "slug": "installation",
-    "title": "Installation",
-    "description": "Use this repository as the reference app, or copy individual components from the gallery into your project (future fastygo add workflow).",
-    "href": "/ru/docs/installation/",
-    "headings": [
-      "From git"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "getting-started",
-    "slug": "introduction",
-    "title": "Introduction",
-    "description": "FastyGo UI is a wireframe-first component gallery on Go and templ. Pages show live previews, copy-pasteable templ snippets, and prop tables—similar to shadcn/ui, without shipping a monolithic UI package.",
-    "href": "/ru/docs/introduction/",
-    "headings": [
-      "Wireframe scope"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "label",
     "title": "Label",
-    "description": "Accessible label for form controls.",
-    "href": "/ru/docs/components/label/",
+    "description": "Label links visible text to one form control.",
+    "href": "/ru/docs/primitives/label/",
     "headings": [
-      "Default",
-      "Required hint"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.with-control"
     ]
   },
   {
@@ -1135,26 +1213,17 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "list",
     "title": "List",
-    "description": "Semantic ul/ol/dl list containers.",
-    "href": "/ru/docs/components/list/",
+    "description": "List renders ul, ol, dl, or menu containers.",
+    "href": "/ru/docs/primitives/list/",
     "headings": [
-      "Unordered",
-      "Ordered"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "blocks",
-    "slug": "marketing-hero",
-    "title": "Marketing Hero",
-    "description": "Block scaffold — section wireframe with placeholder copy for future github.com/fastygo/blocks extraction.",
-    "href": "/ru/docs/blocks/marketing-hero/",
-    "headings": [
-      "Wireframe",
-      "Compact"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.ul",
+      "Example tag.ol"
     ]
   },
   {
@@ -1195,10 +1264,10 @@
     "section": "components",
     "slug": "popover",
     "title": "Popover",
-    "description": "Floating content panel.",
+    "description": "Плавающая панель с контентом.",
     "href": "/ru/docs/components/popover/",
     "headings": [
-      "Default"
+      "По умолчанию"
     ]
   },
   {
@@ -1214,26 +1283,32 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "radio",
     "title": "Radio",
-    "description": "Single-choice radio input.",
-    "href": "/ru/docs/components/radio/",
+    "description": "Radio renders one option in a named radio group.",
+    "href": "/ru/docs/primitives/radio/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.group",
+      "Example state.disabled"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "select",
     "title": "Select",
-    "description": "Native select dropdown (ui.Select / selectfield).",
-    "href": "/ru/docs/components/select/",
+    "description": "Select renders a native dropdown from Options slice.",
+    "href": "/ru/docs/primitives/select/",
     "headings": [
-      "Default",
-      "Disabled"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.disabled"
     ]
   },
   {
@@ -1252,10 +1327,10 @@
     "section": "components",
     "slug": "sheet",
     "title": "Sheet",
-    "description": "Slide-over panel wireframe.",
+    "description": "Wireframe выезжающей боковой панели.",
     "href": "/ru/docs/components/sheet/",
     "headings": [
-      "Default"
+      "По умолчанию"
     ]
   },
   {
@@ -1283,27 +1358,33 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "stack",
     "title": "Stack",
-    "description": "Vertical flex column for stacking children with gap utilities.",
-    "href": "/ru/docs/components/stack/",
+    "description": "Stack arranges children in a vertical flex column.",
+    "href": "/ru/docs/primitives/stack/",
     "headings": [
-      "Default",
-      "Row",
-      "Nav tag"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.default",
+      "Example tag.ul"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "switch",
     "title": "Switch",
-    "description": "Toggle switch input.",
-    "href": "/ru/docs/components/switch/",
+    "description": "Switch renders a toggle with switch ARIA semantics.",
+    "href": "/ru/docs/primitives/switch/",
     "headings": [
-      "Default",
-      "Checked"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example state.off",
+      "Example state.on",
+      "Example state.disabled"
     ]
   },
   {
@@ -1311,11 +1392,14 @@
     "section": "components",
     "slug": "table",
     "title": "Table",
-    "description": "Semantic data table structure.",
+    "description": "Table composes caption, sections, rows, and cells.",
     "href": "/ru/docs/components/table/",
     "headings": [
-      "Default",
-      "Compact"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.basic",
+      "Example cell.colspan"
     ]
   },
   {
@@ -1331,51 +1415,64 @@
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "utils",
+    "slug": "tags",
+    "title": "Tags",
+    "description": "Tags module restricts HTML tag names per primitive group.",
+    "href": "/ru/docs/utils/tags/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example resolve.layout"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
     "slug": "text",
     "title": "Text",
-    "description": "Inline or block text with configurable tag.",
-    "href": "/ru/docs/components/text/",
+    "description": "Text renders plain copy in a semantic tag.",
+    "href": "/ru/docs/primitives/text/",
     "headings": [
-      "Paragraph",
-      "Muted",
-      "Code"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example tag.p",
+      "Example tag.small",
+      "Example tag.code"
     ]
   },
   {
     "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "textarea",
     "title": "Textarea",
-    "description": "Multi-line text input.",
-    "href": "/ru/docs/components/textarea/",
+    "description": "Textarea renders a multi-line native text field.",
+    "href": "/ru/docs/primitives/textarea/",
     "headings": [
-      "Default",
-      "Disabled"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.disabled",
+      "Example rows.custom"
     ]
   },
   {
     "locale": "ru",
-    "section": "getting-started",
-    "slug": "theming",
-    "title": "Theming",
-    "description": "Semantic tokens (background, foreground, primary, …) come from tweakcn-style CSS variables. The header theme toggle switches light/dark via theme.js.",
-    "href": "/ru/docs/theming/",
-    "headings": [
-      "Semantic tokens"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
+    "section": "primitives",
     "slug": "title",
     "title": "Title",
-    "description": "Semantic heading with order 1–6.",
-    "href": "/ru/docs/components/title/",
+    "description": "Title renders one heading from Order prop.",
+    "href": "/ru/docs/primitives/title/",
     "headings": [
-      "Heading 1",
-      "Heading 2",
-      "Heading 3"
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example order.h1",
+      "Example order.h2",
+      "Example order.h3"
     ]
   },
   {
@@ -1417,10 +1514,142 @@
     "section": "components",
     "slug": "tooltip",
     "title": "Tooltip",
-    "description": "Hint on hover/focus (wireframe).",
+    "description": "Подсказка при hover/focus (wireframe).",
     "href": "/ru/docs/components/tooltip/",
     "headings": [
-      "Default"
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "utils",
+    "slug": "utils",
+    "title": "Utils",
+    "description": "Utils holds shared Go helpers for registry bricks.",
+    "href": "/ru/docs/utils/utils/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "allow-list-source registry",
+      "Example compose.variant",
+      "Example merge.attrs"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "introduction",
+    "title": "Введение",
+    "description": "FastyGo UI — wireframe-галерея компонентов на Go и templ. Страницы показывают живые превью, фрагменты templ для копирования и таблицы свойств — по аналогии с shadcn/ui, без монолитного UI-пакета.",
+    "href": "/ru/docs/introduction/",
+    "headings": [
+      "Wireframe-этап"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "dialog",
+    "title": "Диалог",
+    "description": "Wireframe модального диалога (data-ui8kit dialog).",
+    "href": "/ru/docs/components/dialog/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "card",
+    "title": "Карточка",
+    "description": "Сгруппированный контент с header, body и footer.",
+    "href": "/ru/docs/components/card/",
+    "headings": [
+      "По умолчанию",
+      "С footer"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "blog-card",
+    "title": "Карточка блога",
+    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
+    "href": "/ru/docs/components/blog-card/",
+    "headings": [
+      "Вертикальная",
+      "Горизонтальная"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "marketing-hero",
+    "title": "Маркетинговый hero",
+    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
+    "href": "/ru/docs/blocks/marketing-hero/",
+    "headings": [
+      "Wireframe",
+      "Компактный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "dashboard-overview",
+    "title": "Обзор дашборда",
+    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
+    "href": "/ru/docs/blocks/dashboard-overview/",
+    "headings": [
+      "Wireframe",
+      "Компактный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "docs-article",
+    "title": "Статья документации",
+    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
+    "href": "/ru/docs/blocks/docs-article/",
+    "headings": [
+      "Wireframe",
+      "Компактный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "theming",
+    "title": "Темизация",
+    "description": "Семантические токены (background, foreground, primary, …) задаются CSS-переменными в стиле tweakcn. Переключатель темы в шапке меняет светлую/тёмную тему через theme.js.",
+    "href": "/ru/docs/theming/",
+    "headings": [
+      "Семантические токены"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "installation",
+    "title": "Установка",
+    "description": "Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add).",
+    "href": "/ru/docs/installation/",
+    "headings": [
+      "Из git"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "form",
+    "title": "Форма",
+    "description": "Landmark формы с вспомогательными элементами FormItem.",
+    "href": "/ru/docs/components/form/",
+    "headings": [
+      "Вход",
+      "В строку"
     ]
   }
 ]

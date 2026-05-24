@@ -31,7 +31,7 @@ func BuildNavItems(pages []DocPage, routing doclocale.Routing, locale, activePat
 		}
 		bySection[p.Meta.Section] = append(bySection[p.Meta.Section], p)
 	}
-	order := []string{"getting-started", "components", "blocks"}
+	order := []string{"getting-started", "primitives", "utils", "components", "blocks"}
 	for _, sec := range order {
 		secPages := bySection[sec]
 		if len(secPages) == 0 {
@@ -59,6 +59,16 @@ func sectionLabel(fix fixtures.Locale, id string) string {
 			return fix.Docs.SectionGettingStarted
 		}
 		return "Getting Started"
+	case "primitives":
+		if fix.Docs.SectionPrimitives != "" {
+			return fix.Docs.SectionPrimitives
+		}
+		return "Primitives"
+	case "utils":
+		if fix.Docs.SectionUtils != "" {
+			return fix.Docs.SectionUtils
+		}
+		return "Utils"
 	case "components":
 		if fix.Docs.SectionComponents != "" {
 			return fix.Docs.SectionComponents

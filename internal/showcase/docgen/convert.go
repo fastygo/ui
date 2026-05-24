@@ -94,7 +94,7 @@ func BuildIndexSections(pages []DocPage, locale string, fix fixtures.Locale) []d
 		}
 		bySection[p.Meta.Section] = append(bySection[p.Meta.Section], p)
 	}
-	order := []string{"getting-started", "components", "blocks"}
+	order := []string{"getting-started", "primitives", "utils", "components", "blocks"}
 	var out []docsstatic.IndexSection
 	for _, sec := range order {
 		items := bySection[sec]

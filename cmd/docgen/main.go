@@ -54,13 +54,14 @@ func main() {
 	}
 
 	fmt.Printf(
-		"docgen: %d page(s) across %v (default=%s) -> %s (previews: %d cached, %d compiled; pages: %d written, %d skipped; artifacts: %d written)\n",
+		"docgen: %d page(s) across %v (default=%s) -> %s (previews: %d cached, %d compiled, %d unique; pages: %d written, %d skipped; artifacts: %d written)\n",
 		len(pages),
 		localeList,
 		*defaultLocale,
 		*out,
 		previewStats.Cached,
 		previewStats.Compiled,
+		previewStats.Unique,
 		buildStats.PagesWritten,
 		buildStats.PagesSkipped,
 		buildStats.ArtifactsWritten,

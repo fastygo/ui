@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Button"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
   - label: "Icon"
     href: /docs/components/icon/
 api:

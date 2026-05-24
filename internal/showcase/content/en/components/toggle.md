@@ -9,7 +9,7 @@ related:
   - label: "Toggle Group"
     href: /docs/components/toggle-group/
   - label: "Switch"
-    href: /docs/components/switch/
+    href: /docs/primitives/switch/
 api:
   - name: "AriaPressed"
     type: "string"

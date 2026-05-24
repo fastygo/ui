@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Чекбокс"
-    href: /docs/components/checkbox/
+    href: /docs/primitives/checkbox/
   - label: "Toggle"
     href: /docs/components/toggle/
 api:

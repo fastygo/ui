@@ -7,9 +7,9 @@ source: github.com/fastygo/ui/internal/ui/components/icon
 package: github.com/fastygo/ui/internal/ui/components/icon
 related:
   - label: "Button"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
   - label: "Badge"
-    href: /docs/components/badge/
+    href: /docs/primitives/badge/
 api:
   - name: "Name"
     type: "string"

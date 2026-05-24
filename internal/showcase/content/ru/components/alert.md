@@ -9,7 +9,7 @@ related:
   - label: "Карточка"
     href: /docs/components/card/
   - label: "Badge"
-    href: /docs/components/badge/
+    href: /docs/primitives/badge/
 api:
   - name: "Variant"
     type: "string"

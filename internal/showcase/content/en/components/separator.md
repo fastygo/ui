@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Stack"
-    href: /docs/components/stack/
+    href: /docs/primitives/stack/
   - label: "Card"
     href: /docs/components/card/
 api:

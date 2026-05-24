@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Кнопка"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
   - label: "Alert"
     href: /docs/components/alert/
 api:

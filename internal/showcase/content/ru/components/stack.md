@@ -7,9 +7,9 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Группа"
-    href: /docs/components/group/
+    href: /docs/primitives/group/
   - label: "Box"
-    href: /docs/components/box/
+    href: /docs/primitives/box/
 api:
   - name: "Class"
     type: "string"

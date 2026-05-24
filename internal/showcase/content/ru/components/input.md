@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Многострочное поле"
-    href: /docs/components/textarea/
+    href: /docs/primitives/textarea/
   - label: "Форма"
     href: /docs/components/form/
 api:

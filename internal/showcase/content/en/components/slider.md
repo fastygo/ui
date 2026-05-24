@@ -7,9 +7,9 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Switch"
-    href: /docs/components/switch/
+    href: /docs/primitives/switch/
   - label: "Input"
-    href: /docs/components/input/
+    href: /docs/primitives/input/
 api:
   - name: "Min"
     type: "string"

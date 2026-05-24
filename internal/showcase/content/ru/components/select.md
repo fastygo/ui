@@ -9,7 +9,7 @@ related:
   - label: "Combobox"
     href: /docs/components/combobox/
   - label: "Radio"
-    href: /docs/components/radio/
+    href: /docs/primitives/radio/
 api:
   - name: "Options"
     type: "[]ui.Option"

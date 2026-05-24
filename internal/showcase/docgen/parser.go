@@ -10,22 +10,33 @@ import (
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/text"
-	"gopkg.in/yaml.v3"
 )
 
 // ParseFile parses a markdown file with YAML front matter into a DocPage.
 func ParseFile(routing doclocale.Routing, locale, sourceFile string, raw []byte) (DocPage, error) {
-	meta, body, err := splitFrontMatter(raw)
+	fm, legacyMeta, body, isSpec, err := splitFrontMatterRaw(raw)
 	if err != nil {
 		return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
 	}
-	if err := ValidateMeta(meta); err != nil {
-		return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
+	var meta PageMeta
+	if isSpec {
+		meta, err = pageMetaFromSpec(fm, body, sourceFile)
+		if err != nil {
+			return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
+		}
+		if err := ValidateMeta(meta); err != nil {
+			return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
+		}
+	} else {
+		meta = legacyMeta
+		if err := ValidateMeta(meta); err != nil {
+			return DocPage{}, fmt.Errorf("%s: %w", sourceFile, err)
+		}
 	}
 	if strings.Contains(body, "{{demo") {
 		return DocPage{}, fmt.Errorf("%s: legacy {{demo}} directives are not supported; use templ Example() fences", sourceFile)
 	}
-	if !isGettingStarted(meta.Section) {
+	if !isGettingStarted(meta.Section) && !isSpec {
 		if err := ValidateBodyRules(sourceFile, body); err != nil {
 			return DocPage{}, err
 		}
@@ -53,28 +64,6 @@ func ParseFile(routing doclocale.Routing, locale, sourceFile string, raw []byte)
 func isGettingStarted(section string) bool {
 	s := strings.ToLower(strings.TrimSpace(section))
 	return s == "getting-started" || s == "getting_started" || s == "start"
-}
-
-func splitFrontMatter(raw []byte) (PageMeta, string, error) {
-	s := string(raw)
-	if !strings.HasPrefix(s, "---\n") && !strings.HasPrefix(s, "---\r\n") {
-		return PageMeta{}, "", fmt.Errorf("missing YAML front matter")
-	}
-	s = strings.TrimPrefix(s, "---")
-	s = strings.TrimPrefix(s, "\r\n")
-	s = strings.TrimPrefix(s, "\n")
-	end := strings.Index(s, "\n---")
-	if end < 0 {
-		return PageMeta{}, "", fmt.Errorf("unterminated front matter")
-	}
-	fm := s[:end]
-	body := strings.TrimPrefix(s[end+4:], "\n")
-	body = strings.TrimPrefix(body, "\r\n")
-	var meta PageMeta
-	if err := yaml.Unmarshal([]byte(fm), &meta); err != nil {
-		return PageMeta{}, "", fmt.Errorf("front matter: %w", err)
-	}
-	return meta, body, nil
 }
 
 func parseBody(sourceFile, body string) ([]Block, error) {

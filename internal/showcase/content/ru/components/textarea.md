@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Поле ввода"
-    href: /docs/components/input/
+    href: /docs/primitives/input/
   - label: "Форма"
     href: /docs/components/form/
 api:

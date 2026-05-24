@@ -50,6 +50,8 @@ type Locale struct {
 		NavOverview           string `json:"nav_overview"`
 		NavDocsHome           string `json:"nav_docs_home"`
 		SectionGettingStarted string `json:"section_getting_started"`
+		SectionPrimitives     string `json:"section_primitives"`
+		SectionUtils          string `json:"section_utils"`
 		SectionComponents     string `json:"section_components"`
 		SectionBlocks         string `json:"section_blocks"`
 	} `json:"docs"`
