@@ -169,17 +169,6 @@
   {
     "locale": "en",
     "section": "components",
-    "slug": "calendar",
-    "title": "Calendar",
-    "description": "Date grid placeholder.",
-    "href": "/docs/components/calendar/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
     "slug": "card",
     "title": "Card",
     "description": "Card groups related content in one bordered surface.",
@@ -229,39 +218,6 @@
   },
   {
     "locale": "en",
-    "section": "components",
-    "slug": "collapsible",
-    "title": "Collapsible",
-    "description": "Single expand/collapse region.",
-    "href": "/docs/components/collapsible/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "combobox",
-    "title": "Combobox",
-    "description": "Searchable select wireframe (data-ui8kit combobox).",
-    "href": "/docs/components/combobox/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "command",
-    "title": "Command",
-    "description": "Command palette: search + list.",
-    "href": "/docs/components/command/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
     "section": "primitives",
     "slug": "container",
     "title": "Container",
@@ -277,17 +233,6 @@
   },
   {
     "locale": "en",
-    "section": "components",
-    "slug": "context-menu",
-    "title": "Context Menu",
-    "description": "Stub menu list on right-click target.",
-    "href": "/docs/components/context-menu/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
     "section": "blocks",
     "slug": "dashboard-overview",
     "title": "Dashboard Overview",
@@ -296,17 +241,6 @@
     "headings": [
       "Wireframe",
       "Compact"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "data-table",
-    "title": "Data Table",
-    "description": "Table with toolbar (wireframe).",
-    "href": "/docs/components/data-table/",
-    "headings": [
-      "Default"
     ]
   },
   {
@@ -397,17 +331,6 @@
       "Semantics",
       "Example tag.default",
       "Example tag.fieldset"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "hover-card",
-    "title": "Hover Card",
-    "description": "Rich preview on hover.",
-    "href": "/docs/components/hover-card/",
-    "headings": [
-      "Default"
     ]
   },
   {
@@ -550,17 +473,6 @@
   {
     "locale": "en",
     "section": "components",
-    "slug": "popover",
-    "title": "Popover",
-    "description": "Floating content panel.",
-    "href": "/docs/components/popover/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
     "slug": "progress",
     "title": "Progress",
     "description": "Progress indicator wireframe.",
@@ -606,28 +518,6 @@
     "title": "Separator",
     "description": "Visual divider between sections.",
     "href": "/docs/components/separator/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "sheet",
-    "title": "Sheet",
-    "description": "Slide-over panel wireframe.",
-    "href": "/docs/components/sheet/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "skeleton",
-    "title": "Skeleton",
-    "description": "Loading placeholder blocks.",
-    "href": "/docs/components/skeleton/",
     "headings": [
       "Default"
     ]
@@ -772,51 +662,6 @@
       "Example order.h1",
       "Example order.h2",
       "Example order.h3"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "toast",
-    "title": "Toast",
-    "description": "Transient notification wireframe.",
-    "href": "/docs/components/toast/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "toggle",
-    "title": "Toggle",
-    "description": "Pressable toggle button (wireframe).",
-    "href": "/docs/components/toggle/",
-    "headings": [
-      "Default",
-      "Pressed"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "toggle-group",
-    "title": "Toggle Group",
-    "description": "Grouped toggle buttons.",
-    "href": "/docs/components/toggle-group/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "en",
-    "section": "components",
-    "slug": "tooltip",
-    "title": "Tooltip",
-    "description": "Hint on hover/focus (wireframe).",
-    "href": "/docs/components/tooltip/",
-    "headings": [
-      "Default"
     ]
   },
   {
@@ -988,17 +833,6 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "calendar",
-    "title": "Calendar",
-    "description": "Date grid placeholder.",
-    "href": "/ru/docs/components/calendar/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "carousel",
     "title": "Carousel",
     "description": "Horizontal scrolling list.",
@@ -1025,39 +859,6 @@
   },
   {
     "locale": "ru",
-    "section": "components",
-    "slug": "collapsible",
-    "title": "Collapsible",
-    "description": "Single expand/collapse region.",
-    "href": "/ru/docs/components/collapsible/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "combobox",
-    "title": "Combobox",
-    "description": "Wireframe select с поиском (data-ui8kit combobox).",
-    "href": "/ru/docs/components/combobox/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "command",
-    "title": "Command",
-    "description": "Command palette: search + list.",
-    "href": "/ru/docs/components/command/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
     "section": "primitives",
     "slug": "container",
     "title": "Container",
@@ -1069,28 +870,6 @@
       "Semantics",
       "Example tag.default",
       "Example tag.main"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "context-menu",
-    "title": "Context Menu",
-    "description": "Stub menu list on right-click target.",
-    "href": "/ru/docs/components/context-menu/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "data-table",
-    "title": "Data Table",
-    "description": "Table with toolbar (wireframe).",
-    "href": "/ru/docs/components/data-table/",
-    "headings": [
-      "Default"
     ]
   },
   {
@@ -1143,17 +922,6 @@
       "Semantics",
       "Example tag.default",
       "Example tag.fieldset"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "hover-card",
-    "title": "Hover Card",
-    "description": "Rich preview on hover.",
-    "href": "/ru/docs/components/hover-card/",
-    "headings": [
-      "Default"
     ]
   },
   {
@@ -1262,17 +1030,6 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "popover",
-    "title": "Popover",
-    "description": "Плавающая панель с контентом.",
-    "href": "/ru/docs/components/popover/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "progress",
     "title": "Progress",
     "description": "Progress indicator wireframe.",
@@ -1318,28 +1075,6 @@
     "title": "Separator",
     "description": "Visual divider between sections.",
     "href": "/ru/docs/components/separator/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "sheet",
-    "title": "Sheet",
-    "description": "Wireframe выезжающей боковой панели.",
-    "href": "/ru/docs/components/sheet/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "skeleton",
-    "title": "Skeleton",
-    "description": "Loading placeholder blocks.",
-    "href": "/ru/docs/components/skeleton/",
     "headings": [
       "Default"
     ]
@@ -1473,51 +1208,6 @@
       "Example order.h1",
       "Example order.h2",
       "Example order.h3"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "toast",
-    "title": "Toast",
-    "description": "Transient notification wireframe.",
-    "href": "/ru/docs/components/toast/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "toggle",
-    "title": "Toggle",
-    "description": "Pressable toggle button (wireframe).",
-    "href": "/ru/docs/components/toggle/",
-    "headings": [
-      "Default",
-      "Pressed"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "toggle-group",
-    "title": "Toggle Group",
-    "description": "Grouped toggle buttons.",
-    "href": "/ru/docs/components/toggle-group/",
-    "headings": [
-      "Default"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "tooltip",
-    "title": "Tooltip",
-    "description": "Подсказка при hover/focus (wireframe).",
-    "href": "/ru/docs/components/tooltip/",
-    "headings": [
-      "По умолчанию"
     ]
   },
   {

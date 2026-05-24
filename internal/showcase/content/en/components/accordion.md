@@ -6,8 +6,8 @@ description: "Vertically stacked expandable sections (wireframe; data-ui8kit acc
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
-  - label: "Collapsible"
-    href: /docs/components/collapsible/
+  - label: "Separator"
+    href: /docs/components/separator/
   - label: "Tabs"
     href: /docs/components/tabs/
 api:

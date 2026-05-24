@@ -6,10 +6,10 @@ description: "Progress indicator wireframe."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
-  - label: "Skeleton"
-    href: /docs/components/skeleton/
   - label: "Slider"
     href: /docs/components/slider/
+  - label: "Aspect Ratio"
+    href: /docs/components/aspect-ratio/
 api:
   - name: "Role"
     type: "string"

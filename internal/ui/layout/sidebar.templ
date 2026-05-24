@@ -6,19 +6,55 @@ import (
 )
 
 templ Sidebar(props SidebarProps) {
-	for i, item := range props.Items {
-		if props.Mobile && i > 0 && isExternalNavLink(item.Path) && !isExternalNavLink(props.Items[i-1].Path) {
+	for _, group := range GroupNavItems(props.Items) {
+		if group.Label != "" {
+			@ui.Text(ui.TextProps{Tag: "p", Class: "px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground"}, group.Label)
+		}
+		if NavSectionNeedsCollapse(group.Items) {
+			@sidebarNavCollapse(props, group)
+		} else {
+			@sidebarNavLinks(props, group.Items)
+		}
+	}
+}
+
+templ sidebarNavLinks(props SidebarProps, items []NavItem) {
+	for i, item := range items {
+		if props.Mobile && i > 0 && isExternalNavLink(item.Path) && !isExternalNavLink(items[i-1].Path) {
 			@ui.Box(ui.BoxProps{Class: "my-2 border-t border-border"})
 		}
-		if item.Section {
-			@ui.Text(ui.TextProps{Tag: "p", Class: "px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground"}, item.Label)
-		} else {
-			@ui.Button(sidebarLinkButtonProps(props.Active, item)) {
-				if item.Icon != "" {
-					@icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"})
+		@sidebarNavLink(props.Active, item, "")
+	}
+}
+
+templ sidebarNavCollapse(props SidebarProps, group NavSectionGroup) {
+	@ui.Stack(navCollapseRootStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))) {
+		for i := 0; i < NavCollapseFullVisible && i < len(group.Items); i++ {
+			@sidebarNavLink(props.Active, group.Items[i], "")
+		}
+		if len(group.Items) > NavCollapseFullVisible {
+			@ui.Box(ui.BoxProps{Class: "nav-sidebar-fade relative"}) {
+				@ui.Box(navCollapseFadeHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items)))
+				for i := NavCollapseFullVisible; i < navCollapseThreshold() && i < len(group.Items); i++ {
+					@sidebarNavLink(props.Active, group.Items[i], NavItemFadeClass(i-NavCollapseFullVisible))
 				}
-				@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
 			}
 		}
+		if len(group.Items) > navCollapseThreshold() {
+			@ui.Stack(navCollapseMoreStackProps(NavSectionCollapseID(group.Label))) {
+				for i := navCollapseThreshold(); i < len(group.Items); i++ {
+					@sidebarNavLink(props.Active, group.Items[i], "")
+				}
+			}
+		}
+	}
+}
+
+templ sidebarNavLink(active string, item NavItem, extraClass string) {
+	@ui.Button(sidebarLinkButtonProps(active, item, extraClass)) {
+		if item.Icon != "" {
+			@icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"})
+		}
+		@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
 	}
 }
