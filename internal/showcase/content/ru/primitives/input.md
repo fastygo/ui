@@ -1,7 +1,7 @@
 ---
 slug: input
 section: primitives
-title: "Поле ввода"
+title: "Input"
 description: "Однострочное нативное текстовое поле."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

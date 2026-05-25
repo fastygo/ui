@@ -1,7 +1,7 @@
 ---
 slug: introduction
 section: getting-started
-title: "Введение"
+title: "Introduction"
 description: "FastyGo UI — wireframe-галерея компонентов на Go и templ. Страницы показывают живые превью, фрагменты templ для копирования и таблицы свойств — по аналогии с shadcn/ui, без монолитного UI-пакета."
 source: github.com/fastygo/ui
 package: internal/site

@@ -1,7 +1,7 @@
 ---
 slug: badge
 section: primitives
-title: "Бейдж"
+title: "Badge"
 description: "Короткая метка статуса с вариантами и размерами."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

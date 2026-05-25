@@ -109,7 +109,7 @@ func BuildIndexSections(pages []DocPage, locale string, fix fixtures.Locale) []d
 				Href:        p.PublicPath,
 			})
 		}
-		out = append(out, docsstatic.IndexSection{Label: sectionLabel(fix, sec), Links: links})
+		out = append(out, docsstatic.IndexSection{Section: sec, Label: sectionLabel(fix, sec), Links: links})
 	}
 	return out
 }

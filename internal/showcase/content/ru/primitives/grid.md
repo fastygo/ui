@@ -1,7 +1,7 @@
 ---
 slug: grid
 section: primitives
-title: "Сетка"
+title: "Grid"
 description: "CSS Grid контейнер с ячейками GridCol."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

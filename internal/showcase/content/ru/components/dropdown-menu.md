@@ -1,7 +1,7 @@
 ---
 slug: dropdown-menu
 section: components
-title: "Выпадающее меню"
+title: "Dropdown Menu"
 description: "Меню, открываемое по кнопке."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

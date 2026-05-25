@@ -683,6 +683,17 @@
   {
     "locale": "ru",
     "section": "components",
+    "slug": "accordion",
+    "title": "Accordion",
+    "description": "Вертикально сложенные раскрывающиеся секции (wireframe; data-ui8kit accordion).",
+    "href": "/ru/docs/components/accordion/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
     "slug": "alert",
     "title": "Alert",
     "description": "Callout для важных сообщений.",
@@ -705,6 +716,68 @@
   },
   {
     "locale": "ru",
+    "section": "components",
+    "slug": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Контейнер с фиксированным aspect ratio.",
+    "href": "/ru/docs/components/aspect-ratio/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "avatar",
+    "title": "Avatar",
+    "description": "Заглушка аватара пользователя.",
+    "href": "/ru/docs/components/avatar/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "badge",
+    "title": "Badge",
+    "description": "Короткая метка статуса с вариантами и размерами.",
+    "href": "/ru/docs/primitives/badge/",
+    "headings": [
+      "По умолчанию",
+      "Вторичный",
+      "Деструктивный",
+      "Малый размер"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "block",
+    "title": "Block",
+    "description": "Landmark верхнего уровня страницы; не вкладывайте Block в Block.",
+    "href": "/ru/docs/primitives/block/",
+    "headings": [
+      "Main",
+      "Section",
+      "Header",
+      "Nav"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "blog-card",
+    "title": "Blog Card",
+    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
+    "href": "/ru/docs/components/blog-card/",
+    "headings": [
+      "Вертикальная",
+      "Горизонтальная"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "primitives",
     "slug": "box",
     "title": "Box",
@@ -713,6 +786,116 @@
     "headings": [
       "По умолчанию",
       "Section"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Цепочка навигации до текущей страницы.",
+    "href": "/ru/docs/components/breadcrumb/",
+    "headings": [
+      "Стандартная цепочка",
+      "Недоступный элемент"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "button",
+    "title": "Button",
+    "description": "Действие по клику или навигация при заданном Href.",
+    "href": "/ru/docs/primitives/button/",
+    "headings": [
+      "Основная",
+      "Деструктивная",
+      "Ссылка",
+      "Отправка формы",
+      "Неактивная"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "card",
+    "title": "Card",
+    "description": "Сгруппированный контент с header, body и footer.",
+    "href": "/ru/docs/components/card/",
+    "headings": [
+      "По умолчанию",
+      "С footer"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "carousel",
+    "title": "Carousel",
+    "description": "Горизонтальный прокручиваемый список.",
+    "href": "/ru/docs/components/carousel/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "checkbox",
+    "title": "Checkbox",
+    "description": "Нативный булев контрол формы.",
+    "href": "/ru/docs/primitives/checkbox/",
+    "headings": [
+      "Не отмечен",
+      "Отмечен",
+      "Неактивный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "container",
+    "title": "Container",
+    "description": "Оболочка ширины страницы с div, main или section.",
+    "href": "/ru/docs/primitives/container/",
+    "headings": [
+      "По умолчанию",
+      "Main"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "dashboard-overview",
+    "title": "Dashboard Overview",
+    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
+    "href": "/ru/docs/blocks/dashboard-overview/",
+    "headings": [
+      "Wireframe",
+      "Компактный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "Wireframe модального диалога (data-ui8kit dialog).",
+    "href": "/ru/docs/components/dialog/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "blocks",
+    "slug": "docs-article",
+    "title": "Docs Article",
+    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
+    "href": "/ru/docs/blocks/docs-article/",
+    "headings": [
+      "Wireframe",
+      "Компактный"
     ]
   },
   {
@@ -729,80 +912,8 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "avatar",
-    "title": "Аватар",
-    "description": "Заглушка аватара пользователя.",
-    "href": "/ru/docs/components/avatar/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "accordion",
-    "title": "Аккордеон",
-    "description": "Вертикально сложенные раскрывающиеся секции (wireframe; data-ui8kit accordion).",
-    "href": "/ru/docs/components/accordion/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "badge",
-    "title": "Бейдж",
-    "description": "Короткая метка статуса с вариантами и размерами.",
-    "href": "/ru/docs/primitives/badge/",
-    "headings": [
-      "По умолчанию",
-      "Вторичный",
-      "Деструктивный",
-      "Малый размер"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "block",
-    "title": "Блок",
-    "description": "Landmark верхнего уровня страницы; не вкладывайте Block в Block.",
-    "href": "/ru/docs/primitives/block/",
-    "headings": [
-      "Main",
-      "Section",
-      "Header",
-      "Nav"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "getting-started",
-    "slug": "introduction",
-    "title": "Введение",
-    "description": "FastyGo UI — wireframe-галерея компонентов на Go и templ. Страницы показывают живые превью, фрагменты templ для копирования и таблицы свойств — по аналогии с shadcn/ui, без монолитного UI-пакета.",
-    "href": "/ru/docs/introduction/",
-    "headings": [
-      "Wireframe-этап"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "tabs",
-    "title": "Вкладки",
-    "description": "Интерфейс с вкладками (wireframe; data-ui8kit tabs).",
-    "href": "/ru/docs/components/tabs/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "dropdown-menu",
-    "title": "Выпадающее меню",
+    "title": "Dropdown Menu",
     "description": "Меню, открываемое по кнопке.",
     "href": "/ru/docs/components/dropdown-menu/",
     "headings": [
@@ -811,21 +922,33 @@
   },
   {
     "locale": "ru",
-    "section": "primitives",
-    "slug": "select",
-    "title": "Выпадающий список",
-    "description": "Нативный dropdown из слайса Options.",
-    "href": "/ru/docs/primitives/select/",
+    "section": "components",
+    "slug": "form",
+    "title": "Form",
+    "description": "Landmark формы с вспомогательными элементами FormItem.",
+    "href": "/ru/docs/components/form/",
     "headings": [
-      "По умолчанию",
-      "Неактивный"
+      "Вход",
+      "В строку"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "grid",
+    "title": "Grid",
+    "description": "CSS Grid контейнер с ячейками GridCol.",
+    "href": "/ru/docs/primitives/grid/",
+    "headings": [
+      "Две колонки",
+      "Три колонки"
     ]
   },
   {
     "locale": "ru",
     "section": "primitives",
     "slug": "group",
-    "title": "Группа",
+    "title": "Group",
     "description": "Горизонтальный flex-ряд; поддерживает fieldset для связанных контролов.",
     "href": "/ru/docs/primitives/group/",
     "headings": [
@@ -836,32 +959,8 @@
   {
     "locale": "ru",
     "section": "components",
-    "slug": "dialog",
-    "title": "Диалог",
-    "description": "Wireframe модального диалога (data-ui8kit dialog).",
-    "href": "/ru/docs/components/dialog/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "title",
-    "title": "Заголовок",
-    "description": "Один heading по prop Order (h1–h6).",
-    "href": "/ru/docs/primitives/title/",
-    "headings": [
-      "H1",
-      "H2",
-      "H3"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
     "slug": "icon",
-    "title": "Иконка",
+    "title": "Icon",
     "description": "Latty icon mask (реестр приложения).",
     "href": "/ru/docs/components/icon/",
     "headings": [
@@ -871,177 +970,9 @@
   },
   {
     "locale": "ru",
-    "section": "components",
-    "slug": "card",
-    "title": "Карточка",
-    "description": "Сгруппированный контент с header, body и footer.",
-    "href": "/ru/docs/components/card/",
-    "headings": [
-      "По умолчанию",
-      "С footer"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "blog-card",
-    "title": "Карточка блога",
-    "description": "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки.",
-    "href": "/ru/docs/components/blog-card/",
-    "headings": [
-      "Вертикальная",
-      "Горизонтальная"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "carousel",
-    "title": "Карусель",
-    "description": "Горизонтальный прокручиваемый список.",
-    "href": "/ru/docs/components/carousel/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "button",
-    "title": "Кнопка",
-    "description": "Действие по клику или навигация при заданном Href.",
-    "href": "/ru/docs/primitives/button/",
-    "headings": [
-      "Основная",
-      "Деструктивная",
-      "Ссылка",
-      "Отправка формы",
-      "Неактивная"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "container",
-    "title": "Контейнер",
-    "description": "Оболочка ширины страницы с div, main или section.",
-    "href": "/ru/docs/primitives/container/",
-    "headings": [
-      "По умолчанию",
-      "Main"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "blocks",
-    "slug": "marketing-hero",
-    "title": "Маркетинговый hero",
-    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
-    "href": "/ru/docs/blocks/marketing-hero/",
-    "headings": [
-      "Wireframe",
-      "Компактный"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "navigation-menu",
-    "title": "Меню навигации",
-    "description": "Навигация по сайту с разделами.",
-    "href": "/ru/docs/components/navigation-menu/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "label",
-    "title": "Метка",
-    "description": "Связывает видимый текст с одним контролом формы.",
-    "href": "/ru/docs/primitives/label/",
-    "headings": [
-      "С контролом",
-      "С полем ввода"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "textarea",
-    "title": "Многострочное поле",
-    "description": "Нативное многострочное текстовое поле.",
-    "href": "/ru/docs/primitives/textarea/",
-    "headings": [
-      "По умолчанию",
-      "Неактивное",
-      "Пользовательские строки"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "blocks",
-    "slug": "dashboard-overview",
-    "title": "Обзор дашборда",
-    "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
-    "href": "/ru/docs/blocks/dashboard-overview/",
-    "headings": [
-      "Wireframe",
-      "Компактный"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "pagination",
-    "title": "Пагинация",
-    "description": "Элементы навигации по страницам.",
-    "href": "/ru/docs/components/pagination/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "menubar",
-    "title": "Панель меню",
-    "description": "Горизонтальная панель меню.",
-    "href": "/ru/docs/components/menubar/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "switch",
-    "title": "Переключатель",
-    "description": "Toggle с ARIA role switch и aria-checked.",
-    "href": "/ru/docs/primitives/switch/",
-    "headings": [
-      "Выключен",
-      "Включён",
-      "Неактивный"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "language-toggle",
-    "title": "Переключатель языка",
-    "description": "Переключатель локали (пакет toggles приложения).",
-    "href": "/ru/docs/components/language-toggle/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
     "section": "primitives",
     "slug": "input",
-    "title": "Поле ввода",
+    "title": "Input",
     "description": "Однострочное нативное текстовое поле.",
     "href": "/ru/docs/primitives/input/",
     "headings": [
@@ -1053,69 +984,45 @@
   },
   {
     "locale": "ru",
-    "section": "components",
-    "slug": "progress",
-    "title": "Прогресс",
-    "description": "Wireframe индикатора прогресса.",
-    "href": "/ru/docs/components/progress/",
+    "section": "getting-started",
+    "slug": "installation",
+    "title": "Installation",
+    "description": "Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add).",
+    "href": "/ru/docs/installation/",
     "headings": [
-      "По умолчанию"
+      "Из git"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "getting-started",
+    "slug": "introduction",
+    "title": "Introduction",
+    "description": "FastyGo UI — wireframe-галерея компонентов на Go и templ. Страницы показывают живые превью, фрагменты templ для копирования и таблицы свойств — по аналогии с shadcn/ui, без монолитного UI-пакета.",
+    "href": "/ru/docs/introduction/",
+    "headings": [
+      "Wireframe-этап"
     ]
   },
   {
     "locale": "ru",
     "section": "primitives",
-    "slug": "radio",
-    "title": "Радиокнопка",
-    "description": "Один вариант в именованной группе radio; общий Name.",
-    "href": "/ru/docs/primitives/radio/",
+    "slug": "label",
+    "title": "Label",
+    "description": "Связывает видимый текст с одним контролом формы.",
+    "href": "/ru/docs/primitives/label/",
     "headings": [
-      "Группа",
-      "Неактивная"
+      "С контролом",
+      "С полем ввода"
     ]
   },
   {
     "locale": "ru",
     "section": "components",
-    "slug": "separator",
-    "title": "Разделитель",
-    "description": "Визуальный разделитель между секциями.",
-    "href": "/ru/docs/components/separator/",
-    "headings": [
-      "По умолчанию"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "grid",
-    "title": "Сетка",
-    "description": "CSS Grid контейнер с ячейками GridCol.",
-    "href": "/ru/docs/primitives/grid/",
-    "headings": [
-      "Две колонки",
-      "Три колонки"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "slider",
-    "title": "Слайдер",
-    "description": "Нативный range input через ui.Input.",
-    "href": "/ru/docs/components/slider/",
-    "headings": [
-      "По умолчанию",
-      "Со значением"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "aspect-ratio",
-    "title": "Соотношение сторон",
-    "description": "Контейнер с фиксированным aspect ratio.",
-    "href": "/ru/docs/components/aspect-ratio/",
+    "slug": "language-toggle",
+    "title": "Language Toggle",
+    "description": "Переключатель локали (пакет toggles приложения).",
+    "href": "/ru/docs/components/language-toggle/",
     "headings": [
       "По умолчанию"
     ]
@@ -1124,7 +1031,7 @@
     "locale": "ru",
     "section": "primitives",
     "slug": "list",
-    "title": "Список",
+    "title": "List",
     "description": "Контейнер ul, ol, dl или menu с элементами ListItem.",
     "href": "/ru/docs/primitives/list/",
     "headings": [
@@ -1135,10 +1042,10 @@
   {
     "locale": "ru",
     "section": "blocks",
-    "slug": "docs-article",
-    "title": "Статья документации",
+    "slug": "marketing-hero",
+    "title": "Marketing Hero",
     "description": "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks.",
-    "href": "/ru/docs/blocks/docs-article/",
+    "href": "/ru/docs/blocks/marketing-hero/",
     "headings": [
       "Wireframe",
       "Компактный"
@@ -1146,9 +1053,100 @@
   },
   {
     "locale": "ru",
+    "section": "components",
+    "slug": "menubar",
+    "title": "Menubar",
+    "description": "Горизонтальная панель меню.",
+    "href": "/ru/docs/components/menubar/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "Навигация по сайту с разделами.",
+    "href": "/ru/docs/components/navigation-menu/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "pagination",
+    "title": "Pagination",
+    "description": "Элементы навигации по страницам.",
+    "href": "/ru/docs/components/pagination/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "progress",
+    "title": "Progress",
+    "description": "Wireframe индикатора прогресса.",
+    "href": "/ru/docs/components/progress/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "radio",
+    "title": "Radio",
+    "description": "Один вариант в именованной группе radio; общий Name.",
+    "href": "/ru/docs/primitives/radio/",
+    "headings": [
+      "Группа",
+      "Неактивная"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "select",
+    "title": "Select",
+    "description": "Нативный dropdown из слайса Options.",
+    "href": "/ru/docs/primitives/select/",
+    "headings": [
+      "По умолчанию",
+      "Неактивный"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Визуальный разделитель между секциями.",
+    "href": "/ru/docs/components/separator/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "slider",
+    "title": "Slider",
+    "description": "Нативный range input через ui.Input.",
+    "href": "/ru/docs/components/slider/",
+    "headings": [
+      "По умолчанию",
+      "Со значением"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "primitives",
     "slug": "stack",
-    "title": "Стек",
+    "title": "Stack",
     "description": "Вертикальный flex-столбец; базовый примитив отступов.",
     "href": "/ru/docs/primitives/stack/",
     "headings": [
@@ -1158,9 +1156,22 @@
   },
   {
     "locale": "ru",
+    "section": "primitives",
+    "slug": "switch",
+    "title": "Switch",
+    "description": "Toggle с ARIA role switch и aria-checked.",
+    "href": "/ru/docs/primitives/switch/",
+    "headings": [
+      "Выключен",
+      "Включён",
+      "Неактивный"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "components",
     "slug": "table",
-    "title": "Таблица",
+    "title": "Table",
     "description": "Таблица с секциями, строками и ячейками.",
     "href": "/ru/docs/components/table/",
     "headings": [
@@ -1170,9 +1181,20 @@
   },
   {
     "locale": "ru",
+    "section": "components",
+    "slug": "tabs",
+    "title": "Tabs",
+    "description": "Интерфейс с вкладками (wireframe; data-ui8kit tabs).",
+    "href": "/ru/docs/components/tabs/",
+    "headings": [
+      "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "utils",
     "slug": "tags",
-    "title": "Теги",
+    "title": "Tags",
     "description": "Ограничение имён HTML-тегов по группам примитивов и безопасный выбор через ResolveTag.",
     "href": "/ru/docs/utils/tags/",
     "headings": [
@@ -1186,7 +1208,7 @@
     "locale": "ru",
     "section": "primitives",
     "slug": "text",
-    "title": "Текст",
+    "title": "Text",
     "description": "Обычный текст в семантическом теге; копия передаётся вторым аргументом.",
     "href": "/ru/docs/primitives/text/",
     "headings": [
@@ -1197,9 +1219,22 @@
   },
   {
     "locale": "ru",
+    "section": "primitives",
+    "slug": "textarea",
+    "title": "Textarea",
+    "description": "Нативное многострочное текстовое поле.",
+    "href": "/ru/docs/primitives/textarea/",
+    "headings": [
+      "По умолчанию",
+      "Неактивное",
+      "Пользовательские строки"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "getting-started",
     "slug": "theming",
-    "title": "Темизация",
+    "title": "Theming",
     "description": "Семантические токены (background, foreground, primary, …) задаются CSS-переменными в стиле tweakcn. Переключатель темы в шапке меняет светлую/тёмную тему через theme.js.",
     "href": "/ru/docs/theming/",
     "headings": [
@@ -1208,20 +1243,22 @@
   },
   {
     "locale": "ru",
-    "section": "getting-started",
-    "slug": "installation",
-    "title": "Установка",
-    "description": "Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add).",
-    "href": "/ru/docs/installation/",
+    "section": "primitives",
+    "slug": "title",
+    "title": "Title",
+    "description": "Один heading по prop Order (h1–h6).",
+    "href": "/ru/docs/primitives/title/",
     "headings": [
-      "Из git"
+      "H1",
+      "H2",
+      "H3"
     ]
   },
   {
     "locale": "ru",
     "section": "utils",
     "slug": "utils",
-    "title": "Утилиты",
+    "title": "Utils",
     "description": "Общие Go-хелперы для registry-кирпичей: классы, атрибуты, ARIA и рецепты вариантов.",
     "href": "/ru/docs/utils/utils/",
     "headings": [
@@ -1231,43 +1268,6 @@
       "Реестр allow-list-source",
       "Пример compose.variant",
       "Пример merge.attrs"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "form",
-    "title": "Форма",
-    "description": "Landmark формы с вспомогательными элементами FormItem.",
-    "href": "/ru/docs/components/form/",
-    "headings": [
-      "Вход",
-      "В строку"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "components",
-    "slug": "breadcrumb",
-    "title": "Хлебные крошки",
-    "description": "Цепочка навигации до текущей страницы.",
-    "href": "/ru/docs/components/breadcrumb/",
-    "headings": [
-      "Стандартная цепочка",
-      "Недоступный элемент"
-    ]
-  },
-  {
-    "locale": "ru",
-    "section": "primitives",
-    "slug": "checkbox",
-    "title": "Чекбокс",
-    "description": "Нативный булев контрол формы.",
-    "href": "/ru/docs/primitives/checkbox/",
-    "headings": [
-      "Не отмечен",
-      "Отмечен",
-      "Неактивный"
     ]
   }
 ]

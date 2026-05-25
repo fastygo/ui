@@ -1,7 +1,7 @@
 ---
 slug: separator
 section: components
-title: "Разделитель"
+title: "Separator"
 description: "Визуальный разделитель между секциями."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

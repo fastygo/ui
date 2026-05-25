@@ -1,7 +1,7 @@
 ---
 slug: navigation-menu
 section: components
-title: "Меню навигации"
+title: "Navigation Menu"
 description: "Навигация по сайту с разделами."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

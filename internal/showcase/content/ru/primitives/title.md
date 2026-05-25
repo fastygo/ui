@@ -1,7 +1,7 @@
 ---
 slug: title
 section: primitives
-title: "Заголовок"
+title: "Title"
 description: "Один heading по prop Order (h1–h6)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

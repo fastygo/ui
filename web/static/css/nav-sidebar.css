@@ -1,11 +1,16 @@
-/* Sidebar section collapse: first 5 links, 3 fade rows, click fade area to expand. */
+/* Sidebar section collapse: 5 real links, a visual teaser, then hidden overflow links. */
 
-.nav-sidebar-fade-hit {
+.nav-sidebar-teaser-item {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-sidebar-teaser-hit {
   border: 0;
   background: transparent;
 }
 
-.nav-sidebar-fade::after {
+.nav-sidebar-teaser::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -19,19 +24,14 @@
   );
 }
 
-[data-nav-collapse][data-nav-expanded="false"] .nav-sidebar-more {
-  display: none;
+.nav-sidebar-teaser-item-0 {
+  opacity: 0.55;
 }
 
-[data-nav-collapse][data-nav-expanded="true"] .nav-sidebar-fade {
-  display: none;
+.nav-sidebar-teaser-item-1 {
+  opacity: 0.35;
 }
 
-[data-nav-collapse][data-nav-expanded="true"] .nav-sidebar-more {
-  display: flex;
-  flex-direction: column;
-}
-
-[data-nav-collapse][data-nav-expanded="true"] .nav-sidebar-fade-hit {
-  display: none;
+.nav-sidebar-teaser-item-2 {
+  opacity: 0.2;
 }

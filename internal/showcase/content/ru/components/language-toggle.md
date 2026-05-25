@@ -1,7 +1,7 @@
 ---
 slug: language-toggle
 section: components
-title: "Переключатель языка"
+title: "Language Toggle"
 description: "Переключатель локали (пакет toggles приложения)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

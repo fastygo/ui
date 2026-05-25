@@ -1,7 +1,7 @@
 ---
 slug: carousel
 section: components
-title: "Карусель"
+title: "Carousel"
 description: "Горизонтальный прокручиваемый список."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

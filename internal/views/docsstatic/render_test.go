@@ -87,3 +87,54 @@ func TestPage_rendersFloatingTOC(t *testing.T) {
 		}
 	}
 }
+
+func TestIndex_rendersSectionGrids(t *testing.T) {
+	page := docsstatic.Index("Components", "Wireframe showcase.", []docsstatic.IndexSection{
+		{
+			Section: "getting-started",
+			Label:   "Getting Started",
+			Links: []docsstatic.IndexLink{
+				{Title: "Introduction", Description: "Overview.", Href: "/docs/introduction/"},
+				{Title: "Installation", Description: "Setup steps.", Href: "/docs/installation/"},
+			},
+		},
+		{
+			Section: "primitives",
+			Label:   "Primitives",
+			Links: []docsstatic.IndexLink{
+				{Title: "Button", Description: "Primary actions.", Href: "/docs/primitives/button/"},
+				{Title: "Input", Description: "Text field.", Href: "/docs/primitives/input/"},
+				{Title: "Stack", Description: "Vertical layout.", Href: "/docs/primitives/stack/"},
+			},
+		},
+		{
+			Section: "components",
+			Label:   "Components",
+			Links: []docsstatic.IndexLink{
+				{Title: "Card", Description: "Grouped content.", Href: "/docs/components/card/"},
+			},
+		},
+	})
+
+	var buf bytes.Buffer
+	if err := page.Render(context.Background(), &buf); err != nil {
+		t.Fatal(err)
+	}
+	html := buf.String()
+	for _, want := range []string{
+		"docs-index-grid-2",
+		"docs-index-grid-3",
+		"docs-index-card-desc",
+		"docs-index-card p-3",
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("html missing %q", want)
+		}
+	}
+	if strings.Count(html, "docs-index-grid-2") != 1 {
+		t.Fatalf("expected one 2-column grid, got %d", strings.Count(html, "docs-index-grid-2"))
+	}
+	if strings.Count(html, "docs-index-grid-3") != 2 {
+		t.Fatalf("expected two 3-column grids, got %d", strings.Count(html, "docs-index-grid-3"))
+	}
+}

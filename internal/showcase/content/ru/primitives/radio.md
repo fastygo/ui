@@ -1,7 +1,7 @@
 ---
 slug: radio
 section: primitives
-title: "Радиокнопка"
+title: "Radio"
 description: "Один вариант в именованной группе radio; общий Name."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

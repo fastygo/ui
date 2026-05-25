@@ -59,20 +59,6 @@ func NavSectionExpanded(active string, items []NavItem) bool {
 	return false
 }
 
-// NavItemFadeClass returns Tailwind opacity utilities for collapsed fade rows.
-func NavItemFadeClass(fadeIndex int) string {
-	switch fadeIndex {
-	case 0:
-		return "opacity-55 pointer-events-none"
-	case 1:
-		return "opacity-35 pointer-events-none"
-	case 2:
-		return "opacity-20 pointer-events-none"
-	default:
-		return "opacity-20 pointer-events-none"
-	}
-}
-
 // NavSectionCollapseID returns a stable DOM id for a collapsible nav section.
 func NavSectionCollapseID(label string) string {
 	s := strings.ToLower(strings.TrimSpace(label))
@@ -100,8 +86,8 @@ func NavSectionCollapseID(label string) string {
 	return id
 }
 
-func navCollapseMoreID(sectionID string) string {
-	return sectionID + "-more"
+func navCollapseOverflowID(sectionID string) string {
+	return sectionID + "-overflow"
 }
 
 func navCollapseRootStackProps(sectionID string, expanded bool) ui.StackProps {
@@ -115,12 +101,23 @@ func navCollapseRootStackProps(sectionID string, expanded bool) ui.StackProps {
 	}
 }
 
-func navCollapseFadeHitBoxProps(sectionID string, expanded bool) ui.BoxProps {
+func navCollapseTeaserBoxProps(expanded bool) ui.BoxProps {
+	attrs := templ.Attributes{"data-nav-collapse-teaser": ""}
+	if expanded {
+		attrs["hidden"] = true
+	}
 	return ui.BoxProps{
-		Class: "nav-sidebar-fade-hit absolute inset-0 z-10 cursor-pointer",
+		Class: "nav-sidebar-teaser relative w-full",
+		Attrs: attrs,
+	}
+}
+
+func navCollapseTeaserHitBoxProps(sectionID string, expanded bool) ui.BoxProps {
+	return ui.BoxProps{
+		Class: "nav-sidebar-teaser-hit absolute inset-0 z-10 cursor-pointer",
 		Attrs: templ.Attributes{
 			"data-nav-collapse-expand": "",
-			"aria-controls":              navCollapseMoreID(sectionID),
+			"aria-controls":              navCollapseOverflowID(sectionID),
 			"role":                       "button",
 			"tabindex":                   "0",
 			"aria-expanded":              fmt.Sprintf("%t", expanded),
@@ -129,13 +126,29 @@ func navCollapseFadeHitBoxProps(sectionID string, expanded bool) ui.BoxProps {
 	}
 }
 
-func navCollapseMoreStackProps(sectionID string) ui.StackProps {
+func navCollapseTeaserItemClass(fadeIndex int) string {
+	base := "nav-sidebar-teaser-item flex w-full items-center gap-2 rounded-md px-4 py-2 text-sm text-muted-foreground"
+	switch fadeIndex {
+	case 0:
+		return uiutils.Cn(base, "nav-sidebar-teaser-item-0")
+	case 1:
+		return uiutils.Cn(base, "nav-sidebar-teaser-item-1")
+	default:
+		return uiutils.Cn(base, "nav-sidebar-teaser-item-2")
+	}
+}
+
+func navCollapseOverflowStackProps(sectionID string, expanded bool) ui.StackProps {
+	attrs := templ.Attributes{
+		"id":                         navCollapseOverflowID(sectionID),
+		"data-nav-collapse-overflow": "",
+	}
+	if !expanded {
+		attrs["hidden"] = true
+	}
 	return ui.StackProps{
-		Class: "nav-sidebar-more gap-0",
-		Attrs: templ.Attributes{
-			"id":                   navCollapseMoreID(sectionID),
-			"data-nav-collapse-more": "",
-		},
+		Class: "nav-sidebar-overflow gap-0",
+		Attrs: attrs,
 	}
 }
 

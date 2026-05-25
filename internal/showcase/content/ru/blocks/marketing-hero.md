@@ -1,7 +1,7 @@
 ---
 slug: marketing-hero
 section: blocks
-title: "Маркетинговый hero"
+title: "Marketing Hero"
 description: "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks."
 source: internal/ui/blocks
 package: internal/ui/blocks

@@ -158,28 +158,30 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 						}()
 					}
 					ctx = templ.InitializeContext(ctx)
-					templ_7745c5c3_Err = ui.Box(navCollapseFadeHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(ctx, templ_7745c5c3_Buffer)
-					if templ_7745c5c3_Err != nil {
-						return templ_7745c5c3_Err
-					}
 					for i := NavCollapseFullVisible; i < navCollapseThreshold() && i < len(group.Items); i++ {
-						templ_7745c5c3_Err = sidebarNavLink(props.Active, group.Items[i], NavItemFadeClass(i-NavCollapseFullVisible)).Render(ctx, templ_7745c5c3_Buffer)
+						templ_7745c5c3_Err = sidebarNavTeaserItem(group.Items[i], i-NavCollapseFullVisible).Render(ctx, templ_7745c5c3_Buffer)
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
 					}
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " ")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					templ_7745c5c3_Err = ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(ctx, templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
 					return nil
 				})
-				templ_7745c5c3_Err = ui.Box(ui.BoxProps{Class: "nav-sidebar-fade relative"}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ui.Box(navCollapseTeaserBoxProps(NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			if len(group.Items) > navCollapseThreshold() {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 				templ_7745c5c3_Var6 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 					templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 					templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -192,7 +194,7 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 						}()
 					}
 					ctx = templ.InitializeContext(ctx)
-					for i := navCollapseThreshold(); i < len(group.Items); i++ {
+					for i := NavCollapseFullVisible; i < len(group.Items); i++ {
 						templ_7745c5c3_Err = sidebarNavLink(props.Active, group.Items[i], "").Render(ctx, templ_7745c5c3_Buffer)
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
@@ -200,7 +202,7 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 					}
 					return nil
 				})
-				templ_7745c5c3_Err = ui.Stack(navCollapseMoreStackProps(NavSectionCollapseID(group.Label))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -215,7 +217,7 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 	})
 }
 
-func sidebarNavLink(active string, item NavItem, extraClass string) templ.Component {
+func sidebarNavTeaserItem(item NavItem, fadeIndex int) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -248,13 +250,11 @@ func sidebarNavLink(active string, item NavItem, extraClass string) templ.Compon
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			if item.Icon != "" {
-				templ_7745c5c3_Err = icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"}).Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
+			templ_7745c5c3_Err = icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, " ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -264,7 +264,64 @@ func sidebarNavLink(active string, item NavItem, extraClass string) templ.Compon
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = ui.Button(sidebarLinkButtonProps(active, item, extraClass)).Render(templ.WithChildren(ctx, templ_7745c5c3_Var8), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ui.Box(ui.BoxProps{Class: navCollapseTeaserItemClass(fadeIndex)}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var8), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func sidebarNavLink(active string, item NavItem, extraClass string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Var10 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			if item.Icon != "" {
+				templ_7745c5c3_Err = icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"}).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, " ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = ui.Button(sidebarLinkButtonProps(active, item, extraClass)).Render(templ.WithChildren(ctx, templ_7745c5c3_Var10), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

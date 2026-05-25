@@ -1,7 +1,7 @@
 ---
 slug: slider
 section: components
-title: "Слайдер"
+title: "Slider"
 description: "Нативный range input через ui.Input."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

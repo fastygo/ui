@@ -1,7 +1,7 @@
 ---
 slug: pagination
 section: components
-title: "Пагинация"
+title: "Pagination"
 description: "Элементы навигации по страницам."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

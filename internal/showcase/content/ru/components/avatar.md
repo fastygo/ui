@@ -1,7 +1,7 @@
 ---
 slug: avatar
 section: components
-title: "Аватар"
+title: "Avatar"
 description: "Заглушка аватара пользователя."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

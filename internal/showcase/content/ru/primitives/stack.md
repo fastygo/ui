@@ -1,7 +1,7 @@
 ---
 slug: stack
 section: primitives
-title: "Стек"
+title: "Stack"
 description: "Вертикальный flex-столбец; базовый примитив отступов."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

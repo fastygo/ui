@@ -1,7 +1,7 @@
 ---
 slug: switch
 section: primitives
-title: "Переключатель"
+title: "Switch"
 description: "Toggle с ARIA role switch и aria-checked."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

@@ -1,7 +1,7 @@
 ---
 slug: text
 section: primitives
-title: "Текст"
+title: "Text"
 description: "Обычный текст в семантическом теге; копия передаётся вторым аргументом."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

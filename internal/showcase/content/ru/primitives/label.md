@@ -1,7 +1,7 @@
 ---
 slug: label
 section: primitives
-title: "Метка"
+title: "Label"
 description: "Связывает видимый текст с одним контролом формы."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

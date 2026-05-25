@@ -1,7 +1,7 @@
 ---
 slug: list
 section: primitives
-title: "Список"
+title: "List"
 description: "Контейнер ul, ol, dl или menu с элементами ListItem."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

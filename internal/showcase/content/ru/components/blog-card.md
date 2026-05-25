@@ -1,7 +1,7 @@
 ---
 slug: "blog-card"
 section: "components"
-title: "Карточка блога"
+title: "Blog Card"
 description: "Переиспользуемые карточки блога с плейсхолдером медиа — вертикальная и горизонтальная раскладки."
 source: "github.com/fastygo/ui/internal/ui/components/blogcard"
 package: "github.com/fastygo/ui/internal/ui/components/blogcard"

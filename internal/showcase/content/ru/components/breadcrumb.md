@@ -1,7 +1,7 @@
 ---
 slug: breadcrumb
 section: components
-title: "Хлебные крошки"
+title: "Breadcrumb"
 description: "Цепочка навигации до текущей страницы."
 source: github.com/fastygo/templ/components
 package: github.com/fastygo/templ/components

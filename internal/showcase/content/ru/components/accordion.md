@@ -1,7 +1,7 @@
 ---
 slug: accordion
 section: components
-title: "Аккордеон"
+title: "Accordion"
 description: "Вертикально сложенные раскрывающиеся секции (wireframe; data-ui8kit accordion)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

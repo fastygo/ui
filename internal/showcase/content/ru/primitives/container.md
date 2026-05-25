@@ -1,7 +1,7 @@
 ---
 slug: container
 section: primitives
-title: "Контейнер"
+title: "Container"
 description: "Оболочка ширины страницы с div, main или section."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

@@ -1,7 +1,7 @@
 ---
 slug: textarea
 section: primitives
-title: "Многострочное поле"
+title: "Textarea"
 description: "Нативное многострочное текстовое поле."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

@@ -1,7 +1,7 @@
 ---
 slug: dialog
 section: components
-title: "Диалог"
+title: "Dialog"
 description: "Wireframe модального диалога (data-ui8kit dialog)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

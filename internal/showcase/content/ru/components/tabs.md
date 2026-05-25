@@ -1,7 +1,7 @@
 ---
 slug: tabs
 section: components
-title: "Вкладки"
+title: "Tabs"
 description: "Интерфейс с вкладками (wireframe; data-ui8kit tabs)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

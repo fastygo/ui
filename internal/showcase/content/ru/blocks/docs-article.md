@@ -1,7 +1,7 @@
 ---
 slug: docs-article
 section: blocks
-title: "Статья документации"
+title: "Docs Article"
 description: "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks."
 source: internal/ui/blocks
 package: internal/ui/blocks

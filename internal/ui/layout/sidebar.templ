@@ -33,20 +33,25 @@ templ sidebarNavCollapse(props SidebarProps, group NavSectionGroup) {
 			@sidebarNavLink(props.Active, group.Items[i], "")
 		}
 		if len(group.Items) > NavCollapseFullVisible {
-			@ui.Box(ui.BoxProps{Class: "nav-sidebar-fade relative"}) {
-				@ui.Box(navCollapseFadeHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items)))
+			@ui.Box(navCollapseTeaserBoxProps(NavSectionExpanded(props.Active, group.Items))) {
 				for i := NavCollapseFullVisible; i < navCollapseThreshold() && i < len(group.Items); i++ {
-					@sidebarNavLink(props.Active, group.Items[i], NavItemFadeClass(i-NavCollapseFullVisible))
+					@sidebarNavTeaserItem(group.Items[i], i-NavCollapseFullVisible)
 				}
+				@ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items)))
 			}
-		}
-		if len(group.Items) > navCollapseThreshold() {
-			@ui.Stack(navCollapseMoreStackProps(NavSectionCollapseID(group.Label))) {
-				for i := navCollapseThreshold(); i < len(group.Items); i++ {
+			@ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))) {
+				for i := NavCollapseFullVisible; i < len(group.Items); i++ {
 					@sidebarNavLink(props.Active, group.Items[i], "")
 				}
 			}
 		}
+	}
+}
+
+templ sidebarNavTeaserItem(item NavItem, fadeIndex int) {
+	@ui.Box(ui.BoxProps{Class: navCollapseTeaserItemClass(fadeIndex)}) {
+		@icon.Icon(icon.IconProps{Name: "chevron-right", Size: "sm"})
+		@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
 	}
 }
 

@@ -1,7 +1,7 @@
 ---
 slug: menubar
 section: components
-title: "Панель меню"
+title: "Menubar"
 description: "Горизонтальная панель меню."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

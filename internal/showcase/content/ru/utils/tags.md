@@ -1,7 +1,7 @@
 ---
 slug: tags
 section: utils
-title: "Теги"
+title: "Tags"
 description: "Ограничение имён HTML-тегов по группам примитивов и безопасный выбор через ResolveTag."
 source: github.com/fastygo/templ/utils
 package: github.com/fastygo/templ/utils

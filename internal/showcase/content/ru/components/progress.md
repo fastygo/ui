@@ -1,7 +1,7 @@
 ---
 slug: progress
 section: components
-title: "Прогресс"
+title: "Progress"
 description: "Wireframe индикатора прогресса."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

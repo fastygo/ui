@@ -1,7 +1,7 @@
 ---
 slug: icon
 section: components
-title: "Иконка"
+title: "Icon"
 description: "Latty icon mask (реестр приложения)."
 source: github.com/fastygo/ui/internal/ui/components/icon
 package: github.com/fastygo/ui/internal/ui/components/icon

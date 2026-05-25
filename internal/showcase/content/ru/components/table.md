@@ -1,7 +1,7 @@
 ---
 slug: table
 section: components
-title: "Таблица"
+title: "Table"
 description: "Таблица с секциями, строками и ячейками."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

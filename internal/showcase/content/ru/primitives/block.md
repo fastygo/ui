@@ -1,7 +1,7 @@
 ---
 slug: block
 section: primitives
-title: "Блок"
+title: "Block"
 description: "Landmark верхнего уровня страницы; не вкладывайте Block в Block."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

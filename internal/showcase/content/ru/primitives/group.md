@@ -1,7 +1,7 @@
 ---
 slug: group
 section: primitives
-title: "Группа"
+title: "Group"
 description: "Горизонтальный flex-ряд; поддерживает fieldset для связанных контролов."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

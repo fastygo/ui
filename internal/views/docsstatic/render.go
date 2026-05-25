@@ -279,8 +279,9 @@ func Index(title, description string, sections []IndexSection) templ.Component {
 
 // IndexSection groups index links.
 type IndexSection struct {
-	Label string
-	Links []IndexLink
+	Section string
+	Label   string
+	Links   []IndexLink
 }
 
 // IndexLink is one docs index card.
@@ -294,22 +295,34 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 	if err := ui.Title(ui.TitleProps{Order: 2}, sec.Label).Render(ctx, w); err != nil {
 		return err
 	}
-	for _, link := range sec.Links {
-		if err := cmp.Card(cmp.CardProps{Class: "docs-index-card p-4"}).Render(
-			templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
-				if err := renderButtonLabel(ctx, w, ui.ButtonProps{
-					Href:    link.Href,
-					Variant: "link",
-					Class:   "h-auto justify-start p-0 text-base font-semibold",
-				}, link.Title); err != nil {
+	return ui.Grid(ui.GridProps{Class: indexSectionGridClass(sec.Section)}).Render(
+		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+			for _, link := range sec.Links {
+				if err := cmp.Card(cmp.CardProps{Class: "docs-index-card p-3"}).Render(
+					templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+						if err := renderButtonLabel(ctx, w, ui.ButtonProps{
+							Href:    link.Href,
+							Variant: "link",
+							Class:   "h-auto justify-start p-0 text-base font-semibold",
+						}, link.Title); err != nil {
+							return err
+						}
+						return ui.Text(ui.TextProps{Class: "docs-index-card-desc text-muted-foreground"}, link.Description).Render(ctx, w)
+					})), w); err != nil {
 					return err
 				}
-				return ui.Text(ui.TextProps{Class: "text-xs text-muted-foreground"}, link.Description).Render(ctx, w)
-			})), w); err != nil {
-			return err
-		}
+			}
+			return nil
+		})), w)
+}
+
+func indexSectionGridClass(sectionID string) string {
+	switch sectionID {
+	case "primitives", "components":
+		return "docs-index-grid docs-index-grid-3"
+	default:
+		return "docs-index-grid docs-index-grid-2"
 	}
-	return nil
 }
 
 // SectionLabel returns a human label for a docs section id.

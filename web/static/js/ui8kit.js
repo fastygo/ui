@@ -197,7 +197,15 @@
 
   function expandNavCollapse(block) {
     block.setAttribute("data-nav-expanded", "true");
+    var teaser = block.querySelector("[data-nav-collapse-teaser]");
+    var overflow = block.querySelector("[data-nav-collapse-overflow]");
     var hit = block.querySelector("[data-nav-collapse-expand]");
+    if (teaser) {
+      teaser.hidden = true;
+    }
+    if (overflow) {
+      overflow.hidden = false;
+    }
     if (hit) {
       hit.setAttribute("aria-expanded", "true");
     }

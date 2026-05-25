@@ -1,7 +1,7 @@
 ---
 slug: dashboard-overview
 section: blocks
-title: "Обзор дашборда"
+title: "Dashboard Overview"
 description: "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks."
 source: internal/ui/blocks
 package: internal/ui/blocks

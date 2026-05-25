@@ -1,7 +1,7 @@
 ---
 slug: aspect-ratio
 section: components
-title: "Соотношение сторон"
+title: "Aspect Ratio"
 description: "Контейнер с фиксированным aspect ratio."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

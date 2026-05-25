@@ -1,7 +1,7 @@
 ---
 slug: utils
 section: utils
-title: "Утилиты"
+title: "Utils"
 description: "Общие Go-хелперы для registry-кирпичей: классы, атрибуты, ARIA и рецепты вариантов."
 source: github.com/fastygo/templ/utils
 package: github.com/fastygo/templ/utils

@@ -1,7 +1,7 @@
 ---
 slug: button
 section: primitives
-title: "Кнопка"
+title: "Button"
 description: "Действие по клику или навигация при заданном Href."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

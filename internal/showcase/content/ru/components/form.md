@@ -1,7 +1,7 @@
 ---
 slug: form
 section: components
-title: "Форма"
+title: "Form"
 description: "Landmark формы с вспомогательными элементами FormItem."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
