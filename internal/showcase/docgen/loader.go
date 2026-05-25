@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/fs"
 	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -87,6 +88,9 @@ func loadLocale(routing doclocale.Routing, locale string) ([]DocPage, error) {
 		if d.IsDir() || !strings.HasSuffix(filePath, ".md") {
 			return nil
 		}
+		if isDraftContentPath(filePath) {
+			return nil
+		}
 		raw, err := showcasecontent.FS.ReadFile(filePath)
 		if err != nil {
 			return err
@@ -102,6 +106,16 @@ func loadLocale(routing doclocale.Routing, locale string) ([]DocPage, error) {
 		return nil, err
 	}
 	return pages, nil
+}
+
+// isDraftContentPath reports paths under a drafts/ folder (excluded from published docs).
+func isDraftContentPath(filePath string) bool {
+	for _, part := range strings.Split(strings.ToLower(filepath.ToSlash(filePath)), "/") {
+		if part == "drafts" {
+			return true
+		}
+	}
+	return false
 }
 
 func pageKey(meta PageMeta) string {

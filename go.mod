@@ -4,6 +4,7 @@ go 1.25.0
 
 require (
 	github.com/a-h/templ v0.3.1001
+	github.com/alecthomas/chroma/v2 v2.24.1
 	github.com/fastygo/framework v0.0.0-20260428133456-8a8901eca249
 	github.com/fastygo/templ v0.0.0-20260519182834-29250eaf6a34
 	github.com/yuin/goldmark v1.8.2
@@ -12,7 +13,6 @@ require (
 
 require (
 	github.com/a-h/parse v0.0.0-20250122154542-74294addb73e // indirect
-	github.com/alecthomas/chroma/v2 v2.24.1 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cli/browser v1.3.0 // indirect
@@ -30,3 +30,5 @@ require (
 )
 
 tool github.com/a-h/templ/cmd/templ
+
+replace github.com/fastygo/templ => ../@Templ

@@ -29,10 +29,10 @@ func TestStaticDocsRoutes_defaultLocale(t *testing.T) {
 		wantStatus int
 	}{
 		{"/docs/", 200},
-		{"/docs/components/button/", 200},
+		{"/docs/primitives/button/", 200},
 		{"/ru/docs/", 200},
 		{"/en/docs/", 301},
-		{"/en/docs/components/button/", 301},
+		{"/en/docs/primitives/button/", 301},
 	}
 	for _, tc := range cases {
 		t.Run(tc.path, func(t *testing.T) {

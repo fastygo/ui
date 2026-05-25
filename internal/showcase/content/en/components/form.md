@@ -1,61 +1,91 @@
 ---
-slug: form
-section: components
-title: "Form"
-description: "Form landmark with item helpers."
-source: github.com/fastygo/templ/ui
-package: github.com/fastygo/templ/ui
-related:
-  - label: "Input"
-    href: /docs/components/input/
-  - label: "Button"
-    href: /docs/components/button/
+id: ui.form
+layer: composite
+kind: input
+package: github.com/fastygo/templ/ui/form
+facade: github.com/fastygo/templ/ui
+parts:
+  - templ: Form
+    props: [ID, Class, Action, Method, Enctype, Autocomplete, Name, Target, NoValidate, Attrs]
+    slot: root
+  - templ: FormItem
+    props: [Class]
+    slot: item
+  - templ: FormDescription
+    props: [Class]
+    slot: description
+    value: string
+  - templ: FormMessage
+    props: [Class]
+    slot: message
+    value: string
 api:
-  - name: "Action"
-    type: "string"
-    description: "Form action URL"
-  - name: "Method"
-    type: "string"
-    description: "GET | POST"
-  - name: "FormItem"
-    type: "component"
-    description: "Label + control group"
+  Action:
+    role: submit-url
+    type: string
+  Method:
+    role: http-method
+    type: string
+    enum: [get, post]
+  NoValidate:
+    role: validation
+    type: bool
+showcase:
+  - id: layout.field-with-label
+    parts: [Form, FormItem, FormDescription]
+    props: { Method: post }
+  - id: layout.with-message
+    parts: [Form, FormItem, FormMessage]
+semantics:
+  root: form
+  role: form
+  behavior: interactive
+  message-role: alert
+
 ---
+## Summary
 
-Form landmark with item helpers.
+Form wraps fields in a vertical grid container.
+FormItem groups label, control, and helper text.
 
-## Login
+## Use Cases
+
+- Submit user data with Method post
+- Show field hint with FormDescription
+- Show validation error with FormMessage
+
+## Semantics
+
+- Form root uses grid gap-4 layout
+- FormMessage renders role alert on p element
+
+## Example layout.field-with-label
 
 ```templ
 import "github.com/fastygo/templ/ui"
 
 templ Example() {
-	@ui.Form(ui.FormProps{Class: "max-w-sm"}) {
+	@ui.Form(ui.FormProps{Action: "/signup", Method: "post"}) {
 		@ui.FormItem(ui.FormItemProps{}) {
-			@ui.Label(ui.LabelProps{HTMLFor: "login-email"}) {
-				Email
-			}
-			@ui.Input(ui.InputProps{ID: "login-email", Type: "email", Placeholder: "you@example.com"})
-		}
-		@ui.Button(ui.ButtonProps{Type: "submit"}) {
-			Sign in
+			@ui.Label(ui.LabelProps{HTMLFor: "email"}) { Email }
+			@ui.Input(ui.InputProps{ID: "email", Name: "email", Type: "email"})
+			@ui.FormDescription(ui.FormDescriptionProps{}, "We never share your email.")
 		}
 	}
 }
 ```
 
-## Inline
+## Example layout.with-message
 
 ```templ
 import "github.com/fastygo/templ/ui"
 
 templ Example() {
-	@ui.Form(ui.FormProps{Class: "max-w-md"}) {
-		@ui.Group(ui.GroupProps{Class: "flex items-end gap-2"}) {
-			@ui.Input(ui.InputProps{Placeholder: "Search"})
-			@ui.Button(ui.ButtonProps{}) {
-				Go
-			}
+	@ui.Form(ui.FormProps{}) {
+		@ui.FormItem(ui.FormItemProps{}) {
+			@ui.Label(ui.LabelProps{HTMLFor: "name"}) { Name }
+			@ui.Input(ui.InputProps{ID: "name", Name: "name", Required: true})
+			@ui.FormMessage(ui.FormMessageProps{}, "Name is required.")
 		}
 	}
 }

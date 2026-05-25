@@ -90,6 +90,10 @@ func (r Routing) OutputRelPath(locale, section, slug string) string {
 		parts = append(parts, slug)
 	case "blocks":
 		parts = append(parts, "blocks", slug)
+	case "primitives":
+		parts = append(parts, "primitives", slug)
+	case "utils":
+		parts = append(parts, "utils", slug)
 	default:
 		parts = append(parts, "components", slug)
 	}
@@ -185,6 +189,14 @@ func suffixToSectionSlug(suffix string) (section, slug string) {
 		if len(parts) >= 2 {
 			return "components", parts[1]
 		}
+	case "primitives":
+		if len(parts) >= 2 {
+			return "primitives", parts[1]
+		}
+	case "utils":
+		if len(parts) >= 2 {
+			return "utils", parts[1]
+		}
 	default:
 		return "getting-started", parts[0]
 	}
@@ -202,6 +214,10 @@ func registryPagePath(section, slug string) string {
 		return "/docs/" + slug
 	case "blocks":
 		return "/docs/blocks/" + slug
+	case "primitives":
+		return "/docs/primitives/" + slug
+	case "utils":
+		return "/docs/utils/" + slug
 	default:
 		return "/docs/components/" + slug
 	}

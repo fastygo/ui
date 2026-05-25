@@ -1,7 +1,7 @@
 ---
 slug: theming
 section: getting-started
-title: "Темизация"
+title: "Theming"
 description: "Семантические токены (background, foreground, primary, …) задаются CSS-переменными в стиле tweakcn. Переключатель темы в шапке меняет светлую/тёмную тему через theme.js."
 source: web/static/css/tweakcn.css
 package: web/static/js/theme.js

@@ -9,6 +9,8 @@ import (
 
 var knownSections = map[string]struct{}{
 	"getting-started": {},
+	"primitives":      {},
+	"utils":           {},
 	"components":      {},
 	"blocks":          {},
 }
@@ -37,6 +39,11 @@ func OutputRelPath(locale string, meta PageMeta) string {
 
 func defaultRouting() doclocale.Routing {
 	return doclocale.Routing{Default: "en", Locales: []string{"en", "ru"}}.Normalize()
+}
+
+// DefaultRouting returns the default locale routing used in tests.
+func DefaultRouting() doclocale.Routing {
+	return defaultRouting()
 }
 
 func ensureTrailingSlash(p string) string {

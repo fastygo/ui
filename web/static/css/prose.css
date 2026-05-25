@@ -200,6 +200,23 @@ article.docs-article.prose-docs {
   @apply rounded-none bg-transparent px-0 py-0 text-xs text-inherit;
 }
 
+.prose-docs .docs-index-grid {
+  @apply grid grid-cols-1 gap-3;
+}
+
+.prose-docs .docs-index-grid-2 {
+  @apply md:grid-cols-2;
+}
+
+.prose-docs .docs-index-grid-3 {
+  @apply md:grid-cols-2 xl:grid-cols-3;
+}
+
 .prose-docs .docs-index-card {
-  @apply my-3;
+  @apply my-0 h-full;
+}
+
+.prose-docs .docs-index-card-desc {
+  font-size: 0.6875rem;
+  line-height: 1rem;
 }

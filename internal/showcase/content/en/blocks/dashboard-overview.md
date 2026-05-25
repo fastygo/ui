@@ -9,7 +9,7 @@ related:
   - label: "Card"
     href: /docs/components/card/
   - label: "Stack"
-    href: /docs/components/stack/
+    href: /docs/primitives/stack/
 api:
   - name: "Title"
     type: "string"

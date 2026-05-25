@@ -71,7 +71,8 @@ func pageBuildInput(page DocPage, globalHash string) string {
 }
 
 func pageStampPath(root, outputHTMLPath string) string {
-	key := strings.ReplaceAll(filepath.ToSlash(outputHTMLPath), "/", "_")
+	sum := sha256.Sum256([]byte(filepath.ToSlash(outputHTMLPath)))
+	key := hex.EncodeToString(sum[:])
 	return filepath.Join(root, filepath.FromSlash(pageStampRoot), key+".stamp")
 }
 

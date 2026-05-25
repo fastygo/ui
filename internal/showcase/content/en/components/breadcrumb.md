@@ -1,49 +1,94 @@
 ---
-slug: breadcrumb
-section: components
-title: "Breadcrumb"
-description: "Hierarchy navigation trail."
-source: github.com/fastygo/templ/ui
-package: github.com/fastygo/templ/ui
-related:
-  - label: "Navigation Menu"
-    href: /docs/components/navigation-menu/
-  - label: "Tabs"
-    href: /docs/components/tabs/
+id: components.breadcrumb
+layer: composite
+kind: navigation
+package: github.com/fastygo/templ/components/breadcrumb
+facade: github.com/fastygo/templ/components
+templ: Breadcrumb
 api:
-  - name: "Items"
+  Items:
+    role: trail
     type: "[]BreadcrumbItem"
-    description: "Label, Href, Current, Disabled"
-  - name: "Class"
-    type: "string"
-    description: "Nav wrapper utilities"
+  Class:
+    role: style-extension
+    type: string
+item-props:
+  Label:
+    role: crumb-label
+    type: string
+  Href:
+    role: crumb-link
+    type: string
+  Current:
+    role: current-page
+    type: bool
+  Disabled:
+    role: disabled-crumb
+    type: bool
+showcase:
+  - id: layout.standard
+    props:
+      Items:
+        - { Label: Home, Href: / }
+        - { Label: Docs, Href: /docs }
+        - { Label: Button, Current: true }
+  - id: state.disabled
+    props:
+      Items:
+        - { Label: Home, Href: / }
+        - { Label: Locked, Disabled: true }
+semantics:
+  root: nav
+  list-root: ol
+  role: navigation
+  aria-label: Breadcrumb
+  behavior: static
+  current-attr: aria-current page
+
 ---
+## Summary
 
-Hierarchy navigation trail.
+Breadcrumb shows the current page trail.
+Breadcrumb sets aria-current on the active item.
 
-## Default
+## Use Cases
+
+- Show docs hierarchy above page title
+- Mark the current page without a link
+
+## Semantics
+
+- Root element is nav with aria-label Breadcrumb
+- Items render as ol li elements
+- Href renders anchor when link is enabled
+
+## Example layout.standard
 
 ```templ
 import cmp "github.com/fastygo/templ/components"
 
 templ Example() {
-	@cmp.Breadcrumb(cmp.BreadcrumbProps{Items: []cmp.BreadcrumbItem{
-		{Label: "Home", Href: "/"},
-		{Label: "Docs", Href: "/docs"},
-		{Label: "Button", Current: true},
-	}})
+	@cmp.Breadcrumb(cmp.BreadcrumbProps{
+		Items: []cmp.BreadcrumbItem{
+			{Label: "Home", Href: "/"},
+			{Label: "Docs", Href: "/docs"},
+			{Label: "Button", Current: true},
+		},
+	})
 }
 ```
 
-## Current page
+## Example state.disabled
 
 ```templ
 import cmp "github.com/fastygo/templ/components"
 
 templ Example() {
-	@cmp.Breadcrumb(cmp.BreadcrumbProps{Items: []cmp.BreadcrumbItem{
-		{Label: "Home", Href: "/"},
-		{Label: "Settings", Current: true},
-	}})
+	@cmp.Breadcrumb(cmp.BreadcrumbProps{
+		Items: []cmp.BreadcrumbItem{
+			{Label: "Home", Href: "/"},
+			{Label: "Locked", Disabled: true},
+		},
+	})
 }
 ```

@@ -6,8 +6,8 @@ description: "Wireframe нижней выезжающей панели (bottom s
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
-  - label: "Sheet"
-    href: /docs/components/sheet/
+  - label: "Alert Dialog"
+    href: /docs/components/alert-dialog/
   - label: "Диалог"
     href: /docs/components/dialog/
 api:

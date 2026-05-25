@@ -31,8 +31,8 @@
     "slug": "alert",
     "section": "components",
     "title": "Alert",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/alert"
   },
   {
     "slug": "alert-dialog",
@@ -56,20 +56,6 @@
     "package": "github.com/fastygo/templ/ui"
   },
   {
-    "slug": "badge",
-    "section": "components",
-    "title": "Badge",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "block",
-    "section": "components",
-    "title": "Block",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
     "slug": "blog-card",
     "section": "components",
     "title": "Blog Card",
@@ -77,93 +63,23 @@
     "package": "github.com/fastygo/ui/internal/ui/components/blogcard"
   },
   {
-    "slug": "box",
-    "section": "components",
-    "title": "Box",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
     "slug": "breadcrumb",
     "section": "components",
     "title": "Breadcrumb",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "button",
-    "section": "components",
-    "title": "Button",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "calendar",
-    "section": "components",
-    "title": "Calendar",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/breadcrumb"
   },
   {
     "slug": "card",
     "section": "components",
     "title": "Card",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/card"
   },
   {
     "slug": "carousel",
     "section": "components",
     "title": "Carousel",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "checkbox",
-    "section": "components",
-    "title": "Checkbox",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "collapsible",
-    "section": "components",
-    "title": "Collapsible",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "combobox",
-    "section": "components",
-    "title": "Combobox",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "command",
-    "section": "components",
-    "title": "Command",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "container",
-    "section": "components",
-    "title": "Container",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "context-menu",
-    "section": "components",
-    "title": "Context Menu",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "data-table",
-    "section": "components",
-    "title": "Data Table",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
   },
@@ -193,28 +109,7 @@
     "section": "components",
     "title": "Form",
     "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "grid",
-    "section": "components",
-    "title": "Grid",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "group",
-    "section": "components",
-    "title": "Group",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "hover-card",
-    "section": "components",
-    "title": "Hover Card",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
+    "package": "github.com/fastygo/templ/ui/form"
   },
   {
     "slug": "icon",
@@ -224,30 +119,9 @@
     "package": "github.com/fastygo/ui/internal/ui/components/icon"
   },
   {
-    "slug": "input",
-    "section": "components",
-    "title": "Input",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "label",
-    "section": "components",
-    "title": "Label",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
     "slug": "language-toggle",
     "section": "components",
     "title": "Language Toggle",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "list",
-    "section": "components",
-    "title": "List",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
   },
@@ -273,30 +147,9 @@
     "package": "github.com/fastygo/templ/ui"
   },
   {
-    "slug": "popover",
-    "section": "components",
-    "title": "Popover",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
     "slug": "progress",
     "section": "components",
     "title": "Progress",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "radio",
-    "section": "components",
-    "title": "Radio",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "select",
-    "section": "components",
-    "title": "Select",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
   },
@@ -308,37 +161,9 @@
     "package": "github.com/fastygo/templ/ui"
   },
   {
-    "slug": "sheet",
-    "section": "components",
-    "title": "Sheet",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "skeleton",
-    "section": "components",
-    "title": "Skeleton",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
     "slug": "slider",
     "section": "components",
     "title": "Slider",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "stack",
-    "section": "components",
-    "title": "Stack",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "switch",
-    "section": "components",
-    "title": "Switch",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
   },
@@ -347,61 +172,12 @@
     "section": "components",
     "title": "Table",
     "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
+    "package": "github.com/fastygo/templ/ui/table"
   },
   {
     "slug": "tabs",
     "section": "components",
     "title": "Tabs",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "text",
-    "section": "components",
-    "title": "Text",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "textarea",
-    "section": "components",
-    "title": "Textarea",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "title",
-    "section": "components",
-    "title": "Title",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "toast",
-    "section": "components",
-    "title": "Toast",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "toggle",
-    "section": "components",
-    "title": "Toggle",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "toggle-group",
-    "section": "components",
-    "title": "Toggle Group",
-    "source": "github.com/fastygo/templ/ui",
-    "package": "github.com/fastygo/templ/ui"
-  },
-  {
-    "slug": "tooltip",
-    "section": "components",
-    "title": "Tooltip",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
   },
@@ -425,5 +201,145 @@
     "title": "Theming",
     "source": "web/static/css/tweakcn.css",
     "package": "web/static/js/theme.js"
+  },
+  {
+    "slug": "badge",
+    "section": "primitives",
+    "title": "Badge",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/badge"
+  },
+  {
+    "slug": "block",
+    "section": "primitives",
+    "title": "Block",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/block"
+  },
+  {
+    "slug": "box",
+    "section": "primitives",
+    "title": "Box",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/box"
+  },
+  {
+    "slug": "button",
+    "section": "primitives",
+    "title": "Button",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/button"
+  },
+  {
+    "slug": "checkbox",
+    "section": "primitives",
+    "title": "Checkbox",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/checkbox"
+  },
+  {
+    "slug": "container",
+    "section": "primitives",
+    "title": "Container",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/container"
+  },
+  {
+    "slug": "grid",
+    "section": "primitives",
+    "title": "Grid",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/grid"
+  },
+  {
+    "slug": "group",
+    "section": "primitives",
+    "title": "Group",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/group"
+  },
+  {
+    "slug": "input",
+    "section": "primitives",
+    "title": "Input",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/input"
+  },
+  {
+    "slug": "label",
+    "section": "primitives",
+    "title": "Label",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/label"
+  },
+  {
+    "slug": "list",
+    "section": "primitives",
+    "title": "List",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/list"
+  },
+  {
+    "slug": "radio",
+    "section": "primitives",
+    "title": "Radio",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/radio"
+  },
+  {
+    "slug": "select",
+    "section": "primitives",
+    "title": "Select",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/select"
+  },
+  {
+    "slug": "stack",
+    "section": "primitives",
+    "title": "Stack",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/stack"
+  },
+  {
+    "slug": "switch",
+    "section": "primitives",
+    "title": "Switch",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/switch"
+  },
+  {
+    "slug": "text",
+    "section": "primitives",
+    "title": "Text",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/text"
+  },
+  {
+    "slug": "textarea",
+    "section": "primitives",
+    "title": "Textarea",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/textarea"
+  },
+  {
+    "slug": "title",
+    "section": "primitives",
+    "title": "Title",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/title"
+  },
+  {
+    "slug": "tags",
+    "section": "utils",
+    "title": "Tags",
+    "source": "github.com/fastygo/templ/utils",
+    "package": "github.com/fastygo/templ/utils"
+  },
+  {
+    "slug": "utils",
+    "section": "utils",
+    "title": "Utils",
+    "source": "github.com/fastygo/templ/utils",
+    "package": "github.com/fastygo/templ/utils"
   }
 ]

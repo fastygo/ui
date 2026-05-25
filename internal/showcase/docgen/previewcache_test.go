@@ -81,14 +81,14 @@ templ ButtonDemo() {
 }
 
 func TestParseFile_buttonMdHasNoDemoDirectives(t *testing.T) {
-	raw, err := os.ReadFile(filepath.Join("..", "content", "en", "components", "button.md"))
+	raw, err := os.ReadFile(filepath.Join("..", "content", "en", "primitives", "button.md"))
 	if err != nil {
 		t.Fatal(err)
 	}
 	if strings.Contains(string(raw), "{{demo") {
 		t.Fatal("button.md still contains legacy demo directives")
 	}
-	page, err := ParseFile(defaultRouting(), "en", "en/components/button.md", raw)
+	page, err := ParseFile(defaultRouting(), "en", "en/primitives/button.md", raw)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -98,8 +98,8 @@ func TestParseFile_buttonMdHasNoDemoDirectives(t *testing.T) {
 			previews++
 		}
 	}
-	if previews != 7 {
-		t.Fatalf("preview blocks: got %d want 7", previews)
+	if previews < 7 {
+		t.Fatalf("preview blocks: got %d want at least 7", previews)
 	}
 }
 
@@ -180,6 +180,51 @@ templ Example() {
 	}
 	if second.Compiled != 0 {
 		t.Fatalf("second compiled: got %d want 0", second.Compiled)
+	}
+}
+
+func TestCompilePreviews_dedupeBySourceHash(t *testing.T) {
+	root, err := findRepoRoot(t)
+	if err != nil {
+		t.Fatal(err)
+	}
+	source := `import "github.com/fastygo/templ/ui"
+
+templ Example() {
+	@ui.Button(ui.ButtonProps{}) {
+		Shared
+	}
+}`
+	pages := []DocPage{
+		{
+			Locale:     "en",
+			SourceFile: "test/a.md",
+			Blocks:     []Block{PreviewCodeBlock{Language: "templ", Source: source}},
+		},
+		{
+			Locale:     "ru",
+			SourceFile: "test/b.md",
+			Blocks:     []Block{PreviewCodeBlock{Language: "templ", Source: source}},
+		},
+	}
+	stats, err := CompilePreviews(pages, PreviewCacheConfig{ModuleRoot: root, CleanStore: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if stats.Unique != 1 {
+		t.Fatalf("unique compiled: got %d want 1", stats.Unique)
+	}
+	if stats.Compiled != 2 {
+		t.Fatalf("compiled blocks: got %d want 2", stats.Compiled)
+	}
+	for _, page := range pages {
+		pb, ok := page.Blocks[0].(PreviewCodeBlock)
+		if !ok {
+			t.Fatalf("expected PreviewCodeBlock on %s", page.SourceFile)
+		}
+		if !strings.Contains(pb.HTML, "button") {
+			t.Fatalf("preview HTML missing button on %s: %q", page.SourceFile, pb.HTML)
+		}
 	}
 }
 

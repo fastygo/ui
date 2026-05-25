@@ -11,6 +11,12 @@ type NavItem struct {
 	Section bool
 }
 
+// NavSectionGroup is a sidebar section heading plus its link items.
+type NavSectionGroup struct {
+	Label string
+	Items []NavItem
+}
+
 // SidebarProps configures the sidebar navigation.
 type SidebarProps struct {
 	Items  []NavItem

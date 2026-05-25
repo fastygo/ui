@@ -1,50 +1,102 @@
 ---
-slug: alert
-section: components
-title: "Alert"
-description: "Callout for important messages."
-source: github.com/fastygo/templ/ui
-package: github.com/fastygo/templ/ui
-related:
-  - label: "Card"
-    href: /docs/components/card/
-  - label: "Badge"
-    href: /docs/components/badge/
+id: components.alert
+layer: composite
+kind: feedback
+package: github.com/fastygo/templ/components/alert
+facade: github.com/fastygo/templ/components
+templ: Alert
 api:
-  - name: "Variant"
-    type: "string"
-    description: "default | destructive"
-  - name: "Class"
-    type: "string"
-    description: "Extra utilities"
+  Variant:
+    role: appearance
+    type: string
+    enum: [default, destructive, success, warning]
+    allow-list-source: utils.recipes.AlertVariants
+    default: default
+  Class:
+    role: style-extension
+    type: string
+slots:
+  default:
+    required: true
+    accepts: text
+showcase:
+  - id: variant.default
+    props: { Variant: default }
+  - id: variant.destructive
+    props: { Variant: destructive }
+  - id: variant.success
+    props: { Variant: success }
+  - id: variant.warning
+    props: { Variant: warning }
+semantics:
+  root: section
+  role: status
+  aria-live: polite
+  behavior: static
 ---
 
-Callout for important messages.
+## Summary
 
-## Default
+Alert shows a short status message block.
+Alert uses role status and aria-live polite.
+
+## Use Cases
+
+- Show form validation summary
+- Show destructive action warning text
+- Show success confirmation message
+
+## Semantics
+
+- Root element is section
+- AlertAttrs sets role status from utils
+- Children carry the visible message body
+
+## Example variant.default
 
 ```templ
-import cmp "github.com/fastygo/templ/components"
 import "github.com/fastygo/templ/ui"
+import cmp "github.com/fastygo/templ/components"
 
 templ Example() {
-	@cmp.Alert(cmp.AlertProps{}) {
-		@ui.Title(ui.TitleProps{Order: 4, Class: "text-sm font-semibold"}, "Heads up")
-		@ui.Text(ui.TextProps{Class: "text-sm"}, "You can add components from the gallery.")
+	@cmp.Alert(cmp.AlertProps{Variant: "default"}) {
+		@ui.Text(ui.TextProps{Class: "text-sm"}, "Static alert with role status.")
 	}
 }
 ```
 
-## Destructive
+## Example variant.destructive
 
 ```templ
 import cmp "github.com/fastygo/templ/components"
-import "github.com/fastygo/templ/ui"
 
 templ Example() {
 	@cmp.Alert(cmp.AlertProps{Variant: "destructive"}) {
-		@ui.Title(ui.TitleProps{Order: 4, Class: "text-sm font-semibold"}, "Error")
-		@ui.Text(ui.TextProps{Class: "text-sm"}, "Something went wrong.")
+		Something went wrong.
+	}
+}
+```
+
+## Example variant.success
+
+```templ
+import cmp "github.com/fastygo/templ/components"
+
+templ Example() {
+	@cmp.Alert(cmp.AlertProps{Variant: "success"}) {
+		Changes saved.
+	}
+}
+```
+
+## Example variant.warning
+
+```templ
+import cmp "github.com/fastygo/templ/components"
+
+templ Example() {
+	@cmp.Alert(cmp.AlertProps{Variant: "warning"}) {
+		Review settings before you continue.
 	}
 }
 ```

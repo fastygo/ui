@@ -9,7 +9,7 @@
     { "label": "All components", "path": "/docs/", "icon": "book-open" },
     { "label": "Introduction", "path": "/docs/introduction/", "icon": "book-open" },
     { "label": "Installation", "path": "/docs/installation/", "icon": "book-open" },
-    { "label": "Button", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
+    { "label": "Button", "path": "/docs/primitives/button/", "icon": "mouse-pointer-click" },
     { "label": "Blog card", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
   ],
   "theme": {
@@ -32,6 +32,8 @@
     "nav_overview": "Overview",
     "nav_docs_home": "Docs home",
     "section_getting_started": "Getting Started",
+    "section_primitives": "Primitives",
+    "section_utils": "Utils",
     "section_components": "Components",
     "section_blocks": "Blocks"
   },

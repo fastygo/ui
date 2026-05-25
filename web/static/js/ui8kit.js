@@ -188,3 +188,74 @@
     namespace.initPattern("docs-preview");
   }
 })();
+
+(function () {
+  var namespace = window.ui8kit;
+  if (!namespace || typeof namespace.register !== "function") {
+    return;
+  }
+
+  function expandNavCollapse(block) {
+    block.setAttribute("data-nav-expanded", "true");
+    var teaser = block.querySelector("[data-nav-collapse-teaser]");
+    var overflow = block.querySelector("[data-nav-collapse-overflow]");
+    var hit = block.querySelector("[data-nav-collapse-expand]");
+    if (teaser) {
+      teaser.hidden = true;
+    }
+    if (overflow) {
+      overflow.hidden = false;
+    }
+    if (hit) {
+      hit.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  function navCollapseBlockFromEvent(event) {
+    var target = event.currentTarget;
+    if (!target || typeof target.closest !== "function") {
+      return null;
+    }
+    return target.closest("[data-nav-collapse]");
+  }
+
+  namespace.register({
+    name: "nav-collapse",
+    init: function (root) {
+      var hits = root.querySelectorAll("[data-nav-collapse-expand]");
+      for (var i = 0; i < hits.length; i += 1) {
+        var hit = hits[i];
+        if (hit.dataset.ui8kitBound) {
+          continue;
+        }
+        hit.dataset.ui8kitBound = "1";
+        var block = hit.closest("[data-nav-collapse]");
+        if (!block || block.getAttribute("data-nav-expanded") === "true") {
+          continue;
+        }
+        hit.addEventListener("click", function (event) {
+          event.preventDefault();
+          var section = navCollapseBlockFromEvent(event);
+          if (section) {
+            expandNavCollapse(section);
+          }
+        });
+        hit.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+          event.preventDefault();
+          var section = navCollapseBlockFromEvent(event);
+          if (section) {
+            expandNavCollapse(section);
+          }
+        });
+      }
+      return function () {};
+    },
+  });
+
+  if (typeof namespace.initPattern === "function") {
+    namespace.initPattern("nav-collapse");
+  }
+})();

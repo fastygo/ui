@@ -1,7 +1,7 @@
 ---
 slug: card
 section: components
-title: "Карточка"
+title: "Card"
 description: "Сгруппированный контент с header, body и footer."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui

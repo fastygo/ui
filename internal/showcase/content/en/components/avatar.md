@@ -7,7 +7,7 @@ source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Badge"
-    href: /docs/components/badge/
+    href: /docs/primitives/badge/
   - label: "Card"
     href: /docs/components/card/
 api:

@@ -1,15 +1,15 @@
 ---
 slug: form
 section: components
-title: "Форма"
+title: "Form"
 description: "Landmark формы с вспомогательными элементами FormItem."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Поле ввода"
-    href: /docs/components/input/
+    href: /docs/primitives/input/
   - label: "Кнопка"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
 api:
   - name: "Action"
     type: "string"

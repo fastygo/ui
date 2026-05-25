@@ -1,15 +1,15 @@
 ---
 slug: dialog
 section: components
-title: "Диалог"
+title: "Dialog"
 description: "Wireframe модального диалога (data-ui8kit dialog)."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
   - label: "Alert Dialog"
     href: /docs/components/alert-dialog/
-  - label: "Sheet"
-    href: /docs/components/sheet/
+  - label: "Drawer"
+    href: /docs/components/drawer/
 api:
   - name: "Attrs"
     type: "templ.Attributes"

@@ -9,7 +9,7 @@
     { "label": "Все компоненты", "path": "/docs/", "icon": "book-open" },
     { "label": "Введение", "path": "/docs/introduction/", "icon": "book-open" },
     { "label": "Установка", "path": "/docs/installation/", "icon": "book-open" },
-    { "label": "Кнопка", "path": "/docs/components/button/", "icon": "mouse-pointer-click" },
+    { "label": "Кнопка", "path": "/docs/primitives/button/", "icon": "mouse-pointer-click" },
     { "label": "Карточка блога", "path": "/docs/components/blog-card/", "icon": "layout-grid" }
   ],
   "theme": {
@@ -32,6 +32,8 @@
     "nav_overview": "Обзор",
     "nav_docs_home": "Документация",
     "section_getting_started": "Начало работы",
+    "section_primitives": "Примитивы",
+    "section_utils": "Утилиты",
     "section_components": "Компоненты",
     "section_blocks": "Блоки"
   },

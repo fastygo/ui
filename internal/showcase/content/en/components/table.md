@@ -1,101 +1,103 @@
 ---
-slug: table
-section: components
-title: "Table"
-description: "Semantic data table structure."
-source: github.com/fastygo/templ/ui
-package: github.com/fastygo/templ/ui
-related:
-  - label: "Data Table"
-    href: /docs/components/data-table/
-  - label: "List"
-    href: /docs/components/list/
+id: ui.table
+layer: composite
+kind: data
+package: github.com/fastygo/templ/ui/table
+facade: github.com/fastygo/templ/ui
+parts:
+  - templ: Table
+    props: [Class, Attrs]
+  - templ: TableCaption
+    props: [Class]
+    slot: caption
+  - templ: TableHead
+    props: [Class]
+    slot: head
+  - templ: TableBody
+    props: [Class]
+    slot: body
+  - templ: TableFoot
+    props: [Class]
+    slot: foot
+  - templ: TableRow
+    props: [Class]
+    slot: row
+  - templ: TableHeadCell
+    props: [Class, Scope, Abbr]
+    slot: head-cell
+  - templ: TableCell
+    props: [Class, ColSpan, RowSpan, Headers]
+    slot: cell
 api:
-  - name: "Class"
-    type: "string"
-    description: "Table wrapper utilities"
-  - name: "TableHead"
-    type: "component"
-    description: "thead section"
-  - name: "TableBody"
-    type: "component"
-    description: "tbody section"
+  Scope:
+    role: header-scope
+    type: string
+    enum: [col, row, colgroup, rowgroup]
+    applies-to: TableHeadCell
+  ColSpan:
+    role: column-span
+    type: int
+    applies-to: TableCell
+showcase:
+  - id: layout.basic
+    parts: [Table, TableHead, TableBody, TableRow, TableHeadCell, TableCell]
+    props: { Scope: col }
+  - id: cell.colspan
+    parts: [Table, TableBody, TableRow, TableCell]
+semantics:
+  root: table
+  role: table
+  behavior: static
+
 ---
+## Summary
 
-Semantic data table structure.
+Table composes caption, sections, rows, and cells.
+TableHeadCell supports scope on th elements.
 
-## Default
+## Use Cases
+
+- Show user list with column headers
+- Span one cell across two columns with ColSpan
+
+## Semantics
+
+- Table root is native table element
+- TableHeadCell sets scope when Scope prop is valid
+
+## Example layout.basic
 
 ```templ
 import "github.com/fastygo/templ/ui"
 
 templ Example() {
-	@ui.Table(ui.TableProps{Class: "w-full text-sm border border-border"}) {
+	@ui.Table(ui.TableProps{Class: "w-full text-sm"}) {
 		@ui.TableHead(ui.TableSectionProps{}) {
 			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableHeadCell(ui.TableCellProps{}) {
-					Name
-				}
-				@ui.TableHeadCell(ui.TableCellProps{}) {
-					Role
-				}
+				@ui.TableHeadCell(ui.TableCellProps{Scope: "col"}) { Name }
+				@ui.TableHeadCell(ui.TableCellProps{Scope: "col"}) { Role }
 			}
 		}
 		@ui.TableBody(ui.TableSectionProps{}) {
 			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableCell(ui.TableCellProps{}) {
-					Ada
-				}
-				@ui.TableCell(ui.TableCellProps{}) {
-					Admin
-				}
-			}
-			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableCell(ui.TableCellProps{}) {
-					Lin
-				}
-				@ui.TableCell(ui.TableCellProps{}) {
-					Editor
-				}
+				@ui.TableCell(ui.TableCellProps{}) { Alex }
+				@ui.TableCell(ui.TableCellProps{}) { Admin }
 			}
 		}
 	}
 }
 ```
 
-## Compact
+## Example cell.colspan
 
 ```templ
 import "github.com/fastygo/templ/ui"
 
 templ Example() {
-	@ui.Table(ui.TableProps{Class: "w-full text-sm border border-border"}) {
-		@ui.TableHead(ui.TableSectionProps{}) {
-			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableHeadCell(ui.TableCellProps{Class: "text-xs"}) {
-					Name
-				}
-				@ui.TableHeadCell(ui.TableCellProps{Class: "text-xs"}) {
-					Role
-				}
-			}
-		}
+	@ui.Table(ui.TableProps{}) {
 		@ui.TableBody(ui.TableSectionProps{}) {
 			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableCell(ui.TableCellProps{Class: "text-xs"}) {
-					Ada
-				}
-				@ui.TableCell(ui.TableCellProps{Class: "text-xs"}) {
-					Admin
-				}
-			}
-			@ui.TableRow(ui.TableRowProps{}) {
-				@ui.TableCell(ui.TableCellProps{Class: "text-xs"}) {
-					Lin
-				}
-				@ui.TableCell(ui.TableCellProps{Class: "text-xs"}) {
-					Editor
-				}
+				@ui.TableCell(ui.TableCellProps{ColSpan: 2}) { Spans two columns }
 			}
 		}
 	}

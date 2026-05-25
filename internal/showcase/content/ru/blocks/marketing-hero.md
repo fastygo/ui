@@ -1,7 +1,7 @@
 ---
 slug: marketing-hero
 section: blocks
-title: "Маркетинговый hero"
+title: "Marketing Hero"
 description: "Каркас блока — wireframe-секция с placeholder-текстом для будущего извлечения в github.com/fastygo/blocks."
 source: internal/ui/blocks
 package: internal/ui/blocks
@@ -9,7 +9,7 @@ related:
   - label: "Карточка"
     href: /docs/components/card/
   - label: "Стек"
-    href: /docs/components/stack/
+    href: /docs/primitives/stack/
 api:
   - name: "Title"
     type: "string"

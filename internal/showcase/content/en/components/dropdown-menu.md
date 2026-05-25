@@ -6,8 +6,8 @@ description: "Menu triggered by a button."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
-  - label: "Context Menu"
-    href: /docs/components/context-menu/
+  - label: "Navigation Menu"
+    href: /docs/components/navigation-menu/
   - label: "Menubar"
     href: /docs/components/menubar/
 api:

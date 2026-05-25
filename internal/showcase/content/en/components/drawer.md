@@ -6,8 +6,8 @@ description: "Bottom sheet drawer wireframe."
 source: github.com/fastygo/templ/ui
 package: github.com/fastygo/templ/ui
 related:
-  - label: "Sheet"
-    href: /docs/components/sheet/
+  - label: "Alert Dialog"
+    href: /docs/components/alert-dialog/
   - label: "Dialog"
     href: /docs/components/dialog/
 api:

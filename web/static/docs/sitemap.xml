@@ -8,59 +8,47 @@
   <url><loc>/docs/components/alert/</loc></url>
   <url><loc>/docs/components/aspect-ratio/</loc></url>
   <url><loc>/docs/components/avatar/</loc></url>
-  <url><loc>/docs/components/badge/</loc></url>
-  <url><loc>/docs/components/block/</loc></url>
   <url><loc>/docs/components/blog-card/</loc></url>
-  <url><loc>/docs/components/box/</loc></url>
   <url><loc>/docs/components/breadcrumb/</loc></url>
-  <url><loc>/docs/components/button/</loc></url>
-  <url><loc>/docs/components/calendar/</loc></url>
   <url><loc>/docs/components/card/</loc></url>
   <url><loc>/docs/components/carousel/</loc></url>
-  <url><loc>/docs/components/checkbox/</loc></url>
-  <url><loc>/docs/components/collapsible/</loc></url>
-  <url><loc>/docs/components/combobox/</loc></url>
-  <url><loc>/docs/components/command/</loc></url>
-  <url><loc>/docs/components/container/</loc></url>
-  <url><loc>/docs/components/context-menu/</loc></url>
-  <url><loc>/docs/components/data-table/</loc></url>
   <url><loc>/docs/components/dialog/</loc></url>
   <url><loc>/docs/components/drawer/</loc></url>
   <url><loc>/docs/components/dropdown-menu/</loc></url>
   <url><loc>/docs/components/form/</loc></url>
-  <url><loc>/docs/components/grid/</loc></url>
-  <url><loc>/docs/components/group/</loc></url>
-  <url><loc>/docs/components/hover-card/</loc></url>
   <url><loc>/docs/components/icon/</loc></url>
-  <url><loc>/docs/components/input/</loc></url>
-  <url><loc>/docs/components/label/</loc></url>
   <url><loc>/docs/components/language-toggle/</loc></url>
-  <url><loc>/docs/components/list/</loc></url>
   <url><loc>/docs/components/menubar/</loc></url>
   <url><loc>/docs/components/navigation-menu/</loc></url>
   <url><loc>/docs/components/pagination/</loc></url>
-  <url><loc>/docs/components/popover/</loc></url>
   <url><loc>/docs/components/progress/</loc></url>
-  <url><loc>/docs/components/radio/</loc></url>
-  <url><loc>/docs/components/select/</loc></url>
   <url><loc>/docs/components/separator/</loc></url>
-  <url><loc>/docs/components/sheet/</loc></url>
-  <url><loc>/docs/components/skeleton/</loc></url>
   <url><loc>/docs/components/slider/</loc></url>
-  <url><loc>/docs/components/stack/</loc></url>
-  <url><loc>/docs/components/switch/</loc></url>
   <url><loc>/docs/components/table/</loc></url>
   <url><loc>/docs/components/tabs/</loc></url>
-  <url><loc>/docs/components/text/</loc></url>
-  <url><loc>/docs/components/textarea/</loc></url>
-  <url><loc>/docs/components/title/</loc></url>
-  <url><loc>/docs/components/toast/</loc></url>
-  <url><loc>/docs/components/toggle-group/</loc></url>
-  <url><loc>/docs/components/toggle/</loc></url>
-  <url><loc>/docs/components/tooltip/</loc></url>
   <url><loc>/docs/installation/</loc></url>
   <url><loc>/docs/introduction/</loc></url>
+  <url><loc>/docs/primitives/badge/</loc></url>
+  <url><loc>/docs/primitives/block/</loc></url>
+  <url><loc>/docs/primitives/box/</loc></url>
+  <url><loc>/docs/primitives/button/</loc></url>
+  <url><loc>/docs/primitives/checkbox/</loc></url>
+  <url><loc>/docs/primitives/container/</loc></url>
+  <url><loc>/docs/primitives/grid/</loc></url>
+  <url><loc>/docs/primitives/group/</loc></url>
+  <url><loc>/docs/primitives/input/</loc></url>
+  <url><loc>/docs/primitives/label/</loc></url>
+  <url><loc>/docs/primitives/list/</loc></url>
+  <url><loc>/docs/primitives/radio/</loc></url>
+  <url><loc>/docs/primitives/select/</loc></url>
+  <url><loc>/docs/primitives/stack/</loc></url>
+  <url><loc>/docs/primitives/switch/</loc></url>
+  <url><loc>/docs/primitives/text/</loc></url>
+  <url><loc>/docs/primitives/textarea/</loc></url>
+  <url><loc>/docs/primitives/title/</loc></url>
   <url><loc>/docs/theming/</loc></url>
+  <url><loc>/docs/utils/tags/</loc></url>
+  <url><loc>/docs/utils/utils/</loc></url>
   <url><loc>/ru/docs/blocks/dashboard-overview/</loc></url>
   <url><loc>/ru/docs/blocks/docs-article/</loc></url>
   <url><loc>/ru/docs/blocks/marketing-hero/</loc></url>
@@ -69,57 +57,45 @@
   <url><loc>/ru/docs/components/alert/</loc></url>
   <url><loc>/ru/docs/components/aspect-ratio/</loc></url>
   <url><loc>/ru/docs/components/avatar/</loc></url>
-  <url><loc>/ru/docs/components/badge/</loc></url>
-  <url><loc>/ru/docs/components/block/</loc></url>
   <url><loc>/ru/docs/components/blog-card/</loc></url>
-  <url><loc>/ru/docs/components/box/</loc></url>
   <url><loc>/ru/docs/components/breadcrumb/</loc></url>
-  <url><loc>/ru/docs/components/button/</loc></url>
-  <url><loc>/ru/docs/components/calendar/</loc></url>
   <url><loc>/ru/docs/components/card/</loc></url>
   <url><loc>/ru/docs/components/carousel/</loc></url>
-  <url><loc>/ru/docs/components/checkbox/</loc></url>
-  <url><loc>/ru/docs/components/collapsible/</loc></url>
-  <url><loc>/ru/docs/components/combobox/</loc></url>
-  <url><loc>/ru/docs/components/command/</loc></url>
-  <url><loc>/ru/docs/components/container/</loc></url>
-  <url><loc>/ru/docs/components/context-menu/</loc></url>
-  <url><loc>/ru/docs/components/data-table/</loc></url>
   <url><loc>/ru/docs/components/dialog/</loc></url>
   <url><loc>/ru/docs/components/drawer/</loc></url>
   <url><loc>/ru/docs/components/dropdown-menu/</loc></url>
   <url><loc>/ru/docs/components/form/</loc></url>
-  <url><loc>/ru/docs/components/grid/</loc></url>
-  <url><loc>/ru/docs/components/group/</loc></url>
-  <url><loc>/ru/docs/components/hover-card/</loc></url>
   <url><loc>/ru/docs/components/icon/</loc></url>
-  <url><loc>/ru/docs/components/input/</loc></url>
-  <url><loc>/ru/docs/components/label/</loc></url>
   <url><loc>/ru/docs/components/language-toggle/</loc></url>
-  <url><loc>/ru/docs/components/list/</loc></url>
   <url><loc>/ru/docs/components/menubar/</loc></url>
   <url><loc>/ru/docs/components/navigation-menu/</loc></url>
   <url><loc>/ru/docs/components/pagination/</loc></url>
-  <url><loc>/ru/docs/components/popover/</loc></url>
   <url><loc>/ru/docs/components/progress/</loc></url>
-  <url><loc>/ru/docs/components/radio/</loc></url>
-  <url><loc>/ru/docs/components/select/</loc></url>
   <url><loc>/ru/docs/components/separator/</loc></url>
-  <url><loc>/ru/docs/components/sheet/</loc></url>
-  <url><loc>/ru/docs/components/skeleton/</loc></url>
   <url><loc>/ru/docs/components/slider/</loc></url>
-  <url><loc>/ru/docs/components/stack/</loc></url>
-  <url><loc>/ru/docs/components/switch/</loc></url>
   <url><loc>/ru/docs/components/table/</loc></url>
   <url><loc>/ru/docs/components/tabs/</loc></url>
-  <url><loc>/ru/docs/components/text/</loc></url>
-  <url><loc>/ru/docs/components/textarea/</loc></url>
-  <url><loc>/ru/docs/components/title/</loc></url>
-  <url><loc>/ru/docs/components/toast/</loc></url>
-  <url><loc>/ru/docs/components/toggle-group/</loc></url>
-  <url><loc>/ru/docs/components/toggle/</loc></url>
-  <url><loc>/ru/docs/components/tooltip/</loc></url>
   <url><loc>/ru/docs/installation/</loc></url>
   <url><loc>/ru/docs/introduction/</loc></url>
+  <url><loc>/ru/docs/primitives/badge/</loc></url>
+  <url><loc>/ru/docs/primitives/block/</loc></url>
+  <url><loc>/ru/docs/primitives/box/</loc></url>
+  <url><loc>/ru/docs/primitives/button/</loc></url>
+  <url><loc>/ru/docs/primitives/checkbox/</loc></url>
+  <url><loc>/ru/docs/primitives/container/</loc></url>
+  <url><loc>/ru/docs/primitives/grid/</loc></url>
+  <url><loc>/ru/docs/primitives/group/</loc></url>
+  <url><loc>/ru/docs/primitives/input/</loc></url>
+  <url><loc>/ru/docs/primitives/label/</loc></url>
+  <url><loc>/ru/docs/primitives/list/</loc></url>
+  <url><loc>/ru/docs/primitives/radio/</loc></url>
+  <url><loc>/ru/docs/primitives/select/</loc></url>
+  <url><loc>/ru/docs/primitives/stack/</loc></url>
+  <url><loc>/ru/docs/primitives/switch/</loc></url>
+  <url><loc>/ru/docs/primitives/text/</loc></url>
+  <url><loc>/ru/docs/primitives/textarea/</loc></url>
+  <url><loc>/ru/docs/primitives/title/</loc></url>
   <url><loc>/ru/docs/theming/</loc></url>
+  <url><loc>/ru/docs/utils/tags/</loc></url>
+  <url><loc>/ru/docs/utils/utils/</loc></url>
 </urlset>

@@ -1,7 +1,7 @@
 ---
 slug: installation
 section: getting-started
-title: "Установка"
+title: "Installation"
 description: "Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add)."
 source: github.com/fastygo/ui
 package: cmd/server
@@ -9,7 +9,7 @@ related:
   - label: "Темизация"
     href: /docs/theming/
   - label: "Кнопка"
-    href: /docs/components/button/
+    href: /docs/primitives/button/
 ---
 
 Используйте этот репозиторий как эталонное приложение или копируйте отдельные компоненты из галереи в свой проект (в будущем — workflow fastygo add).
