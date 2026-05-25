@@ -42,4 +42,14 @@ try {
 
 await rmDir(dest);
 await copyDir(src, dest);
+
+// Drop stale *.html left in nu/ root from pre-docgen snapshots (copy only replaces nu/docs).
+const nuRoot = path.join(root, ".validate", "html-snapshots", "nu");
+const nuEntries = await fs.readdir(nuRoot, { withFileTypes: true });
+for (const entry of nuEntries) {
+  if (entry.isFile() && entry.name.endsWith(".html")) {
+    await fs.rm(path.join(nuRoot, entry.name), { force: true });
+  }
+}
+
 console.log(`docs:snapshot: copied ${src} -> ${dest}`);

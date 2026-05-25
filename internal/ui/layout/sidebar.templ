@@ -28,7 +28,7 @@ templ sidebarNavLinks(props SidebarProps, items []NavItem) {
 }
 
 templ sidebarNavCollapse(props SidebarProps, group NavSectionGroup) {
-	@ui.Stack(navCollapseRootStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))) {
+	@ui.Stack(navCollapseRootStackProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items))) {
 		for i := 0; i < NavCollapseFullVisible && i < len(group.Items); i++ {
 			@sidebarNavLink(props.Active, group.Items[i], "")
 		}
@@ -37,9 +37,9 @@ templ sidebarNavCollapse(props SidebarProps, group NavSectionGroup) {
 				for i := NavCollapseFullVisible; i < navCollapseThreshold() && i < len(group.Items); i++ {
 					@sidebarNavTeaserItem(group.Items[i], i-NavCollapseFullVisible)
 				}
-				@ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items)))
+				@ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items)))
 			}
-			@ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))) {
+			@ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items))) {
 				for i := NavCollapseFullVisible; i < len(group.Items); i++ {
 					@sidebarNavLink(props.Active, group.Items[i], "")
 				}

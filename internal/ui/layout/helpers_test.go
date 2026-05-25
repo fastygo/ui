@@ -52,10 +52,13 @@ func TestNavSectionExpanded(t *testing.T) {
 }
 
 func TestNavSectionCollapseID(t *testing.T) {
-	if got := NavSectionCollapseID("Components"); got != "nav-collapse-components" {
+	if got := NavSectionCollapseID("Components", false); got != "nav-collapse-components" {
 		t.Fatalf("got %q want nav-collapse-components", got)
 	}
-	if got := NavSectionCollapseID(""); got != "nav-collapse-section" {
+	if got := NavSectionCollapseID("Components", true); got != "nav-collapse-components-mobile" {
+		t.Fatalf("got %q want nav-collapse-components-mobile", got)
+	}
+	if got := NavSectionCollapseID("", false); got != "nav-collapse-section" {
 		t.Fatalf("empty label: got %q", got)
 	}
 }

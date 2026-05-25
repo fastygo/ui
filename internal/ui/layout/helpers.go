@@ -60,9 +60,13 @@ func NavSectionExpanded(active string, items []NavItem) bool {
 }
 
 // NavSectionCollapseID returns a stable DOM id for a collapsible nav section.
-func NavSectionCollapseID(label string) string {
+// Mobile and desktop sidebars render separately; pass mobile=true for the sheet nav.
+func NavSectionCollapseID(label string, mobile bool) string {
 	s := strings.ToLower(strings.TrimSpace(label))
 	if s == "" {
+		if mobile {
+			return "nav-collapse-section-mobile"
+		}
 		return "nav-collapse-section"
 	}
 	var b strings.Builder
@@ -81,7 +85,10 @@ func NavSectionCollapseID(label string) string {
 	}
 	id := strings.Trim(b.String(), "-")
 	if id == "" || id == "nav-collapse" {
-		return "nav-collapse-section"
+		id = "nav-collapse-section"
+	}
+	if mobile {
+		return id + "-mobile"
 	}
 	return id
 }

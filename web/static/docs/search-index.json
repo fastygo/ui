@@ -642,10 +642,19 @@
     "section": "getting-started",
     "slug": "theming",
     "title": "Theming",
-    "description": "Semantic tokens (background, foreground, primary, …) come from tweakcn-style CSS variables. The header theme toggle switches light/dark via theme.js.",
+    "description": "Semantic tokens, typography, spacing, and elevation from tweakcn-style CSS variables. Live previews match the FastyGo design-system reference; the header theme toggle switches light/dark via theme.js.",
     "href": "/docs/theming/",
     "headings": [
-      "Semantic tokens"
+      "Semantic tokens",
+      "Hero",
+      "Colors",
+      "Core palette",
+      "Semantic palette",
+      "Typography",
+      "Spacing and radius",
+      "Spacing scale",
+      "Border radius",
+      "Shadows"
     ]
   },
   {

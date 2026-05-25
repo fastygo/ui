@@ -168,7 +168,7 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					templ_7745c5c3_Err = ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(ctx, templ_7745c5c3_Buffer)
+					templ_7745c5c3_Err = ui.Box(navCollapseTeaserHitBoxProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items))).Render(ctx, templ_7745c5c3_Buffer)
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -202,14 +202,14 @@ func sidebarNavCollapse(props SidebarProps, group NavSectionGroup) templ.Compone
 					}
 					return nil
 				})
-				templ_7745c5c3_Err = ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ui.Stack(navCollapseOverflowStackProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = ui.Stack(navCollapseRootStackProps(NavSectionCollapseID(group.Label), NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ui.Stack(navCollapseRootStackProps(NavSectionCollapseID(group.Label, props.Mobile), NavSectionExpanded(props.Active, group.Items))).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
