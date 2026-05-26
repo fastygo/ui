@@ -1,0 +1,77 @@
+.prose-docs .docs-index-card {
+  @apply relative overflow-hidden;
+  isolation: isolate;
+}
+
+.prose-docs .docs-index-card-illustrated {
+  --docs-illus-surface: color-mix(in hsl, var(--muted) 36%, transparent);
+  --docs-illus-soft: color-mix(in hsl, var(--muted-foreground) 8%, transparent);
+  --docs-illus-ink: color-mix(in hsl, var(--muted-foreground) 17%, transparent);
+  --docs-illus-accent: color-mix(in hsl, var(--secondary) 18%, transparent);
+  --docs-illus-border: color-mix(in hsl, var(--muted-foreground) 14%, transparent);
+}
+
+.prose-docs .docs-index-card-illustration {
+  @apply pointer-events-none absolute right-4 top-4 z-0 h-20 w-36;
+}
+
+.prose-docs .docs-index-card-illustrated > :not(.docs-index-card-illustration) {
+  @apply relative z-10;
+}
+
+.prose-docs .docs-index-illus-surface,
+.prose-docs .docs-index-illus-shape {
+  @apply absolute;
+}
+
+.prose-docs .docs-index-illus-surface {
+  @apply inset-0;
+  border-radius: calc(var(--radius));
+}
+
+.prose-docs .docs-index-illus-surface-filled {
+  background: var(--docs-illus-surface);
+  border: 1px solid var(--docs-illus-border);
+}
+
+.prose-docs .docs-index-illus-surface-outline {
+  background: transparent;
+  border: 2px solid var(--docs-illus-border);
+}
+
+.prose-docs .docs-index-illus-shape {
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  background: var(--shape-bg);
+}
+
+.prose-docs .docs-index-illus-rect {
+  border-radius: calc(var(--radius));
+}
+
+.prose-docs .docs-index-illus-pill,
+.prose-docs .docs-index-illus-dot {
+  border-radius: 9999px;
+}
+
+.prose-docs .docs-index-illus-tone-soft {
+  --shape-bg: var(--docs-illus-soft);
+}
+
+.prose-docs .docs-index-illus-tone-ink {
+  --shape-bg: var(--docs-illus-ink);
+}
+
+.prose-docs .docs-index-illus-tone-accent {
+  --shape-bg: var(--docs-illus-accent);
+}
+
+.prose-docs .docs-index-illus-tone-border {
+  --shape-bg: var(--docs-illus-border);
+}
+
+.prose-docs .docs-index-illus-tone-cutout {
+  --shape-bg: var(--card);
+}

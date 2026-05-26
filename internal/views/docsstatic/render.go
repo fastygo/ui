@@ -298,8 +298,20 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 	return ui.Grid(ui.GridProps{Class: indexSectionGridClass(sec.Section)}).Render(
 		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 			for _, link := range sec.Links {
-				if err := cmp.Card(cmp.CardProps{Class: "docs-index-card p-3"}).Render(
+				cardClass := "docs-index-card p-3"
+				illustration, hasIllustration := indexCardIllustration(link.Href)
+				if hasIllustration {
+					cardClass += " docs-index-card-illustrated " + illustration.Class
+				}
+				if err := ui.Box(ui.BoxProps{
+					Class: cmp.CardClasses(cmp.CardProps{Class: cardClass}),
+				}).Render(
 					templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+						if hasIllustration {
+							if err := renderIndexCardIllustration(ctx, w, illustration); err != nil {
+								return err
+							}
+						}
 						if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 							Href:    link.Href,
 							Variant: "link",

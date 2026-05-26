@@ -102,16 +102,25 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 			Section: "primitives",
 			Label:   "Primitives",
 			Links: []docsstatic.IndexLink{
+				{Title: "Badge", Description: "Status label.", Href: "/docs/primitives/badge/"},
+				{Title: "Box", Description: "Internal wrapper.", Href: "/docs/primitives/box/"},
 				{Title: "Button", Description: "Primary actions.", Href: "/docs/primitives/button/"},
-				{Title: "Input", Description: "Text field.", Href: "/docs/primitives/input/"},
-				{Title: "Stack", Description: "Vertical layout.", Href: "/docs/primitives/stack/"},
+				{Title: "Radio", Description: "Single radio option.", Href: "/docs/primitives/radio/"},
 			},
 		},
 		{
 			Section: "components",
 			Label:   "Components",
 			Links: []docsstatic.IndexLink{
+				{Title: "Accordion", Description: "Expandable sections.", Href: "/docs/components/accordion/"},
+				{Title: "Alert", Description: "Status message.", Href: "/docs/components/alert/"},
+				{Title: "Alert Dialog", Description: "Blocking modal.", Href: "/docs/components/alert-dialog/"},
 				{Title: "Card", Description: "Grouped content.", Href: "/docs/components/card/"},
+				{Title: "Dialog", Description: "Modal surface.", Href: "/docs/components/dialog/"},
+				{Title: "Form", Description: "Field layout.", Href: "/docs/components/form/"},
+				{Title: "Pagination", Description: "Page controls.", Href: "/docs/components/pagination/"},
+				{Title: "Table", Description: "Data grid.", Href: "/docs/components/table/"},
+				{Title: "Tabs", Description: "Tabbed views.", Href: "/docs/components/tabs/"},
 			},
 		},
 	})
@@ -126,15 +135,23 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 		"docs-index-grid-3",
 		"docs-index-card-desc",
 		"docs-index-card p-3",
+		"docs-index-card-illustrated",
+		"docs-index-illus-button",
 	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("html missing %q", want)
 		}
+	}
+	if strings.Contains(html, "data:image/svg+xml;base64,") {
+		t.Fatal("index cards should use CSS illustrations, not inline SVG data URLs")
 	}
 	if strings.Count(html, "docs-index-grid-2") != 1 {
 		t.Fatalf("expected one 2-column grid, got %d", strings.Count(html, "docs-index-grid-2"))
 	}
 	if strings.Count(html, "docs-index-grid-3") != 2 {
 		t.Fatalf("expected two 3-column grids, got %d", strings.Count(html, "docs-index-grid-3"))
+	}
+	if got := strings.Count(html, "docs-index-card-illustrated"); got != 13 {
+		t.Fatalf("expected thirteen illustrated index cards, got %d", got)
 	}
 }
