@@ -24,7 +24,7 @@
     "templ": "go tool templ generate ./...",
     "verify": "go tool templ generate ./... && bun run build:css && bun run docs:sync-specs && bun run validate:spec && bun run docs:build && bun run docs:snapshot && bun run lint:ui8px && bun run validate:aria && bun run validate:html && go test ./... && bun run test:e2e:ci",
     "build": "go build -o blank ./cmd/server",
-    "go": "node scripts/run-server.mjs"
+    "go": "go tool templ generate ./... && bun run build:css && node scripts/run-server.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

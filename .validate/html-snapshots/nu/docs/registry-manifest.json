@@ -119,6 +119,13 @@
     "package": "github.com/fastygo/ui/internal/ui/components/icon"
   },
   {
+    "slug": "iconbadge",
+    "section": "components",
+    "title": "IconBadge",
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/iconbadge"
+  },
+  {
     "slug": "language-toggle",
     "section": "components",
     "title": "Language Toggle",
@@ -131,6 +138,13 @@
     "title": "Menubar",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
+  },
+  {
+    "slug": "nav",
+    "section": "components",
+    "title": "Nav",
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/nav"
   },
   {
     "slug": "navigation-menu",
@@ -159,6 +173,13 @@
     "title": "Separator",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui"
+  },
+  {
+    "slug": "sheet",
+    "section": "components",
+    "title": "Sheet",
+    "source": "github.com/fastygo/templ/components",
+    "package": "github.com/fastygo/templ/components/sheet"
   },
   {
     "slug": "slider",
@@ -224,6 +245,13 @@
     "package": "github.com/fastygo/templ/ui/box"
   },
   {
+    "slug": "linebreak",
+    "section": "primitives",
+    "title": "Break",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/linebreak"
+  },
+  {
     "slug": "button",
     "section": "primitives",
     "title": "Button",
@@ -245,6 +273,27 @@
     "package": "github.com/fastygo/templ/ui/container"
   },
   {
+    "slug": "dialog",
+    "section": "primitives",
+    "title": "Dialog",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/dialog"
+  },
+  {
+    "slug": "disclosure",
+    "section": "primitives",
+    "title": "Disclosure",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/disclosure"
+  },
+  {
+    "slug": "controls",
+    "section": "primitives",
+    "title": "Fieldset",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/form"
+  },
+  {
     "slug": "grid",
     "section": "primitives",
     "title": "Grid",
@@ -259,6 +308,20 @@
     "package": "github.com/fastygo/templ/ui/group"
   },
   {
+    "slug": "icon",
+    "section": "primitives",
+    "title": "Icon",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/icon"
+  },
+  {
+    "slug": "image",
+    "section": "primitives",
+    "title": "Image",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/image"
+  },
+  {
     "slug": "input",
     "section": "primitives",
     "title": "Input",
@@ -271,6 +334,13 @@
     "title": "Label",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui/label"
+  },
+  {
+    "slug": "link",
+    "section": "primitives",
+    "title": "Link",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/link"
   },
   {
     "slug": "list",
@@ -292,6 +362,13 @@
     "title": "Select",
     "source": "github.com/fastygo/templ/ui",
     "package": "github.com/fastygo/templ/ui/select"
+  },
+  {
+    "slug": "separator",
+    "section": "primitives",
+    "title": "Separator",
+    "source": "github.com/fastygo/templ/ui",
+    "package": "github.com/fastygo/templ/ui/separator"
   },
   {
     "slug": "stack",

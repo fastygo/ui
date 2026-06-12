@@ -142,6 +142,21 @@
   {
     "locale": "en",
     "section": "primitives",
+    "slug": "linebreak",
+    "title": "Break",
+    "description": "Break renders br or wbr for controlled inline wrapping.",
+    "href": "/docs/primitives/linebreak/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example type.br",
+      "Example type.wbr"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
     "slug": "button",
     "title": "Button",
     "description": "Button triggers an action on click.",
@@ -256,6 +271,36 @@
   },
   {
     "locale": "en",
+    "section": "primitives",
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "Dialog renders a native dialog root with optional behavior hook.",
+    "href": "/docs/primitives/dialog/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.sheet"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
+    "slug": "disclosure",
+    "title": "Disclosure",
+    "description": "Disclosure renders native details and summary elements.",
+    "href": "/docs/primitives/disclosure/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.open"
+    ]
+  },
+  {
+    "locale": "en",
     "section": "blocks",
     "slug": "docs-article",
     "title": "Docs Article",
@@ -286,6 +331,21 @@
     "href": "/docs/components/dropdown-menu/",
     "headings": [
       "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
+    "slug": "controls",
+    "title": "Fieldset",
+    "description": "Form controls covers fieldset, legend, datalist, output, meter, and progress.",
+    "href": "/docs/primitives/controls/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example group.fieldset",
+      "Example status.progress"
     ]
   },
   {
@@ -335,6 +395,21 @@
   },
   {
     "locale": "en",
+    "section": "primitives",
+    "slug": "icon",
+    "title": "Icon",
+    "description": "Icon renders a class-based span, svg use reference, or text fallback.",
+    "href": "/docs/primitives/icon/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example type.class",
+      "Example type.svg"
+    ]
+  },
+  {
+    "locale": "en",
     "section": "components",
     "slug": "icon",
     "title": "Icon",
@@ -343,6 +418,36 @@
     "headings": [
       "Default",
       "Sizes"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "iconbadge",
+    "title": "IconBadge",
+    "description": "IconBadge renders a small icon surface for nav rows, cards, and status blocks.",
+    "href": "/docs/components/iconbadge/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example icon.pack"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
+    "slug": "image",
+    "title": "Image",
+    "description": "Image renders accessible img, picture, and source primitives.",
+    "href": "/docs/primitives/image/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.avatar",
+      "Example layout.picture"
     ]
   },
   {
@@ -413,6 +518,21 @@
   {
     "locale": "en",
     "section": "primitives",
+    "slug": "link",
+    "title": "Link",
+    "description": "Link renders a semantic anchor for navigation and prose.",
+    "href": "/docs/primitives/link/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.external"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
     "slug": "list",
     "title": "List",
     "description": "List renders ul, ol, dl, or menu containers.",
@@ -446,6 +566,21 @@
     "href": "/docs/components/menubar/",
     "headings": [
       "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "nav",
+    "title": "Nav",
+    "description": "Nav composes labeled navigation lists with active and disabled links.",
+    "href": "/docs/components/nav/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.vertical",
+      "Example state.active"
     ]
   },
   {
@@ -520,6 +655,36 @@
     "href": "/docs/components/separator/",
     "headings": [
       "Default"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "primitives",
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Separator renders a semantic or decorative hr.",
+    "href": "/docs/primitives/separator/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example orientation.vertical"
+    ]
+  },
+  {
+    "locale": "en",
+    "section": "components",
+    "slug": "sheet",
+    "title": "Sheet",
+    "description": "Sheet composes a side panel with trigger, overlay, content, and close parts.",
+    "href": "/docs/components/sheet/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example side.left",
+      "Example behavior.ui8kit"
     ]
   },
   {
@@ -812,6 +977,21 @@
   {
     "locale": "ru",
     "section": "primitives",
+    "slug": "linebreak",
+    "title": "Break",
+    "description": "Break renders br or wbr for controlled inline wrapping.",
+    "href": "/ru/docs/primitives/linebreak/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example type.br",
+      "Example type.wbr"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
     "slug": "button",
     "title": "Button",
     "description": "Действие по клику или навигация при заданном Href.",
@@ -897,6 +1077,36 @@
   },
   {
     "locale": "ru",
+    "section": "primitives",
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "Dialog renders a native dialog root with optional behavior hook.",
+    "href": "/ru/docs/primitives/dialog/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.sheet"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "disclosure",
+    "title": "Disclosure",
+    "description": "Disclosure renders native details and summary elements.",
+    "href": "/ru/docs/primitives/disclosure/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example state.open"
+    ]
+  },
+  {
+    "locale": "ru",
     "section": "blocks",
     "slug": "docs-article",
     "title": "Docs Article",
@@ -927,6 +1137,21 @@
     "href": "/ru/docs/components/dropdown-menu/",
     "headings": [
       "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "controls",
+    "title": "Fieldset",
+    "description": "Form controls covers fieldset, legend, datalist, output, meter, and progress.",
+    "href": "/ru/docs/primitives/controls/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example group.fieldset",
+      "Example status.progress"
     ]
   },
   {
@@ -975,6 +1200,51 @@
     "headings": [
       "По умолчанию",
       "Размеры"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "icon",
+    "title": "Icon",
+    "description": "Icon renders a class-based span, svg use reference, or text fallback.",
+    "href": "/ru/docs/primitives/icon/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example type.class",
+      "Example type.svg"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "iconbadge",
+    "title": "IconBadge",
+    "description": "IconBadge renders a small icon surface for nav rows, cards, and status blocks.",
+    "href": "/ru/docs/components/iconbadge/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example icon.pack"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "image",
+    "title": "Image",
+    "description": "Image renders accessible img, picture, and source primitives.",
+    "href": "/ru/docs/primitives/image/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.avatar",
+      "Example layout.picture"
     ]
   },
   {
@@ -1039,6 +1309,21 @@
   {
     "locale": "ru",
     "section": "primitives",
+    "slug": "link",
+    "title": "Link",
+    "description": "Link renders a semantic anchor for navigation and prose.",
+    "href": "/ru/docs/primitives/link/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example variant.external"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
     "slug": "list",
     "title": "List",
     "description": "Контейнер ul, ol, dl или menu с элементами ListItem.",
@@ -1069,6 +1354,21 @@
     "href": "/ru/docs/components/menubar/",
     "headings": [
       "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "nav",
+    "title": "Nav",
+    "description": "Nav composes labeled navigation lists with active and disabled links.",
+    "href": "/ru/docs/components/nav/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example layout.vertical",
+      "Example state.active"
     ]
   },
   {
@@ -1137,6 +1437,36 @@
     "href": "/ru/docs/components/separator/",
     "headings": [
       "По умолчанию"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "primitives",
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Separator renders a semantic or decorative hr.",
+    "href": "/ru/docs/primitives/separator/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example variant.default",
+      "Example orientation.vertical"
+    ]
+  },
+  {
+    "locale": "ru",
+    "section": "components",
+    "slug": "sheet",
+    "title": "Sheet",
+    "description": "Sheet composes a side panel with trigger, overlay, content, and close parts.",
+    "href": "/ru/docs/components/sheet/",
+    "headings": [
+      "Summary",
+      "Use Cases",
+      "Semantics",
+      "Example side.left",
+      "Example behavior.ui8kit"
     ]
   },
   {
