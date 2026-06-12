@@ -20,6 +20,8 @@ github.com/dlclark/regexp2 v1.12.0 h1:0j4c5qQmnC6XOWNjP3PIXURXN2gWx76rd3KvgdPkCz
 github.com/dlclark/regexp2 v1.12.0/go.mod h1:DHkYz0B9wPfa6wondMfaivmHpzrQ3v9q8cnmRbL6yW8=
 github.com/fastygo/framework v0.0.0-20260428133456-8a8901eca249 h1:Es2XZ/CPdb8ilHjFJiyZTFwf3NZtqV7M6HkkUrVXKc8=
 github.com/fastygo/framework v0.0.0-20260428133456-8a8901eca249/go.mod h1:PQrh7If8XpCVPMp1tP8u3bUGvAlEsW3WlNpRkQzVTt0=
+github.com/fastygo/templ v0.1.0 h1:55P7pEtbm6dM1O7542QIDJxlZ0X7YlJsq72M+Q2o1NM=
+github.com/fastygo/templ v0.1.0/go.mod h1:DAsO0xoef9GW7Aym81RN14UysylFF+9xpxgoKqLYT4g=
 github.com/fatih/color v1.16.0 h1:zmkK9Ngbjj+K0yRhTVONQh1p/HknKYSlNT+vZCzyokM=
 github.com/fatih/color v1.16.0/go.mod h1:fL2Sau1YI5c0pdGEVCbKQbLXB6edEj1ZgiY4NijnWvE=
 github.com/fsnotify/fsnotify v1.7.0 h1:8JEhPFa5W2WU7YfeZzPNqzMP6Lwt7L2715Ggo0nosvA=
