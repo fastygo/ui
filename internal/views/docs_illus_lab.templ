@@ -1,0 +1,152 @@
+package views
+
+import (
+	"github.com/fastygo/templ/ui"
+	cmp "github.com/fastygo/templ/components"
+	"github.com/fastygo/ui/internal/ui/layout"
+	"github.com/fastygo/ui/internal/views/docsstatic"
+	"github.com/fastygo/ui/internal/views/partials"
+)
+
+templ DocsIllusLabPage(d LayoutData) {
+	@layout.Shell(layout.ShellProps{
+		Title:                "Docs index illustration lab",
+		HeaderTitle:          "Docs index illustration lab",
+		Lang:                 d.Lang,
+		BrandName:            d.Brand,
+		MarketingShell:       true,
+		HeadExtra:            docsIllusLabHead(d.Assets),
+		ThemeToggle:          d.Theme,
+		ThemeToggleComponent: docsIllusLabHeaderThemeSlot(),
+	}) {
+		@ui.Stack(ui.StackProps{Class: "docs-illus-lab-page gap-8"}) {
+			@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+				@ui.Title(ui.TitleProps{Order: 1}, "Docs index illustration lab")
+				@ui.Text(ui.TextProps{Class: "docs-illus-lab-lead"}, "Production illustration recipes on transparent canvases. Toggle theme bottom-left to judge contrast on bg-card in light and dark mode.")
+				@ui.Text(ui.TextProps{Class: "docs-illus-lab-token-legend"}, "Tokens: soft 16% · border 24% · ink 32% · accent 48% (muted-foreground) · Sprites: /lab/docs-index-illus/primitives · /lab/docs-index-illus/components")
+			}
+			@docsIllusLabSection("Opacity scale — checkerboard") {
+				@docsIllusLabOpacityGrid("docs-illus-lab-canvas-checker")
+			}
+			@docsIllusLabSection("Opacity scale — plain bg-card") {
+				@docsIllusLabOpacityGrid("docs-illus-lab-canvas-plain")
+			}
+			@docsIllusLabSection("Sample primitives (8)") {
+				@docsIllusLabSampleGrid(docsstatic.IllusSectionPrimitives)
+			}
+			@docsIllusLabSection("Sample components (8)") {
+				@docsIllusLabSampleGrid(docsstatic.IllusSectionComponents)
+			}
+			@docsIllusLabSection("Index card preview (text + illustration)") {
+				@docsIllusLabIndexPreviewGrid()
+			}
+		}
+		@docsIllusLabThemeToggle(d.Theme)
+	}
+}
+
+templ docsIllusLabHead(assets AssetPaths) {
+	@partials.ShellHead(assets.CSS, assets.ThemeJS, assets.AppJS)
+}
+
+templ docsIllusLabHeaderThemeSlot() {
+}
+
+templ docsIllusLabThemeToggle(theme layout.ThemeToggleProps) {
+	@ui.Box(ui.BoxProps{Class: "docs-illus-lab-theme", Tag: "div"}) {
+		@ui.Text(ui.TextProps{Tag: "span", Class: "docs-illus-lab-theme-label"}, "Theme")
+		@ui.Button(docsIllusLabThemeButtonProps(theme)) {
+			<span id="theme-toggle-icon" class="inline-block h-4 w-4 shrink-0 latty latty-moon" aria-hidden="true"></span>
+		}
+	}
+}
+
+templ docsIllusLabSection(title string) {
+	@ui.Stack(ui.StackProps{Class: "gap-4"}) {
+		@ui.Text(ui.TextProps{Tag: "h2", Class: "docs-illus-lab-section-title"}, title)
+		{ children... }
+	}
+}
+
+templ docsIllusLabOpacityGrid(canvasClass string) {
+	@ui.Grid(ui.GridProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"}) {
+		@docsIllusLabOpacityCell("16% muted-foreground", canvasClass, "soft", false)
+		@docsIllusLabOpacityCell("24% muted-foreground", canvasClass, "border", false)
+		@docsIllusLabOpacityCell("32% muted-foreground (production ink)", canvasClass, "ink", true)
+		@docsIllusLabOpacityCell("48% muted-foreground", canvasClass, "accent", false)
+	}
+}
+
+templ docsIllusLabOpacityCell(label, canvasClass, toneSuffix string, recommended bool) {
+	@docsIllusLabCell(label, recommended) {
+		@ui.Box(ui.BoxProps{Class: "prose-docs docs-illus-lab-canvas docs-illus-lab-canvas-default flex items-center px-2 " + canvasClass}) {
+			@ui.Box(ui.BoxProps{
+				Class: "h-5 w-full rounded-full " + docsstatic.IllusOpacityToneClass(toneSuffix),
+			})
+		}
+	}
+}
+
+templ docsIllusLabSampleGrid(section string) {
+	@ui.Grid(ui.GridProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"}) {
+		for _, recipe := range docsIllusLabCuratedSamples(section) {
+			@docsIllusLabProductionRecipeCell(recipe.Label, recipe.Href)
+		}
+	}
+}
+
+templ docsIllusLabProductionRecipeCell(label, href string) {
+	@docsIllusLabCell(label, false) {
+		@ui.Box(ui.BoxProps{Class: "prose-docs docs-illus-lab-standalone-viewport docs-illus-lab-canvas-checker flex justify-end"}) {
+			@docsIllusLabProductionIllusStandalone(href)
+		}
+	}
+}
+
+templ docsIllusLabIndexPreviewGrid() {
+	@ui.Grid(ui.GridProps{Class: "grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"}) {
+		for _, item := range docsIllusLabIndexPreviews() {
+			@docsIllusLabIndexPreviewCell(item)
+		}
+	}
+}
+
+templ docsIllusLabIndexPreviewCell(item docsIllusLabIndexPreview) {
+	@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+		@ui.Text(ui.TextProps{Tag: "p", Class: "docs-illus-lab-cell-label"}, item.Label)
+		@ui.Box(ui.BoxProps{Class: cmp.CardClasses(cmp.CardProps{Class: docsIllusLabIndexCardClass(item.Href)})}) {
+			@docsIllusLabProductionIllusEmbedded(item.Href)
+			@ui.Button(ui.ButtonProps{
+				Href:    item.Href,
+				Variant: "link",
+				Class:   "relative z-10 h-auto justify-start p-0 text-base font-semibold",
+			}) {
+				{ item.Title }
+			}
+			@ui.Text(ui.TextProps{Class: "docs-index-card-desc relative z-10 text-muted-foreground"}, item.Desc)
+		}
+	}
+}
+
+templ docsIllusLabCell(label string, recommended bool) {
+	if recommended {
+		@ui.Stack(ui.StackProps{Class: "docs-illus-lab-cell-recommended gap-2"}) {
+			@docsIllusLabCellBody(label) {
+				{ children... }
+			}
+		}
+	} else {
+		@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+			@docsIllusLabCellBody(label) {
+				{ children... }
+			}
+		}
+	}
+}
+
+templ docsIllusLabCellBody(label string) {
+	@ui.Text(ui.TextProps{Tag: "p", Class: "docs-illus-lab-cell-label"}, label)
+	@ui.Box(ui.BoxProps{Class: "docs-illus-lab-card-mock"}) {
+		{ children... }
+	}
+}

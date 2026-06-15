@@ -14,7 +14,7 @@ func TestLoadAll_skipsDraftContent(t *testing.T) {
 	draftSlugs := map[string]struct{}{
 		"calendar": {}, "collapsible": {}, "combobox": {}, "command": {},
 		"context-menu": {}, "data-table": {}, "hover-card": {}, "popover": {},
-		"sheet": {}, "skeleton": {}, "toast": {}, "toggle": {}, "toggle-group": {},
+		"skeleton": {}, "toast": {}, "toggle": {}, "toggle-group": {},
 		"tooltip": {},
 	}
 	for _, p := range pages {

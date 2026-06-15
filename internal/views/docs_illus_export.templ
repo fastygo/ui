@@ -1,0 +1,49 @@
+package views
+
+import (
+	"github.com/fastygo/templ/ui"
+	"github.com/fastygo/ui/internal/views/docsstatic"
+	"github.com/fastygo/ui/internal/views/partials"
+)
+
+templ DocsIllusExportPage(d LayoutData, section string) {
+	<!DOCTYPE html>
+	<html lang={ d.Lang }>
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ docsIllusExportTitle(section) }</title>
+			@partials.ShellHead(d.Assets.CSS, "", "")
+		</head>
+		<body>
+			@ui.Box(ui.BoxProps{Class: "docs-illus-export-page"}) {
+				@docsIllusExportGrid(section)
+			}
+		</body>
+	</html>
+}
+
+templ docsIllusExportGrid(section string) {
+	@ui.Box(ui.BoxProps{
+		Attrs: templ.Attributes{
+			"data-illus-export-section": section,
+		},
+	}) {
+		@ui.Grid(ui.GridProps{Class: "docs-illus-export-grid"}) {
+			for _, entry := range docsIllusSpriteEntries(section) {
+				@docsIllusExportCell(entry)
+			}
+		}
+	}
+}
+
+templ docsIllusExportCell(entry docsstatic.IndexIllustrationEntry) {
+	@ui.Box(ui.BoxProps{
+		Class: "docs-illus-export-cell",
+		Attrs: templ.Attributes{
+			"data-illus-slug": docsIllusExportSlug(entry.Href),
+		},
+	}) {
+		@docsIllusLabProductionIllusStandalone(entry.Href)
+	}
+}

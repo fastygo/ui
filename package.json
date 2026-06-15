@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./web/static/css/input.css -o ./web/static/css/app.css --minify",
-    "lint:ui8px": "ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css --ignore .fastygo",
+    "lint:ui8px": "ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css web/static/css/docs-illus-lab.css --ignore .fastygo",
     "validate:html": "node scripts/validate-html-snapshots.mjs",
     "validate:aria": "ui8px validate aria internal/views internal/ui --manifest web/static/js/manifest.json --ignore .fastygo web/static/css/ui8kit",
     "snapshot:html": "go run ./.validate/cmd/snapshot-render",
@@ -21,6 +21,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ci": "playwright install chromium && bun run build:e2e-server && playwright test",
     "test:e2e:reuse": "node scripts/test-e2e-reuse.mjs",
+    "export:illus-sprites": "node scripts/export-illus-sprites.mjs",
     "templ": "go tool templ generate ./...",
     "verify": "go tool templ generate ./... && bun run build:css && bun run docs:sync-specs && bun run validate:spec && bun run docs:build && bun run docs:snapshot && bun run lint:ui8px && bun run validate:aria && bun run validate:html && go test ./... && bun run test:e2e:ci",
     "build": "go build -o blank ./cmd/server",

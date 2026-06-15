@@ -301,25 +301,31 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 				cardClass := "docs-index-card p-3"
 				illustration, hasIllustration := indexCardIllustration(link.Href)
 				if hasIllustration {
-					cardClass += " docs-index-card-illustrated " + illustration.Class
+					cardClass += " relative overflow-hidden " + IndexCardIllustrationClass(link.Href)
 				}
 				if err := ui.Box(ui.BoxProps{
 					Class: cmp.CardClasses(cmp.CardProps{Class: cardClass}),
 				}).Render(
 					templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 						if hasIllustration {
-							if err := renderIndexCardIllustration(ctx, w, illustration); err != nil {
+							if err := renderIndexCardIllustration(ctx, w, illustration, IllustrationEmbedded); err != nil {
 								return err
 							}
+						}
+						titleClass := "h-auto justify-start p-0 text-base font-semibold"
+						descClass := "docs-index-card-desc text-muted-foreground"
+						if hasIllustration {
+							titleClass += " relative z-10"
+							descClass += " relative z-10"
 						}
 						if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 							Href:    link.Href,
 							Variant: "link",
-							Class:   "h-auto justify-start p-0 text-base font-semibold",
+							Class:   titleClass,
 						}, link.Title); err != nil {
 							return err
 						}
-						return ui.Text(ui.TextProps{Class: "docs-index-card-desc text-muted-foreground"}, link.Description).Render(ctx, w)
+						return ui.Text(ui.TextProps{Class: descClass}, link.Description).Render(ctx, w)
 					})), w); err != nil {
 					return err
 				}

@@ -1,0 +1,44 @@
+package views
+
+import (
+	"github.com/fastygo/templ/ui"
+	"github.com/fastygo/ui/internal/ui/layout"
+	"github.com/fastygo/ui/internal/views/docsstatic"
+)
+
+templ DocsIllusSpritePage(d LayoutData, section string) {
+	@layout.Shell(layout.ShellProps{
+		Title:          docsIllusSpriteTitle(section),
+		HeaderTitle:    docsIllusSpriteTitle(section),
+		Lang:           d.Lang,
+		BrandName:      d.Brand,
+		MarketingShell: true,
+		HeadExtra:      docsIllusLabHead(d.Assets),
+	}) {
+		@ui.Stack(ui.StackProps{Class: "docs-illus-lab-page gap-6"}) {
+			@ui.Stack(ui.StackProps{Class: "gap-2"}) {
+				@ui.Title(ui.TitleProps{Order: 1}, docsIllusSpriteTitle(section))
+				@ui.Text(ui.TextProps{Class: "docs-illus-lab-lead"}, docsIllusSpriteLead(section))
+				@ui.Text(ui.TextProps{Class: "docs-illus-lab-token-legend"}, docsIllusSpriteNavLinks())
+			}
+			@docsIllusSpriteGrid(section)
+		}
+	}
+}
+
+templ docsIllusSpriteGrid(section string) {
+	@ui.Grid(ui.GridProps{Class: "docs-illus-sprite-grid grid grid-cols-2 gap-0 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6"}) {
+		for _, entry := range docsIllusSpriteEntries(section) {
+			@docsIllusSpriteCell(entry)
+		}
+	}
+}
+
+templ docsIllusSpriteCell(entry docsstatic.IndexIllustrationEntry) {
+	@ui.Stack(ui.StackProps{Class: "docs-illus-sprite-cell gap-2 border border-border bg-background p-2"}) {
+		@ui.Box(ui.BoxProps{Class: "docs-illus-sprite-canvas flex items-center justify-center"}) {
+			@docsIllusLabProductionIllusStandalone(entry.Href)
+		}
+		@ui.Text(ui.TextProps{Tag: "p", Class: "docs-illus-sprite-label text-center"}, entry.Label)
+	}
+}

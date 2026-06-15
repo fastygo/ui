@@ -1,0 +1,114 @@
+.docs-illus-lab-page {
+  @apply pb-24;
+}
+
+.docs-illus-lab-lead {
+  @apply max-w-2xl text-sm text-muted-foreground;
+}
+
+.docs-illus-lab-token-legend {
+  @apply text-xs text-muted-foreground;
+}
+
+.docs-illus-lab-card-mock {
+  @apply rounded-md border border-border bg-card p-3;
+}
+
+.docs-illus-lab-prose-card {
+  @apply relative overflow-hidden;
+  isolation: isolate;
+}
+
+.docs-illus-lab-canvas {
+  @apply relative ml-auto h-20 w-36 shrink-0 overflow-hidden;
+  background: transparent;
+}
+
+.docs-illus-lab-standalone-viewport {
+  @apply relative ml-auto h-20 w-36 shrink-0 overflow-hidden;
+}
+
+.docs-illus-lab-canvas-default {
+  height: 5rem;
+}
+
+.docs-illus-lab-canvas-checker {
+  background-color: transparent;
+  background-image:
+    linear-gradient(45deg, color-mix(in hsl, var(--border) 35%, transparent) 25%, transparent 25%),
+    linear-gradient(-45deg, color-mix(in hsl, var(--border) 35%, transparent) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, color-mix(in hsl, var(--border) 35%, transparent) 75%),
+    linear-gradient(-45deg, transparent 75%, color-mix(in hsl, var(--border) 35%, transparent) 75%);
+  background-size: 12px 12px;
+  background-position:
+    0 0,
+    0 6px,
+    6px -6px,
+    -6px 0;
+}
+
+.docs-illus-lab-canvas-plain {
+  background-color: transparent;
+}
+
+.docs-illus-lab-cell-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+.docs-illus-lab-cell-recommended .docs-illus-lab-cell-label {
+  @apply font-semibold text-foreground;
+}
+
+.docs-illus-lab-cell-recommended .docs-illus-lab-card-mock {
+  outline: 2px solid var(--border);
+  outline-offset: 0;
+}
+
+.docs-illus-lab-section-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+.docs-illus-lab-theme {
+  @apply fixed bottom-4 left-4 z-50 flex items-center gap-2 rounded-md border border-border bg-card p-2 shadow-sm;
+}
+
+.docs-illus-lab-theme-label {
+  @apply text-xs text-muted-foreground;
+}
+
+.docs-illus-sprite-grid {
+  @apply overflow-hidden rounded-md border border-border;
+}
+
+.docs-illus-sprite-cell {
+  @apply min-h-28;
+}
+
+.docs-illus-sprite-canvas {
+  @apply h-20 w-full bg-background;
+}
+
+.docs-illus-sprite-label {
+  @apply text-[10px] font-medium text-muted-foreground;
+}
+
+.docs-illus-export-page {
+  @apply m-0 bg-transparent;
+}
+
+html:has(.docs-illus-export-page),
+html:has(.docs-illus-export-page) body {
+  margin: 0;
+  background: transparent;
+}
+
+.docs-illus-export-grid {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(6, 9rem);
+  gap: 0;
+}
+
+.docs-illus-export-cell {
+  @apply h-20 w-36 shrink-0 overflow-hidden;
+}

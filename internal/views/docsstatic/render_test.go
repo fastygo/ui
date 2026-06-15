@@ -136,7 +136,7 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 		"docs-index-card-desc",
 		"docs-index-card p-3",
 		"docs-index-card-illustrated",
-		"docs-index-illus-button",
+		"bg-muted-foreground/",
 	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("html missing %q", want)
@@ -145,6 +145,15 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 	if strings.Contains(html, "data:image/svg+xml;base64,") {
 		t.Fatal("index cards should use CSS illustrations, not inline SVG data URLs")
 	}
+	if !strings.Contains(html, "bg-muted-foreground/") {
+		t.Fatal("index cards should render illustration tone utilities")
+	}
+	if !strings.Contains(html, "absolute right-4 top-4") {
+		t.Fatal("index cards should use embedded illustration positioning")
+	}
+	if strings.Contains(html, "docs-index-illus-surface") {
+		t.Fatal("index cards should not render illustration surface layers")
+	}
 	if strings.Count(html, "docs-index-grid-2") != 1 {
 		t.Fatalf("expected one 2-column grid, got %d", strings.Count(html, "docs-index-grid-2"))
 	}
@@ -152,6 +161,6 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 		t.Fatalf("expected two 3-column grids, got %d", strings.Count(html, "docs-index-grid-3"))
 	}
 	if got := strings.Count(html, "docs-index-card-illustrated"); got != 13 {
-		t.Fatalf("expected thirteen illustrated index cards, got %d", got)
+		t.Fatalf("expected all 13 primitive/component fixture cards illustrated, got %d", got)
 	}
 }

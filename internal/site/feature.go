@@ -107,6 +107,11 @@ func (f *Feature) languageSwitch(ctx context.Context, r *http.Request, fix fixtu
 func (f *Feature) Routes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /{$}", f.getHome)
 	mux.HandleFunc("GET /sample", f.getSample)
+	mux.HandleFunc("GET /lab/docs-index-illus", f.getDocsIndexIllusLab)
+	mux.HandleFunc("GET /lab/docs-index-illus/primitives", f.getDocsIndexIllusSpritesPrimitives)
+	mux.HandleFunc("GET /lab/docs-index-illus/components", f.getDocsIndexIllusSpritesComponents)
+	mux.HandleFunc("GET /lab/docs-index-illus/export/primitives", f.getDocsIndexIllusExportPrimitives)
+	mux.HandleFunc("GET /lab/docs-index-illus/export/components", f.getDocsIndexIllusExportComponents)
 	f.registerDocsRoutes(mux)
 }
 
@@ -139,4 +144,34 @@ func (f *Feature) getSample(w http.ResponseWriter, r *http.Request) {
 		Description: fix.SampleStub.Description,
 		Body:        fix.SampleStub.Body,
 	})))
+}
+
+func (f *Feature) getDocsIndexIllusLab(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	layout := f.layoutData(ctx, r, "Docs index illustration lab", "/lab/docs-index-illus")
+	_ = web.Render(ctx, w, views.DocsIllusLabPage(layout))
+}
+
+func (f *Feature) getDocsIndexIllusSpritesPrimitives(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	layout := f.layoutData(ctx, r, "Primitive illustration sprites", "/lab/docs-index-illus/primitives")
+	_ = web.Render(ctx, w, views.DocsIllusSpritePage(layout, "primitives"))
+}
+
+func (f *Feature) getDocsIndexIllusSpritesComponents(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	layout := f.layoutData(ctx, r, "Component illustration sprites", "/lab/docs-index-illus/components")
+	_ = web.Render(ctx, w, views.DocsIllusSpritePage(layout, "components"))
+}
+
+func (f *Feature) getDocsIndexIllusExportPrimitives(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	layout := f.layoutData(ctx, r, "Primitive illustration export", "/lab/docs-index-illus/export/primitives")
+	_ = web.Render(ctx, w, views.DocsIllusExportPage(layout, "primitives"))
+}
+
+func (f *Feature) getDocsIndexIllusExportComponents(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	layout := f.layoutData(ctx, r, "Component illustration export", "/lab/docs-index-illus/export/components")
+	_ = web.Render(ctx, w, views.DocsIllusExportPage(layout, "components"))
 }
