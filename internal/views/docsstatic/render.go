@@ -299,7 +299,7 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 		templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 			for _, link := range sec.Links {
 				cardClass := "docs-index-card p-3"
-				illustration, hasIllustration := indexCardIllustration(link.Href)
+				_, hasIllustration := indexIllustrationSpriteMeta(link.Href)
 				if hasIllustration {
 					cardClass += " relative overflow-hidden " + IndexCardIllustrationClass(link.Href)
 				}
@@ -308,16 +308,12 @@ func renderIndexSection(ctx context.Context, w io.Writer, sec IndexSection) erro
 				}).Render(
 					templ.WithChildren(ctx, templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 						if hasIllustration {
-							if err := renderIndexCardIllustration(ctx, w, illustration, IllustrationEmbedded); err != nil {
+							if err := IndexIllustrationSpriteComponent(link.Href, IllustrationEmbedded).Render(ctx, w); err != nil {
 								return err
 							}
 						}
-						titleClass := "h-auto justify-start p-0 text-base font-semibold"
+						titleClass := "docs-index-card-title"
 						descClass := "docs-index-card-desc text-muted-foreground"
-						if hasIllustration {
-							titleClass += " relative z-10"
-							descClass += " relative z-10"
-						}
 						if err := renderButtonLabel(ctx, w, ui.ButtonProps{
 							Href:    link.Href,
 							Variant: "link",

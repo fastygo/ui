@@ -216,7 +216,17 @@ article.docs-article.prose-docs {
   @apply my-0 h-full;
 }
 
+.prose-docs .docs-index-card-title {
+  @apply h-auto justify-start p-0 text-lg font-semibold text-primary no-underline hover:no-underline;
+}
+
+.docs-index-card-illustrated .docs-index-card-title,
+.docs-index-card-illustrated .docs-index-card-desc {
+  @apply relative z-10;
+}
+
 .prose-docs .docs-index-card-desc {
+  @apply font-bold;
   font-size: 0.6875rem;
   line-height: 1rem;
 }

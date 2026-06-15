@@ -43,7 +43,7 @@ func docsIllusLabProductionIllusStandalone(href string) templ.Component {
 }
 
 func docsIllusLabProductionIllusEmbedded(href string) templ.Component {
-	return docsstatic.IndexIllustrationComponent(href, docsstatic.IllustrationEmbedded)
+	return docsstatic.IndexIllustrationSpriteComponent(href, docsstatic.IllustrationEmbedded)
 }
 
 func docsIllusLabIndexCardClass(href string) string {

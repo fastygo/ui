@@ -24,10 +24,26 @@ func TestIllustrationPatterns_rendersWithoutError(t *testing.T) {
 	for _, entry := range IndexIllustrationEntries() {
 		var buf bytes.Buffer
 		if err := IndexIllustrationComponent(entry.Href, IllustrationEmbedded).Render(ctx, &buf); err != nil {
-			t.Fatalf("render %q: %v", entry.Href, err)
+			t.Fatalf("html render %q: %v", entry.Href, err)
 		}
 		if buf.Len() == 0 {
-			t.Fatalf("render %q: empty output", entry.Href)
+			t.Fatalf("html render %q: empty output", entry.Href)
+		}
+	}
+}
+
+func TestIndexIllustrationSpriteComponent_rendersWithoutError(t *testing.T) {
+	ctx := context.Background()
+	for _, entry := range IndexIllustrationEntries() {
+		var buf bytes.Buffer
+		if err := IndexIllustrationSpriteComponent(entry.Href, IllustrationEmbedded).Render(ctx, &buf); err != nil {
+			t.Fatalf("sprite render %q: %v", entry.Href, err)
+		}
+		if buf.Len() == 0 {
+			t.Fatalf("sprite render %q: empty output", entry.Href)
+		}
+		if !strings.Contains(buf.String(), "docs-index-card-illus") {
+			t.Fatalf("sprite render %q: missing sprite class", entry.Href)
 		}
 	}
 }

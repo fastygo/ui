@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./web/static/css/input.css -o ./web/static/css/app.css --minify",
-    "lint:ui8px": "ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css web/static/css/docs-illus-lab.css --ignore .fastygo",
+    "lint:ui8px": "ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css web/static/css/docs-illus-lab.css web/static/css/docs-index-illus.css --ignore .fastygo",
     "validate:html": "node scripts/validate-html-snapshots.mjs",
     "validate:aria": "ui8px validate aria internal/views internal/ui --manifest web/static/js/manifest.json --ignore .fastygo web/static/css/ui8kit",
     "snapshot:html": "go run ./.validate/cmd/snapshot-render",

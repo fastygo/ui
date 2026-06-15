@@ -3,7 +3,6 @@ package docsstatic
 import (
 	"context"
 	"io"
-	"strings"
 
 	"github.com/a-h/templ"
 	"github.com/fastygo/templ/ui"
@@ -33,11 +32,15 @@ type IndexIllustrationEntry struct {
 
 func indexCardIllustration(href string) (indexIllustration, bool) {
 	for suffix, illustration := range indexIllustrationBySuffix {
-		if strings.HasSuffix(href, suffix) {
+		if hasIndexIllustrationHref(href, suffix) {
 			return illustration, true
 		}
 	}
 	return indexIllustration{}, false
+}
+
+func hasIndexIllustrationHref(href, suffix string) bool {
+	return len(href) >= len(suffix) && href[len(href)-len(suffix):] == suffix
 }
 
 // IndexIllustrationEntries returns the illustrated index cards in display order.
@@ -65,7 +68,21 @@ func IndexIllustrationEntriesForSection(section string) []IndexIllustrationEntry
 	return out
 }
 
-// IndexIllustrationComponent renders the index-card illustration for href.
+// IndexIllustrationSpriteComponent renders the PNG sprite for a docs index card.
+func IndexIllustrationSpriteComponent(href string, layout IllustrationLayout) templ.Component {
+	if layout == "" {
+		layout = IllustrationEmbedded
+	}
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		sprite, ok := indexIllustrationSpriteMeta(href)
+		if !ok {
+			return nil
+		}
+		return renderIndexCardSprite(ctx, w, sprite, layout)
+	})
+}
+
+// IndexIllustrationComponent renders the HTML illustration recipe (lab / export).
 func IndexIllustrationComponent(href string, layout IllustrationLayout) templ.Component {
 	if layout == "" {
 		layout = IllustrationEmbedded
@@ -81,10 +98,31 @@ func IndexIllustrationComponent(href string, layout IllustrationLayout) templ.Co
 
 // IndexCardIllustrationClass returns the illustrated card modifier class for href.
 func IndexCardIllustrationClass(href string) string {
-	if _, ok := indexCardIllustration(href); !ok {
+	if _, ok := indexIllustrationSpriteMeta(href); !ok {
 		return ""
 	}
 	return indexCardIllustratedClass
+}
+
+func renderIndexCardSprite(ctx context.Context, w io.Writer, sprite indexIllustrationSprite, layout IllustrationLayout) error {
+	if layout == "" {
+		layout = IllustrationEmbedded
+	}
+	classes := []string{
+		illustrationRootClass(layout),
+		"docs-index-card-illus",
+		sprite.sheetClass(),
+	}
+	if layout == IllustrationEmbedded {
+		classes = append(classes, "docs-index-card-illus-fade")
+	}
+	return ui.Box(ui.BoxProps{
+		Class: templutils.Cn(classes...),
+		Attrs: templ.Attributes{
+			"aria-hidden": "true",
+			"style":       sprite.backgroundPositionStyle(),
+		},
+	}).Render(ctx, w)
 }
 
 func renderIndexCardIllustration(ctx context.Context, w io.Writer, illustration indexIllustration, layout IllustrationLayout) error {

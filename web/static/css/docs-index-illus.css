@@ -1,0 +1,19 @@
+/* Docs index card PNG sprites (see .project/png-sprite.md). */
+.docs-index-card-illus {
+  @apply pointer-events-none z-0 h-20 w-36 shrink-0;
+  background-repeat: no-repeat;
+  background-size: 864px 400px;
+}
+
+.docs-index-card-illus--primitives {
+  background-image: url("/static/img/docs-illus/primitives.png");
+}
+
+.docs-index-card-illus--components {
+  background-image: url("/static/img/docs-illus/components.png");
+}
+
+/* Experimental: index-card sprite visibility (−25% vs full opacity). */
+.docs-index-card-illus-fade {
+  opacity: 0.5;
+}

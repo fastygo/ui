@@ -119,11 +119,11 @@ templ docsIllusLabIndexPreviewCell(item docsIllusLabIndexPreview) {
 			@ui.Button(ui.ButtonProps{
 				Href:    item.Href,
 				Variant: "link",
-				Class:   "relative z-10 h-auto justify-start p-0 text-base font-semibold",
+				Class:   "docs-index-card-title",
 			}) {
 				{ item.Title }
 			}
-			@ui.Text(ui.TextProps{Class: "docs-index-card-desc relative z-10 text-muted-foreground"}, item.Desc)
+			@ui.Text(ui.TextProps{Class: "docs-index-card-desc text-muted-foreground"}, item.Desc)
 		}
 	}
 }

@@ -832,7 +832,7 @@ func docsIllusLabIndexPreviewCell(item docsIllusLabIndexPreview) templ.Component
 				templ_7745c5c3_Err = ui.Button(ui.ButtonProps{
 					Href:    item.Href,
 					Variant: "link",
-					Class:   "relative z-10 h-auto justify-start p-0 text-base font-semibold",
+					Class:   "docs-index-card-title",
 				}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var32), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -841,7 +841,7 @@ func docsIllusLabIndexPreviewCell(item docsIllusLabIndexPreview) templ.Component
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = ui.Text(ui.TextProps{Class: "docs-index-card-desc relative z-10 text-muted-foreground"}, item.Desc).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ui.Text(ui.TextProps{Class: "docs-index-card-desc text-muted-foreground"}, item.Desc).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

@@ -136,17 +136,20 @@ func TestIndex_rendersSectionGrids(t *testing.T) {
 		"docs-index-card-desc",
 		"docs-index-card p-3",
 		"docs-index-card-illustrated",
-		"bg-muted-foreground/",
+		"docs-index-card-illus",
+		"docs-index-card-illus--primitives",
+		"docs-index-card-illus--components",
+		"background-position:",
 	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("html missing %q", want)
 		}
 	}
 	if strings.Contains(html, "data:image/svg+xml;base64,") {
-		t.Fatal("index cards should use CSS illustrations, not inline SVG data URLs")
+		t.Fatal("index cards should use PNG sprites, not inline SVG data URLs")
 	}
-	if !strings.Contains(html, "bg-muted-foreground/") {
-		t.Fatal("index cards should render illustration tone utilities")
+	if strings.Contains(html, "bg-muted-foreground/") {
+		t.Fatal("index cards should use PNG sprites, not HTML illustration tone utilities")
 	}
 	if !strings.Contains(html, "absolute right-4 top-4") {
 		t.Fatal("index cards should use embedded illustration positioning")
