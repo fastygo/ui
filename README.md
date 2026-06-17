@@ -19,7 +19,7 @@ Design policy (ui8px, composition, fixtures, validation) lives in [`.cursor/rule
 ## Prerequisites
 
 - Go 1.25+
-- [Bun](https://bun.sh) (CSS build, ui8px, Playwright)
+- [Bun](https://bun.sh) (CSS build, ui8px, Playwright) — see [UI8px](#ui8px) for project vs global CLI setup
 
 ## Quick start
 
@@ -108,13 +108,97 @@ For a **Go binary** on your own host: `make deploy` (tidy, templ, css, `go build
 
 Committed static assets include Tailwind output (`app.css`), [`web/static/css/tweakcn.css`](web/static/css/tweakcn.css) tokens, [`web/static/css/fonts.css`](web/static/css/fonts.css), Latty icon masks, and the hashed UI8Kit bundle referenced from [`web/static/js/manifest.json`](web/static/js/manifest.json).
 
+## UI8px
+
+[ui8px](https://github.com/ui8kit/ui8px-cli) is a framework-agnostic CLI that keeps Tailwind-style utility classes aligned to a strict **8px layout grid** and a finer **4px control grid**. Classes stay explicit in source (`templ`, Go `Cn(...)`, `@apply` in CSS); the policy layer blocks drift, raw palette abuse, accidental 4px layout spacing, and unreviewed `ui-*` patterns.
+
+This repo pins **`ui8px@0.2.4`** in [`package.json`](package.json) and owns the authoritative policy in [`.ui8px/policy/`](.ui8px/policy/) (`allowed.json`, `denied.json`, `scopes.json`, `groups.json`, `patterns.json`). Other FastyGo repos may sync policy from here — do not invert that flow.
+
+### Install (project, global, or ad hoc)
+
+| Mode | How | When to use |
+|------|-----|-------------|
+| **Project** (recommended) | `bun install` — `ui8px` is already a `devDependency` | Day-to-day work and CI in this repo; version matches `package.json` |
+| **Ad hoc** | `npx ui8px@latest lint ./...` | One-off checks, other repos, or trying a newer CLI without changing lockfile |
+| **Global** | `npm install -g ui8px` or `bun add -g ui8px` | Shell alias / editor tasks across many projects; pin a version if you need stability (`npm install -g ui8px@0.2.4`) |
+
+From the repo root, prefer the Bun scripts (they pass the right scan paths and ignores):
+
+```bash
+bun run lint:ui8px      # utility policy on views, registry, CSS sources
+bun run validate:aria   # data-ui8kit hooks vs web/static/js/manifest.json
+```
+
+Equivalent direct calls (after `bun install`):
+
+```bash
+ui8px lint internal/views internal/ui web/static/css/input.css web/static/css/latty-icons.css web/static/css/docs-illus-lab.css web/static/css/docs-index-illus.css --ignore .fastygo
+ui8px validate aria internal/views internal/ui --manifest web/static/js/manifest.json --ignore .fastygo web/static/css/ui8kit
+```
+
+Global install exposes the same `ui8px` binary on your PATH — run it from any directory that has (or should have) a `.ui8px/` policy tree.
+
+### Bootstrap policy in a new project
+
+```bash
+npx ui8px init              # default policy scaffold
+npx ui8px init --preset go  # Go/templ: control scope on ui/**, components/**, utils/**/*.go; layout scope on views/examples
+```
+
+If `.ui8px` is missing, `ui8px lint` falls back to bundled defaults. For FastyGo UI work, copy or sync [`.ui8px/policy/`](.ui8px/policy/) from this repo instead of relying on defaults.
+
+### Scopes in this repo
+
+Policy scopes are **file-path based** ([`scopes.json`](.ui8px/policy/scopes.json)):
+
+| Scope | Spacing grid | Typical paths |
+|-------|--------------|---------------|
+| `layout` (default) | 8px steps (`px-2` = 8px, `px-4` = 16px; `px-3` denied) | `internal/views/**`, examples |
+| `controls` | 4px steps for compact primitives | `internal/ui/**`, vendored `templ` ui/components, `latty-icons.css` |
+| `fonts` | control grid | `gfonts.css` |
+
+Example: `px-3` is allowed on a button in `internal/ui/` but rejected in a page layout under `internal/views/`.
+
+### What gets scanned
+
+- **`.templ` / `.html`** — static `class="..."` attributes
+- **`.css`** — `@apply` utility lists (e.g. [`input.css`](web/static/css/input.css))
+- **`.go`** — static literals in `utils.Cn(...)`, `templ.Attributes{"class": ...}`, and helper `return "..."` strings (dynamic arguments are ignored)
+
+`ui8px` skips `.git`, `node_modules`, `dist`, and paths listed in `.gitignore`. Add per-run ignores after scan paths: `--ignore .manual .project`.
+
+### Other commands
+
+```bash
+ui8px lint ./... --learn              # record unknown/denied classes → .ui8px/telemetry/
+ui8px validate patterns ./...         # repeated class lists → .ui8px/reports/patterns.json
+ui8px policy review                   # summarize policy vs observed usage
+ui8px validate grid --input class-map.json --output class-map.backlog.json
+```
+
+Learn and pattern reports are for human review — plain `lint` does not mutate policy files.
+
+### Diagnostics (lint)
+
+| Code | Meaning |
+|------|---------|
+| `UI8PX001` | Spacing token not allowed in current scope (e.g. `px-3` in layout) |
+| `UI8PX002` | Class not in `allowed.json` |
+| `UI8PX003` | Class listed in `denied.json` |
+| `UI8PX004` | Conflicting utilities in one class list |
+| `UI8PX005` | Unknown `ui-*` semantic class |
+
+Exit codes: `0` clean, `1` violations, `2` invalid usage or runtime error.
+
+Further reading: [ui8px-cli README](https://github.com/ui8kit/ui8px-cli), [npm ui8px](https://www.npmjs.com/package/ui8px), and repo rules [`.cursor/rules/fastygo-ui-atomic-ui8px.mdc`](.cursor/rules/fastygo-ui-atomic-ui8px.mdc).
+
 ## Verification
 
 ```bash
 bun run verify
 ```
 
-Pipeline: `templ generate` → `build:css` → `docs:sync-specs` → `validate:spec` → `docs:build` → `docs:snapshot` → `ui8px lint` → `ui8px validate aria` → Nu HTML on `.validate/html-snapshots/nu/**/*.html` (network; empty dir exits 0) → `go test ./...` → Playwright + axe on `/` and `/docs/primitives/button/` (`color-contrast` disabled until brand phase).
+Pipeline: `templ generate` → `build:css` → `docs:sync-specs` → `validate:spec` → `docs:build` → `docs:snapshot` → **`lint:ui8px`** → **`validate:aria`** → Nu HTML on `.validate/html-snapshots/nu/**/*.html` (network; empty dir exits 0) → `go test ./...` → Playwright + axe on `/` and `/docs/primitives/button/` (`color-contrast` disabled until brand phase). UI8px commands and install options: [UI8px](#ui8px).
 
 First-time e2e browsers: `bun run test:e2e:install`. E2E uses `APP_BIND=127.0.0.1:18081` (see [`playwright.config.ts`](playwright.config.ts)).
 
